@@ -189,7 +189,7 @@ footer {{ color: #4a5578; font-size: 12px; padding: 0 32px 30px; }}
   <div class="tab active" data-tab="movies">🎬 电影 <b>{len(movies)}</b></div>
   <div class="tab" data-tab="tv">📺 剧集 <b>{len(tv)}</b></div>
   <div class="tab" data-tab="games">🎮 游戏 <b>{len(games)}</b></div>
-  <div class="tab" data-tab="anime">🎌 动漫 <b>{len(anime)}</b></div>
+  <div class="tab" data-tab="anime">🛸 动漫 <b>{len(anime)}</b></div>
   <div class="tab" data-tab="comics">📚 漫画 <b>{len(comics)}</b></div>
 </div>
 <div class="controls">
