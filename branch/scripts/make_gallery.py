@@ -52,7 +52,7 @@ def cards_movie(rows, sub):
     <div class="note">{esc(r.get('note', ''))}</div>
   </div>
 </div>''')
-    return '\n'.join(out)
+    return out  # 返回数组
 
 def cards_games(rows):
     out = []
@@ -77,7 +77,7 @@ def cards_games(rows):
     <div class="note">{esc(r.get('note', ''))}</div>
   </div>
 </div>''')
-    return '\n'.join(out)
+    return out  # 返回数组
 
 def main():
     movies = load('movies/scifi_movies_curated.csv')
