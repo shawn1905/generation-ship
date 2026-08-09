@@ -148,6 +148,37 @@ KNOWN_MOVIES = {
     ("Crazy Alien", 2019): None,
     ("Okja", 2017): ("生物工程|韩美|伦理", 0, "超级猪"),
     ("The Host", 2006): ("怪兽|韩国|灾难", 0, "汉江怪物"),
+
+    # ---- 经典扩充：1980-2000（用户放宽范围） ----
+    ("Blade Runner", 1982): ("赛博朋克|反乌托邦|近未来", 1, "赛博朋克视觉标杆"),
+    ("E.T. the Extra-Terrestrial", 1982): ("外星接触|家庭|温情", 0, "外星飞船童话"),
+    ("The Thing", 1982): ("外星|恐怖|南极", 0, "变形怪体科幻恐怖"),
+    ("The Terminator", 1984): ("AI|穿越|末日", 0, "天网起源"),
+    ("Dune", 1984): ("生态|政治|沙丘", 1, "大卫林奇版沙丘"),
+    ("Aliens", 1986): ("太空恐怖|殖民|军事", 1, "苏拉科级运输舰+殖民地"),
+    ("RoboCop", 1987): ("义体|赛博朋克|警匪", 0, "机械战警"),
+    ("Predator", 1987): ("外星|丛林|狩猎", 0, "铁血战士"),
+    ("They Live", 1988): ("反乌托邦|阴谋|社会", 0, "眼镜看穿真相"),
+    ("The Abyss", 1989): ("深海|外星接触|灾难", 0, "深海平台+外星人"),
+    ("Total Recall", 1990): ("火星|记忆|动作", 0, "火星殖民记忆疑云"),
+    ("Terminator 2: Judgment Day", 1991): ("AI|穿越|动作", 0, "液态金属终结者"),
+    ("Jurassic Park", 1993): ("生物工程|恐龙|灾难", 0, "恐龙复活"),
+    ("Stargate", 1994): ("星际之门|埃及|远征", 1, "星门远征队"),
+    ("12 Monkeys", 1995): ("穿越|末世|心理", 0, "十二猴子：末世穿越"),
+    ("Strange Days", 1995): ("赛博朋克|记忆|VR", 0, "记忆录放黑市"),
+    ("Event Horizon", 1997): ("太空恐怖|黑洞|地狱船", 1, "地狱船设计：扭曲空间引擎"),
+    ("Gattaca", 1997): ("基因|反乌托邦|近未来", 0, "基因歧视社会"),
+    ("Starship Troopers", 1997): ("太空军事|讽刺|虫族", 1, "军事运输舰+登陆战（1997经典）"),
+    ("The Fifth Element", 1997): ("太空歌剧|未来都市|飞船", 2, "Fhloston 天堂号+未来交通设计"),
+    ("Contact", 1997): ("第一接触|科学|哲学", 1, "机器设计+科学伦理"),
+    ("Armageddon", 1998): ("近地天体|航天|灾难", 1, "钻探队登陆小行星"),
+    ("Dark City", 1998): ("反乌托邦|记忆|黑色", 0, "记忆被操控的城市"),
+    ("The Truman Show", 1998): ("反乌托邦|真人秀|社会", 0, "楚门的世界"),
+    ("Galaxy Quest", 1999): ("太空歌剧|喜剧|致敬", 1, "演员上真飞船"),
+    ("The Matrix", 1999): ("赛博朋克|虚拟现实|哲学", 0, "矩阵：模拟世界"),
+    ("Star Wars: Episode I - The Phantom Menace", 1999): ("太空歌剧|星战|前传", 1, "纳布+贸易联盟舰队"),
+    ("The Thirteenth Floor", 1999): ("虚拟现实|悬疑|模拟", 0, "十三层楼"),
+    ("Pitch Black", 2000): ("太空恐怖|怪兽|生存", 1, "坠机+暗星生物"),
 }
 
 def norm(s):
@@ -176,9 +207,14 @@ def main():
         if meta is None:
             continue  # 已剔除（None 标记）
         tags, ship, note = meta
-        r = by_norm.get((norm(title), str(year))) or by_norm.get((norm(title), ''))
+        # 指定年份时禁用空年份兜底（避免同名不同年份作品误配）
+        r = by_norm.get((norm(title), str(year)))
+        if not r and not year:
+            r = by_norm.get((norm(title), ''))
         if not r:  # 回退到全量候选池（IMDb 类型标签不可靠）
-            r = pool.get((norm(title), str(year))) or pool.get((norm(title), ''))
+            r = pool.get((norm(title), str(year)))
+            if not r and not year:
+                r = pool.get((norm(title), ''))
         if not r:
             missing.append((title, year))
             continue

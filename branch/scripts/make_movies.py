@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""电影侧：从 IMDb 官方数据集过滤 2000+ 科幻电影。
+"""电影侧：从 IMDb 官方数据集过滤 1980+ 科幻电影。
 输出：
-  branch/movies/scifi_movies_raw.csv     全量（type=movie, sci-fi, 2000+, 有票数）
+  branch/movies/scifi_movies_raw.csv     全量（type=movie, sci-fi, 1980+, 有票数）
   branch/movies/scifi_movies_curated.csv 精选（numVotes >= 5000），留人工标签列
 数据源：https://datasets.imdbws.com/  (IMDb 非商业数据集)
 """
@@ -23,7 +23,7 @@ def read_basics(ttype_filter, genres_req=('Sci-Fi',)):
             tconst, ttype, ptitle, otitle, adult, syear, eyear, runtime, genres = row[:9]
             if ttype not in ttype_filter or adult == '1':
                 continue
-            if not (syear.isdigit() and 2000 <= int(syear) <= 2025):
+            if not (syear.isdigit() and 1980 <= int(syear) <= 2025):
                 continue
             if genres == r'\N':
                 if genres_req is not None:
@@ -48,7 +48,7 @@ def main():
     def build(ttype, outname, label):
         print(f'reading basics ({label})...')
         basics = read_basics(ttype)
-        print(f'  sci-fi {label} 2000+: {len(basics)}')
+        print(f'  sci-fi {label} 1980+: {len(basics)}')
         rows = []
         for tc, (title, year, runtime, genres) in basics.items():
             rating, votes = ratings.get(tc, (0.0, 0))
@@ -67,10 +67,10 @@ def main():
         return rows
 
     def build_pool(ttype, outname, label):
-        """全量候选池：2000+ 有票，不限类型（IMDb 类型标签不可靠，Avatar/BR2049 都没标 Sci-Fi）"""
+        """全量候选池：1980+ 有票，不限类型（IMDb 类型标签不可靠，Avatar/BR2049 都没标 Sci-Fi）"""
         print(f'reading basics pool ({label})...')
         basics = read_basics(ttype, genres_req=None)
-        print(f'  all {label} 2000+: {len(basics)}')
+        print(f'  all {label} 1980+: {len(basics)}')
         rows = []
         for tc, (title, year, runtime, genres) in basics.items():
             rating, votes = ratings.get(tc, (0.0, 0))

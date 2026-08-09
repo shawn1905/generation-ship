@@ -63,6 +63,21 @@ KNOWN_TV = {
     ("Y: The Last Man", 2021): ("末世|性别|改编", 0, "男性灭绝"),
     ("The Stand", 2020): ("末世|超自然|斯蒂芬金", 0, "瘟疫后善恶之战"),
     ("Scavengers Reign", 2023): ("异星生态|动画|生存", 2, "异星生态艺术标杆"),
+
+    # ---- 经典扩充：1980-2000（用户放宽范围） ----
+    ("Star Trek: The Next Generation", 1987): ("太空歌剧|星际迷航|联邦", 2, "企业号 D：全息甲板+联邦理想"),
+    ("Red Dwarf", 1988): ("太空喜剧|孤独|克隆", 2, "红矮星号：孤独远航喜剧"),
+    ("Quantum Leap", 1989): ("穿越|科学实验|单元剧", 0, "量子跳跃实验"),
+    ("Star Trek: Deep Space Nine", 1993): ("空间站|政治|战争", 2, "深空九号：空间站+战争弧线"),
+    ("Babylon 5", 1993): ("空间站|政治|长弧线", 2, "巴别五号：空间站地缘政治史诗"),
+    ("The X-Files", 1993): ("外星|阴谋|单元剧", 0, "X档案：外星阴谋论"),
+    ("SeaQuest 2032", 1993): ("海底|科幻|探险", 0, "海下探索舰"),
+    ("Earth 2", 1994): ("殖民|生态|远征", 1, "地球2号：异星殖民远征"),
+    ("Star Trek: Voyager", 1995): ("远航|星际迷航|生存", 2, "航海家号：被抛到银河彼岸的归途"),
+    ("Space: Above and Beyond", 1995): ("太空战|军事|克隆", 2, "深海太空战+克隆士兵"),
+    ("Lexx", 1996): ("活体飞船|黑色幽默|异星", 1, "活体飞船 Lexx：异色经典"),
+    ("Stargate SG-1", 1997): ("星门|远征|单元剧", 1, "星门远征队"),
+    ("Farscape", 1999): ("活体飞船|外星|冒险", 2, "活体飞船莫亚+外星生物设计"),
 }
 
 def norm(s):
@@ -88,9 +103,14 @@ def main():
 
     rows, missing = [], []
     for (title, year), (tags, ship, note) in KNOWN_TV.items():
-        r = by_norm.get((norm(title), str(year))) or by_norm.get((norm(title), ''))
+        # 指定年份时禁用空年份兜底（避免同名不同年份作品误配）
+        r = by_norm.get((norm(title), str(year)))
+        if not r and not year:
+            r = by_norm.get((norm(title), ''))
         if not r:  # 回退到全量候选池（IMDb 类型标签不可靠）
-            r = pool.get((norm(title), str(year))) or pool.get((norm(title), ''))
+            r = pool.get((norm(title), str(year)))
+            if not r and not year:
+                r = pool.get((norm(title), ''))
         if not r:
             missing.append((title, year))
             continue

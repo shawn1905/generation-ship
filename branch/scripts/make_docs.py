@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""生成 docs/科幻素材库-2000后.md：人读汇总（表格由数据自动生成）"""
+"""生成 docs/科幻素材库-1980后.md：人读汇总（表格由数据自动生成）"""
 import csv, os
 from collections import defaultdict
 
@@ -52,8 +52,8 @@ CORE_TAGS = ['世代飞船', '硬科幻', '太空歌剧', '赛博朋克', '反�
              '时间循环', '末世', '机甲', '太空恐怖', '殖民', '方舟', '星际航行', '火星']
 
 lines = []
-lines.append('# 科幻素材库（2000+）· 世代飞船设计参考\n')
-lines.append('> **分支收集工作产出**：2000 年以后的科幻电影 / 剧集 / 游戏，按内容与评价整理，服务于世代飞船设计主线。\n')
+lines.append('# 科幻素材库（1980+）· 世代飞船设计参考\n')
+lines.append('> **分支收集工作产出**：1980 年以后的科幻电影 / 剧集 / 游戏，按内容与评价整理，服务于世代飞船设计主线。\n')
 lines.append('> **交互式画廊**：`branch/gallery.html`（双击本地打开，六区 Tab + 标签过滤 + 图片；在线版见 GitHub Pages）\n')
 lines.append('---\n')
 lines.append('## 0. 收集方法与数据源（可复现）\n')
@@ -82,8 +82,8 @@ lines.append('---\n')
 lines.append('## 3. 统计\n')
 lines.append('| 类别 | 精选数 | 原始池 |')
 lines.append('|---|---|---|')
-lines.append(f'| 电影 | {len(movies)} | {5491} 部（Sci-Fi 标签 2000+ 有票） |')
-lines.append(f'| 剧集 | {len(tv)} | {1978} 部 |')
+lines.append(f'| 电影 | {len(movies)} | {9076} 部（Sci-Fi 标签 1980+ 有票） |')
+lines.append(f'| 剧集 | {len(tv)} | {4462} 部 |')
 lines.append(f'| 游戏 | {len(games)} | {1775} 款（Sci-Fi 相关标签 2000+） |')
 lines.append(f'| 动漫 | {len(anime)} | AniList 人工清单+核验 |')
 lines.append(f'| 漫画 | {len(comics)} | AniList(日漫)+维基(欧美) |')
