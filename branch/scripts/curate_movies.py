@@ -30,7 +30,7 @@ KNOWN_MOVIES = {
     ("Space Sweepers", 2021): ("太空垃圾|韩国|动作", 2, "飞船造型有设计感"),
     ("The Wandering Earth", 2019): ("流浪地球|方舟|中国", 3, "行星级迁徙+地下城，中国科幻里程碑"),
     ("The Wandering Earth II", 2023): ("流浪地球|方舟|中国", 3, "方舟计划+数字生命，前传"),
-    ("Moon Man", 2022): ("月球基地|喜剧|中国", 1, "独行月球，基地细节轻松参考"),
+    ("Moon Man", 2022): None,
     ("Journey to the West: Conquering the Demons", 2013): ("科幻|中国|公路", 0, "宇宙探索编辑部：伪科幻人文片"),
     ("Moonfall", 2022): ("月球|灾难|科幻", 1, "月球坠落脑洞"),
     ("Oblivion", 2013): ("后末日|克隆|无人机|空中塔", 2, "泡泡船+天空塔设计，无人机基地"),
@@ -144,8 +144,8 @@ KNOWN_MOVIES = {
     ("Battleship", 2012): ("外星|海军|爆米花", 0, "海战打外星人"),
     ("Overlord", 2018): ("二战|超自然|恐怖", 0, "纳粹血清"),
     # ---- 亚洲 / 其它 ----
-    ("Shanghai Fortress", 2019): ("中国|科幻|外星|口碑失败", 1, "上海堡垒：可作失败案例分析"),
-    ("Crazy Alien", 2019): ("外星|喜剧|中国", 0, "疯狂的外星人"),
+    ("Shanghai Fortress", 2019): None,
+    ("Crazy Alien", 2019): None,
     ("Okja", 2017): ("生物工程|韩美|伦理", 0, "超级猪"),
     ("The Host", 2006): ("怪兽|韩国|灾难", 0, "汉江怪物"),
 }
@@ -172,7 +172,10 @@ def main():
     pool = load_pool()
 
     rows, missing = [], []
-    for (title, year), (tags, ship, note) in KNOWN_MOVIES.items():
+    for (title, year), meta in KNOWN_MOVIES.items():
+        if meta is None:
+            continue  # 已剔除（None 标记）
+        tags, ship, note = meta
         r = by_norm.get((norm(title), str(year))) or by_norm.get((norm(title), ''))
         if not r:  # 回退到全量候选池（IMDb 类型标签不可靠）
             r = pool.get((norm(title), str(year))) or pool.get((norm(title), ''))
