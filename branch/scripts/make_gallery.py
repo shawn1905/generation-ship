@@ -46,7 +46,7 @@ def cards_anime(rows):
             score = 0
         score_txt = f"{r['score']}/100" if r.get('score') else '—'
         out.append(f'''<div class="card" data-tags="{esc(r['tags'])}" data-ship="{ship}">
-  <a href="{esc(r['url'])}" target="_blank"><div class="imgwrap">{"<img loading='lazy' src='anime/" + img + "' alt=''>" if img else '<div class="noimg">无图</div>'}</div></a>
+  <a href="{esc(r['url'])}" target="_blank"><div class="imgwrap">{"<img loading='lazy' src='" + img + "' alt=''>" if img else '<div class="noimg">无图</div>'}</div></a>
   <div class="meta">
     <div class="title">{esc(r['title'])} <span class="year">{r['year']}</span></div>
     <div class="ratings">{"★" * ANISCORE(score)}<span class="score">{score_txt}</span><span class="votes">人气{r['popularity']}</span></div>
@@ -69,7 +69,7 @@ def cards_comics(rows):
             score = 0
         score_txt = f"{r['score']}/100" if r.get('score') else ('维基' if r.get('source') == 'wikipedia' else '手写')
         out.append(f'''<div class="card" data-tags="{esc(r['tags'])}" data-ship="{ship}">
-  <a href="{esc(r['url'])}" target="_blank"><div class="imgwrap">{"<img loading='lazy' src='comics/" + img + "' alt=''>" if img else '<div class="noimg">无图</div>'}</div></a>
+  <a href="{esc(r['url'])}" target="_blank"><div class="imgwrap">{"<img loading='lazy' src='" + img + "' alt=''>" if img else '<div class="noimg">无图</div>'}</div></a>
   <div class="meta">
     <div class="title">{esc(r['title'])} <span class="year">{r['year']}</span></div>
     <div class="ratings">{"★" * ANISCORE(score)}<span class="score">{score_txt}</span></div>
