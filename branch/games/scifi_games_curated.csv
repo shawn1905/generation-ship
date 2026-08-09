@@ -81,5 +81,5 @@ app_id,name,release_year,release_date,review_score_desc,positive,total_reviews,p
 484900,Aven Colony,2017,2017-07-25,Mostly Positive,1862,2533,73.5,0,"{\final\"": 2999",https://store.steampowered.com/app/484900/,https://cdn.akamai.steamstatic.com/steam/apps/484900/header.jpg,殖民模拟,1,异星殖民地,games.csv
 383840,Nimbatus - The Space Drone Constructor,2020,2020-05-14,Very Positive,1641,2049,80.1,0,"{\final\"": 780",https://store.steampowered.com/app/383840/,https://cdn.akamai.steamstatic.com/steam/apps/383840/header.jpg,飞船建造|物理,1,无人机船体设计,games.csv
 1788800,Soma Union,2021,2021-11-01,Very Positive,48,53,90.6,0,\N,https://store.steampowered.com/app/1788800/,https://cdn.akamai.steamstatic.com/steam/apps/1788800/header.jpg,水下|意识|恐怖,1,意识拷贝,raw-prefix
-,Star Citizen,,,非 Steam,0,0,0.0,0,,https://robertsspaceindustries.com/,,太空模拟|众筹|飞船,3,飞船细节顶级（EA 中）,non-steam
+starcitizen,Star Citizen,,,非 Steam,0,0,0.0,0,,https://robertsspaceindustries.com/,,太空模拟|众筹|飞船,3,飞船细节顶级（EA 中）,non-steam
 2560250,Observer,2023,2023-09-09,No user reviews,0,0,0.0,0,"{\final\"": 399",https://store.steampowered.com/app/2560250/,https://cdn.akamai.steamstatic.com/steam/apps/2560250/header.jpg,赛博朋克|恐怖|侦探,0,潜入他人记忆,games.csv
