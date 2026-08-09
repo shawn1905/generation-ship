@@ -1,0 +1,10 @@
+# 原始数据（可复现：见 docs/科幻素材库-2000后.md 数据源）
+branch/data/
+# 中间产物（可重新生成）
+branch/movies/movie_pool.csv
+branch/movies/tv_pool.csv
+branch/movies/scifi_movies_curated_auto.csv
+# Python 虚拟环境
+branch/.venv/
+__pycache__/
+.DS_Store
