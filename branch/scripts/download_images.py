@@ -112,3 +112,29 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+# ---- 动漫/漫画封面（AniList cover + 维基 thumbnail）----
+def covers(csvf, outdir):
+    import os as _os
+    d = _os.path.join(ROOT, outdir)
+    _os.makedirs(d, exist_ok=True)
+    rows = list(csv.DictReader(open(_os.path.join(ROOT, csvf))))
+    ok = fail = 0
+    for r in rows:
+        url = r.get('cover_img') or ''
+        if not url:
+            fail += 1
+            continue
+        key = r.get('source_id') or r.get('title')
+        slug = _os.path.join(d, re.sub(r'[^a-z0-9]+', '_', str(key).lower()).strip('_') + '.jpg')
+        st = fetch(url, slug)
+        if st in ('ok', 'cached'):
+            ok += 1
+        else:
+            fail += 1
+            print(f'  cover fail {r["title"]}: {st}')
+        time.sleep(0.2)
+    print(f'{outdir}: ok={ok} fail={fail}')
+
+if __name__ == '__main__':
+    main()

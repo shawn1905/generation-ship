@@ -12,22 +12,31 @@
 
 | 类别 | 精选数 | 世代飞船级(✧4) | 工程细节级(✧3) | 外形级(✧2) |
 |---|---|---|---|---|
-| 电影 | 130 | 5 | 10 | 30 |
+| 电影 | 131 | 5 | 10 | 30 |
 | 剧集 | 49 | 5 | 6 | 14 |
 | 游戏 | 84 | 1 | 12 | 20 |
+| 动漫 | 36 | 1 | 3 | 4 |
+| 漫画 | 29 | 1 | 2 | 4 |
+| **合计** | **329** | **12** | **33** | **72** |
 
 ## 目录
 
 ```
 branch/
-├── gallery.html            # 交互式画廊（本地打开）
+├── gallery.html            # 交互式画廊（本地打开，五区：电影/剧集/游戏/动漫/漫画）
 ├── movies/
 │   ├── scifi_movies_raw.csv      # IMDb 数据集过滤：5491 部（Sci-Fi 标签 2000+ 有票）
-│   ├── scifi_movies_curated.csv  # 人工精选 130 部（含 tags/ship_ref/note）
+│   ├── scifi_movies_curated.csv  # 人工精选 131 部（含 tags/ship_ref/note）
 │   ├── scifi_tv_raw.csv          # 剧集 1978 部
 │   ├── scifi_tv_curated.csv      # 剧集精选 49 部
 │   ├── posters/  tv_posters/     # 本地海报缓存（tt开头.jpg）
 │   └── movie_pool.csv  tv_pool.csv  # 全量候选池（.gitignore，可重新生成）
+├── anime/
+│   ├── scifi_anime_curated.csv   # 精选 36 部（AniList 核验：评分/人气/封面）
+│   └── covers/                   # 封面缓存
+├── comics/
+│   ├── scifi_comics_curated.csv  # 精选 29 部（日漫 AniList + 欧美维基）
+│   └── covers/
 ├── games/
 │   ├── scifi_games_raw.csv       # steam-insights 过滤：1775 款
 │   ├── scifi_games_curated.csv   # 精选 84 款
@@ -38,7 +47,10 @@ branch/
 │   ├── curate_movies.py    # 电影人工清单 + 核验合并
 │   ├── curate_tv.py        # 剧集人工清单 + 核验合并
 │   ├── curate_games.py     # 游戏人工清单 + 核验合并（含非 Steam 特判）
+│   ├── curate_anime_comics.py  # 动漫/漫画清单 + AniList/维基核验
+│   ├── fix_anime_comics.py     # 定向修复（灵笼/铁血孤儿/维基词条）
 │   ├── download_images.py  # 海报/封面本地缓存
+│   ├── download_covers.py  # 动漫/漫画封面
 │   ├── make_gallery.py     # 生成 gallery.html
 │   └── make_docs.py        # 生成 ../docs/ 汇总文档
 └── .venv/                  # Python 环境（.gitignore）
