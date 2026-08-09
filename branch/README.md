@@ -15,15 +15,16 @@
 | 电影 | 131 | 5 | 10 | 30 |
 | 剧集 | 49 | 5 | 6 | 14 |
 | 游戏 | 84 | 1 | 12 | 20 |
-| 动漫 | 36 | 1 | 3 | 4 |
+| 动漫 | 34 | 1 | 3 | 4 |
 | 漫画 | 29 | 1 | 2 | 4 |
-| **合计** | **329** | **12** | **33** | **72** |
+| 小说 | 25 | 3 | 3 | 7 |
+| **合计** | **352** | **15** | **36** | **79** |
 
 ## 目录
 
 ```
 branch/
-├── gallery.html            # 交互式画廊（本地打开，五区：电影/剧集/游戏/动漫/漫画）
+├── gallery.html            # 交互式画廊（本地打开，六区：电影/剧集/游戏/动漫/漫画/小说）
 ├── movies/
 │   ├── scifi_movies_raw.csv      # IMDb 数据集过滤：5491 部（Sci-Fi 标签 2000+ 有票）
 │   ├── scifi_movies_curated.csv  # 人工精选 131 部（含 tags/ship_ref/note）
@@ -37,6 +38,9 @@ branch/
 ├── comics/
 │   ├── scifi_comics_curated.csv  # 精选 29 部（日漫 AniList + 欧美维基）
 │   └── covers/
+├── novels/
+│   ├── scifi_novels_curated.csv  # 精选 25 部（Open Library 核验+评分）
+│   └── covers/
 ├── games/
 │   ├── scifi_games_raw.csv       # steam-insights 过滤：1775 款
 │   ├── scifi_games_curated.csv   # 精选 84 款
@@ -48,6 +52,7 @@ branch/
 │   ├── curate_tv.py        # 剧集人工清单 + 核验合并
 │   ├── curate_games.py     # 游戏人工清单 + 核验合并（含非 Steam 特判）
 │   ├── curate_anime_comics.py  # 动漫/漫画清单 + AniList/维基核验
+│   ├── curate_novels.py        # 小说清单 + Open Library 核验/评分/封面
 │   ├── fix_anime_comics.py     # 定向修复（灵笼/铁血孤儿/维基词条）
 │   ├── download_images.py  # 海报/封面本地缓存
 │   ├── download_covers.py  # 动漫/漫画封面

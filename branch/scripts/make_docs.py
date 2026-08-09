@@ -14,17 +14,22 @@ tv = load('branch/movies/scifi_tv_curated.csv')
 games = load('branch/games/scifi_games_curated.csv')
 anime = load('branch/anime/scifi_anime_curated.csv')
 comics = load('branch/comics/scifi_comics_curated.csv')
+novels = load('branch/novels/scifi_novels_curated.csv')
 
 def rating_str(r, kind):
     if kind == 'game':
         return f"{r['positive_pct']}%（{r['total_reviews']}评）" if r.get('total_reviews') else r.get('review_score_desc') or '—'
     if kind in ('anime', 'comic'):
         return (f"{r['score']}/100" if r.get('score') else ('维基' if r.get('source') == 'wikipedia' else '手写'))
+    if kind == 'novel':
+        return f"OL ★{r['rating']}（{r['rating_count']}人）" if r.get('rating') else '—'
     return f"{r['imdb_rating']}（{r['num_votes']}票）"
 
 def row(r, kind, tag=''):
     if kind == 'game':
         name, year = r['name'], r['release_year']
+    elif kind == 'novel':
+        name, year = f"{r['title']}（{r['author']}）", r['year']
     else:
         name, year = r['title'], r['year']
     tags = tag or r.get('tags', '')
@@ -32,12 +37,12 @@ def row(r, kind, tag=''):
     return f"| {name} | {year} | {rating_str(r, kind)} | {tags} | {note} |"
 
 # ---- 分组 ----
-ship4 = [(r, k) for k, rs in (('movie', movies), ('tv', tv), ('game', games), ('anime', anime), ('comic', comics)) for r in rs if r.get('ship_ref') == '4']
-ship3 = [(r, k) for k, rs in (('movie', movies), ('tv', tv), ('game', games), ('anime', anime), ('comic', comics)) for r in rs if r.get('ship_ref') == '3']
-ship2 = [(r, k) for k, rs in (('movie', movies), ('tv', tv), ('game', games), ('anime', anime), ('comic', comics)) for r in rs if r.get('ship_ref') == '2']
+ship4 = [(r, k) for k, rs in (('movie', movies), ('tv', tv), ('game', games), ('anime', anime), ('comic', comics), ('novel', novels)) for r in rs if r.get('ship_ref') == '4']
+ship3 = [(r, k) for k, rs in (('movie', movies), ('tv', tv), ('game', games), ('anime', anime), ('comic', comics), ('novel', novels)) for r in rs if r.get('ship_ref') == '3']
+ship2 = [(r, k) for k, rs in (('movie', movies), ('tv', tv), ('game', games), ('anime', anime), ('comic', comics), ('novel', novels)) for r in rs if r.get('ship_ref') == '2']
 
 tag_index = defaultdict(list)
-for k, rs in (('movie', movies), ('tv', tv), ('game', games), ('anime', anime), ('comic', comics)):
+for k, rs in (('movie', movies), ('tv', tv), ('game', games), ('anime', anime), ('comic', comics), ('novel', novels)):
     for r in rs:
         for t in (r.get('tags') or '').split('|'):
             if t:
@@ -49,7 +54,7 @@ CORE_TAGS = ['世代飞船', '硬科幻', '太空歌剧', '赛博朋克', '反�
 lines = []
 lines.append('# 科幻素材库（2000+）· 世代飞船设计参考\n')
 lines.append('> **分支收集工作产出**：2000 年以后的科幻电影 / 剧集 / 游戏，按内容与评价整理，服务于世代飞船设计主线。\n')
-lines.append('> **交互式画廊**：`branch/gallery.html`（双击本地打开，五区 Tab + 标签过滤 + 图片；在线版见 GitHub Pages）\n')
+lines.append('> **交互式画廊**：`branch/gallery.html`（双击本地打开，六区 Tab + 标签过滤 + 图片；在线版见 GitHub Pages）\n')
 lines.append('---\n')
 lines.append('## 0. 收集方法与数据源（可复现）\n')
 lines.append('| 步骤 | 说明 | 数据源 |')
@@ -82,7 +87,8 @@ lines.append(f'| 剧集 | {len(tv)} | {1978} 部 |')
 lines.append(f'| 游戏 | {len(games)} | {1775} 款（Sci-Fi 相关标签 2000+） |')
 lines.append(f'| 动漫 | {len(anime)} | AniList 人工清单+核验 |')
 lines.append(f'| 漫画 | {len(comics)} | AniList(日漫)+维基(欧美) |')
-lines.append(f'| **合计** | **{len(movies)+len(tv)+len(games)+len(anime)+len(comics)}** | — |\n')
+lines.append(f'| 小说 | {len(novels)} | Open Library 核验+评分 |')
+lines.append(f'| **合计** | **{len(movies)+len(tv)+len(games)+len(anime)+len(comics)+len(novels)}** | — |\n')
 lines.append('---\n')
 
 lines.append('## 4. ✧✧✧✧ 世代飞船级参考（主线重点）\n')
