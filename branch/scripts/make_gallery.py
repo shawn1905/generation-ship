@@ -68,7 +68,7 @@ def cards_games(rows):
         tags = ''.join(f'<span class="tag">{esc(t)}</span>' for t in r['tags'].split('|') if t)
         rev = f"{r['total_reviews']}评·{pct}%" if r.get('total_reviews') else (r.get('review_score_desc') or '')
         out.append(f'''<div class="card" data-tags="{esc(r['tags'])}" data-ship="{ship}">
-  <a href="{esc(r['steam_url'])}" target="_blank"><div class="imgwrap">{"<img loading='lazy' src='games/" + img + "' alt=''>" if img else '<div class="noimg">无图</div>'}</div></a>
+  <a href="{esc(r['steam_url'])}" target="_blank"><div class="imgwrap wide">{"<img loading='lazy' src='games/" + img + "' alt=''>" if img else '<div class="noimg">无图</div>'}</div></a>
   <div class="meta">
     <div class="title">{esc(r['name'])} <span class="year">{r['release_year']}</span></div>
     <div class="ratings">{"★" * pstars}<span class="score">{rev}</span></div>
@@ -108,6 +108,7 @@ h1 small {{ color: #7a86a8; font-weight: 400; font-size: 13px; margin-left: 10px
 .card {{ background: #10162a; border: 1px solid #223052; border-radius: 10px; overflow: hidden; transition: transform .15s, border-color .15s; }}
 .card:hover {{ transform: translateY(-3px); border-color: #3c5090; }}
 .imgwrap {{ aspect-ratio: 2/3; background: #0a0f1e; overflow: hidden; }}
+.imgwrap.wide {{ aspect-ratio: 460/215; }}
 .card img {{ width: 100%; height: 100%; object-fit: cover; display: block; }}
 .noimg {{ display: flex; align-items: center; justify-content: center; height: 100%; color: #4a5578; font-size: 13px; }}
 .meta {{ padding: 10px 12px 12px; }}
