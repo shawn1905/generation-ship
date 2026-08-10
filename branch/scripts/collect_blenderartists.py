@@ -22,23 +22,44 @@ QUERIES = [
     ('colony ship', '4', '殖民船|巨构'),
     ('mothership', '4', '母舰|巨构'),
     ('orbital station', '4', '轨道站|巨构'),
+    ('space ark', '4', '方舟飞船|巨构'),
+    ('interstellar ship', '4', '星际飞船|巨构'),
+    ('spaceport', '4', '太空港|巨构'),
+    ('space elevator', '4', '太空电梯|巨构'),
     ('space station', '3', '空间站|巨构'),
     ('starship interior', '3', '内部结构|甲板'),
     ('spaceship cockpit', '3', '驾驶舱|内部'),
+    ('spaceship bridge', '3', '舰桥|内部'),
+    ('spaceship hangar', '3', '机库|内部'),
     ('spaceship', '2', '飞船|外形'),
+    ('spacecraft', '2', '航天器|外形'),
+    ('starfighter', '2', '战斗机|外形'),
+    ('sci-fi ship', '2', '飞船|外形'),
     ('sci-fi corridor', '1', '走廊|环境'),
+    ('alien world', '1', '外星世界|环境'),
+    ('futuristic architecture', '1', '未来建筑|环境'),
 ]
 
-MIN_LIKES = 60         # 论坛点赞门槛
+MIN_LIKES = 55         # 论坛点赞门槛
 PER_QUERY = 12         # 每关键词候选数
-MAX_TOTAL = 30         # 总条数上限
+MAX_TOTAL = 50         # 总条数上限
 
 EXCLUDE_WORDS = ['car', 'motorcycle', 'airplane', 'train', 'tank', 'gun', 'robot',
                  'character', 'portrait', 'city', 'subway', 'speedbike',
                  'addon', 'add-on', 'add on', 'geo-scatter', 'flip fluids', 'bonsai', 'blenderbim',
                  'proxify', 'clarification', 'challenge', 'sketchbook', 'best of', 'get ready',
                  'ai generated', 'a.n.t', 'texture based version', 'dino', 'skeleton', 'proxy',
-                 'sinektronaut', 'zbrush', 'random flow']
+                 'sinektronaut', 'zbrush', 'random flow',
+                 'batmobile', 'vanity', 'grease', 'iphone', '36 days', 'letter t', 'mmos',
+                 'spacesuit', 'study', 'mmo', 'tutorial', 'how to', 'course', 'job',
+                 'm3 ', 'sdf thread', 'filmic', 'progress and practice', 'flexi bezier',
+                 '3d-coat', 'large and complex', 'battle arena', "blender's ui", 'treehead',
+                 'vehicle concept', 'hardware accelerated', 'hardware']
+
+# 人工分级修正: 标题关键词 → ship_ref(覆盖自动映射)
+SHIP_OVERRIDE = {
+    'Skyport Usak': '4',   # 天空港 = 巨构,世代飞船直接参考
+}
 
 def search(q, n):
     url = f'{BASE}/search.json?' + urllib.parse.urlencode({'q': f'{q} order:likes'})
@@ -81,23 +102,36 @@ def main():
                 continue
             posts = d.get('post_stream', {}).get('posts', [])
             p0 = posts[0] if posts else {}
-            imgs = re.findall(r'<img[^>]+src="([^"]+)"', p0.get('cooked') or '')
+            imgs = []
+            for p in posts[:3]:  # 首帖无图时往后找
+                imgs += re.findall(r'<img[^>]+src="([^"]+)"', p.get('cooked') or '')
             img = ''
-            for u in imgs:  # 优先非 emoji 的大图
-                if '/uploads/' in u and not u.endswith('.png'):
-                    img = u.replace('/optimized/', '/original/').split('_2_')[0] + '.jpeg' if '_2_' in u else u
-                    break
+            best_w = 0
+            for u in imgs:  # 选尺寸最大的作品图(排除 emoji 小图,兼容 jpg/png/webp)
+                if '/uploads/' not in u:
+                    continue
+                m = re.search(r'_(\d+)x\d+\.(?:jpe?g|png|webp)$', u)
+                w = int(m.group(1)) if m else (2000 if '/original/' in u else 0)
+                if w > best_w:
+                    img, best_w = u, w
             desc = re.sub(r'<[^>]+>', ' ', p0.get('cooked') or '')
             desc = re.sub(r'\s+', ' ', desc).strip()
             if len(desc) > 60:
                 desc = desc[:60] + '…'
-            by_ship[ship][tid] = {
+            row = {
                 'title': title, 'type': '3D社区', 'artist': p0.get('username') or '?',
                 'year': (d.get('created_at') or '')[:4], 'source': 'blenderartists', 'source_id': tid,
                 'tags': f'{tagbase}|Blender|社区论坛', 'ship_ref': ship,
                 'note': f'♥{likes} 赞 · 回复{d.get("posts_count") or 0}。{desc}',
                 'url': f'{BASE}/t/{tid}', 'cover_img': img, 'img_note': 'Blender 论坛渲染图',
             }
+            by_ship[ship][tid] = row
+            for k, v in SHIP_OVERRIDE.items():  # 分级修正
+                if k.lower() in title.lower():
+                    by_ship[ship].pop(tid, None)
+                    row['ship_ref'] = v
+                    by_ship[v][tid] = row
+                    break
             seen.add(tid)
         print(f'  [{q}] 累计 {len(by_ship["4"])}/{len(by_ship["3"])}/{len(by_ship["2"])}/{len(by_ship["1"])}')
         time.sleep(0.6)
