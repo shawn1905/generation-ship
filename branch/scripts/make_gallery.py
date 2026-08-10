@@ -89,6 +89,9 @@ def cards_art(rows):
             # 3D 社区作品: covers_3d/{uid}.jpg
             img = f'art/covers_3d/{r.get("source_id")}.jpg'
             img = img if os.path.exists(os.path.join(ROOT, img)) else ''
+        elif r.get('source') == 'blenderartists':
+            img = f'art/covers_forum/{r.get("source_id")}.jpg'
+            img = img if os.path.exists(os.path.join(ROOT, img)) else ''
         else:
             key = re.sub(r'[^a-z0-9]+', '_', (r.get('source_id') or r['title']).lower()).strip('_')
             img = f'art/covers/{key}.jpg'
@@ -192,7 +195,7 @@ def main():
     anime = load('anime/scifi_anime_curated.csv')
     comics = load('comics/scifi_comics_curated.csv')
     novels = load('novels/scifi_novels_curated.csv')
-    art = load('art/scifi_art_curated.csv') + load('art/sketchfab_curated.csv')  # 手工 + 3D社区
+    art = load('art/scifi_art_curated.csv') + load('art/sketchfab_curated.csv') + load('art/blenderartists_curated.csv')  # 手工 + 3D社区(Sketchfab/Blender)
 
     html_doc = f'''<!DOCTYPE html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">

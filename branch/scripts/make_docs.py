@@ -15,7 +15,7 @@ games = load('branch/games/scifi_games_curated.csv')
 anime = load('branch/anime/scifi_anime_curated.csv')
 comics = load('branch/comics/scifi_comics_curated.csv')
 novels = load('branch/novels/scifi_novels_curated.csv')
-art = load('branch/art/scifi_art_curated.csv') + load('branch/art/sketchfab_curated.csv')
+art = load('branch/art/scifi_art_curated.csv') + load('branch/art/sketchfab_curated.csv') + load('branch/art/blenderartists_curated.csv')
 
 def rating_str(r, kind):
     if kind == 'game':

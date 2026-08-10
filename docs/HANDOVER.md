@@ -30,9 +30,9 @@
 | 🎌 动漫 | 34 | 边界可到 1988 | AniList GraphQL |
 | 📚 漫画 | 29 | 日漫+欧美 | AniList + 维基百科 |
 | 📖 小说 | 25 | 经典可到 1961 | Open Library |
-| 🖌 原画/设定集 | 70 | 原画 20 + 设定集 15 + 3D社区 35 | 维基 REST + Goodreads + Sketchfab API |
+| 🖌 原画/设定集 | 90 | 原画 20 + 设定集 15 + 3D社区 55 | 维基 REST + Goodreads + Sketchfab + Blender 论坛 |
 
-**✧ 分级**：0=无/弱、1=视觉氛围、2=飞船/空间站外形、3=内部结构/工程细节、4=世代飞船直接参考（主线重点）。分布：✧4=30、✧3=60、✧2=108。
+**✧ 分级**：0=无/弱、1=视觉氛围、2=飞船/空间站外形、3=内部结构/工程细节、4=世代飞船直接参考（主线重点）。分布：✧4=37、✧3=66、✧2=116。
 
 ---
 
@@ -58,9 +58,11 @@ branch/
 │   └── covers/                  # 封面缓存
 ├── art/
 │   ├── scifi_art_curated.csv    # 原画/设定集精选 35 条（type: 原画/设定集）
-│   ├── sketchfab_curated.csv    # 3D 社区高人气作品 35 条（Sketchfab，按♥排序）
+│   ├── sketchfab_curated.csv    # 3D 社区 40 条（Sketchfab，按♥排序 + ✧4 白名单）
+│   ├── blenderartists_curated.csv # 3D 社区 15 条（Blender 论坛 Discourse API）
 │   ├── covers/                  # 维基人物图 + Goodreads 书封
-│   └── covers_3d/               # Sketchfab 渲染图（500px）
+│   ├── covers_3d/               # Sketchfab 渲染图（500px）
+│   └── covers_forum/            # Blender 论坛渲染图（500px）
 ├── scripts/                     # 完整流水线（见 §3）
 ├── data/                        # IMDb 原始数据（.gitignore，1.4G 不入库）
 └── .venv/                       # Python 3.14（.gitignore）
@@ -81,7 +83,8 @@ cd branch
 .venv/bin/python scripts/fix_anime_comics.py     # 定向修复（灵笼/铁血孤儿/维基词条）
 .venv/bin/python scripts/curate_novels.py        # 小说（Open Library 核验/评分/封面）
 .venv/bin/python scripts/curate_art.py           # 原画/设定集（维基 REST 核验 + Goodreads 封面）
-.venv/bin/python scripts/collect_sketchfab.py    # 3D 社区作品（Sketchfab API 按♥排序 + 分级配额）
+.venv/bin/python scripts/collect_sketchfab.py    # 3D 社区（Sketchfab API 按♥排序 + 分级配额 + ✧4 白名单）
+.venv/bin/python scripts/collect_blenderartists.py # 3D 社区（Blender 论坛 Discourse API，排除插件/公告帖）
 .venv/bin/python scripts/download_images.py      # 电影/剧集/游戏封面缓存
 .venv/bin/python scripts/download_covers.py      # 动漫/漫画封面
 .venv/bin/python scripts/make_gallery.py         # → gallery.html
@@ -109,10 +112,11 @@ cd branch
 | Open Library API | 小说核验/评分/封面 | 免费无 key，ratings.json 拿评分 |
 | 维基百科 REST summary | 原画类：概念艺术家词条核验 + 人物图 | summary 端点，无图词条 → manual + ArtStation 链接 |
 | Goodreads search + book/show | 设定集封面 | search 页解析 book id → 书页 og:image（需间隔 1s+，偶发 SSL EOF 重试即可） |
-| Sketchfab API (api.sketchfab.com/v3/search) | 3D 社区高人气作品 | 免 key；按 -likeCount 排序；缩略图需取 images 中 width 最大项（首项可能是 50x50），下载用 curl（urllib 被 CDN 重置），sips 压 500px |
+| Sketchfab API (api.sketchfab.com/v3/search) | 3D 社区高人气作品 | 免 key；按 -likeCount 排序；缩略图需取 images 中 width 最大项（首项可能是 50x50），下载用 curl（urllib 被 CDN 重置），sips 压 500px；✧4 用白名单控制贴题 + 星战复刻 ≤2 |
+| Blender Artists (Discourse JSON) | 民间 3D 论坛作品 | search.json?q=关键词 order:likes 拿 topic id → /t/{id}.json 拿 like_count/首帖图；必须排除插件公告/挑战赛/素描本（搜 order:likes 会混入），图片 URL 是 uploads/default/… |
 | 微信读书搜索 API (weread.qq.com/web/search/global) | 直达链接 | 返回 deepLink，格式 `book-detail?type=1&v={hash}`（**勿拼 web/bookDetail/{id}，404**） |
 
-**图片现状**：电影 157/157、剧集 62/62、游戏 84/84（Star Citizen 用官方 YouTube 宣传片缩略图）、动漫 34/34、漫画 29/29（Letter 44 走 Open Library、Aama 走法语维基、Black Science 用 (comics) 词条）、小说 25/25。**原画/设定集 55/70**：设定集 15/15（Goodreads）、老一代艺术家 5/5（维基）、3D 社区 35/35（Sketchfab）；仅新生代艺术家 15 位无维基词条 → 无图 + ArtStation 链接。
+**图片现状**：电影 157/157、剧集 62/62、游戏 84/84（Star Citizen 用官方 YouTube 宣传片缩略图）、动漫 34/34、漫画 29/29（Letter 44 走 Open Library、Aama 走法语维基、Black Science 用 (comics) 词条）、小说 25/25。**原画/设定集 75/90**：设定集 15/15（Goodreads）、老一代艺术家 5/5（维基）、3D 社区 55/55（Sketchfab 40 + Blender 论坛 15）；仅新生代艺术家 15 位无维基词条 → 无图 + ArtStation 链接。
 
 ---
 

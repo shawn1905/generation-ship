@@ -16,15 +16,19 @@ UA = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit
 QUERIES = [
     ('generation ship', '4', '世代飞船|巨构'),
     ('space habitat', '4', '栖息地|生态'),
-    ('space station', '3', '空间站|巨构'),
     ('orbital ring', '4', '轨道环|巨构'),
-    ('sci-fi spaceship', '2', '飞船|外形'),
-    ('starship', '2', '飞船|外形'),
+    ('space colony', '4', '殖民地|栖息地'),
+    ('battle cruiser', '4', '主力舰|巨构'),
+    ('star destroyer', '4', '主力舰|巨构'),
+    ('sci-fi habitat', '4', '栖息地|巨构'),
+    ('space station', '3', '空间站|巨构'),
+    ('space station interior', '3', '内部结构|空间站'),
     ('starship interior', '3', '内部结构|甲板'),
     ('spaceship cockpit', '3', '驾驶舱|内部'),
     ('spaceship engine', '3', '引擎|推进'),
+    ('sci-fi spaceship', '2', '飞船|外形'),
+    ('starship', '2', '飞船|外形'),
     ('sci-fi corridor', '1', '走廊|环境'),
-    ('space colony', '4', '殖民地|栖息地'),
     ('sci-fi city', '1', '城市|氛围'),
 ]
 
@@ -34,10 +38,10 @@ MAX_TOTAL = 36        # 最终条数上限
 
 # 分级门槛与配额: ship_ref → (最少like, 目标条数)
 RULES = {
-    '4': (80, 9),    # 世代飞船/栖息地/巨构: 放宽人气,保证覆盖
-    '3': (120, 11),  # 内部/工程
-    '2': (150, 11),  # 飞船外形
-    '1': (250, 7),   # 氛围: 高门槛,只留真正人气作品
+    '4': (70, 16),   # 世代飞船/栖息地/巨构: 放宽人气,保证覆盖
+    '3': (120, 12),  # 内部/工程
+    '2': (150, 10),  # 飞船外形
+    '1': (250, 6),   # 氛围: 高门槛,只留真正人气作品
 }
 
 # 明显不相关的名字关键词(人工剔除规则)
@@ -50,7 +54,20 @@ EXCLUDE_WORDS = ['subway', 'train', 'airport', 'airplane', 'aircraft', 'fighter 
 EXCLUDE_TITLES = ['Future Car', 'Sci fi Monitor', 'Stylized City View', 'Police Chase',
                   'Osaka downtown', 'Watermelone', 'Spaceman Model', 'StarWars Speeder Bike',
                   'city', 'Sci Fi Wall Bridge With Monitor', 'Sci-Fi Corridor - Revisited 2019',
-                  'Cuban Macaw', 'Urban Concrete Dwellings', 'Project Eden']
+                  'Cuban Macaw', 'Urban Concrete Dwellings', 'Project Eden', 'Ruined Elden Ring Church',
+                  'USS Missouri', 'Dassault Rafale', 'maritime drone', 'Hitler highway',
+                  'Varyag', 'Gresham Ship', 'HMS Falmouth', 'Volcanic Rock', 'Protoplanet',
+                  'Richat', 'Saturn', 'Glass octopus', 'Spacediver', 'ODST', 'OBA Depot',
+                  'Escape Pod', 'Satellite', 'Colony Patrol Suit']
+
+# ✧4 世代飞船级白名单(人工精选:原创/贴题为主,星战粉丝复刻最多 2 条)
+SHIP4_WHITELIST = [
+    'Venator Prefab', 'Harbinger', 'Imperial II Star Destroyer',
+    'Maintenance Module', 'Volaspire', 'General Ship Repair',
+    'Space Colony B', 'Space Colony Modular Kit', 'Retro Modular Sci-fi',
+    'Spaceship 4', 'Sky Cruiser', 'UNSC Phoenix', 'Space Colony Zeta',
+    'Modular Ring', 'Icarus Space Station', 'Colony Tactical',
+]
 
 def search(q, n):
     url = 'https://api.sketchfab.com/v3/search?' + urllib.parse.urlencode({
@@ -84,6 +101,9 @@ def main():
             likes = m.get('likeCount') or 0
             min_like, _ = RULES[ship]
             if likes < min_like:
+                continue
+            # ✧4 只保留人工白名单(保证贴题 + 原创性)
+            if ship == '4' and not any(w.lower() in name.lower() for w in SHIP4_WHITELIST):
                 continue
             user = m.get('user') or {}
             thumbs = (m.get('thumbnails') or {}).get('images') or []

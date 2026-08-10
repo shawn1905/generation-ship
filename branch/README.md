@@ -4,7 +4,7 @@
 
 ## 快速上手
 
-1. **交互式画廊**：浏览器打开 `gallery.html`（纯本地文件，七区 Tab：电影 157 / 剧集 62 / 游戏 84 / 动漫 34 / 漫画 29 / 小说 25 / 原画·设定集 70，标签过滤 + 搜索 + 飞船参考分级筛选）
+1. **交互式画廊**：浏览器打开 `gallery.html`（纯本地文件，七区 Tab：电影 157 / 剧集 62 / 游戏 84 / 动漫 34 / 漫画 29 / 小说 25 / 原画·设定集 90，标签过滤 + 搜索 + 飞船参考分级筛选）
 2. **人读汇总**：`../docs/科幻素材库-2000后.md`（数据源、标签体系、世代飞船级参考清单、主题速览）
 3. **机器数据**：`movies/`、`games/` 下的 CSV（raw 全量 + curated 精选）
 
@@ -18,8 +18,8 @@
 | 动漫 | 34 | 1 | 3 | 3 |
 | 漫画 | 29 | 1 | 1 | 8 |
 | 小说 | 25 | 3 | 4 | 7 |
-| 原画/设定集 | 70 | 15 | 24 | 21 |
-| **合计** | **461** | **30** | **60** | **108** |
+| 原画/设定集 | 90 | 22 | 30 | 29 |
+| **合计** | **481** | **37** | **66** | **116** |
 
 ## 目录
 
@@ -44,9 +44,11 @@ branch/
 │   └── covers/
 ├── art/
 │   ├── scifi_art_curated.csv    # 原画/设定集 35 条（维基人物图 + Goodreads 书封）
-│   ├── sketchfab_curated.csv    # 3D 社区高人气作品 35 条（Sketchfab API，♥赞/浏览排序）
+│   ├── sketchfab_curated.csv    # 3D 社区 40 条（Sketchfab API，♥赞排序）
+│   ├── blenderartists_curated.csv # 3D 社区 15 条（Blender 论坛 Discourse API）
 │   ├── covers/                  # 维基/Goodreads 封面
-│   └── covers_3d/               # Sketchfab 渲染图（500px）
+│   ├── covers_3d/               # Sketchfab 渲染图（500px）
+│   └── covers_forum/            # Blender 论坛渲染图（500px）
 ├── games/
 │   ├── scifi_games_raw.csv       # steam-insights 过滤：1775 款
 │   ├── scifi_games_curated.csv   # 精选 84 款
