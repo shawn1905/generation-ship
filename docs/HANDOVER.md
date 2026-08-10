@@ -30,9 +30,9 @@
 | 🎌 动漫 | 34 | 边界可到 1988 | AniList GraphQL |
 | 📚 漫画 | 29 | 日漫+欧美 | AniList + 维基百科 |
 | 📖 小说 | 25 | 经典可到 1961 | Open Library |
-| 🖌 原画/设定集 | 35 | 原画 20 + 设定集 15 | 维基 REST + Goodreads |
+| 🖌 原画/设定集 | 70 | 原画 20 + 设定集 15 + 3D社区 35 | 维基 REST + Goodreads + Sketchfab API |
 
-**✧ 分级**：0=无/弱、1=视觉氛围、2=飞船/空间站外形、3=内部结构/工程细节、4=世代飞船直接参考（主线重点）。分布：✧4=21、✧3=49、✧2=100。
+**✧ 分级**：0=无/弱、1=视觉氛围、2=飞船/空间站外形、3=内部结构/工程细节、4=世代飞船直接参考（主线重点）。分布：✧4=30、✧3=60、✧2=108。
 
 ---
 
@@ -58,7 +58,9 @@ branch/
 │   └── covers/                  # 封面缓存
 ├── art/
 │   ├── scifi_art_curated.csv    # 原画/设定集精选 35 条（type: 原画/设定集）
-│   └── covers/                  # 封面（维基人物图 + Goodreads 书封）
+│   ├── sketchfab_curated.csv    # 3D 社区高人气作品 35 条（Sketchfab，按♥排序）
+│   ├── covers/                  # 维基人物图 + Goodreads 书封
+│   └── covers_3d/               # Sketchfab 渲染图（500px）
 ├── scripts/                     # 完整流水线（见 §3）
 ├── data/                        # IMDb 原始数据（.gitignore，1.4G 不入库）
 └── .venv/                       # Python 3.14（.gitignore）
@@ -79,6 +81,7 @@ cd branch
 .venv/bin/python scripts/fix_anime_comics.py     # 定向修复（灵笼/铁血孤儿/维基词条）
 .venv/bin/python scripts/curate_novels.py        # 小说（Open Library 核验/评分/封面）
 .venv/bin/python scripts/curate_art.py           # 原画/设定集（维基 REST 核验 + Goodreads 封面）
+.venv/bin/python scripts/collect_sketchfab.py    # 3D 社区作品（Sketchfab API 按♥排序 + 分级配额）
 .venv/bin/python scripts/download_images.py      # 电影/剧集/游戏封面缓存
 .venv/bin/python scripts/download_covers.py      # 动漫/漫画封面
 .venv/bin/python scripts/make_gallery.py         # → gallery.html
@@ -106,9 +109,10 @@ cd branch
 | Open Library API | 小说核验/评分/封面 | 免费无 key，ratings.json 拿评分 |
 | 维基百科 REST summary | 原画类：概念艺术家词条核验 + 人物图 | summary 端点，无图词条 → manual + ArtStation 链接 |
 | Goodreads search + book/show | 设定集封面 | search 页解析 book id → 书页 og:image（需间隔 1s+，偶发 SSL EOF 重试即可） |
+| Sketchfab API (api.sketchfab.com/v3/search) | 3D 社区高人气作品 | 免 key；按 -likeCount 排序；缩略图需取 images 中 width 最大项（首项可能是 50x50），下载用 curl（urllib 被 CDN 重置），sips 压 500px |
 | 微信读书搜索 API (weread.qq.com/web/search/global) | 直达链接 | 返回 deepLink，格式 `book-detail?type=1&v={hash}`（**勿拼 web/bookDetail/{id}，404**） |
 
-**图片现状**：电影 157/157、剧集 62/62、游戏 84/84（Star Citizen 用官方 YouTube 宣传片缩略图）、动漫 34/34、漫画 29/29（Letter 44 走 Open Library、Aama 走法语维基、Black Science 用 (comics) 词条）、小说 25/25。**原画/设定集 20/35**：设定集 15/15（Goodreads 封面）、老一代概念艺术家 5/5（维基词条图）；新生代艺术家（Ryan Church/Sparth/Ian McQue 等 13 位）无维基词条 → 无图 + ArtStation 链接（画廊点卡片直达）。
+**图片现状**：电影 157/157、剧集 62/62、游戏 84/84（Star Citizen 用官方 YouTube 宣传片缩略图）、动漫 34/34、漫画 29/29（Letter 44 走 Open Library、Aama 走法语维基、Black Science 用 (comics) 词条）、小说 25/25。**原画/设定集 55/70**：设定集 15/15（Goodreads）、老一代艺术家 5/5（维基）、3D 社区 35/35（Sketchfab）；仅新生代艺术家 15 位无维基词条 → 无图 + ArtStation 链接。
 
 ---
 
@@ -122,6 +126,7 @@ cd branch
 6. **微信读书链接**：正确格式是搜索 API 返回的 deepLink（`book-detail?type=1&v=...`）；`web/bookDetail/{id}` 是 404。
 7. **IMDb 海报限流**：SSL EOF → 间隔 2s + 重试 3 次；个别 tconst（Quantum Leap）suggestion API 偶发无图，重跑即可。
 8. **Pages 部署**：push 后约 1-2 分钟自动重建；验证 `gh api repos/shawn1905/generation-ship/pages --jq '.status'`。
+9. **Sketchfab 缩略图坑**：search API 的 `thumbnails.images` 首项可能是 50×50 小图（尺寸不统一），须取 width 最大项；media.sketchfab.com 用 urllib 下载会被 CDN 重置（TLS 指纹），要用 curl + 浏览器 UA；封面统一 sips 压 500px 控仓库体积。
 
 ---
 

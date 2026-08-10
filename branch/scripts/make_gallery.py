@@ -81,13 +81,18 @@ def cards_anime(rows):
     return out
 
 def cards_art(rows):
-    """原画/设定集：type 徽标 + 封面(维基/Goodreads)"""
+    """原画/设定集：type 徽标 + 封面(维基/Goodreads/Sketchfab)"""
     out = []
     for r in rows:
         ship = int(r.get('ship_ref') or 0)
-        key = re.sub(r'[^a-z0-9]+', '_', (r.get('source_id') or r['title']).lower()).strip('_')
-        img = f'art/covers/{key}.jpg'
-        img = img if os.path.exists(os.path.join(ROOT, img)) else ''
+        if r.get('source') == 'sketchfab':
+            # 3D 社区作品: covers_3d/{uid}.jpg
+            img = f'art/covers_3d/{r.get("source_id")}.jpg'
+            img = img if os.path.exists(os.path.join(ROOT, img)) else ''
+        else:
+            key = re.sub(r'[^a-z0-9]+', '_', (r.get('source_id') or r['title']).lower()).strip('_')
+            img = f'art/covers/{key}.jpg'
+            img = img if os.path.exists(os.path.join(ROOT, img)) else ''
         tags = ''.join(f'<span class="tag">{esc(t)}</span>' for t in r['tags'].split('|') if t)
         typ = esc(r.get('type') or '')
         art_author = esc(r.get('artist') or '')
@@ -187,7 +192,7 @@ def main():
     anime = load('anime/scifi_anime_curated.csv')
     comics = load('comics/scifi_comics_curated.csv')
     novels = load('novels/scifi_novels_curated.csv')
-    art = load('art/scifi_art_curated.csv')
+    art = load('art/scifi_art_curated.csv') + load('art/sketchfab_curated.csv')  # 手工 + 3D社区
 
     html_doc = f'''<!DOCTYPE html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
