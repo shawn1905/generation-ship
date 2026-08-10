@@ -80,6 +80,29 @@ def cards_anime(rows):
 </div>''')
     return out
 
+def cards_art(rows):
+    """原画/设定集：type 徽标 + 封面(维基/Goodreads)"""
+    out = []
+    for r in rows:
+        ship = int(r.get('ship_ref') or 0)
+        key = re.sub(r'[^a-z0-9]+', '_', (r.get('source_id') or r['title']).lower()).strip('_')
+        img = f'art/covers/{key}.jpg'
+        img = img if os.path.exists(os.path.join(ROOT, img)) else ''
+        tags = ''.join(f'<span class="tag">{esc(t)}</span>' for t in r['tags'].split('|') if t)
+        typ = esc(r.get('type') or '')
+        art_author = esc(r.get('artist') or '')
+        out.append(f'''<div class="card" data-tags="{esc(r['tags'])}" data-ship="{ship}">
+  <a href="{esc(r['url'])}" target="_blank"><div class="imgwrap">{"<img loading='lazy' src='" + img + "' alt=''>" if img else '<div class="noimg">无图</div>'}</div></a>
+  <div class="meta">
+    <div class="title">{esc(r['title'])} <span class="year">{r['year']}</span></div>
+    <div class="ratings"><span class="score">{typ} · {art_author}</span></div>
+    <div class="tags">{tags}</div>
+    <div class="ship ship-{ship}">✧ {SHIP_LABEL[ship]}</div>
+    <div class="note">{esc(r.get('note', ''))}</div>
+  </div>
+</div>''')
+    return out
+
 def cards_comics(rows):
     out = []
     for r in rows:
@@ -164,6 +187,7 @@ def main():
     anime = load('anime/scifi_anime_curated.csv')
     comics = load('comics/scifi_comics_curated.csv')
     novels = load('novels/scifi_novels_curated.csv')
+    art = load('art/scifi_art_curated.csv')
 
     html_doc = f'''<!DOCTYPE html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -216,6 +240,7 @@ footer {{ color: #4a5578; font-size: 12px; padding: 0 32px 30px; }}
   <div class="tab" data-tab="anime">🛸 动漫 <b>{len(anime)}</b></div>
   <div class="tab" data-tab="comics">📚 漫画 <b>{len(comics)}</b></div>
   <div class="tab" data-tab="novels">📖 小说 <b>{len(novels)}</b></div>
+  <div class="tab" data-tab="art">🖌 原画/设定集 <b>{len(art)}</b></div>
 </div>
 <div class="controls">
   <input id="search" placeholder="搜索标题…">
@@ -235,14 +260,16 @@ const DATA = {{
   games: {json.dumps(games, ensure_ascii=False)},
   anime: {json.dumps(anime, ensure_ascii=False)},
   comics: {json.dumps(comics, ensure_ascii=False)},
-  novels: {json.dumps(novels, ensure_ascii=False)}
+  novels: {json.dumps(novels, ensure_ascii=False)},
+  art: {json.dumps(art, ensure_ascii=False)}
 }};
 const CARD = {{ movies: {json.dumps(cards_movie(movies, 'posters'), ensure_ascii=False)},
   tv: {json.dumps(cards_movie(tv, 'tv_posters'), ensure_ascii=False)},
   games: {json.dumps(cards_games(games), ensure_ascii=False)},
   anime: {json.dumps(cards_anime(anime), ensure_ascii=False)},
   comics: {json.dumps(cards_comics(comics), ensure_ascii=False)},
-  novels: {json.dumps(cards_novels(novels), ensure_ascii=False)} }};
+  novels: {json.dumps(cards_novels(novels), ensure_ascii=False)},
+  art: {json.dumps(cards_art(art), ensure_ascii=False)} }};
 let which = 'movies', search = '', tagF = new Set(), shipF = null;
 const grid = document.getElementById('grid');
 function allTags() {{

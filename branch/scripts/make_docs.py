@@ -15,6 +15,7 @@ games = load('branch/games/scifi_games_curated.csv')
 anime = load('branch/anime/scifi_anime_curated.csv')
 comics = load('branch/comics/scifi_comics_curated.csv')
 novels = load('branch/novels/scifi_novels_curated.csv')
+art = load('branch/art/scifi_art_curated.csv')
 
 def rating_str(r, kind):
     if kind == 'game':
@@ -23,6 +24,8 @@ def rating_str(r, kind):
         return (f"{r['score']}/100" if r.get('score') else ('维基' if r.get('source') == 'wikipedia' else '手写'))
     if kind == 'novel':
         return f"OL ★{r['rating']}（{r['rating_count']}人）" if r.get('rating') else '—'
+    if kind == 'art':
+        return f"{r['type']} · {r['artist']}"
     return f"{r['imdb_rating']}（{r['num_votes']}票）"
 
 def row(r, kind, tag=''):
@@ -30,6 +33,8 @@ def row(r, kind, tag=''):
         name, year = r['name'], r['release_year']
     elif kind == 'novel':
         name, year = f"{r['title']}（{r['author']}）", r['year']
+    elif kind == 'art':
+        name, year = f"{r['title']}（{r['artist']}）", r['year']
     else:
         name, year = r['title'], r['year']
     tags = tag or r.get('tags', '')
@@ -37,12 +42,12 @@ def row(r, kind, tag=''):
     return f"| {name} | {year} | {rating_str(r, kind)} | {tags} | {note} |"
 
 # ---- 分组 ----
-ship4 = [(r, k) for k, rs in (('movie', movies), ('tv', tv), ('game', games), ('anime', anime), ('comic', comics), ('novel', novels)) for r in rs if r.get('ship_ref') == '4']
-ship3 = [(r, k) for k, rs in (('movie', movies), ('tv', tv), ('game', games), ('anime', anime), ('comic', comics), ('novel', novels)) for r in rs if r.get('ship_ref') == '3']
-ship2 = [(r, k) for k, rs in (('movie', movies), ('tv', tv), ('game', games), ('anime', anime), ('comic', comics), ('novel', novels)) for r in rs if r.get('ship_ref') == '2']
+ship4 = [(r, k) for k, rs in (('movie', movies), ('tv', tv), ('game', games), ('anime', anime), ('comic', comics), ('novel', novels), ('art', art)) for r in rs if r.get('ship_ref') == '4']
+ship3 = [(r, k) for k, rs in (('movie', movies), ('tv', tv), ('game', games), ('anime', anime), ('comic', comics), ('novel', novels), ('art', art)) for r in rs if r.get('ship_ref') == '3']
+ship2 = [(r, k) for k, rs in (('movie', movies), ('tv', tv), ('game', games), ('anime', anime), ('comic', comics), ('novel', novels), ('art', art)) for r in rs if r.get('ship_ref') == '2']
 
 tag_index = defaultdict(list)
-for k, rs in (('movie', movies), ('tv', tv), ('game', games), ('anime', anime), ('comic', comics), ('novel', novels)):
+for k, rs in (('movie', movies), ('tv', tv), ('game', games), ('anime', anime), ('comic', comics), ('novel', novels), ('art', art)):
     for r in rs:
         for t in (r.get('tags') or '').split('|'):
             if t:
@@ -63,6 +68,7 @@ lines.append('| 电影/剧集原始数据 | IMDb 官方非商业数据集（titl
 lines.append('| 游戏原始数据 | Steam 2024-10 全量快照（games/genres/tags/reviews/steamspy） | https://github.com/NewbieIndieGameDev/steam-insights |')
 lines.append('| 精选策略 | 人工代表作清单 + 数据核验（评分/票数/好评率），非自动全量 | — |')
 lines.append('| 海报/封面 | IMDb suggestion JSON API + Steam CDN，本地缓存 | https://v2.sg.media-imdb.com/ |')
+lines.append('| 原画/设定集 | 人工精选（ArtStation 社区知名概念艺术家 + 官方设定集）→ 维基 REST 核验 + Goodreads 封面 | en.wikipedia.org / goodreads.com |')
 lines.append('| 复现脚本 | `branch/scripts/`（make_* 原始过滤 → curate_* 人工精选 → download_images → make_gallery/docs） | 本仓库 |\n')
 lines.append('> **重要发现**：IMDb 类型标签不可靠（Avatar/Blade Runner 2049/Ad Astra 均未标 Sci-Fi），故精选用"人工清单 + 全量候选池匹配"而非纯标签过滤。\n')
 lines.append('---\n')
@@ -88,7 +94,8 @@ lines.append(f'| 游戏 | {len(games)} | {1775} 款（Sci-Fi 相关标签 2000+�
 lines.append(f'| 动漫 | {len(anime)} | AniList 人工清单+核验 |')
 lines.append(f'| 漫画 | {len(comics)} | AniList(日漫)+维基(欧美) |')
 lines.append(f'| 小说 | {len(novels)} | Open Library 核验+评分 |')
-lines.append(f'| **合计** | **{len(movies)+len(tv)+len(games)+len(anime)+len(comics)+len(novels)}** | — |\n')
+lines.append(f'| 原画/设定集 | {len(art)} | ArtStation 社区知名艺术家 + 官方设定集（维基/Goodreads 核验） |')
+lines.append(f'| **合计** | **{len(movies)+len(tv)+len(games)+len(anime)+len(comics)+len(novels)+len(art)}** | — |\n')
 lines.append('---\n')
 
 lines.append('## 4. ✧✧✧✧ 世代飞船级参考（主线重点）\n')

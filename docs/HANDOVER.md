@@ -30,8 +30,9 @@
 | 🎌 动漫 | 34 | 边界可到 1988 | AniList GraphQL |
 | 📚 漫画 | 29 | 日漫+欧美 | AniList + 维基百科 |
 | 📖 小说 | 25 | 经典可到 1961 | Open Library |
+| 🖌 原画/设定集 | 35 | 原画 20 + 设定集 15 | 维基 REST + Goodreads |
 
-**✧ 分级**：0=无/弱、1=视觉氛围、2=飞船/空间站外形、3=内部结构/工程细节、4=世代飞船直接参考（主线重点）。分布：✧4=15、✧3=36、✧2=87。
+**✧ 分级**：0=无/弱、1=视觉氛围、2=飞船/空间站外形、3=内部结构/工程细节、4=世代飞船直接参考（主线重点）。分布：✧4=21、✧3=49、✧2=100。
 
 ---
 
@@ -55,6 +56,9 @@ branch/
 ├── anime/  comics/  novels/
 │   ├── *_curated.csv            # 精选数据（AniList/维基/Open Library 核验）
 │   └── covers/                  # 封面缓存
+├── art/
+│   ├── scifi_art_curated.csv    # 原画/设定集精选 35 条（type: 原画/设定集）
+│   └── covers/                  # 封面（维基人物图 + Goodreads 书封）
 ├── scripts/                     # 完整流水线（见 §3）
 ├── data/                        # IMDb 原始数据（.gitignore，1.4G 不入库）
 └── .venv/                       # Python 3.14（.gitignore）
@@ -74,6 +78,7 @@ cd branch
 .venv/bin/python scripts/curate_anime_comics.py  # 动漫/漫画（AniList + 维基）
 .venv/bin/python scripts/fix_anime_comics.py     # 定向修复（灵笼/铁血孤儿/维基词条）
 .venv/bin/python scripts/curate_novels.py        # 小说（Open Library 核验/评分/封面）
+.venv/bin/python scripts/curate_art.py           # 原画/设定集（维基 REST 核验 + Goodreads 封面）
 .venv/bin/python scripts/download_images.py      # 电影/剧集/游戏封面缓存
 .venv/bin/python scripts/download_covers.py      # 动漫/漫画封面
 .venv/bin/python scripts/make_gallery.py         # → gallery.html
@@ -99,9 +104,11 @@ cd branch
 | AniList GraphQL (graphql.anilist.co) | 动漫/漫画 | **403 限流**：需 UA + 1s 间隔 + 等待重试 |
 | 维基百科 REST summary | 欧美漫画封面 | 有 429 限流，需退避重试 |
 | Open Library API | 小说核验/评分/封面 | 免费无 key，ratings.json 拿评分 |
+| 维基百科 REST summary | 原画类：概念艺术家词条核验 + 人物图 | summary 端点，无图词条 → manual + ArtStation 链接 |
+| Goodreads search + book/show | 设定集封面 | search 页解析 book id → 书页 og:image（需间隔 1s+，偶发 SSL EOF 重试即可） |
 | 微信读书搜索 API (weread.qq.com/web/search/global) | 直达链接 | 返回 deepLink，格式 `book-detail?type=1&v={hash}`（**勿拼 web/bookDetail/{id}，404**） |
 
-**图片现状**：电影 157/157、剧集 62/62、游戏 84/84（Star Citizen 用官方 YouTube 宣传片缩略图）、动漫 34/34、漫画 29/29（Letter 44 走 Open Library、Aama 走法语维基、Black Science 用 (comics) 词条）、小说 25/25。
+**图片现状**：电影 157/157、剧集 62/62、游戏 84/84（Star Citizen 用官方 YouTube 宣传片缩略图）、动漫 34/34、漫画 29/29（Letter 44 走 Open Library、Aama 走法语维基、Black Science 用 (comics) 词条）、小说 25/25。**原画/设定集 20/35**：设定集 15/15（Goodreads 封面）、老一代概念艺术家 5/5（维基词条图）；新生代艺术家（Ryan Church/Sparth/Ian McQue 等 13 位）无维基词条 → 无图 + ArtStation 链接（画廊点卡片直达）。
 
 ---
 
@@ -120,9 +127,11 @@ cd branch
 
 ## 6. 待办 / 已知限制
 
+- [ ] 原画类 13 位新生代概念艺术家无封面：可后续从 Wikimedia Commons/电影词条补概念图，或抓 ArtStation 缩略图（需绕过 Cloudflare）
+- [ ] Goodreads 封面抓取偶发 SSL EOF（重试即可）；限流敏感，脚本已内置 1.2s 间隔
 - [ ] 微信读书 5 本未上架：极光 Aurora、方舟 Ark、To Be Taught If Fortunate、计算之星、时间之子
 - [ ] `branch/data/`（IMDb 原始数据 1.4G）与 pool CSV 不入库（.gitignore），**换机器复现需重新下载**（脚本已就绪）
-- [ ] gallery 为单文件 431KB，若条目继续增多可考虑懒加载/分页
+- [ ] gallery 为单文件 474KB，若条目继续增多可考虑懒加载/分页
 - [ ] 主项目（世代飞船本体设计）尚未在本仓库体现——素材库是配套产出，主线设计文档见 `docs/讨论稿-概念与待决问题.md`
 
 ---
