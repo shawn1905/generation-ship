@@ -30,9 +30,9 @@
 | 🎌 动漫 | 34 | 边界可到 1988 | AniList GraphQL |
 | 📚 漫画 | 29 | 日漫+欧美 | AniList + 维基百科 |
 | 📖 小说 | 25 | 经典可到 1961 | Open Library |
-| 🖌 原画/设定集 | 105 | 原画 20 + 设定集 15 + 3D社区 70 | 维基 REST + Goodreads + Sketchfab + Blender 论坛 |
+| 🖌 原画/设定集 | 104 | 原画 19 + 设定集 15 + 3D社区 70 | 维基 REST + Goodreads + Sketchfab + Blender 论坛 |
 
-**✧ 分级**：0=无/弱、1=视觉氛围、2=飞船/空间站外形、3=内部结构/工程细节、4=世代飞船直接参考（主线重点）。分布：✧4=42、✧3=66、✧2=121。
+**✧ 分级**：0=无/弱、1=视觉氛围、2=飞船/空间站外形、3=内部结构/工程细节、4=世代飞船直接参考（主线重点）。分布：✧4=42、✧3=65、✧2=121。
 
 ---
 
@@ -116,7 +116,7 @@ cd branch
 | Blender Artists (Discourse JSON) | 民间 3D 论坛作品 | search.json?q=关键词 order:likes 拿 topic id → /t/{id}.json 拿 like_count/首帖图/作者；坑1: order:likes 混入插件公告/硬件讨论/UI 吐槽等论坛高赞帖(排除词表已积累 40+);坑2: 作品图可能是 .png,排除 png 会误杀——改按 _WxH 解析尺寸选最大图(emoji 小图自动排除);坑3: 首帖无图时遍历前 3 帖找图;SHIP_OVERRIDE 人工分级修正(如 Skyport 天空港→✧4) |
 | 微信读书搜索 API (weread.qq.com/web/search/global) | 直达链接 | 返回 deepLink，格式 `book-detail?type=1&v={hash}`（**勿拼 web/bookDetail/{id}，404**） |
 
-**图片现状**：电影 157/157、剧集 62/62、游戏 84/84（Star Citizen 用官方 YouTube 宣传片缩略图）、动漫 34/34、漫画 29/29（Letter 44 走 Open Library、Aama 走法语维基、Black Science 用 (comics) 词条）、小说 25/25。**原画/设定集 90/105**：设定集 15/15（Goodreads）、老一代艺术家 5/5（维基）、3D 社区 70/70（Sketchfab 40 + Blender 30）；仅新生代艺术家 15 位无维基词条 → 无图 + ArtStation 链接。
+**图片现状**：电影 157/157、剧集 62/62、游戏 84/84（Star Citizen 用官方 YouTube 宣传片缩略图）、动漫 34/34、漫画 29/29（Letter 44 走 Open Library、Aama 走法语维基、Black Science 用 (comics) 词条）、小说 25/25。**原画/设定集 103/104**：设定集 15/15（Goodreads）、老一代艺术家 8/8（维基+John Harris AS）、3D 社区 70/70（Sketchfab 40 + Blender 30）、新生代艺术家 10/11（ArtStation projects API 补封面）；仅 Feng Zhu 无图（AS 账号已易主,链接已改 FZD 官网）。
 
 ---
 
