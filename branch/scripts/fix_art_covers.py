@@ -23,7 +23,6 @@ FIX = {
 # 纯补封面(链接不变)
 COVER_ONLY = {
     'Ryan Church':    ('https://www.artstation.com/ryanchurch', 'as:ryanchurch'),
-    'Feng Zhu':       ('https://www.artstation.com/fengzhu', 'as:fengzhu'),
     'George Hull':    ('https://www.artstation.com/georgehull', 'as:georgehull'),
     'Sparth':         ('https://www.artstation.com/sparth', 'as:sparth'),
     'Nicolas Bouvier':('https://www.artstation.com/nicolasbouvier', 'as:nicolasbouvier'),

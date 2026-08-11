@@ -28,8 +28,6 @@ KNOWN_ARTISTS = [
      '概念设计|星球大战|工业|飞船', 3, '星战前传/变形金刚概念：AT-TE、圣殿等标志设计'),
     ('Craig Mullins', '', 'https://www.craig-mullins.com', 2000,
      '概念设计|电影|游戏|数字绘画', 2, '影视游戏概念绘画先驱：数字油画风格影响一代人'),
-    ('Feng Zhu', '', 'https://www.artstation.com/fengzhu', 2000,
-     '概念设计|星球大战|教学|工业', 2, '星战前传概念+知名概念艺术学校 FZD 创始人'),
     ('George Hull', '', 'https://www.artstation.com/georgehull', 2015,
      '概念设计|星球大战|飞船', 3, '星战原力觉醒概念设计：新秩序歼星舰等'),
     ('Ash Thorp', 'Ash_Thorp', 'https://www.artstation.com/ashthorp', 2017,
