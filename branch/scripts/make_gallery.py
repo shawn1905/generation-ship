@@ -188,6 +188,29 @@ def cards_games(rows):
 </div>''')
     return out  # 返回数组
 
+def cards_other(rows):
+    """其他-AI精选：AI 主观挑选的未来灵感（不局限于世代飞船）"""
+    out = []
+    for r in rows:
+        key = r.get('source_id') or r['title']
+        slug = re.sub(r'[^a-z0-9]+', '_', str(key).lower()).strip('_')
+        img = f'other/covers/{slug}.jpg'
+        img = img if os.path.exists(os.path.join(ROOT, img)) else ''
+        tags = ''.join(f'<span class="tag">{esc(t)}</span>' for t in r['tags'].split('|') if t)
+        typ = esc(r.get('type') or '')
+        artist = esc(r.get('artist') or '')
+        out.append(f'''<div class="card" data-tags="{esc(r['tags'])}">
+  <a href="{esc(r['url'])}" target="_blank"><div class="imgwrap">{"<img loading='lazy' src='" + img + "' alt=''>" if img else '<div class="noimg">无图</div>'}</div></a>
+  <div class="meta">
+    <div class="title">{esc(r['title'])} <span class="year">{r['year']}</span></div>
+    <div class="ratings"><span class="score">{typ} · {artist}</span></div>
+    <div class="tags">{tags}</div>
+    <div class="ship ship-0">✨ AI 精选</div>
+    <div class="note">{esc(r.get('note', ''))}</div>
+  </div>
+</div>''')
+    return out
+
 def main():
     movies = load('movies/scifi_movies_curated.csv')
     tv = load('movies/scifi_tv_curated.csv')
@@ -196,6 +219,7 @@ def main():
     comics = load('comics/scifi_comics_curated.csv')
     novels = load('novels/scifi_novels_curated.csv')
     art = load('art/scifi_art_curated.csv') + load('art/sketchfab_curated.csv') + load('art/blenderartists_curated.csv')  # 手工 + 3D社区(Sketchfab/Blender)
+    other = load('other/ai_curated.csv')  # 其他-AI精选（未来灵感）
 
     html_doc = f'''<!DOCTYPE html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -249,6 +273,7 @@ footer {{ color: #4a5578; font-size: 12px; padding: 0 32px 30px; }}
   <div class="tab" data-tab="comics">📚 漫画 <b>{len(comics)}</b></div>
   <div class="tab" data-tab="novels">📖 小说 <b>{len(novels)}</b></div>
   <div class="tab" data-tab="art">🖌 原画/设定集 <b>{len(art)}</b></div>
+  <div class="tab" data-tab="other">🧠 其他-AI精选 <b>{len(other)}</b></div>
 </div>
 <div class="controls">
   <input id="search" placeholder="搜索标题…">
@@ -269,7 +294,8 @@ const DATA = {{
   anime: {json.dumps(anime, ensure_ascii=False)},
   comics: {json.dumps(comics, ensure_ascii=False)},
   novels: {json.dumps(novels, ensure_ascii=False)},
-  art: {json.dumps(art, ensure_ascii=False)}
+  art: {json.dumps(art, ensure_ascii=False)},
+  other: {json.dumps(other, ensure_ascii=False)}
 }};
 const CARD = {{ movies: {json.dumps(cards_movie(movies, 'posters'), ensure_ascii=False)},
   tv: {json.dumps(cards_movie(tv, 'tv_posters'), ensure_ascii=False)},
@@ -277,7 +303,8 @@ const CARD = {{ movies: {json.dumps(cards_movie(movies, 'posters'), ensure_ascii
   anime: {json.dumps(cards_anime(anime), ensure_ascii=False)},
   comics: {json.dumps(cards_comics(comics), ensure_ascii=False)},
   novels: {json.dumps(cards_novels(novels), ensure_ascii=False)},
-  art: {json.dumps(cards_art(art), ensure_ascii=False)} }};
+  art: {json.dumps(cards_art(art), ensure_ascii=False)},
+  other: {json.dumps(cards_other(other), ensure_ascii=False)} }};
 let which = 'movies', search = '', tagF = new Set(), shipF = null;
 const grid = document.getElementById('grid');
 function allTags() {{
