@@ -51,6 +51,15 @@ PLAN = {
     'ex_machina':         ('url', 'https://upload.wikimedia.org/wikipedia/en/b/ba/Ex-machina-uk-poster.jpg'),
     'james_webb':         ('wiki', 'James Webb Space Telescope'),
     'svalbard_seed_vault': ('wiki', 'Svalbard Global Seed Vault'),
+    # 社区深挖 · 小众独立
+    'voices_of_the_void': ('web', 'https://mrdrnose.itch.io/votv'),
+    'citizen_sleeper':    ('url', 'https://cdn.akamai.steamstatic.com/steam/apps/1134650/header.jpg'),
+    'in_other_waters':    ('url', 'https://cdn.akamai.steamstatic.com/steam/apps/1140500/header.jpg'),
+    'signalis':           ('url', 'https://cdn.akamai.steamstatic.com/steam/apps/1542350/header.jpg'),
+    'outer_wilds':        ('url', 'https://cdn.akamai.steamstatic.com/steam/apps/753640/header.jpg'),
+    'sable':              ('url', 'https://cdn.akamai.steamstatic.com/steam/apps/1150690/header.jpg'),
+    'world_of_tomorrow':  ('url', 'https://upload.wikimedia.org/wikipedia/en/c/c1/World_of_Tomorrow_%28film%29_POSTER.jpg'),
+    'scavengers_reign':   ('url', 'https://upload.wikimedia.org/wikipedia/en/0/0c/Scavengers_Reign.png'),
 }
 
 os.makedirs(COVER_DIR, exist_ok=True)
