@@ -1,6 +1,6 @@
 # 交接文档 · 世代飞船设计项目（含科幻素材库分支）
 
-> 最后更新：2025-08-09 ｜ 交接人：AI 助手 ｜ 仓库：`shawn1905/generation-ship`（公开）
+> 最后更新：2026-08-12 ｜ 交接人：AI 助手 ｜ 仓库：`shawn1905/generation-ship`（公开）
 > 本文档面向后续接手者：说明项目目标、现状、复现方法、踩坑记录与待办事项。
 
 ---
@@ -30,7 +30,8 @@
 | 🎌 动漫 | 34 | 边界可到 1988 | AniList GraphQL |
 | 📚 漫画 | 29 | 日漫+欧美 | AniList + 维基百科 |
 | 📖 小说 | 25 | 经典可到 1961 | Open Library |
-| 🖌 原画/设定集 | 104 | 原画 19 + 设定集 15 + 3D社区 70 | 维基 REST + Goodreads + Sketchfab + Blender 论坛 |
+| 🖌 原画/设定集 | 103 | 原画 33 + 3D社区 70 | 维基 REST + Goodreads + ArtStation + Sketchfab + Blender 论坛 |
+| 🧠 其他-AI精选 | 24 | 未来灵感（AI 主观选品，不限世代飞船，每日可扩） | 维基 REST + Steam CDN + Goodreads |
 
 **✧ 分级**：0=无/弱、1=视觉氛围、2=飞船/空间站外形、3=内部结构/工程细节、4=世代飞船直接参考（主线重点）。分布：✧4=42、✧3=65、✧2=121。
 
@@ -57,12 +58,16 @@ branch/
 │   ├── *_curated.csv            # 精选数据（AniList/维基/Open Library 核验）
 │   └── covers/                  # 封面缓存
 ├── art/
-│   ├── scifi_art_curated.csv    # 原画/设定集精选 35 条（type: 原画/设定集）
+│   ├── scifi_art_curated.csv    # 原画/设定集精选 33 条（type: 原画/设定集）
 │   ├── sketchfab_curated.csv    # 3D 社区 40 条（Sketchfab，按♥排序 + ✧4 白名单）
 │   ├── blenderartists_curated.csv # 3D 社区 30 条（Blender 论坛 Discourse API）
 │   ├── covers/                  # 维基人物图 + Goodreads 书封
 │   ├── covers_3d/               # Sketchfab 渲染图（500px）
 │   └── covers_forum/            # Blender 论坛渲染图（500px）
+├── other/
+│   ├── ai_curated.csv           # 🧠 其他-AI精选 24 条（AI 主观选品，科学/自然/工程/哲学/冷门科幻等）
+│   ├── covers/                  # 封面本地缓存（维基/Steam/Goodreads/官网）
+│   └── README.md                # 每日扩充流程（怎么加）
 ├── scripts/                     # 完整流水线（见 §3）
 ├── data/                        # IMDb 原始数据（.gitignore，1.4G 不入库）
 └── .venv/                       # Python 3.14（.gitignore）
@@ -116,7 +121,7 @@ cd branch
 | Blender Artists (Discourse JSON) | 民间 3D 论坛作品 | search.json?q=关键词 order:likes 拿 topic id → /t/{id}.json 拿 like_count/首帖图/作者；坑1: order:likes 混入插件公告/硬件讨论/UI 吐槽等论坛高赞帖(排除词表已积累 40+);坑2: 作品图可能是 .png,排除 png 会误杀——改按 _WxH 解析尺寸选最大图(emoji 小图自动排除);坑3: 首帖无图时遍历前 3 帖找图;SHIP_OVERRIDE 人工分级修正(如 Skyport 天空港→✧4) |
 | 微信读书搜索 API (weread.qq.com/web/search/global) | 直达链接 | 返回 deepLink，格式 `book-detail?type=1&v={hash}`（**勿拼 web/bookDetail/{id}，404**） |
 
-**图片现状**：电影 157/157、剧集 62/62、游戏 84/84（Star Citizen 用官方 YouTube 宣传片缩略图）、动漫 34/34、漫画 29/29（Letter 44 走 Open Library、Aama 走法语维基、Black Science 用 (comics) 词条）、小说 25/25。**原画/设定集 103/104**：设定集 15/15（Goodreads）、老一代艺术家 8/8（维基+John Harris AS）、3D 社区 70/70（Sketchfab 40 + Blender 30）、新生代艺术家 10/11（ArtStation projects API 补封面）；仅 Feng Zhu 无图（AS 账号已易主,链接已改 FZD 官网）。
+**图片现状**：电影 157/157、剧集 62/62、游戏 84/84（Star Citizen 用官方 YouTube 宣传片缩略图）、动漫 34/34、漫画 29/29（Letter 44 走 Open Library、Aama 走法语维基、Black Science 用 (comics) 词条）、小说 25/25。**原画/设定集 103/103 全部有图**（John Harris 封面文件与 source_id slug 不匹配已修复；Feng Zhu 因无图已整体删除（CSV/curate_art/fix_art_covers 三处），删后 art 103 条零缺图）。**其他-AI精选 24/24 有图**。
 
 ---
 
@@ -136,11 +141,14 @@ cd branch
 
 ## 6. 待办 / 已知限制
 
-- [ ] 原画类 13 位新生代概念艺术家无封面：可后续从 Wikimedia Commons/电影词条补概念图，或抓 ArtStation 缩略图（需绕过 Cloudflare）
+- [ ] **每日例行**：🧠 其他-AI精选扩 3-8 条（AI 主观选品，不限世代飞船；流程见 `branch/other/README.md`；维基 REST 有 429 限流需退避）
+- [ ] **未来世界生图集**（docs/未来世界_生图/）：三画面已定格归档（仿生城市×2、世代飞船、戴森云×2；ChatGPT 渠道生成，GitHub 在线可看）；火山方舟 seedream 配额 08-13 23:59 重置后可跑 `docs/gen_my_future.sh` 出同款（同一世界观提示词）
+- [ ] 全站链接健康巡检脚本（playwright 批量验证 AS/Goodreads/维基链接）— 未做
+- [ ] 原画类部分艺术家无封面可后续从 Commons/电影词条补
 - [ ] Goodreads 封面抓取偶发 SSL EOF（重试即可）；限流敏感，脚本已内置 1.2s 间隔
 - [ ] 微信读书 5 本未上架：极光 Aurora、方舟 Ark、To Be Taught If Fortunate、计算之星、时间之子
 - [ ] `branch/data/`（IMDb 原始数据 1.4G）与 pool CSV 不入库（.gitignore），**换机器复现需重新下载**（脚本已就绪）
-- [ ] gallery 为单文件 474KB，若条目继续增多可考虑懒加载/分页
+- [ ] gallery 若条目继续增多可考虑懒加载/分页
 - [ ] 主项目（世代飞船本体设计）尚未在本仓库体现——素材库是配套产出，主线设计文档见 `docs/讨论稿-概念与待决问题.md`
 
 ---
