@@ -40,7 +40,7 @@ PLAN = {
     'ghost_in_the_shell': ('wiki', 'Ghost in the Shell'),
     'soma':               ('url', 'https://cdn.akamai.steamstatic.com/steam/apps/282140/header.jpg'),
     'the_martian':        ('wiki', 'The Martian (film)'),
-    'som_mars_city':      ('web', 'https://www.som.com/projects/mars-science-city/'),
+    'mars_science_city':  ('url', 'https://images.adsttc.com/media/images/59cb/ba4b/b22e/383c/4000/0035/newsletter/Mars_Science_City2.jpg?1506523718'),
     'project_hail_mary':  ('goodreads', '54493401'),
     '2001_space_odyssey': ('wiki', '2001: A Space Odyssey (film)'),
     'arrival':            ('wiki', 'Arrival (film)'),

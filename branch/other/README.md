@@ -14,7 +14,10 @@
 2. **封面**：把图片存为 `covers/{source_id}.jpg`
    - 快捷方式：编辑 `../scripts/fetch_other_covers.py` 的 `PLAN` 字典（支持 wiki/url/goodreads/web 四种源）→ 运行
 3. **生成**：`python3 ../scripts/make_gallery.py`
-4. **推送**：`git add -A && git commit -m "feat: AI精选 +N 条" && git push`
+4. **健康巡检（必跑）**：`python3 ../scripts/health_check_other.py` — 检查列错位/死链/缺封面，有异常先修再推
+5. **推送**：`git add -A && git commit -m "feat: AI精选 +N 条" && git push`
+
+> ⚠️ 2026-08-12 踩坑：note 混入英文逗号会导致 CSV 列错位，画廊里表现为「死链+无图」。health_check 能一次全查出来。
 
 ## 选品方向（当前偏好，可随时打破）
 
