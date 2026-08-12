@@ -44,6 +44,13 @@ PLAN = {
     'project_hail_mary':  ('goodreads', '54493401'),
     '2001_space_odyssey': ('wiki', '2001: A Space Odyssey (film)'),
     'arrival':            ('wiki', 'Arrival (film)'),
+    'de_extinction':      ('wiki', 'De-extinction'),
+    'ocean_spiral':       ('url', 'https://www.shimz.co.jp/topics/dream/images/img_list_01.jpg'),
+    'ligo':               ('wiki', 'LIGO'),
+    'music_for_airports': ('wiki', 'Brian Eno'),
+    'ex_machina':         ('url', 'https://upload.wikimedia.org/wikipedia/en/b/ba/Ex-machina-uk-poster.jpg'),
+    'james_webb':         ('wiki', 'James Webb Space Telescope'),
+    'svalbard_seed_vault': ('wiki', 'Svalbard Global Seed Vault'),
 }
 
 os.makedirs(COVER_DIR, exist_ok=True)
