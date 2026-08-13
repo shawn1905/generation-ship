@@ -144,7 +144,7 @@ cd branch
 ## 6. 待办 / 已知限制
 
 - [ ] **每日例行**：🧠 其他-AI精选扩 3-8 条（AI 主观选品，不限世代飞船；流程见 `branch/other/README.md`；维基 REST 有 429 限流需退避）
-- [ ] **未来世界生图集**（docs/未来世界_生图/）：三画面已定格归档（仿生城市×2、世代飞船、戴森云×2；ChatGPT 渠道生成，GitHub 在线可看）；火山方舟 seedream 配额 08-13 23:59 重置后可跑 `docs/gen_my_future.sh` 出同款（同一世界观提示词）
+- [ ] **未来世界生图集**（docs/未来世界_生图/）：三画面已定格归档（仿生城市×2、世代飞船、戴森云×2；ChatGPT 渠道生成，GitHub 在线可看）；**4K 重制已安排**——模型调研结论：配额内仅 `doubao-seedream-5.0-lite`（5.0-pro 不支持 plan，需按量付费）；lite 支持 4K 是画质提升点；LaunchAgent `com.generation-ship.gen-future` 明早 08:00 自动跑 `docs/gen_my_future.sh`（产物 006-008 归档，日志 /tmp/gen_future.log，跑完自清理）
 - [ ] 全站链接健康巡检脚本（playwright 批量验证 AS/Goodreads/维基链接）— 未做
 - [ ] 原画类部分艺术家无封面可后续从 Commons/电影词条补
 - [ ] Goodreads 封面抓取偶发 SSL EOF（重试即可）；限流敏感，脚本已内置 1.2s 间隔
