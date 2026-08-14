@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="1500" viewBox="0 0 1200 1500" font-family="PingFang SC, Hiragino Sans GB, sans-serif">
+  <!-- 和纸底 -->
+  <rect width="1200" height="1500" fill="#f0ead8"/>
+  <rect x="24" y="24" width="1152" height="1452" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+
+  <!-- 卷首题字 -->
+  <text x="600" y="92" text-anchor="middle" font-size="38" font-weight="bold" fill="#1a1a1a">中心格 · 启航 2150</text>
+  <text x="600" y="128" text-anchor="middle" font-size="14" fill="#888" letter-spacing="6">THE LAUNCH · CEILING OF CIVILIZATION · CENTER PANEL</text>
+  <line x1="420" y1="150" x2="780" y2="150" stroke="#b8860b" stroke-width="1.5"/>
+
+  <!-- ============ 底稿(浮世绘生图) ============ -->
+  <image xlink:href="中心格_启航_底稿v1.jpeg" href="中心格_启航_底稿v1.jpeg" x="110" y="190" width="980" height="980" preserveAspectRatio="xMidYMid slice"/>
+
+  <!-- ============ 装帧层:金色格框(飞船结构件) ============ -->
+  <rect x="110" y="190" width="980" height="980" fill="none" stroke="#b8860b" stroke-width="5"/>
+  <rect x="122" y="202" width="956" height="956" fill="none" stroke="#b8860b" stroke-width="1.5" opacity="0.8"/>
+  <!-- 四角铆钉 -->
+  <g fill="#b8860b">
+    <circle cx="110" cy="190" r="7"/><circle cx="1090" cy="190" r="7"/>
+    <circle cx="110" cy="1170" r="7"/><circle cx="1090" cy="1170" r="7"/>
+  </g>
+  <!-- 框边管线装饰(上下) -->
+  <g stroke="#b8860b" stroke-width="1.5" opacity="0.65">
+    <line x1="200" y1="196" x2="1000" y2="196"/>
+    <line x1="200" y1="1176" x2="1000" y2="1176"/>
+  </g>
+  <g fill="#b8860b" opacity="0.65">
+    <circle cx="300" cy="196" r="3"/><circle cx="500" cy="196" r="3"/><circle cx="700" cy="196" r="3"/><circle cx="900" cy="196" r="3"/>
+    <circle cx="300" cy="1176" r="3"/><circle cx="500" cy="1176" r="3"/><circle cx="700" cy="1176" r="3"/><circle cx="900" cy="1176" r="3"/>
+  </g>
+
+  <!-- ============ 金缮裂痕(从格框延伸,呼应构图稿) ============ -->
+  <g stroke="#b8860b" fill="none" stroke-width="3" opacity="0.9">
+    <!-- 裂痕四:船上大故障,从中心格向上延伸出画(未来) -->
+    <path d="M 600 190 L 590 150 L 610 120 L 595 90 L 605 60"/>
+    <!-- 裂痕一:AI 泡沫破裂,从左缘进入 -->
+    <path d="M 24 700 L 70 720 L 60 760 L 110 790"/>
+    <!-- 裂痕二:热战危机,从右缘进入 -->
+    <path d="M 1176 560 L 1130 590 L 1145 630 L 1090 660"/>
+  </g>
+  <g font-size="12" fill="#b8860b">
+    <text x="616" y="120">✦ 裂痕四:船上大故障 2180s</text>
+    <text x="34" y="680">✦ 裂痕一</text>
+    <text x="1120" y="545">✦ 裂痕二</text>
+  </g>
+
+  <!-- ============ 朱印(总印「舟」) ============ -->
+  <rect x="1030" y="1090" width="44" height="44" fill="#c03a2b"/>
+  <text x="1052" y="1121" font-size="24" fill="#f0ead8" text-anchor="middle" font-weight="bold">舟</text>
+
+  <!-- ============ 题跋(包浆层·第一代题记) ============ -->
+  <line x1="110" y1="1210" x2="1090" y2="1210" stroke="#b8860b" stroke-width="1.5"/>
+  <text x="110" y="1252" font-size="15" fill="#555">题跋 · 启航日志摘录:「第 1 天。引擎点火成功。全船 1847 人在环壁前站成一圈,看尾焰照亮来路。地球在身后,比邻星在前方,中间是 200 年。——船长日志,2150」</text>
+  <text x="110" y="1284" font-size="13" fill="#999">(历代题跋将随正稿逐格叠加——第 3 代、第 5 代、第 7 代……包浆即历史)</text>
+
+  <!-- 装帧注记 -->
+  <text x="110" y="1340" font-size="12" fill="#999">底稿:seedream 5.0-lite 4K 生图(浮世绘提示词+方法论检查清单) · 装帧:手绘 SVG(格框/金缮裂痕/朱印/题跋)</text>
+  <text x="110" y="1366" font-size="12" fill="#999">《文明天顶》正稿 · 第一格试作 · 世代飞船项目 · pi · 2026-08-14</text>
+</svg>
