@@ -60,6 +60,15 @@ PLAN = {
     'sable':              ('url', 'https://cdn.akamai.steamstatic.com/steam/apps/1150690/header.jpg'),
     'world_of_tomorrow':  ('url', 'https://upload.wikimedia.org/wikipedia/en/c/c1/World_of_Tomorrow_%28film%29_POSTER.jpg'),
     'scavengers_reign':   ('url', 'https://upload.wikimedia.org/wikipedia/en/0/0c/Scavengers_Reign.png'),
+    # 8-14 第三批 · 更深一层
+    'tabbys_star':        ('wiki', "Tabby's Star"),
+    'naissancee':         ('url', 'https://cdn.akamai.steamstatic.com/steam/apps/265690/header.jpg'),
+    'kaiba':              ('url', 'https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx3701-ooD3N9dD2rqa.jpg'),
+    'rendezvous_with_rama': ('web', 'https://en.wikipedia.org/wiki/Rendezvous_with_Rama'),
+    'melodysheep_timelapse': ('url', 'https://i.ytimg.com/vi/uD4izuDMUQA/maxresdefault.jpg'),
+    'the_line':           ('url', 'https://www.neom.com/content/dam/neom/theline/hero/line-hero-thumbnail-new.jpg'),
+    'project_orion':      ('wiki', 'Project Orion (nuclear propulsion)'),
+    'exhalation':         ('goodreads', '41160292'),
 }
 
 os.makedirs(COVER_DIR, exist_ok=True)
