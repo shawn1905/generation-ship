@@ -173,3 +173,23 @@ cd branch
   - 全文直读：`https://raw.githubusercontent.com/shawn1905/generation-ship/main/openwiki/ALL.md`
   - clone 后读 `openwiki/ALL.md` 或 `openwiki/index.md`
   - README 顶部已加 agent 快速上手指引。
+
+## 9. 双视图架构（画廊 + wiki，怎么同步改）
+
+项目对外的两个视图，源是同一份仓库数据，改动后按下面的表跑对应脚本：
+
+```
+branch/*.csv（素材库数据）───┬── make_gallery.py → branch/gallery.html（GitHub Pages 在线画廊，给人看）
+docs/ + branch/（全部知识）───┴── openwiki --update → openwiki/*.md（wiki，给 agent 读）
+```
+
+| 你改了什么 | 要跑什么 | 生效位置 |
+|---|---|---|
+| 素材库 CSV（curate 新增/修条目） | ① `branch/.venv/bin/python branch/scripts/curate_*.py`（数据）→ ② `make_gallery.py`（画廊重建） | 画廊 Pages 自动部署；**若素材库规模/分类变化大，再跑 ③ `docs/openwiki_update.sh` 刷新 wiki 的 material-library 章节** |
+| docs/ 文档（灵感笔记、创作、方法论、NASA 参考） | `bash docs/openwiki_update.sh` | openwiki/（ALL.md 重新聚合），push 后其他 agent 即可读到 |
+| 只改画廊样式/搜索逻辑 | `make_gallery.py` 即可 | 画廊 |
+| 只改 wiki 结构/模型 | `bash docs/openwiki_update.sh` | wiki |
+
+要点：
+- **画廊 Pages 是自动的**（push 后 1-2 分钟重建，`gh api repos/shawn1905/generation-ship/pages --jq .status` 可查状态）；**wiki 是手动的**（跑 openwiki_update.sh）。
+- 两边不是严格 1:1 同步——wiki 只关心"知识/结构变化"，素材库只加几个条目不必每次都刷 wiki；规模/章节级变化才需要。
