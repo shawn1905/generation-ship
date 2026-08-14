@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="620" viewBox="0 0 900 620" font-family="PingFang SC, Hiragino Sans GB, sans-serif">
+  <defs>
+    <!-- 北斋普鲁士蓝渐变(ぼかし) -->
+    <linearGradient id="waveBlue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0d2b45"/>
+      <stop offset="0.55" stop-color="#1d4e7a"/>
+      <stop offset="1" stop-color="#3a74a8"/>
+    </linearGradient>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e9dfc8"/>
+      <stop offset="1" stop-color="#f5efdd"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 和纸底 -->
+  <rect width="900" height="620" fill="url(#skyGrad)"/>
+  <!-- 版画细边框 -->
+  <rect x="14" y="14" width="872" height="592" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+
+  <!-- 朱红恒星(旭日转译) -->
+  <circle cx="700" cy="150" r="72" fill="#c03a2b"/>
+  <circle cx="700" cy="150" r="72" fill="none" stroke="#8e2418" stroke-width="3"/>
+
+  <!-- 远山:富士山 → 转译为环形栖息地剪影(右侧远处) -->
+  <g opacity="0.85">
+    <ellipse cx="690" cy="330" rx="120" ry="26" fill="#22364d"/>
+    <rect x="690" y="296" width="0" height="0"/>
+    <circle cx="690" cy="298" r="10" fill="#22364d"/>
+    <line x1="690" y1="304" x2="690" y2="330" stroke="#22364d" stroke-width="4"/>
+  </g>
+  <!-- 左侧远山(小行星) -->
+  <path d="M 60 360 Q 140 300 230 356 Q 150 376 60 360 Z" fill="#2c4560"/>
+
+  <!-- 巨浪主体:贝塞尔大浪(普鲁士蓝) -->
+  <path d="M 40 620
+           C 40 460, 120 380, 200 330
+           C 260 292, 330 262, 400 250
+           C 470 238, 540 246, 590 270
+           C 640 294, 660 330, 650 366
+           C 640 402, 600 420, 560 410
+           C 590 440, 640 450, 690 440
+           C 760 426, 830 460, 860 620
+           Z" fill="url(#waveBlue)"/>
+
+  <!-- 浪尖泡沫爪(浮世绘爪形浪尖) -->
+  <g fill="#f5efdd">
+    <circle cx="400" cy="250" r="16"/>
+    <circle cx="455" cy="238" r="12"/>
+    <circle cx="505" cy="242" r="10"/>
+    <circle cx="548" cy="254" r="9"/>
+    <circle cx="588" cy="272" r="8"/>
+    <!-- 爪形分岔 -->
+    <path d="M 560 250 q 30 -34 64 -26 q -26 10 -34 30 Z" fill="#f5efdd"/>
+    <path d="M 505 218 q 22 -30 52 -24 q -22 8 -28 26 Z" fill="#f5efdd"/>
+  </g>
+
+  <!-- 浪身排线纹样(浮世绘线条肌理) -->
+  <g stroke="#0d2b45" stroke-width="2" opacity="0.35" fill="none">
+    <path d="M 120 560 Q 200 480 260 420"/>
+    <path d="M 170 590 Q 260 500 330 430"/>
+    <path d="M 90 500 Q 170 430 230 385"/>
+    <path d="M 300 580 Q 380 500 450 460"/>
+    <path d="M 420 590 Q 500 520 580 490"/>
+  </g>
+
+  <!-- 浪间小泡沫(飞沫) -->
+  <g fill="#f5efdd" opacity="0.9">
+    <circle cx="640" cy="230" r="4"/><circle cx="668" cy="212" r="3"/><circle cx="610" cy="206" r="3.5"/>
+    <circle cx="700" cy="250" r="3"/><circle cx="585" cy="196" r="2.6"/>
+  </g>
+
+  <!-- ★ 浪尖上的小船:ARK-01 双环世代飞船(金色) -->
+  <g transform="translate(486, 176) rotate(-8)">
+    <circle cx="0" cy="0" r="26" fill="none" stroke="#b8860b" stroke-width="7"/>
+    <line x1="0" y1="-26" x2="0" y2="26" stroke="#b8860b" stroke-width="2.5"/>
+    <circle cx="0" cy="0" r="4.5" fill="#b8860b"/>
+    <!-- 尾部淡蓝等离子尾焰 -->
+    <path d="M -26 0 q -40 6 -70 22" stroke="#7fb4d4" stroke-width="3" fill="none" opacity="0.8"/>
+  </g>
+
+  <!-- 第二艘更小的船(远景呼应:先行者) -->
+  <g transform="translate(770, 420) rotate(5)" opacity="0.8">
+    <circle cx="0" cy="0" r="12" fill="none" stroke="#8a6d1f" stroke-width="4"/>
+    <line x1="0" y1="-12" x2="0" y2="12" stroke="#8a6d1f" stroke-width="1.5"/>
+  </g>
+
+  <!-- 题字(竖排,浮世绘落款感) -->
+  <g font-size="26" fill="#1a1a1a" font-weight="bold">
+    <text x="70" y="90">文明天顶</text>
+    <text x="70" y="122" font-size="16" fill="#4a4a4a" font-weight="normal">浪尖上的方舟 · 风格小样</text>
+  </g>
+
+  <!-- 朱印 -->
+  <rect x="68" y="140" width="30" height="30" fill="#c03a2b"/>
+  <text x="83" y="161" font-size="14" fill="#f5efdd" text-anchor="middle" font-weight="bold">舟</text>
+</svg>
