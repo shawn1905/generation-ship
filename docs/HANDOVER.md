@@ -161,3 +161,15 @@ cd branch
 - 提交信息中文、前缀约定：`feat:` 新增 / `fix:` 修复 / `docs:` 文档。
 - 数据（CSV、图片）与脚本**全部入库**；只有原始大文件（data/、pool、.venv）忽略。
 - 推送后 Pages 自动重建，无需手动操作。
+
+## 8. OpenWiki 项目 wiki（agent 记忆 · 手动维护）
+
+- 位置：`openwiki/`（30+ 篇 markdown，OpenWiki 生成），**聚合全文 `openwiki/ALL.md`**（~102KB，供 agent 一次性读取）。
+- 生成器：`npm i -g openwiki`；模型走 **opencode zen/go**（`deepseek-v4-flash`），配置在 `~/.openwiki/.env`（本机，不入库；换机需重配）。
+- **手动维护流程（每次改完文档跑）**：`bash docs/openwiki_update.sh` — 依次执行 `openwiki --update` → 重新聚合 ALL.md → commit + push。
+- 拆分脚本：`openwiki/merge_all.py`（ALL.md 聚合器，可单独跑）。
+- 忽略规则：`.openwikiignore`（排除图片/大数据）。
+- 其他电脑上的 agent 访问：公开仓库，无需登录：
+  - 全文直读：`https://raw.githubusercontent.com/shawn1905/generation-ship/main/openwiki/ALL.md`
+  - clone 后读 `openwiki/ALL.md` 或 `openwiki/index.md`
+  - README 顶部已加 agent 快速上手指引。
