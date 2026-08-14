@@ -1,0 +1,266 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1700" viewBox="0 0 1200 1700" font-family="PingFang SC, Hiragino Sans GB, sans-serif">
+  <!-- 和纸底 -->
+  <rect width="1200" height="1700" fill="#f0ead8"/>
+  <rect x="30" y="30" width="1140" height="1640" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+
+  <!-- 卷首 -->
+  <text x="600" y="105" text-anchor="middle" font-size="44" font-weight="bold" fill="#1a1a1a">文明天顶 · 构图稿</text>
+  <text x="600" y="145" text-anchor="middle" font-size="16" fill="#666">十格天顶布局 · 教堂穹顶 × 浮世绘长卷 · 金缮裂痕 · 三代人血脉</text>
+  <text x="600" y="172" text-anchor="middle" font-size="13" fill="#999">世代飞船项目 · pi · 2026-08-14 · 线稿 v1(布局用,非成品)</text>
+
+  <!-- ============ 天顶外框(穹顶弧线) ============ -->
+  <path d="M 100 1550 L 100 320 Q 600 190 1100 320 L 1100 1550 Z" fill="none" stroke="#1a1a1a" stroke-width="4"/>
+  <!-- 外框管线装饰(飞船结构感) -->
+  <path d="M 112 1550 L 112 330 Q 600 203 1088 330 L 1088 1550" fill="none" stroke="#1a1a1a" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- ============ 格框样式:双线+角铆钉(飞船结构件) ============ -->
+  <defs>
+    <g id="rivet"><circle r="5" fill="#1a1a1a"/></g>
+  </defs>
+
+  <!-- ======== 时代Ⅰ · 白领冬天(左上) ======== -->
+  <g>
+    <rect x="140" y="360" width="280" height="300" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+    <rect x="148" y="368" width="264" height="284" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+    <use href="#rivet" x="140" y="360"/><use href="#rivet" x="420" y="360"/><use href="#rivet" x="140" y="660"/><use href="#rivet" x="420" y="660"/>
+    <!-- 写字楼窗格矩阵 + 走出的人 -->
+    <g stroke="#1a1a1a" stroke-width="1.5" fill="none">
+      <rect x="170" y="420" width="140" height="180"/>
+      <line x1="205" y1="420" x2="205" y2="600"/><line x1="240" y1="420" x2="240" y2="600"/><line x1="275" y1="420" x2="275" y2="600"/>
+      <line x1="170" y1="465" x2="310" y2="465"/><line x1="170" y1="510" x2="310" y2="510"/><line x1="170" y1="555" x2="310" y2="555"/>
+    </g>
+    <!-- 走出的小人(产品经理) -->
+    <circle cx="355" cy="560" r="8" fill="#1a1a1a"/>
+    <line x1="355" y1="568" x2="355" y2="595" stroke="#1a1a1a" stroke-width="3"/>
+    <line x1="355" y1="578" x2="342" y2="588" stroke="#1a1a1a" stroke-width="2.5"/>
+    <line x1="355" y1="578" x2="370" y2="572" stroke="#1a1a1a" stroke-width="2.5"/>
+    <line x1="355" y1="595" x2="346" y2="620" stroke="#1a1a1a" stroke-width="2.5"/>
+    <line x1="355" y1="595" x2="366" y2="620" stroke="#1a1a1a" stroke-width="2.5"/>
+    <!-- 散落文件 -->
+    <line x1="330" y1="630" x2="360" y2="626" stroke="#1a1a1a" stroke-width="1.5"/>
+    <line x1="336" y1="638" x2="368" y2="635" stroke="#1a1a1a" stroke-width="1.5"/>
+    <text x="165" y="400" font-size="17" font-weight="bold" fill="#1a1a1a">时代Ⅰ · 白领的冬天</text>
+    <text x="165" y="422" font-size="11" fill="#777">2025-2035 · 写字楼窗格 / 走出的人</text>
+    <!-- 朱印 -->
+    <rect x="382" y="616" width="26" height="26" fill="#c03a2b"/>
+    <text x="395" y="634" font-size="14" fill="#f0ead8" text-anchor="middle" font-weight="bold">冬</text>
+  </g>
+
+  <!-- ======== 先知格 · 成本崩塌律(上中) ======== -->
+  <g>
+    <rect x="470" y="290" width="260" height="180" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+    <rect x="477" y="297" width="246" height="166" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+    <use href="#rivet" x="470" y="290"/><use href="#rivet" x="730" y="290"/><use href="#rivet" x="470" y="470"/><use href="#rivet" x="730" y="470"/>
+    <!-- 算盘(旧经济) -->
+    <rect x="500" y="350" width="80" height="60" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+    <line x1="500" y1="372" x2="580" y2="372" stroke="#1a1a1a" stroke-width="1.5"/>
+    <line x1="520" y1="350" x2="520" y2="410" stroke="#1a1a1a" stroke-width="1"/>
+    <line x1="545" y1="350" x2="545" y2="410" stroke="#1a1a1a" stroke-width="1"/>
+    <circle cx="520" cy="362" r="4" fill="#1a1a1a"/><circle cx="545" cy="388" r="4" fill="#1a1a1a"/><circle cx="520" cy="396" r="4" fill="#1a1a1a"/>
+    <!-- 捧光孩童 -->
+    <circle cx="655" cy="352" r="8" fill="#1a1a1a"/>
+    <line x1="655" y1="360" x2="655" y2="392" stroke="#1a1a1a" stroke-width="3"/>
+    <line x1="655" y1="370" x2="672" y2="360" stroke="#1a1a1a" stroke-width="2.5"/>
+    <circle cx="684" cy="352" r="10" fill="none" stroke="#b8860b" stroke-width="3"/>
+    <circle cx="684" cy="352" r="4" fill="#b8860b"/>
+    <line x1="655" y1="392" x2="646" y2="414" stroke="#1a1a1a" stroke-width="2.5"/>
+    <line x1="655" y1="392" x2="664" y2="414" stroke="#1a1a1a" stroke-width="2.5"/>
+    <text x="485" y="320" font-size="15" font-weight="bold" fill="#1a1a1a">先知 · 成本崩塌律</text>
+    <text x="485" y="340" font-size="10" fill="#777">打算盘的老会计 与 捧光球的孩童</text>
+    <rect x="694" y="432" width="24" height="24" fill="#c03a2b"/>
+    <text x="706" y="449" font-size="13" fill="#f0ead8" text-anchor="middle" font-weight="bold">塌</text>
+  </g>
+
+  <!-- ======== 时代Ⅱ · 军备与重构(右上) ======== -->
+  <g>
+    <rect x="780" y="360" width="280" height="300" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+    <rect x="788" y="368" width="264" height="284" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+    <use href="#rivet" x="780" y="360"/><use href="#rivet" x="1060" y="360"/><use href="#rivet" x="780" y="660"/><use href="#rivet" x="1060" y="660"/>
+    <!-- 月面弧线 -->
+    <path d="M 795 620 Q 920 560 1045 620" fill="none" stroke="#1a1a1a" stroke-width="2.5"/>
+    <!-- 基地穹顶 -->
+    <path d="M 880 575 A 45 45 0 0 1 970 575" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+    <line x1="880" y1="575" x2="970" y2="575" stroke="#1a1a1a" stroke-width="2"/>
+    <!-- 机器人(方块头) -->
+    <rect x="820" y="540" width="18" height="16" fill="none" stroke="#1a1a1a" stroke-width="2.5"/>
+    <line x1="829" y1="556" x2="829" y2="590" stroke="#1a1a1a" stroke-width="3"/>
+    <line x1="829" y1="566" x2="814" y2="576" stroke="#1a1a1a" stroke-width="2.5"/>
+    <line x1="829" y1="566" x2="844" y2="576" stroke="#1a1a1a" stroke-width="2.5"/>
+    <line x1="829" y1="590" x2="820" y2="612" stroke="#1a1a1a" stroke-width="2.5"/>
+    <line x1="829" y1="590" x2="838" y2="612" stroke="#1a1a1a" stroke-width="2.5"/>
+    <!-- 旗帜(大国竞赛) -->
+    <line x1="1010" y1="520" x2="1010" y2="580" stroke="#1a1a1a" stroke-width="2.5"/>
+    <path d="M 1010 520 L 1040 530 L 1010 542 Z" fill="#c03a2b"/>
+    <text x="795" y="400" font-size="17" font-weight="bold" fill="#1a1a1a">时代Ⅱ · 军备与重构</text>
+    <text x="795" y="422" font-size="11" fill="#777">2035-2050 · 月球基地 / 太空蓝领 / 旗帜</text>
+    <rect x="1022" y="616" width="26" height="26" fill="#c03a2b"/>
+    <text x="1035" y="634" font-size="14" fill="#f0ead8" text-anchor="middle" font-weight="bold">构</text>
+  </g>
+
+  <!-- ======== 先知格 · 制度滞后律(左中) ======== -->
+  <g>
+    <rect x="140" y="700" width="280" height="200" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+    <rect x="148" y="708" width="264" height="184" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+    <use href="#rivet" x="140" y="700"/><use href="#rivet" x="420" y="700"/><use href="#rivet" x="140" y="900"/><use href="#rivet" x="420" y="900"/>
+    <!-- 马车(旧制度) -->
+    <rect x="180" y="770" width="70" height="40" fill="none" stroke="#1a1a1a" stroke-width="2.5"/>
+    <circle cx="196" cy="822" r="14" fill="none" stroke="#1a1a1a" stroke-width="2.5"/>
+    <circle cx="236" cy="822" r="14" fill="none" stroke="#1a1a1a" stroke-width="2.5"/>
+    <!-- 追赶的人(法律) -->
+    <circle cx="330" cy="765" r="8" fill="#1a1a1a"/>
+    <line x1="330" y1="773" x2="322" y2="800" stroke="#1a1a1a" stroke-width="3"/>
+    <line x1="326" y1="782" x2="306" y2="772" stroke="#1a1a1a" stroke-width="2.5"/>
+    <line x1="326" y1="782" x2="344" y2="776" stroke="#1a1a1a" stroke-width="2.5"/>
+    <line x1="322" y1="800" x2="310" y2="824" stroke="#1a1a1a" stroke-width="2.5"/>
+    <line x1="322" y1="800" x2="336" y2="822" stroke="#1a1a1a" stroke-width="2.5"/>
+    <text x="155" y="730" font-size="15" font-weight="bold" fill="#1a1a1a">先知 · 制度滞后律</text>
+    <text x="155" y="750" font-size="10" fill="#777">追赶马车的立法者——技术总比制度快 30-50 年</text>
+    <rect x="382" y="862" width="24" height="24" fill="#c03a2b"/>
+    <text x="394" y="879" font-size="13" fill="#f0ead8" text-anchor="middle" font-weight="bold">滞</text>
+  </g>
+
+  <!-- ======== ★ 中心格 · 启航(正中,最大) ======== -->
+  <g>
+    <rect x="460" y="540" width="300" height="400" fill="none" stroke="#b8860b" stroke-width="4"/>
+    <rect x="470" y="550" width="280" height="380" fill="none" stroke="#b8860b" stroke-width="1.5"/>
+    <use href="#rivet" x="460" y="540"/><use href="#rivet" x="760" y="540"/><use href="#rivet" x="460" y="940"/><use href="#rivet" x="760" y="940"/>
+    <!-- ARK-01 双环 + 中心轴 -->
+    <circle cx="610" cy="700" r="70" fill="none" stroke="#1a1a1a" stroke-width="8"/>
+    <circle cx="610" cy="700" r="46" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+    <line x1="610" y1="630" x2="610" y2="770" stroke="#1a1a1a" stroke-width="3"/>
+    <circle cx="610" cy="700" r="9" fill="#b8860b"/>
+    <!-- 引擎点火光束(全画光源原点,"要有光"的转译) -->
+    <g stroke="#b8860b" fill="none">
+      <path d="M 545 745 L 480 810" stroke-width="4"/>
+      <path d="M 560 760 L 510 830" stroke-width="2.5"/>
+      <path d="M 530 730 L 450 780" stroke-width="2.5"/>
+      <path d="M 540 755 L 460 850" stroke-width="1.5" opacity="0.7"/>
+      <path d="M 575 770 L 540 860" stroke-width="1.5" opacity="0.7"/>
+    </g>
+    <!-- 环壁上的历代肖像点(祭祖堂) -->
+    <g fill="#1a1a1a">
+      <circle cx="610" cy="633" r="3.5"/><circle cx="658" cy="655" r="3.5"/><circle cx="678" cy="700" r="3.5"/>
+      <circle cx="658" cy="745" r="3.5"/><circle cx="610" cy="767" r="3.5"/><circle cx="562" cy="745" r="3.5"/>
+      <circle cx="542" cy="700" r="3.5"/><circle cx="562" cy="655" r="3.5"/>
+    </g>
+    <text x="610" y="585" text-anchor="middle" font-size="20" font-weight="bold" fill="#b8860b">中心格 · 启航 2150</text>
+    <text x="610" y="610" text-anchor="middle" font-size="11" fill="#777">引擎点火=「要有光」· 环壁肖像=祭祖堂</text>
+    <!-- 总印「舟」 -->
+    <rect x="732" y="898" width="30" height="30" fill="#c03a2b"/>
+    <text x="747" y="919" font-size="16" fill="#f0ead8" text-anchor="middle" font-weight="bold">舟</text>
+  </g>
+
+  <!-- ======== 先知格 · 殖民地独立律(右中) ======== -->
+  <g>
+    <rect x="780" y="700" width="280" height="200" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+    <rect x="788" y="708" width="264" height="184" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+    <use href="#rivet" x="780" y="700"/><use href="#rivet" x="1060" y="700"/><use href="#rivet" x="780" y="900"/><use href="#rivet" x="1060" y="900"/>
+    <!-- 锚(地球引力/母港) -->
+    <circle cx="860" cy="760" r="8" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+    <line x1="860" y1="768" x2="860" y2="820" stroke="#1a1a1a" stroke-width="4"/>
+    <path d="M 830 810 Q 860 838 890 810" fill="none" stroke="#1a1a1a" stroke-width="4"/>
+    <!-- 断链 -->
+    <ellipse cx="930" cy="775" rx="14" ry="8" fill="none" stroke="#c03a2b" stroke-width="3" transform="rotate(-20 930 775)"/>
+    <ellipse cx="985" cy="755" rx="14" ry="8" fill="none" stroke="#c03a2b" stroke-width="3" transform="rotate(-20 985 755)"/>
+    <line x1="946" y1="770" x2="970" y2="760" stroke="#c03a2b" stroke-width="2" stroke-dasharray="3 4"/>
+    <text x="795" y="730" font-size="15" font-weight="bold" fill="#1a1a1a">先知 · 殖民地独立律</text>
+    <text x="795" y="750" font-size="10" fill="#777">锚与断链——距离 × 自给自足 = 独立倾向</text>
+    <rect x="1022" y="862" width="24" height="24" fill="#c03a2b"/>
+    <text x="1034" y="879" font-size="13" fill="#f0ead8" text-anchor="middle" font-weight="bold">独</text>
+  </g>
+
+  <!-- ======== 时代Ⅲ · 后稀缺雏形(左下) ======== -->
+  <g>
+    <rect x="140" y="980" width="280" height="300" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+    <rect x="148" y="988" width="264" height="284" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+    <use href="#rivet" x="140" y="980"/><use href="#rivet" x="420" y="980"/><use href="#rivet" x="140" y="1280"/><use href="#rivet" x="420" y="1280"/>
+    <!-- 旋转环截面(栖息地) -->
+    <circle cx="280" cy="1120" r="70" fill="none" stroke="#1a1a1a" stroke-width="5"/>
+    <circle cx="280" cy="1120" r="50" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+    <!-- 环内生活点(麦田网格) -->
+    <g stroke="#1a1a1a" stroke-width="1" opacity="0.6">
+      <line x1="230" y1="1080" x2="330" y2="1080"/><line x1="230" y1="1100" x2="330" y2="1100"/>
+      <line x1="230" y1="1140" x2="330" y2="1140"/><line x1="230" y1="1160" x2="330" y2="1160"/>
+    </g>
+    <!-- 管理者小人 -->
+    <circle cx="280" cy="1108" r="6" fill="#1a1a1a"/>
+    <line x1="280" y1="1114" x2="280" y2="1134" stroke="#1a1a1a" stroke-width="2.5"/>
+    <text x="155" y="1020" font-size="17" font-weight="bold" fill="#1a1a1a">时代Ⅲ · 后稀缺雏形</text>
+    <text x="155" y="1042" font-size="11" fill="#777">2050-2080 · 旋转栖息地 / 麦田网格</text>
+    <rect x="382" y="1242" width="26" height="26" fill="#c03a2b"/>
+    <text x="395" y="1260" font-size="14" fill="#f0ead8" text-anchor="middle" font-weight="bold">形</text>
+  </g>
+
+  <!-- ======== 时代Ⅳ · 文明扩展(右下) ======== -->
+  <g>
+    <rect x="780" y="980" width="280" height="300" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+    <rect x="788" y="988" width="264" height="284" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+    <use href="#rivet" x="780" y="980"/><use href="#rivet" x="1060" y="980"/><use href="#rivet" x="780" y="1280"/><use href="#rivet" x="1060" y="1280"/>
+    <!-- 两个环(地球侧与太空侧) + 断裂连线 -->
+    <circle cx="860" cy="1110" r="38" fill="none" stroke="#1a1a1a" stroke-width="5"/>
+    <circle cx="990" cy="1110" r="38" fill="none" stroke="#1a1a1a" stroke-width="5"/>
+    <line x1="898" y1="1110" x2="920" y2="1110" stroke="#c03a2b" stroke-width="2.5"/>
+    <line x1="930" y1="1110" x2="952" y2="1110" stroke="#c03a2b" stroke-width="2.5" stroke-dasharray="2 5"/>
+    <!-- 签署者小人群(独立宣言) -->
+    <circle cx="952" cy="1180" r="5" fill="#1a1a1a"/><line x1="952" y1="1185" x2="952" y2="1205" stroke="#1a1a1a" stroke-width="2.5"/>
+    <circle cx="970" cy="1180" r="5" fill="#1a1a1a"/><line x1="970" y1="1185" x2="970" y2="1205" stroke="#1a1a1a" stroke-width="2.5"/>
+    <circle cx="988" cy="1180" r="5" fill="#1a1a1a"/><line x1="988" y1="1185" x2="988" y2="1205" stroke="#1a1a1a" stroke-width="2.5"/>
+    <text x="795" y="1020" font-size="17" font-weight="bold" fill="#1a1a1a">时代Ⅳ · 文明扩展</text>
+    <text x="795" y="1042" font-size="11" fill="#777">2080-2150 · 双环对峙 / 独立宣言签署者</text>
+    <rect x="1022" y="1242" width="26" height="26" fill="#c03a2b"/>
+    <text x="1035" y="1260" font-size="14" fill="#f0ead8" text-anchor="middle" font-weight="bold">扩</text>
+  </g>
+
+  <!-- ======== 先知格 · 冗余需求律(下中) ======== -->
+  <g>
+    <rect x="460" y="980" width="300" height="180" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+    <rect x="468" y="988" width="284" height="164" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+    <use href="#rivet" x="460" y="980"/><use href="#rivet" x="760" y="980"/><use href="#rivet" x="460" y="1160"/><use href="#rivet" x="760" y="1160"/>
+    <!-- 母亲分装种子到多个陶罐 -->
+    <path d="M 510 1100 L 510 1070 Q 530 1060 550 1070 L 550 1100 Q 530 1110 510 1100 Z" fill="none" stroke="#1a1a1a" stroke-width="2.5"/>
+    <path d="M 570 1100 L 570 1070 Q 590 1060 610 1070 L 610 1100 Q 590 1110 570 1100 Z" fill="none" stroke="#1a1a1a" stroke-width="2.5"/>
+    <path d="M 630 1100 L 630 1070 Q 650 1060 670 1070 L 670 1100 Q 650 1110 630 1100 Z" fill="none" stroke="#1a1a1a" stroke-width="2.5"/>
+    <!-- 母亲人形 -->
+    <circle cx="705" cy="1040" r="8" fill="#1a1a1a"/>
+    <line x1="705" y1="1048" x2="705" y2="1080" stroke="#1a1a1a" stroke-width="3"/>
+    <line x1="705" y1="1058" x2="688" y2="1070" stroke="#1a1a1a" stroke-width="2.5"/>
+    <line x1="705" y1="1080" x2="696" y2="1105" stroke="#1a1a1a" stroke-width="2.5"/>
+    <line x1="705" y1="1080" x2="714" y2="1105" stroke="#1a1a1a" stroke-width="2.5"/>
+    <text x="475" y="1010" font-size="15" font-weight="bold" fill="#1a1a1a">先知 · 冗余需求律</text>
+    <text x="475" y="1030" font-size="10" fill="#777">把种子分装进许多陶罐的母亲——文明不把鸡蛋放进同一个恒星系</text>
+    <rect x="722" y="1122" width="24" height="24" fill="#c03a2b"/>
+    <text x="734" y="1139" font-size="13" fill="#f0ead8" text-anchor="middle" font-weight="bold">余</text>
+  </g>
+
+  <!-- ============ ★ 金缮裂痕(金线修补,跨格蜿蜒) ============ -->
+  <g stroke="#b8860b" fill="none" stroke-width="3" opacity="0.9">
+    <!-- 裂痕1:AI 泡沫破裂(左缘→中心格左下) -->
+    <path d="M 100 520 L 160 540 L 150 580 L 230 610 L 215 660 L 300 700 L 285 750 L 380 800 L 420 850 L 460 880"/>
+    <!-- 裂痕2:热战危机(右缘→中心格右侧) -->
+    <path d="M 1100 640 L 1030 680 L 1045 730 L 950 770 L 960 820 L 870 860 L 830 900 L 790 920"/>
+    <!-- 裂痕3:殖民地冲突(下缘→时代Ⅳ) -->
+    <path d="M 900 1550 L 880 1440 L 910 1380 L 890 1320 L 920 1280"/>
+    <!-- 裂痕4:船上大故障(中心格→向上延伸到未来) -->
+    <path d="M 610 540 L 600 490 L 620 440 L 605 380 L 615 320 L 600 250"/>
+  </g>
+  <!-- 裂痕标注 -->
+  <g font-size="11" fill="#b8860b">
+    <text x="200" y="560">✦ 裂痕一:AI 泡沫破裂 2027-30</text>
+    <text x="880" y="660">✦ 裂痕二:热战危机 2040s</text>
+    <text x="930" y="1360">✦ 裂痕三:殖民地冲突 2080s</text>
+    <text x="630" y="250">✦ 裂痕四:船上大故障 2180s(延伸到画外/未来)</text>
+  </g>
+
+  <!-- ============ 底部题跋区(历代收藏题记) ============ -->
+  <rect x="140" y="1330" width="920" height="180" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="160" y="1362" font-size="14" font-weight="bold" fill="#1a1a1a">题跋留白区(包浆层)——设定为船上各代人的题记:</text>
+  <g font-size="12" fill="#555">
+    <text x="160" y="1392">「第 3 代题:祖先从地球带来的画,裂痕比父辈记忆里多了两道。——2180s」</text>
+    <text x="160" y="1418">「第 5 代题:金线比原来亮了,是去年大修时重描的。——2230s(船上纪年)」</text>
+    <text x="160" y="1444">「第 7 代题:听说画里的地球是真的存在过的地方。——抵达前夜」</text>
+    <text x="160" y="1470" fill="#999">(正式版:每格留白处还会有更多历代题跋,层层叠叠=时间的沉积)</text>
+  </g>
+
+  <!-- 标尺 -->
+  <text x="600" y="1610" text-anchor="middle" font-size="12" fill="#999">构图稿 v1 · 正式版目标 9000×6000 数字画布(可打印 2-3 米实体) · 十格:四时代+四先知+中心启航+题跋层</text>
+</svg>
