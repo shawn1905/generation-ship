@@ -16,6 +16,10 @@
 3. **生成**：`python3 ../scripts/make_gallery.py`
 4. **健康巡检（必跑）**：`python3 ../scripts/health_check_other.py` — 检查列错位/死链/缺封面，有异常先修再推
 5. **推送**：`git add -A && git commit -m "feat: AI精选 +N 条" && git push`
+6. **同步 wiki（快捷路径，默认走这个）**：手动改计数 + 重新聚合 + 推送：
+   - 计数共 6 处「XX 条」：`openwiki/reference/categories.md`、`openwiki/docs/handover.md`（3 处）、`openwiki/quickstart.md`、`openwiki/reference/gallery.md`、`openwiki/reference/library_overview.md`
+   - 然后 `python3 openwiki/merge_all.py` → `git add openwiki/ && git commit && git push`
+   - ⚠️ 不要默认跑 `bash docs/openwiki_update.sh`（openwiki --update 是 LLM 全量扫描，10 分钟+ 易超时）；只有需要全量语义同步（新页面/结构变化）时才跑它
 
 > ⚠️ 2026-08-12 踩坑：note 混入英文逗号会导致 CSV 列错位，画廊里表现为「死链+无图」。health_check 能一次全查出来。
 
