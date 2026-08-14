@@ -43,7 +43,7 @@ tags: [navigation, quickstart]
 
 ### 科幻参考库
 
-- [参考库概览](./reference/library_overview.md) - 精选 494 条科幻参考库的概览（另有其他-AI精选 39 条）
+- [参考库概览](./reference/library_overview.md) - 精选 494 条科幻参考库的概览（另有其他-AI精选 47 条）
 - [类别摘要](./reference/categories.md) - 各媒体类别和重要参考的摘要
 - [交互式图库](./reference/gallery.md) - 交互式参考图库的使用指南
 - [数据结构](./reference/data_structure.md) - CSV 数据结构说明
@@ -55,7 +55,7 @@ tags: [navigation, quickstart]
 - [交接与待办](./docs/handover.md) - 项目交接、待办清单和已知问题
 - [NASA 真实影像参考](./docs/nasa_reference.md) - NASA Image Library 免 key 素材与 API 速查
 - [AI 生图集](./docs/future_world_art.md) - 「我眼中的未来世界」系列概念图与生图方法论
-- [原创内容区](./docs/creation_assets.md) - 项目原创创作资产（文字、SVG、音乐）
+- [原创内容区](./docs/creation_assets.md) - 项目原创创作资产（文字、SVG、音乐；含文明扩散时间轴母题与《文明天顶》工程）
 - [灵感来源地图](./docs/inspiration_map.md) - 灵感映射笔记（2026-08-11）
 
 ## 变更路由表
@@ -86,6 +86,7 @@ tags: [navigation, quickstart]
 - **阶段 2 内部结构详设**（辐射屏蔽质量分配/生命保障框图/甲板分区）——仅定义量级与开放问题；锚点：`docs/讨论稿-概念与待决问题.md` §1-2、`docs/nasa_参考影像/README.md`
 - **阶段 3 CAD 模型与最终渲染**——仓库尚无渲染产出；锚点：`docs/讨论稿-概念与待决问题.md` §4
 - **全站链接健康巡检脚本**——交接文档列为待办（playwright 批量验证链接），尚未实现（`docs/HANDOVER.md` §6）
+- **《文明天顶》v2 中国风版**——v1 九格已定稿，v2 方向已定（敦煌经变画×青绿山水），十格完整版 + 9000×6000 总图未完成；锚点：`docs/creation/文明天顶/README.md`、`docs/creation/文明天顶_构思.md`（详见 [原创创作区](./docs/creation_assets.md)）
 
 ## 外部参考
 

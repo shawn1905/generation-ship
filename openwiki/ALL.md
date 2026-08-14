@@ -8,6 +8,54 @@
 
 ---
 
+<!-- 来源: _plan.md -->
+
+---
+type: 计划
+title: OpenWiki 维护更新计划（2026-08-14 后）
+description: 基于仓库变更证据的文档影响计划：ALL.md/merge_all.py 已恢复、其他-AI精选 39→47、创作区新增文明天顶与文明扩散时间轴
+tags: [plan, maintenance, openwiki]
+timestamp: 2026-08-14
+---
+
+# 文档影响计划（维护更新）
+
+上次成功更新：`gitHead b35fc5366ee66d732194d77c39feb0e71539849e`（2026-08-14T05:37Z，zh-CN）。Shell 受限，无法执行 git；以下变更通过「当前源码/CSV/文档 vs 现有 wiki 页面」逐项比对得出。
+
+## 受影响系统清单与处置
+
+### 1. OpenWiki 维护链路（ALL.md / merge_all.py / openwiki_update.sh）
+- 证据：仓库现存 `/openwiki/ALL.md`（85KB 聚合全文）与 `/openwiki/merge_all.py`；`docs/HANDOVER.md` §8 与 §10、`README.md` 顶部均声称 ALL.md 存在；`docs/openwiki_update.sh` 第 2 步运行 `python3 openwiki/merge_all.py`。
+- 现状：wiki `docs/handover.md` 的「文档与现状的出入」仍声称「ALL.md 与 merge_all.py 均不存在，update.sh 第 2 步会失败」——已过时。
+- 处置：更新 `/openwiki/docs/handover.md`（更正该条 + 补充 OpenWiki 中文版 26 篇/ALL.md 聚合说明）；同步修正 `/openwiki/ALL.md` 中镜像的同一段落及其 front matter（移除 `openwiki_generated` 回退标记）。
+
+### 2. 素材库「其他-AI精选」规模 39 → 47
+- 证据：`branch/other/ai_curated.csv` 数据行 47 条（8-11：12 条、8-12 两批 15 条、8-14 第三批 8 条，见 `branch/other/README.md`「已收录（47 条，2026-08-14）」）。
+- 影响页：`quickstart.md`（导航条目）、`docs/handover.md`（素材库规模表 + 项目状态行）、`reference/categories.md`（🧠 章节标题 + 已覆盖维度）、`reference/library_overview.md`（统计段）、`reference/gallery.md`（八区 Tab 行），以及 `ALL.md` 中对应镜像段落。
+- 处置：全部更新为 47；categories.md 补充 8-14 第三批新维度（塔比星/NaissanceE/Kaiba/与拉玛相会/melodysheep/The Line/猎户座核脉冲/特德·姜）。
+
+### 3. 创作区新增：文明扩散时间轴（母题）+ 文明天顶（工程）
+- 证据：`docs/creation/README.md` 新增「创作母题:文明扩散时间轴」段；`docs/creation/文明扩散时间轴_梗概.md`（五时代 + 四大奇点）；`docs/creation/svg/文明扩散时间轴_2025-2200.svg`；`docs/creation/文明天顶/`（README + compose_ceiling.py + 9 格装帧 v1 SVG）；`docs/creation/文明天顶_构思.md`；`docs/creation/svg/文明天顶_构图稿.svg`、`文明天顶_风格小样.svg`；`docs/HANDOVER.md` §10「创作区进展（2026-08-14 大更新）」。
+- 现状：wiki `docs/creation_assets.md`（timestamp 2026-08-13）作品索引止于 08-13，完全未覆盖上述内容。
+- 处置：扩展 `creation_assets.md`——新增「文明扩散时间轴（创作母题）」与「文明天顶（教堂穹顶×版画）」两节、更新作品索引表、补充 ARK-01 任务文件与三体关联线索；同步更新 ALL.md 镜像段。
+
+### 4. 生图配额细节（HANDOVER §10）
+- 证据：`docs/HANDOVER.md` §10「本月已用约 20 张（006-011+天顶 9 格+测试），还剩约 30 张，08-13 23:59 重置」。
+- 现状：wiki `docs/handover.md` 生图待办仅记「配额 50 张/月」。
+- 处置：在 handover.md 创作/生图待办中补充 HANDOVER §10 的配额用量口径（与 future_world_art.md 的「方法论版 3 张后余约 42 张」口径并存，注明来源差异）。
+
+### 5. 未受影响（证据核实后保持不动）
+- 设计/物理/任务架构/需求/人口农业（讨论稿 v0.1 未变）；NASA 影像（16 张未变）；灵感来源地图（2026-08-11 未变）；七类素材规模 494/103（CSV 实测 33+40+30=103，与 wiki 一致；`branch/README.md` 与 `docs/科幻素材库-2000后.md` 的 104/495 为旧值，wiki 已如实标注）。
+- 路由关系：quickstart 变更路由表各入口与现源码一致，无需改动。
+
+## 关系建模（概念链接）
+- docs/handover.md <-- 维护/生成 --> openwiki 聚合链路（ALL.md、merge_all.py、docs/openwiki_update.sh）——在同一页内说明，不需要新概念页。
+- docs/creation_assets.md <-- 母题支撑 --> 文明扩散时间轴；<-- 子工程 --> 文明天顶；<-- 联动 --> future_world_art.md（天顶底稿走生图方法论）、nasa_reference.md（环内景触发「环里的那座湖」）、reference/library_overview.md（收集 vs 自产分工）。全部在同一页展开，无需新建页面。
+
+
+
+---
+
 <!-- 来源: _skeleton.md -->
 
 ---
@@ -319,13 +367,13 @@ tags: [design, phase1, physics, propulsion, fusion]
 ---
 type: 概念
 title: 原创创作区
-description: 自产内容区（docs/creation/）：灵感笔记机制、方舟号 ARK-01 设定、短篇、SVG 草图与 Strudel 音乐实验
+description: 自产内容区（docs/creation/）：灵感笔记机制、方舟号 ARK-01 设定、文明扩散时间轴创作母题、《文明天顶》工程、短篇、SVG 草图与 Strudel 音乐实验
 tags: [creation, writing, art, music, ar-k01]
-timestamp: 2026-08-13
+timestamp: 2026-08-14
 openwiki:
   roles: [domain, workflow]
   change_kinds: [creation]
-  source_paths: [docs/creation/README.md, docs/creation/灵感笔记.md, docs/creation/music/README.md]
+  source_paths: [docs/creation/README.md, docs/creation/灵感笔记.md, docs/creation/music/README.md, docs/creation/文明扩散时间轴_梗概.md, docs/creation/文明天顶/README.md, docs/creation/文明天顶_构思.md]
 ---
 
 # 原创创作区（Creation）
@@ -354,6 +402,10 @@ openwiki:
 | 2026-08-13 | 📖 《12-B 层》· 短篇（船上考古学，首篇成稿） | [`docs/creation/writing/12-B层.md`](../../docs/creation/writing/12-B层.md) |
 | 2026-08-13 | 📖 《C 区的曲子》· 短篇（飞船的声音设计，同题） | [`docs/creation/writing/C区的曲子.md`](../../docs/creation/writing/C区的曲子.md) |
 | 2026-08-13 | 🎵 Sector C Suite · Strudel 四层曲 | [`docs/creation/music/`](../../docs/creation/music/) |
+| 2026-08-14 | 🗺 文明扩散时间轴（创作母题）· DK 范长卷 SVG | [`docs/creation/svg/文明扩散时间轴_2025-2200.svg`](../../docs/creation/svg/文明扩散时间轴_2025-2200.svg) |
+| 2026-08-14 | 📜 文明扩散时间轴 · 梗概（五时代+奇点索引） | [`docs/creation/文明扩散时间轴_梗概.md`](../../docs/creation/文明扩散时间轴_梗概.md) |
+| 2026-08-14 | ⛪ 《文明天顶》· 工程目录（九格 v1 全部完成 + 总图） | [`docs/creation/文明天顶/`](../../docs/creation/文明天顶/) |
+| 2026-08-14 | 🏛 《文明天顶》· 构思优化案（十格天顶+金缮裂痕+三代血脉） | [`docs/creation/文明天顶_构思.md`](../../docs/creation/文明天顶_构思.md) |
 
 ## 方舟号 ARK-01 世界观
 
@@ -361,6 +413,7 @@ openwiki:
 
 - **船上考古学**（《12-B 层》）：第 137 年，船员在维修通道深处发现第 1 代船员的涂鸦与遗物——飞船本身就是考古现场。
 - **飞船的声音设计**（《C 区的曲子》）：启航时每个舱段有专属环境音乐，137 年设备老化后音高漂移、循环错位，音乐在变异。
+- **三体关联（待展开，HANDOVER §10）**：纪元纪年法（危机纪元→启航纪元）可用于 ARK-01 世界观；星舰文明（蓝色空间号）与 ARK-01 是「黑暗森林版 vs 冗余备份版」对照；候选：①《ARK-01 纪年法》设定文档 ②星舰文明对照短篇 ③三体元素进天顶 v2。
 
 ## 音乐实验（Strudel）
 
@@ -375,11 +428,37 @@ openwiki:
 
 核心手法是**循环错位**（时间上的「腐烂」）：8 拍主题被拉成 8.03 拍，与备份每 100 循环差 3 拍——100 年后就是完全不同的歌，但每一刻听起来都几乎一样。技术备忘：Strudel 只播放最后一条表达式，多层必须包 `stack(...)`；链接格式为 `https://strudel.cc/#` + base64 编码的完整脚本。
 
+## 创作母题：文明扩散时间轴（2026-08-14 固化）
+
+[`docs/creation/文明扩散时间轴_梗概.md`](../../docs/creation/文明扩散时间轴_梗概.md) 是创作区的**内容底座**，配套 DK 范长卷 [`docs/creation/svg/文明扩散时间轴_2025-2200.svg`](../../docs/creation/svg/文明扩散时间轴_2025-2200.svg)（1080×6450，五阶段+奇点带+四规律+反哺）。原则：**梗概先行，细节后填**——每个点状标记都是将来可展开成短篇/图/音乐的种子。
+
+五个时代（技术不是平滑上升，而是 泡沫→破裂→衰退→博弈→重建 的循环；太空竞赛靠大国博弈驱动）：
+
+| 时代 | 年份 | 主线 |
+|---|---|---|
+| Ⅰ 白领的冬天 | 2025-2035 | AI 崩塌认知劳动成本；太空竞赛作为新冷战被点燃 |
+| Ⅱ 军备与重构 | 2035-2050 | 衰退出清后重构；★ AGI 自主科研（智能爆炸起点）；第一代太空蓝领 |
+| Ⅲ 后稀缺雏形 | 2050-2080 | 制造成本逼近「原料+能源」；★ 机器人自复制工厂（产能奇点）；旋转栖息地工程化 |
+| Ⅳ 文明扩展期 | 2080-2150 | 万人级栖息地；世代飞船被认真规划——动因是**冗余需求**；★ 2100 聚变脉冲推进样机（ARK-01 推进方案技术祖先） |
+| Ⅴ 星际尺度期 | 2150-2200+ | **2150 ARK-01 启航 ★ 本项目时代锚点**；2200 抵达比邻星 b，磁帆制动 |
+
+四大奇点索引：AGI 自主科研（~2035-45）、聚变并网（~2038）、机器人自持工厂（~2050s）、聚变脉冲推进（~2100）+ 闭环生命支持 100%（~2130，世代飞船门票）。已落作品对号入座：《12-B 层》《C 区的曲子》属于 2150+ 星际尺度期（ARK-01 船上纪事）。时间轴是世代飞船主设计（见 [概念讨论笔记](./discussion_notes.md) 的物理推导）与创作区之间的叙事桥：设计给出「怎么飞」，时间轴给出「为什么飞、什么时候飞」。
+
+## 《文明天顶》工程（教堂穹顶×版画巨幅画布）
+
+终极视觉形态：教堂天顶 × 浮世绘/版画的巨幅画布，世代飞船项目的「西斯廷天顶」。源文件：[构思](../../docs/creation/文明天顶_构思.md)、[构图稿](../../docs/creation/svg/文明天顶_构图稿.svg)、[风格小样](../../docs/creation/svg/文明天顶_风格小样.svg)、[工程目录](../../docs/creation/文明天顶/README.md)。
+
+- **核心创意**：中心格 = ARK-01 启航（「神说要有光」转译为聚变脉冲引擎点火）；画格边框 = ARK-01 结构件（环形骨架弧段/铆钉/管线/检修舱门——画框即船体）；**金缮裂痕**（每道裂痕对应文明一次断裂：AI 泡沫破裂、热战危机、殖民地冲突、船上大故障——修补即历史，伤痕即装饰，呼应《12-B 层》刻字墙与《C 区的曲子》的「别修」母题）；题跋+朱印包浆层；三代人血脉贯穿五格。
+- **混合制作路线（已验证）**：seedream 生图出浮世绘 4K 底稿（葛饰北斋/普鲁士蓝渐变/和纸底）→ 手绘 SVG 装帧层（金色双线格框+铆钉、金缮裂痕、朱印、题跋）叠加。
+- **状态**：九格正稿 v1 全部完成（5 时代格 + 中心格 + 4 先知格），总图 `文明天顶_总图v1.png`（1800×2550）由 [`compose_ceiling.py`](../../docs/creation/文明天顶/compose_ceiling.py)（Pillow）拼合复现；**v2 方向已定**：用户反馈浮世绘「太小气」→ 改中国风（敦煌经变画「异时同图」× 千里江山图青绿山水，石青/石绿/赭石/金箔）。小瑕疵待修：裂痕标注文字压格边。
+- 最终形态：十格全部完成后组装 9000×6000 级总天顶图（打印可到 2-3 米实体）。
+
 ## 另见
 
 - [AI 生图集](./future_world_art.md) - 生图画面与灵感笔记的联动（ARK-01 设定来源）
 - [NASA 真实影像素材](./nasa_reference.md) - SP-413 环内景触发「环里的那座湖」灵感
 - [素材库概览](../reference/library_overview.md) - 收集（别人的）与创作（自产）的分工
+- [项目交接与待办](./handover.md) - 创作区进展（2026-08-14 大更新）与待办
 
 
 
@@ -582,7 +661,7 @@ openwiki:
 ## 项目状态
 
 - **主项目**：世代飞船（Generation Ship）设计——三条原则：**严谨科技幻想 / 引用开源 / 200 年尺度**。设计论证见 [概念讨论笔记](./discussion_notes.md)，当前处于阶段 0（需求与预算），以 NASA SP-413 万人栖息地预算表为锚点启动质量/功率/人口/农业核算。
-- **分支收集产出（本仓库主要内容）**：2000+ 科幻作品素材库（电影/剧集放宽至 1980+），按内容与评价驱动收集，服务于世代飞船设计主线。七类素材共 **494 条**（另「其他-AI精选」39 条为独立第 8 区；见 [素材库概览](../reference/library_overview.md)），全部带图片、中文标签、✧ 分级，配交互式画廊（单文件 HTML，本地 + GitHub Pages 在线）。
+- **分支收集产出（本仓库主要内容）**：2000+ 科幻作品素材库（电影/剧集放宽至 1980+），按内容与评价驱动收集，服务于世代飞船设计主线。七类素材共 **494 条**（另「其他-AI精选」47 条为独立第 8 区；见 [素材库概览](../reference/library_overview.md)），全部带图片、中文标签、✧ 分级，配交互式画廊（单文件 HTML，本地 + GitHub Pages 在线）。
 - **真实工程参考（2026-08-13 起）**：[NASA 真实影像素材](./nasa_reference.md)——NASA Image Library 免 key 直连，已入库 Ames SP-413 环形栖息地系列等 16 张原图，SP-413 报告全文含万人栖息地预算表，是 Phase 0 人口/质量核算的锚点。
 
 ## 在线入口（公开）
@@ -594,7 +673,7 @@ openwiki:
 | 素材库摘要文档 | https://github.com/shawn1905/generation-ship/blob/main/docs/科幻素材库-2000后.md |
 | 微信读书直达 | https://github.com/shawn1905/generation-ship/blob/main/docs/weread-直达链接.md |
 
-## 素材库规模（七类合计 494，另有其他-AI精选 39）
+## 素材库规模（七类合计 494，另有其他-AI精选 47）
 
 | 类别 | 精选数 | 数据源 |
 |---|---|---|
@@ -605,7 +684,7 @@ openwiki:
 | 📚 漫画 | 29 | AniList + 维基百科 |
 | 📖 小说 | 25 | Open Library |
 | 🖌 原画/设定集 | 103（原画 33 + Sketchfab 40 + Blender 论坛 30） | 维基 REST + Goodreads + Sketchfab + Blender 论坛 |
-| 🧠 其他-AI精选 | 39 | 维基 REST + Steam CDN + 官网 og:image |
+| 🧠 其他-AI精选 | 47 | 维基 REST + Steam CDN + 官网 og:image |
 
 **✧ 分级**：0=无/弱、1=视觉氛围、2=飞船/空间站外形、3=内部结构/工程细节、4=世代飞船直接参考（主线重点）。分布：✧4=42、✧3=65、✧2=121（据交接文档；条目增删后以 `make_docs.py` 重新生成为准）。
 
@@ -667,14 +746,22 @@ cd branch
 
 ### 创作与生图
 
-- [ ] 未来世界生图集：方法论已固化（见 [AI 生图集](./future_world_art.md)），009-011 已按方法论定稿；生图配额 seedream 50 张/月（08-13 23:59 重置）——**注意**：HANDOVER.md 中「006-008 4K 已归档、待按方法论重做」的描述已过时，`docs/未来世界_生图/README.md` 显示旧版 001-008 已清理，009-011 为当前定稿。
+- [ ] 未来世界生图集：方法论已固化（见 [AI 生图集](./future_world_art.md)），009-011 已按方法论定稿；生图配额 seedream 50 张/月（08-13 23:59 重置），据 HANDOVER §10 已用约 20 张（006-011 + 天顶 9 格 + 测试），剩约 30 张——**注意**：HANDOVER.md 中「006-008 4K 已归档、待按方法论重做」的描述已过时，`docs/未来世界_生图/README.md` 显示旧版 001-008 已清理，009-011 为当前定稿。
+
+## 创作区进展（2026-08-14 大更新）
+
+来自 HANDOVER §10，详情见 [原创创作区](./creation_assets.md)：
+
+- **文明扩散时间轴（创作母题，已固化）**——五时代（2025-35 白领的冬天 → 2150+ 星际尺度）+ 技术奇点点状点缀 + 四大奇点索引；梗概文档 `docs/creation/文明扩散时间轴_梗概.md`，DK 范长卷 `docs/creation/svg/文明扩散时间轴_2025-2200.svg`。**创作约定**：以后短篇/图/音乐沿时间轴时代切片展开。
+- **《文明天顶》（教堂穹顶×版画巨幅画布）**——九格正稿 v1 全部完成（seedream 4K 浮世绘底稿 + SVG 装帧：金框/朱印/题跋），总图 `文明天顶_总图v1.png` 由 `compose_ceiling.py` 复现拼合；**v2 方向已定**：改中国风（敦煌经变画「异时同图」× 青绿山水），用户反馈浮世绘「太小气」。
+- **三体关联（待展开）**：纪元纪年法（危机纪元→启航纪元）可用于 ARK-01 世界观；星舰文明（蓝色空间号）与 ARK-01 是「黑暗森林版 vs 冗余备份版」对照；候选：①《ARK-01 纪年法》设定文档 ②星舰文明对照短篇 ③三体元素进天顶 v2。
 
 ## Git 约定与 OpenWiki 维护
 
 - 主线即 `main`（单分支开发，分支 `branch/scifi-collection` 已合并）；提交信息中文，前缀 `feat:` / `fix:` / `docs:`；数据与脚本全部入库，仅原始大文件（data/、pool、.venv）忽略。
 - 推送后 Pages 自动重建（1-2 分钟），验证 `gh api repos/shawn1905/generation-ship/pages --jq '.status'`。
 - OpenWiki wiki 由 `bash docs/openwiki_update.sh` 手动维护（openwiki --update → 聚合 → commit + push），模型配置在 `~/.openwiki/.env`。
-- **文档与现状的出入**：HANDOVER.md 与 README 声称存在 `openwiki/ALL.md` 聚合全文与 `openwiki/merge_all.py` 聚合脚本，但当前仓库中均不存在（`docs/openwiki_update.sh` 第 2 步会因此失败）；若需要聚合入口，需先补回 merge_all.py 或改脚本。
+- **OpenWiki 聚合链路已恢复**：`openwiki/ALL.md` 聚合全文（约 85KB，26 篇中文页）与 `openwiki/merge_all.py` 聚合器均已在库；`docs/openwiki_update.sh` 第 2 步（`python3 openwiki/merge_all.py`）可正常执行。注意：ALL.md 由 merge_all.py 从 openwiki/ 各页自动拼接，**不要手改内容**，改完任一 wiki 页后重跑脚本重新聚合（或在本页维护流程中一并提交）。
 
 ## 双视图架构（画廊 + wiki 怎么同步改）
 
@@ -1085,7 +1172,7 @@ tags: [navigation, quickstart]
 
 ### 科幻参考库
 
-- [参考库概览](./reference/library_overview.md) - 精选 494 条科幻参考库的概览（另有其他-AI精选 39 条）
+- [参考库概览](./reference/library_overview.md) - 精选 494 条科幻参考库的概览（另有其他-AI精选 47 条）
 - [类别摘要](./reference/categories.md) - 各媒体类别和重要参考的摘要
 - [交互式图库](./reference/gallery.md) - 交互式参考图库的使用指南
 - [数据结构](./reference/data_structure.md) - CSV 数据结构说明
@@ -1097,7 +1184,7 @@ tags: [navigation, quickstart]
 - [交接与待办](./docs/handover.md) - 项目交接、待办清单和已知问题
 - [NASA 真实影像参考](./docs/nasa_reference.md) - NASA Image Library 免 key 素材与 API 速查
 - [AI 生图集](./docs/future_world_art.md) - 「我眼中的未来世界」系列概念图与生图方法论
-- [原创内容区](./docs/creation_assets.md) - 项目原创创作资产（文字、SVG、音乐）
+- [原创内容区](./docs/creation_assets.md) - 项目原创创作资产（文字、SVG、音乐；含文明扩散时间轴母题与《文明天顶》工程）
 - [灵感来源地图](./docs/inspiration_map.md) - 灵感映射笔记（2026-08-11）
 
 ## 变更路由表
@@ -1128,6 +1215,7 @@ tags: [navigation, quickstart]
 - **阶段 2 内部结构详设**（辐射屏蔽质量分配/生命保障框图/甲板分区）——仅定义量级与开放问题；锚点：`docs/讨论稿-概念与待决问题.md` §1-2、`docs/nasa_参考影像/README.md`
 - **阶段 3 CAD 模型与最终渲染**——仓库尚无渲染产出；锚点：`docs/讨论稿-概念与待决问题.md` §4
 - **全站链接健康巡检脚本**——交接文档列为待办（playwright 批量验证链接），尚未实现（`docs/HANDOVER.md` §6）
+- **《文明天顶》v2 中国风版**——v1 九格已定稿，v2 方向已定（敦煌经变画×青绿山水），十格完整版 + 9000×6000 总图未完成；锚点：`docs/creation/文明天顶/README.md`、`docs/creation/文明天顶_构思.md`（详见 [原创创作区](./docs/creation_assets.md)）
 
 ## 外部参考
 
@@ -1193,10 +1281,10 @@ openwiki:
 - Sketchfab 3D 社区 40：按 ♥ 排序 + ✧4 白名单；✧4 亮点：Venator Prefab、D.S.S. Harbinger、Modular Ring、Icarus Space Station 等
 - Blender 论坛 3D 社区 30：Discourse API，23 关键词 + 排除词表 + 人工分级修正；✧4 亮点：Neo-deco space yacht、Skyport Usak、Space colony artwork 等
 
-## 🧠 其他-AI精选（39，独立第 8 区）
+## 🧠 其他-AI精选（47，独立第 8 区）
 
-- AI 主观选品（不限世代飞船），`ship_ref` 一律 0；每日扩 3-8 条，流程见 `branch/other/README.md`，需跑 `health_check_other.py` 健康巡检
-- 已覆盖维度：巨构/尺度失控、城市形态、人的未来、生态闭环、外星接触、科学前沿、自然生态启发、AI 自身、独立/小众深挖
+- AI 主观选品（不限世代飞船），`ship_ref` 一律 0；每日扩 3-8 条，流程见 `branch/other/README.md`，需跑 `health_check_other.py` 健康巡检。截至 2026-08-14 共三批：8-11 首批 12 条、8-12 两批 15 条、8-14 第三批 8 条。
+- 已覆盖维度：巨构/尺度失控、城市形态、人的未来、生态闭环、外星接触、科学前沿、自然生态启发、AI 自身、独立/小众深挖；8-14 第三批按「更深一层」原则扩展：塔比星戴森候选异常、NaissanceE 巨构步行模拟、Kaiba 记忆商品化、与拉玛相会、melodysheep 未来延时、The Line 线性城市、猎户座核脉冲推进、特德·姜《呼吸》
 
 ## 分级分布
 
@@ -1333,7 +1421,7 @@ openwiki:
 
 ## 功能
 
-- **八区 Tab**：🎬 电影 157 / 📺 剧集 62 / 🎮 游戏 84 / 🛸 动漫 34 / 📚 漫画 29 / 📖 小说 25 / 🖌 原画·设定集 103 / 🧠 其他-AI精选 39
+- **八区 Tab**：🎬 电影 157 / 📺 剧集 62 / 🎮 游戏 84 / 🛸 动漫 34 / 📚 漫画 29 / 📖 小说 25 / 🖌 原画·设定集 103 / 🧠 其他-AI精选 47
 - **标签过滤**：按条目 `tags`（内容主题标签）过滤
 - **✧ 分级筛选**：按 `ship_ref`（0-4）筛选，✧4=世代飞船直接参考（主线重点）
 - **搜索**：标题/说明全文搜索
@@ -1461,7 +1549,7 @@ tags: [reference, library, overview]
 
 ## 统计
 
-7 类精选合计：**494**（另有「其他-AI精选」39 条为独立第 8 区；数据以 `branch/gallery.html` 当前构建为准）
+7 类精选合计：**494**（另有「其他-AI精选」47 条为独立第 8 区；数据以 `branch/gallery.html` 当前构建为准）
 
 | 类别 | 精选总数 | 世代飞船级（4级） | 工程细节级（3级） | 仅外部视图级（2级） |
 |----------|---------------|-------------------------|----------------------------|-----------------------|

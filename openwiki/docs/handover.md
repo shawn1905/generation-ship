@@ -17,7 +17,7 @@ openwiki:
 ## 项目状态
 
 - **主项目**：世代飞船（Generation Ship）设计——三条原则：**严谨科技幻想 / 引用开源 / 200 年尺度**。设计论证见 [概念讨论笔记](./discussion_notes.md)，当前处于阶段 0（需求与预算），以 NASA SP-413 万人栖息地预算表为锚点启动质量/功率/人口/农业核算。
-- **分支收集产出（本仓库主要内容）**：2000+ 科幻作品素材库（电影/剧集放宽至 1980+），按内容与评价驱动收集，服务于世代飞船设计主线。七类素材共 **494 条**（另「其他-AI精选」39 条为独立第 8 区；见 [素材库概览](../reference/library_overview.md)），全部带图片、中文标签、✧ 分级，配交互式画廊（单文件 HTML，本地 + GitHub Pages 在线）。
+- **分支收集产出（本仓库主要内容）**：2000+ 科幻作品素材库（电影/剧集放宽至 1980+），按内容与评价驱动收集，服务于世代飞船设计主线。七类素材共 **494 条**（另「其他-AI精选」47 条为独立第 8 区；见 [素材库概览](../reference/library_overview.md)），全部带图片、中文标签、✧ 分级，配交互式画廊（单文件 HTML，本地 + GitHub Pages 在线）。
 - **真实工程参考（2026-08-13 起）**：[NASA 真实影像素材](./nasa_reference.md)——NASA Image Library 免 key 直连，已入库 Ames SP-413 环形栖息地系列等 16 张原图，SP-413 报告全文含万人栖息地预算表，是 Phase 0 人口/质量核算的锚点。
 
 ## 在线入口（公开）
@@ -29,7 +29,7 @@ openwiki:
 | 素材库摘要文档 | https://github.com/shawn1905/generation-ship/blob/main/docs/科幻素材库-2000后.md |
 | 微信读书直达 | https://github.com/shawn1905/generation-ship/blob/main/docs/weread-直达链接.md |
 
-## 素材库规模（七类合计 494，另有其他-AI精选 39）
+## 素材库规模（七类合计 494，另有其他-AI精选 47）
 
 | 类别 | 精选数 | 数据源 |
 |---|---|---|
@@ -40,7 +40,7 @@ openwiki:
 | 📚 漫画 | 29 | AniList + 维基百科 |
 | 📖 小说 | 25 | Open Library |
 | 🖌 原画/设定集 | 103（原画 33 + Sketchfab 40 + Blender 论坛 30） | 维基 REST + Goodreads + Sketchfab + Blender 论坛 |
-| 🧠 其他-AI精选 | 39 | 维基 REST + Steam CDN + 官网 og:image |
+| 🧠 其他-AI精选 | 47 | 维基 REST + Steam CDN + 官网 og:image |
 
 **✧ 分级**：0=无/弱、1=视觉氛围、2=飞船/空间站外形、3=内部结构/工程细节、4=世代飞船直接参考（主线重点）。分布：✧4=42、✧3=65、✧2=121（据交接文档；条目增删后以 `make_docs.py` 重新生成为准）。
 
@@ -102,14 +102,22 @@ cd branch
 
 ### 创作与生图
 
-- [ ] 未来世界生图集：方法论已固化（见 [AI 生图集](./future_world_art.md)），009-011 已按方法论定稿；生图配额 seedream 50 张/月（08-13 23:59 重置）——**注意**：HANDOVER.md 中「006-008 4K 已归档、待按方法论重做」的描述已过时，`docs/未来世界_生图/README.md` 显示旧版 001-008 已清理，009-011 为当前定稿。
+- [ ] 未来世界生图集：方法论已固化（见 [AI 生图集](./future_world_art.md)），009-011 已按方法论定稿；生图配额 seedream 50 张/月（08-13 23:59 重置），据 HANDOVER §10 已用约 20 张（006-011 + 天顶 9 格 + 测试），剩约 30 张——**注意**：HANDOVER.md 中「006-008 4K 已归档、待按方法论重做」的描述已过时，`docs/未来世界_生图/README.md` 显示旧版 001-008 已清理，009-011 为当前定稿。
+
+## 创作区进展（2026-08-14 大更新）
+
+来自 HANDOVER §10，详情见 [原创创作区](./creation_assets.md)：
+
+- **文明扩散时间轴（创作母题，已固化）**——五时代（2025-35 白领的冬天 → 2150+ 星际尺度）+ 技术奇点点状点缀 + 四大奇点索引；梗概文档 `docs/creation/文明扩散时间轴_梗概.md`，DK 范长卷 `docs/creation/svg/文明扩散时间轴_2025-2200.svg`。**创作约定**：以后短篇/图/音乐沿时间轴时代切片展开。
+- **《文明天顶》（教堂穹顶×版画巨幅画布）**——九格正稿 v1 全部完成（seedream 4K 浮世绘底稿 + SVG 装帧：金框/朱印/题跋），总图 `文明天顶_总图v1.png` 由 `compose_ceiling.py` 复现拼合；**v2 方向已定**：改中国风（敦煌经变画「异时同图」× 青绿山水），用户反馈浮世绘「太小气」。
+- **三体关联（待展开）**：纪元纪年法（危机纪元→启航纪元）可用于 ARK-01 世界观；星舰文明（蓝色空间号）与 ARK-01 是「黑暗森林版 vs 冗余备份版」对照；候选：①《ARK-01 纪年法》设定文档 ②星舰文明对照短篇 ③三体元素进天顶 v2。
 
 ## Git 约定与 OpenWiki 维护
 
 - 主线即 `main`（单分支开发，分支 `branch/scifi-collection` 已合并）；提交信息中文，前缀 `feat:` / `fix:` / `docs:`；数据与脚本全部入库，仅原始大文件（data/、pool、.venv）忽略。
 - 推送后 Pages 自动重建（1-2 分钟），验证 `gh api repos/shawn1905/generation-ship/pages --jq '.status'`。
 - OpenWiki wiki 由 `bash docs/openwiki_update.sh` 手动维护（openwiki --update → 聚合 → commit + push），模型配置在 `~/.openwiki/.env`。
-- **文档与现状的出入**：HANDOVER.md 与 README 声称存在 `openwiki/ALL.md` 聚合全文与 `openwiki/merge_all.py` 聚合脚本，但当前仓库中均不存在（`docs/openwiki_update.sh` 第 2 步会因此失败）；若需要聚合入口，需先补回 merge_all.py 或改脚本。
+- **OpenWiki 聚合链路已恢复**：`openwiki/ALL.md` 聚合全文（约 85KB，26 篇中文页）与 `openwiki/merge_all.py` 聚合器均已在库；`docs/openwiki_update.sh` 第 2 步（`python3 openwiki/merge_all.py`）可正常执行。注意：ALL.md 由 merge_all.py 从 openwiki/ 各页自动拼接，**不要手改内容**，改完任一 wiki 页后重跑脚本重新聚合（或在本页维护流程中一并提交）。
 
 ## 双视图架构（画廊 + wiki 怎么同步改）
 
