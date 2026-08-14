@@ -1,5 +1,11 @@
 # 世代飞船设计 Generation Ship Design
 
+> **🤖 Agent 快速上手（其他机器上的 agent 也适用）**：
+> 1. 读 [`openwiki/ALL.md`](openwiki/ALL.md)（30+ 篇聚合全文，一次读完即可掌握项目全貌）
+> 2. 或按入口导航 [`openwiki/index.md`](openwiki/index.md) 逐页阅读
+> 3. 素材库清单见 [`branch/README.md`](branch/README.md)；创作区见 [`docs/creation/`](docs/creation/)
+> 4. 项目交接/待办/踩坑：**[`docs/HANDOVER.md`](docs/HANDOVER.md)**（人类与 agent 的共同记忆）
+
 一艘按「航行 200 年、抵达新行星」规模设计的世代飞船——目标是最终输出**内外部完整结构**，可直接在 3D 软件（Blender / FreeCAD）中建模渲染。
 
 ## 三条原则
