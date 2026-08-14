@@ -20,9 +20,10 @@ tags: [project, planning, phases]
 **文档**：
 - [需求](../design/phase0/requirements.md)
 - [人口与农业](../design/phase0/population_agriculture.md)
+- [ARK-01 任务文件](../design/phase0/ark01_phase0.md)（Phase 0 总纲：SP-413 锚点 + 四大预算表骨架）
 - [NASA 真实影像参考](../docs/nasa_reference.md)（SP-413 万人栖息地预算表是质量/面积核算锚点）
 
-> 详细质量预算表与电力预算表**尚未落成文件**（阶段 0 进行中），见 [交接与待办](../docs/handover.md) 待办清单与快速入门[待办事项](../quickstart.md#待办事项)。
+> [ARK-01 任务文件](../design/phase0/ark01_phase0.md) v0 已启动（2026-08-15）：SP-413 锚点数据已固化，四大预算表骨架待逐项核算；尚未落成的是逐项核算结果与预算 CSV（阶段 0 进行中），见 [交接与待办](../docs/handover.md) 待办清单与快速入门[待办事项](../quickstart.md#待办事项)。
 
 ## 阶段 1：概念架构与参数化建模
 **重点**：制定整体飞船概念架构，并创建外部船体的参数化三维模型。
@@ -51,7 +52,7 @@ tags: [project, planning, phases]
 - [任务架构](../design/phase1/mission_architecture.md)（双环布局与屏蔽构型）
 - [NASA 真实影像参考](../docs/nasa_reference.md)（SP-413 环形栖息地、ISS 舱内、NextSTEP 深空舱）
 
-> 阶段 2 的详细设计（屏蔽质量分配、生命保障系统框图、甲板分区图）**尚未落成**，见 [交接与待办](../docs/handover.md) 待办清单。
+> 阶段 2 的详细设计（屏蔽质量分配、生命保障系统框图、甲板分区图）**尚未落成**；辐射屏蔽论证的锚点数据见 [ARK-01 任务文件](../design/phase0/ark01_phase0.md) §2.3（0.5 rem/yr 目标、4.5 t/m² 被动屏蔽基准），后续见 [交接与待办](../docs/handover.md) 待办清单。
 
 ## 阶段 3：渲染
 **重点**：生成完整飞船设计的最终渲染输出。

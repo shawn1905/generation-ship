@@ -3,7 +3,7 @@ type: 文档
 title: 项目交接与待办事项
 description: 项目交接信息、已知问题、踩坑记录与当前待办事项清单（同步自 docs/HANDOVER.md）
 tags: [documentation, handover, todo, issues]
-timestamp: 2026-08-14
+timestamp: 2026-08-15
 openwiki:
   roles: [operations, workflow]
   change_kinds: [maintenance]
@@ -16,7 +16,7 @@ openwiki:
 
 ## 项目状态
 
-- **主项目**：世代飞船（Generation Ship）设计——三条原则：**严谨科技幻想 / 引用开源 / 200 年尺度**。设计论证见 [概念讨论笔记](./discussion_notes.md)，当前处于阶段 0（需求与预算），以 NASA SP-413 万人栖息地预算表为锚点启动质量/功率/人口/农业核算。
+- **主项目**：世代飞船（Generation Ship）设计——三条原则：**严谨科技幻想 / 引用开源 / 200 年尺度**。设计论证见 [概念讨论笔记](./discussion_notes.md)，当前处于阶段 0（需求与预算）：[ARK-01 任务文件](../design/phase0/ark01_phase0.md) v0 已于 2026-08-15 启动，SP-413 万人栖息地预算表锚点数据已固化，质量/功率/人口/农业四大预算表骨架待逐项核算。
 - **分支收集产出（本仓库主要内容）**：2000+ 科幻作品素材库（电影/剧集放宽至 1980+），按内容与评价驱动收集，服务于世代飞船设计主线。七类素材共 **494 条**（另「其他-AI精选」53 条为独立第 8 区；见 [素材库概览](../reference/library_overview.md)），全部带图片、中文标签、✧ 分级，配交互式画廊（单文件 HTML，本地 + GitHub Pages 在线）。
 - **真实工程参考（2026-08-13 起）**：[NASA 真实影像素材](./nasa_reference.md)——NASA Image Library 免 key 直连，已入库 Ames SP-413 环形栖息地系列等 16 张原图，SP-413 报告全文含万人栖息地预算表，是 Phase 0 人口/质量核算的锚点。
 
@@ -29,7 +29,7 @@ openwiki:
 | 素材库摘要文档 | https://github.com/shawn1905/generation-ship/blob/main/docs/科幻素材库-2000后.md |
 | 微信读书直达 | https://github.com/shawn1905/generation-ship/blob/main/docs/weread-直达链接.md |
 
-## 素材库规模（七类合计 494，另有其他-AI精选 47）
+## 素材库规模（七类合计 494，另有其他-AI精选 53）
 
 | 类别 | 精选数 | 数据源 |
 |---|---|---|
@@ -40,7 +40,7 @@ openwiki:
 | 📚 漫画 | 29 | AniList + 维基百科 |
 | 📖 小说 | 25 | Open Library |
 | 🖌 原画/设定集 | 103（原画 33 + Sketchfab 40 + Blender 论坛 30） | 维基 REST + Goodreads + Sketchfab + Blender 论坛 |
-| 🧠 其他-AI精选 | 47 | 维基 REST + Steam CDN + 官网 og:image |
+| 🧠 其他-AI精选 | 53 | 维基 REST + Steam CDN + 官网 og:image |
 
 **✧ 分级**：0=无/弱、1=视觉氛围、2=飞船/空间站外形、3=内部结构/工程细节、4=世代飞船直接参考（主线重点）。分布：✧4=42、✧3=65、✧2=121（据交接文档；条目增删后以 `make_docs.py` 重新生成为准）。
 
@@ -86,7 +86,7 @@ cd branch
 
 ### 主项目：世代飞船
 
-- [ ] **阶段 0（进行中）**：以 SP-413 万人栖息地预算表为锚，正式启动 ARK-01 任务文件——质量/功率/人口/农业核算（详见 [需求](../design/phase0/requirements.md) 与 [人口与农业](../design/phase0/population_agriculture.md)）
+- [ ] **阶段 0（进行中）**：[ARK-01 任务文件](../design/phase0/ark01_phase0.md) v0 已启动（2026-08-15）——SP-413 锚点已固化（Table 4-1 / 67 m²/人 / 屏蔽论证 / Colin Clark 下限）+ 四大预算表骨架；下一步 = 任务文件 §5 五项待办（屏蔽三方案对比 / 农业光照功率 / 结构缩放 / 人口-工业联动 / 预算 CSV）
 - [ ] 阶段 1：Blender Python 参数化建模脚本、两段式架构定尺寸、轨道与推进验证
 - [ ] 阶段 2（未来）：辐射屏蔽质量分配优化、闭环生命保障系统框图、双居住环甲板分区、剖视图
 - [ ] 阶段 3（未来）：材质与光照、Cycles 最终渲染图
@@ -119,6 +119,7 @@ cd branch
 - 主线即 `main`（单分支开发，分支 `branch/scifi-collection` 已合并）；提交信息中文，前缀 `feat:` / `fix:` / `docs:`；数据与脚本全部入库，仅原始大文件（data/、pool、.venv）忽略。
 - 推送后 Pages 自动重建（1-2 分钟），验证 `gh api repos/shawn1905/generation-ship/pages --jq '.status'`。
 - OpenWiki wiki 由 `bash docs/openwiki_update.sh` 手动维护（openwiki --update → 聚合 → commit + push），模型配置在 `~/.openwiki/.env`。
+- **另有定时自动更新**：GitHub Actions `.github/workflows/openwiki-update.yml`（cron 每日 08:00 UTC，可手动 dispatch）运行 `openwiki code --update` 并自动开 PR（分支 `openwiki/update`，提交信息 `docs: update OpenWiki`）；PR 合并后 Pages/wiki 同步生效。手动维护与定时 PR 两条链路并存，避免同时跑造成冲突。
 - **OpenWiki 聚合链路已恢复**：`openwiki/ALL.md` 聚合全文（约 85KB，26 篇中文页）与 `openwiki/merge_all.py` 聚合器均已在库；`docs/openwiki_update.sh` 第 2 步（`python3 openwiki/merge_all.py`）可正常执行。注意：ALL.md 由 merge_all.py 从 openwiki/ 各页自动拼接，**不要手改内容**，改完任一 wiki 页后重跑脚本重新聚合（或在本页维护流程中一并提交）。
 
 ## 双视图架构（画廊 + wiki 怎么同步改）

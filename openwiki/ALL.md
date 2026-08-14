@@ -8,54 +8,6 @@
 
 ---
 
-<!-- 来源: _plan.md -->
-
----
-type: 计划
-title: OpenWiki 维护更新计划（2026-08-14 后）
-description: 基于仓库变更证据的文档影响计划：ALL.md/merge_all.py 已恢复、其他-AI精选 39→47、创作区新增文明天顶与文明扩散时间轴
-tags: [plan, maintenance, openwiki]
-timestamp: 2026-08-14
----
-
-# 文档影响计划（维护更新）
-
-上次成功更新：`gitHead b35fc5366ee66d732194d77c39feb0e71539849e`（2026-08-14T05:37Z，zh-CN）。Shell 受限，无法执行 git；以下变更通过「当前源码/CSV/文档 vs 现有 wiki 页面」逐项比对得出。
-
-## 受影响系统清单与处置
-
-### 1. OpenWiki 维护链路（ALL.md / merge_all.py / openwiki_update.sh）
-- 证据：仓库现存 `/openwiki/ALL.md`（85KB 聚合全文）与 `/openwiki/merge_all.py`；`docs/HANDOVER.md` §8 与 §10、`README.md` 顶部均声称 ALL.md 存在；`docs/openwiki_update.sh` 第 2 步运行 `python3 openwiki/merge_all.py`。
-- 现状：wiki `docs/handover.md` 的「文档与现状的出入」仍声称「ALL.md 与 merge_all.py 均不存在，update.sh 第 2 步会失败」——已过时。
-- 处置：更新 `/openwiki/docs/handover.md`（更正该条 + 补充 OpenWiki 中文版 26 篇/ALL.md 聚合说明）；同步修正 `/openwiki/ALL.md` 中镜像的同一段落及其 front matter（移除 `openwiki_generated` 回退标记）。
-
-### 2. 素材库「其他-AI精选」规模 39 → 47
-- 证据：`branch/other/ai_curated.csv` 数据行 47 条（8-11：12 条、8-12 两批 15 条、8-14 第三批 8 条，见 `branch/other/README.md`「已收录（47 条，2026-08-14）」）。
-- 影响页：`quickstart.md`（导航条目）、`docs/handover.md`（素材库规模表 + 项目状态行）、`reference/categories.md`（🧠 章节标题 + 已覆盖维度）、`reference/library_overview.md`（统计段）、`reference/gallery.md`（八区 Tab 行），以及 `ALL.md` 中对应镜像段落。
-- 处置：全部更新为 47；categories.md 补充 8-14 第三批新维度（塔比星/NaissanceE/Kaiba/与拉玛相会/melodysheep/The Line/猎户座核脉冲/特德·姜）。
-
-### 3. 创作区新增：文明扩散时间轴（母题）+ 文明天顶（工程）
-- 证据：`docs/creation/README.md` 新增「创作母题:文明扩散时间轴」段；`docs/creation/文明扩散时间轴_梗概.md`（五时代 + 四大奇点）；`docs/creation/svg/文明扩散时间轴_2025-2200.svg`；`docs/creation/文明天顶/`（README + compose_ceiling.py + 9 格装帧 v1 SVG）；`docs/creation/文明天顶_构思.md`；`docs/creation/svg/文明天顶_构图稿.svg`、`文明天顶_风格小样.svg`；`docs/HANDOVER.md` §10「创作区进展（2026-08-14 大更新）」。
-- 现状：wiki `docs/creation_assets.md`（timestamp 2026-08-13）作品索引止于 08-13，完全未覆盖上述内容。
-- 处置：扩展 `creation_assets.md`——新增「文明扩散时间轴（创作母题）」与「文明天顶（教堂穹顶×版画）」两节、更新作品索引表、补充 ARK-01 任务文件与三体关联线索；同步更新 ALL.md 镜像段。
-
-### 4. 生图配额细节（HANDOVER §10）
-- 证据：`docs/HANDOVER.md` §10「本月已用约 20 张（006-011+天顶 9 格+测试），还剩约 30 张，08-13 23:59 重置」。
-- 现状：wiki `docs/handover.md` 生图待办仅记「配额 50 张/月」。
-- 处置：在 handover.md 创作/生图待办中补充 HANDOVER §10 的配额用量口径（与 future_world_art.md 的「方法论版 3 张后余约 42 张」口径并存，注明来源差异）。
-
-### 5. 未受影响（证据核实后保持不动）
-- 设计/物理/任务架构/需求/人口农业（讨论稿 v0.1 未变）；NASA 影像（16 张未变）；灵感来源地图（2026-08-11 未变）；七类素材规模 494/103（CSV 实测 33+40+30=103，与 wiki 一致；`branch/README.md` 与 `docs/科幻素材库-2000后.md` 的 104/495 为旧值，wiki 已如实标注）。
-- 路由关系：quickstart 变更路由表各入口与现源码一致，无需改动。
-
-## 关系建模（概念链接）
-- docs/handover.md <-- 维护/生成 --> openwiki 聚合链路（ALL.md、merge_all.py、docs/openwiki_update.sh）——在同一页内说明，不需要新概念页。
-- docs/creation_assets.md <-- 母题支撑 --> 文明扩散时间轴；<-- 子工程 --> 文明天顶；<-- 联动 --> future_world_art.md（天顶底稿走生图方法论）、nasa_reference.md（环内景触发「环里的那座湖」）、reference/library_overview.md（收集 vs 自产分工）。全部在同一页展开，无需新建页面。
-
-
-
----
-
 <!-- 来源: _skeleton.md -->
 
 ---
@@ -80,10 +32,134 @@ tags: [meta]
 
 ---
 
+<!-- 来源: design/phase0/ark01_phase0.md -->
+
+---
+type: 文档
+title: ARK-01 任务文件（Phase 0）
+description: ARK-01 Phase 0 任务文件 v0（2026-08-15 启动）：SP-413 万人栖息地锚点数据（Table 4-1、67 m²/人、辐射屏蔽论证、Colin Clark 社会学下限）、场景差异分析、四大预算表骨架与五项待办
+tags: [design, phase0, ark01, budget, sp413, engineering]
+timestamp: 2026-08-15
+openwiki:
+  roles: [domain, architecture, workflow]
+  change_kinds: [design, lifecycle]
+  source_paths: [docs/ARK-01_Phase0_任务文件.md]
+---
+# ARK-01 任务文件（Phase 0）
+
+<!-- openwiki: broken internal link [../../docs/ARK-01_Phase0_任务文件.md] file "../../docs/ARK-01_Phase0_任务文件.md" does not exist. Fix the href or restore the target, then delete this comment. -->
+<!-- openwiki: broken internal link [../../docs/讨论稿-概念与待决问题.md] file "../../docs/讨论稿-概念与待决问题.md" does not exist. Fix the href or restore the target, then delete this comment. -->
+源文档：[`docs/ARK-01_Phase0_任务文件.md`](../../docs/ARK-01_Phase0_任务文件.md)（**v0，2026-08-15 启动**）。状态：框架 + SP-413 锚点数据已固化；四大预算表待逐项核算。母文档为[概念讨论稿](../../docs/讨论稿-概念与待决问题.md)（讨论稿 v0.1），锚点文献 NASA SP-413《Space Settlements: A Design Study》（1975 Ames+Stanford 夏季研究；NTRS **19770014162**，全文 https://ntrs.nasa.gov/citations/19770014162——旧记 `19770076862` 已 404，见 [NASA 真实影像素材](../../docs/nasa_reference.md)）。
+
+任务文件的定位：把[概念讨论笔记](../../docs/discussion_notes.md)的量级判断（见 [核心任务需求](./requirements.md)）落成**带来源、可逐项核算**的 Phase 0 交付物，是质量/功率/人口/农业四条核算线的总纲。
+
+## Phase 0 核算流程
+
+```mermaid
+flowchart TD
+    A["母文档: 讨论稿 v0.1 硬约束"] --> B["SP-413 锚点数据 §2"]
+    B --> C["场景差异分析 §3: 可移植性判定"]
+    C --> D["四大预算表骨架 §4: 质量/功率/人口/农业"]
+    D --> E["§5 五项待办"]
+    E --> F["预算 CSV: design/budget_*.csv + 交叉校验"]
+    F --> G["阶段 0 退出交付物: 见项目阶段"]
+```
+
+## 任务定义（§1）
+
+设计一艘 **200 年航行至比邻星 b（4.24 ly）** 的世代飞船，Phase 0 交付：质量预算表、功率预算表、人口与农业面积核算（CSV + 本文档，每个数字带来源）。硬约束推导（算术必然）：
+
+- 巡航 ~0.03c（9000 km/s）→ 聚变脉冲推进（Daedalus/Longshot 谱系）是唯一解
+- 加速 ~15 年 + 巡航 ~170 年 + 减速 ~15 年
+- 初始人口 ~1000–2000 → 抵达 1–2 万
+- 栖息地：半径 250–500 m 环形/圆柱，双环反向旋转，≤2 rpm
+
+## SP-413 锚点数据（§2，带来源页码）
+
+### 栖息地方案对比（Table 4-1，报告 p.44）
+
+单环面（入选方案）：主半径 Rmaj 830 m / Rmin 65 m、结构质量（1/2 atm）**150 kt**、被动屏蔽 **9.9 Mt**、大气 44 kt、投影面积 6.8×10⁵ m²、人口容量 **10,000**（67 m²/人）、最长视线 640 m。对照方案（圆柱+球端盖 / 哑铃 / 球体）结构或大气质量高 1–2 个数量级。选择理由：单环面在结构/大气质量上远优于圆柱与哑铃，在宜居性/可分段建造/零重力船坞对接/农业与生活区一体上优于球体。
+
+### 面积分配（报告第 5 章，67 m²/人分解）
+
+| 用途 | 投影面积 |
+|---|---|
+| 居住 + 社区生活 | 43 m²/人 |
+| 机械/生命支持子系统 | 4 m²/人 |
+| 农业 + 食品加工 | 20 m²/人（种植 44 m²/百人单元，详见附录 B） |
+| **合计** | **67 m²/人** |
+
+高密度变体：农业移出屏蔽区 + 47→35 m²/人（Table 4-2），结构/屏蔽质量大幅下降——**拥挤度换质量，世代飞船可参考此杠杆**。此锚点与 [人口与农业](./population_agriculture.md) 的 BIOS-3 线（11–17 m²/人）是两条并存口径：SP-413 给出面积预算上限，BIOS-3 给出实验实测下限。
+
+### 辐射屏蔽论证（报告第 4 章——对世代飞船最重要的一节）
+
+- 目标剂量：**0.5 rem/yr**；地球大气等效 = 10 t/m²；**4.5 t/m² 被动屏蔽即可达标**（考虑斜入射）
+- **主动磁屏蔽被否决**：截止能量 0.5 GeV/nucleon 时屏蔽体自身产生二次粒子，剂量反升至 ~20 rem/yr；要压到 0.5 rem/yr 需 10–15 GeV/nucleon 截止，超导线圈间磁斥力使结构质量不可行（Fig. 4-6）
+- 静电屏蔽需 100 亿伏，不可行；带电等离子体屏蔽「有前景但需大量研发」（附录 D）
+
+### 社会学下限（报告第 5 章，Colin Clark 研究引用）
+
+城市需 **10–20 万人**提供「足够范围的商业服务」；**20–50 万人**才能支撑广泛制造业；**<10 万人的定居点必须依赖地球持续补给**——世代飞船零补给，此论证直接威胁 1–2 万抵达人口的可制造性，**Phase 0 必须回答**（人口-工业联动核算的源头）。
+
+## 场景差异分析（§3：SP-413 数字的可移植性）
+
+SP-413 是**轨道定居点**（L5，阳光充足、地球可补给、建材来自月球）；ARK-01 是**深空世代飞船**。逐项判定（要点）：
+
+| SP-413 数字 | 可移植？ | 差异与对策 |
+|---|---|---|
+| 67 m²/人 面积分配 | ✅ 直接可用 | 比例与光照无关；多层布局经验可用 |
+| 1 rpm / 830 m 环面 | ⚠️ 缩放 | ARK-01 半径 250–500 m、≤2 rpm（同几何族），按 ω=√(g/r) 重算结构应力 |
+| 结构质量 150 kt @10k 人 | ⚠️ 缩放 | 线性外推有风险，Phase 0 需按 300–500 m 重算 |
+| **9.9 Mt 被动屏蔽** | ❌ **不可移植** | 定居点用月壤免费；飞船每克都要加速到 0.03c——**主动屏蔽在飞船上重新成为必答题**（SP-413 否决它的理由是结构质量；飞船的 Δv 惩罚更狠，但被动方案直接出局）。这是 Phase 0 头号权衡 |
+| 太阳能供电 | ❌ 不可移植 | 深空无阳光 → 推进堆衰变热/裂变电站，功率预算必须重推 |
+| 大气质量 44 kt | ✅ 可用 | 半气压（1/2 atm）策略对飞船同样成立 |
+| 农业 20 m²/人 | ⚠️ 需验证 | SP-413 靠自然阳光；飞船全人工光照 → 能耗入功率预算，面积可能需垂直农业压缩 |
+| Colin Clark 社会学下限 | ✅ 必须直面 | 零补给放大该问题 → 工业冗余策略（3D 打印/机加工）与人口规模联动核算 |
+
+## 四大预算表骨架（§4，待逐项核算）
+
+- **质量预算**：栖息地结构 10¹–10² kt（300–500 m 缩放）、屏蔽（主动 or 混合，🔲 立项）、水/推进剂贮箱兼屏蔽层、推进（Daedalus 参照 50 kt 级）、大气 ~10 kt 级
+- **功率预算**：生命支持+居住 10–100 MW(e)、农业人工光照（待定，**可能主导**）、工业/制造、推进 GW–TW 仅燃烧段
+- **人口核算**：最小可存活奠基种群 ~100–160 ✅ 已锚；出发 1,000–2,000 ✅ 已锚；抵达 10,000–20,000 ⚠️ 张力点（殖民需求 ≥500 vs Colin Clark 下限）；200 年人口曲线 ~6–7 代 🔲 建模（生育政策=飞船设计参数）
+- **农业面积**：农业+食品加工 20 m²/人 ✅ 已锚；闭环率基准 BIOS-3 85% ✅ 已锚；人工光照能耗 🔲 立项
+
+## Phase 0 待办（§5，下次会话入口）
+
+1. **头号权衡：屏蔽方案立项**——被动 4.5 t/m² @0.03c 的 Δv 惩罚 vs 主动磁屏蔽（10–15 GeV/nucleon 截止）结构质量 vs 混合（被动水层 + 主动 + 风暴掩体）。输出：三方案质量对比表
+2. 农业人工光照功率密度调研（LED 植物工厂文献）→ 功率预算最大单项
+3. 栖息地结构按 300/400/500 m 三档重算结构质量（缩放 SP-413，标注外推风险）
+4. 人口-工业联动：1–2 万人 × Colin Clark 下限 → 哪些工业品必须能自造（芯片除外，母文档已定容错策略）
+5. 把预算表落成 CSV（`design/budget_*.csv`），脚本交叉校验（OpenMDAO 思路）
+
+## 引用清单（§6）
+
+NASA SP-413（1977，NTRS 19770014162，Table 4-1/4-2、第 4 章屏蔽节、第 5 章面积分配）；Project Daedalus（BIS 1978）与 Project Longshot（USNA 1988，GitHub: Arrow-air/project-longshot）；BIOS-3 闭环实验；ESA MELiSSA；Finney & Jones《Interstellar Migration and the Human Experience》(1985)；Atomic Rockets（projectrho.com）torchship/屏蔽/热管理论证库。
+
+## 变更导航
+
+- **何时看本页**：改阶段 0 交付物（质量/功率/人口/农业）、辐射屏蔽立项、预算 CSV 结构时。
+- **主入口**：`docs/ARK-01_Phase0_任务文件.md`（§1-§6 全结构）。
+- **关联入口**：母文档 `docs/讨论稿-概念与待决问题.md`；SP-413 全文 `https://ntrs.nasa.gov/citations/19770014162`；NASA 影像 `docs/nasa_参考影像/README.md`。
+- **验证**：本页为设计文档，无代码测试；核算数字的交叉校验是 Phase 0 §5 待办的产物（预算 CSV + 脚本），尚未落成。
+
+## 另见
+
+- [核心任务需求](./requirements.md) - 任务参数与硬约束的同源总结
+- [人口与农业](./population_agriculture.md) - 67 m²/人（SP-413）与 BIOS-3 两条口径
+- [NASA 真实影像素材](../../docs/nasa_reference.md) - SP-413 影像与报告全文入口
+- [概念讨论笔记](../../docs/discussion_notes.md) - 母文档讨论稿 v0.1 摘要
+- [项目阶段](../../project/phases.md) - 阶段 0 交付物与退出标准
+- [项目交接与待办](../../docs/handover.md) - 阶段 0 状态与待办跟踪
+
+
+
+---
+
 <!-- 来源: design/phase0/index.md -->
 
 # 文件
 
+- [ARK-01 任务文件（Phase 0）](ark01_phase0.md) - ARK-01 Phase 0 任务文件 v0（2026-08-15 启动）：SP-413 万人栖息地锚点数据（Table 4-1、67 m²/人、辐射屏蔽论证、Colin Clark 社会学下限）、场景差异分析、四大预算表骨架与五项待办
 - [人口与农业计算](population_agriculture.md) - 用于闭环生命保障的人口规模估算与农业面积需求
 - [核心任务需求](requirements.md) - 世代飞船的核心任务要求和物理约束
 
@@ -130,6 +206,10 @@ tags: [design, phase0, population, agriculture, life-support]
 | **总计** | **11–17 m²** | **11,000–17,000 m²** | **22,000–34,000 m²** |
 
 该农业面积必须纳入旋转栖息环内。
+
+## SP-413 面积分配锚点（2026-08-15 提取）
+
+NASA SP-413（1975 Ames+Stanford 夏季研究，NTRS [19770014162](https://ntrs.nasa.gov/citations/19770014162)）给出另一条面积锚线，已固化入 [ARK-01 任务文件](./ark01_phase0.md) §2.2：**67 m²/人** = 居住+社区生活 43 m²/人 + 机械/生命支持 4 m²/人 + 农业+食品加工 20 m²/人（其中种植 44 m²/百人单元）。SP-413 高密度变体（Table 4-2）可压到 35 m²/人——**拥挤度换质量**，世代飞船可参考此杠杆。与上方 BIOS-3 线（11–17 m²/人）的差异源于口径：SP-413 含食品加工与社区面积并按 67 m²/人反推，BIOS-3 为纯种植实验数据；两条线在 Phase 0 预算表中应并列核算。
 
 ## 栖息地规模影响
 
@@ -184,12 +264,13 @@ tags: [design, phase0, requirements]
 
 ## 主要未决问题
 
-- 辐射屏蔽的最佳质量分配（主动磁屏蔽与被动水/推进剂屏蔽）
+- 辐射屏蔽的最佳质量分配（主动磁屏蔽与被动水/推进剂屏蔽）——SP-413 论证基准（0.5 rem/yr、4.5 t/m² 被动达标、主动磁屏蔽在轨道定居点被否决）已提取入 [ARK-01 任务文件](./ark01_phase0.md) §2.3/§3；飞船场景下主动屏蔽重新成为头号权衡
 - 200年内可实现的闭环生命支持闭合率
 - 关键电子设备的冗余策略（无法在太空中制造新芯片）
 
 ## 另见
-- [项目阶段](../../project/phases.md) - 阶段 0 的详细质量/电力预算交付物（尚未落成文件，见[交接与待办](../../docs/handover.md)待办清单）
+- [ARK-01 任务文件](./ark01_phase0.md) - Phase 0 总纲：SP-413 锚点数据（Table 4-1 / 67 m²/人 / 屏蔽论证）+ 四大预算表骨架（阶段 0 交付物核算入口）
+- [项目阶段](../../project/phases.md) - 阶段 0 的交付物与退出标准
 - [人口与农业](./population_agriculture.md)
 - [任务架构](../phase1/mission_architecture.md)
 
@@ -357,7 +438,7 @@ tags: [design, phase1, physics, propulsion, fusion]
 ## 另见
 - [任务架构](./mission_architecture.md)
 - [需求](../phase0/requirements.md)
-- [项目阶段](../../project/phases.md) - 质量预算（阶段 0 交付物，尚未落成文件）
+- [项目阶段](../../project/phases.md) - 质量预算（阶段 0 交付物，核算入口见 [ARK-01 任务文件](../phase0/ark01_phase0.md)）
 
 
 ---
@@ -650,7 +731,7 @@ type: 文档
 title: 项目交接与待办事项
 description: 项目交接信息、已知问题、踩坑记录与当前待办事项清单（同步自 docs/HANDOVER.md）
 tags: [documentation, handover, todo, issues]
-timestamp: 2026-08-14
+timestamp: 2026-08-15
 openwiki:
   roles: [operations, workflow]
   change_kinds: [maintenance]
@@ -663,7 +744,7 @@ openwiki:
 
 ## 项目状态
 
-- **主项目**：世代飞船（Generation Ship）设计——三条原则：**严谨科技幻想 / 引用开源 / 200 年尺度**。设计论证见 [概念讨论笔记](./discussion_notes.md)，当前处于阶段 0（需求与预算），以 NASA SP-413 万人栖息地预算表为锚点启动质量/功率/人口/农业核算。
+- **主项目**：世代飞船（Generation Ship）设计——三条原则：**严谨科技幻想 / 引用开源 / 200 年尺度**。设计论证见 [概念讨论笔记](./discussion_notes.md)，当前处于阶段 0（需求与预算）：[ARK-01 任务文件](../design/phase0/ark01_phase0.md) v0 已于 2026-08-15 启动，SP-413 万人栖息地预算表锚点数据已固化，质量/功率/人口/农业四大预算表骨架待逐项核算。
 - **分支收集产出（本仓库主要内容）**：2000+ 科幻作品素材库（电影/剧集放宽至 1980+），按内容与评价驱动收集，服务于世代飞船设计主线。七类素材共 **494 条**（另「其他-AI精选」53 条为独立第 8 区；见 [素材库概览](../reference/library_overview.md)），全部带图片、中文标签、✧ 分级，配交互式画廊（单文件 HTML，本地 + GitHub Pages 在线）。
 - **真实工程参考（2026-08-13 起）**：[NASA 真实影像素材](./nasa_reference.md)——NASA Image Library 免 key 直连，已入库 Ames SP-413 环形栖息地系列等 16 张原图，SP-413 报告全文含万人栖息地预算表，是 Phase 0 人口/质量核算的锚点。
 
@@ -676,7 +757,7 @@ openwiki:
 | 素材库摘要文档 | https://github.com/shawn1905/generation-ship/blob/main/docs/科幻素材库-2000后.md |
 | 微信读书直达 | https://github.com/shawn1905/generation-ship/blob/main/docs/weread-直达链接.md |
 
-## 素材库规模（七类合计 494，另有其他-AI精选 47）
+## 素材库规模（七类合计 494，另有其他-AI精选 53）
 
 | 类别 | 精选数 | 数据源 |
 |---|---|---|
@@ -687,7 +768,7 @@ openwiki:
 | 📚 漫画 | 29 | AniList + 维基百科 |
 | 📖 小说 | 25 | Open Library |
 | 🖌 原画/设定集 | 103（原画 33 + Sketchfab 40 + Blender 论坛 30） | 维基 REST + Goodreads + Sketchfab + Blender 论坛 |
-| 🧠 其他-AI精选 | 47 | 维基 REST + Steam CDN + 官网 og:image |
+| 🧠 其他-AI精选 | 53 | 维基 REST + Steam CDN + 官网 og:image |
 
 **✧ 分级**：0=无/弱、1=视觉氛围、2=飞船/空间站外形、3=内部结构/工程细节、4=世代飞船直接参考（主线重点）。分布：✧4=42、✧3=65、✧2=121（据交接文档；条目增删后以 `make_docs.py` 重新生成为准）。
 
@@ -733,7 +814,7 @@ cd branch
 
 ### 主项目：世代飞船
 
-- [ ] **阶段 0（进行中）**：以 SP-413 万人栖息地预算表为锚，正式启动 ARK-01 任务文件——质量/功率/人口/农业核算（详见 [需求](../design/phase0/requirements.md) 与 [人口与农业](../design/phase0/population_agriculture.md)）
+- [ ] **阶段 0（进行中）**：[ARK-01 任务文件](../design/phase0/ark01_phase0.md) v0 已启动（2026-08-15）——SP-413 锚点已固化（Table 4-1 / 67 m²/人 / 屏蔽论证 / Colin Clark 下限）+ 四大预算表骨架；下一步 = 任务文件 §5 五项待办（屏蔽三方案对比 / 农业光照功率 / 结构缩放 / 人口-工业联动 / 预算 CSV）
 - [ ] 阶段 1：Blender Python 参数化建模脚本、两段式架构定尺寸、轨道与推进验证
 - [ ] 阶段 2（未来）：辐射屏蔽质量分配优化、闭环生命保障系统框图、双居住环甲板分区、剖视图
 - [ ] 阶段 3（未来）：材质与光照、Cycles 最终渲染图
@@ -766,6 +847,7 @@ cd branch
 - 主线即 `main`（单分支开发，分支 `branch/scifi-collection` 已合并）；提交信息中文，前缀 `feat:` / `fix:` / `docs:`；数据与脚本全部入库，仅原始大文件（data/、pool、.venv）忽略。
 - 推送后 Pages 自动重建（1-2 分钟），验证 `gh api repos/shawn1905/generation-ship/pages --jq '.status'`。
 - OpenWiki wiki 由 `bash docs/openwiki_update.sh` 手动维护（openwiki --update → 聚合 → commit + push），模型配置在 `~/.openwiki/.env`。
+- **另有定时自动更新**：GitHub Actions `.github/workflows/openwiki-update.yml`（cron 每日 08:00 UTC，可手动 dispatch）运行 `openwiki code --update` 并自动开 PR（分支 `openwiki/update`，提交信息 `docs: update OpenWiki`）；PR 合并后 Pages/wiki 同步生效。手动维护与定时 PR 两条链路并存，避免同时跑造成冲突。
 - **OpenWiki 聚合链路已恢复**：`openwiki/ALL.md` 聚合全文（约 85KB，26 篇中文页）与 `openwiki/merge_all.py` 聚合器均已在库；`docs/openwiki_update.sh` 第 2 步（`python3 openwiki/merge_all.py`）可正常执行。注意：ALL.md 由 merge_all.py 从 openwiki/ 各页自动拼接，**不要手改内容**，改完任一 wiki 页后重跑脚本重新聚合（或在本页维护流程中一并提交）。
 
 ## 双视图架构（画廊 + wiki 怎么同步改）
@@ -801,7 +883,7 @@ docs/ + branch/（全部知识）───┴── openwiki --update → openwi
 
 # 文件
 
-- [原创创作区](creation_assets.md) - 自产内容区（docs/creation/）：灵感笔记机制、方舟号 ARK-01 设定、短篇、SVG 草图与 Strudel 音乐实验
+- [原创创作区](creation_assets.md) - 自产内容区（docs/creation/）：灵感笔记机制、方舟号 ARK-01 设定、文明扩散时间轴创作母题、《文明天顶》工程、短篇、SVG 草图与 Strudel 音乐实验
 - [概念讨论笔记](discussion_notes.md) - 原始概念讨论稿摘要：物理推导、开源参考清单与开放设计问题
 - [AI 生图集（未来世界）](future_world_art.md) - 「我眼中的未来世界」AI 概念图归档与星际穿越式作图方法论（4 条铁律 + 镜头锚定 + 干净极繁）
 - [项目交接与待办事项](handover.md) - 项目交接信息、已知问题、踩坑记录与当前待办事项清单（同步自 docs/HANDOVER.md）
@@ -898,7 +980,7 @@ type: 概念
 title: NASA 真实影像素材
 description: NASA Image Library 免 key 直连的 16 张真实工程参考原图（SP-413 环形栖息地/NERVA/猎户座/深空），按设计需求分区
 tags: [reference, nasa, imagery, phase0, phase2]
-timestamp: 2026-08-13
+timestamp: 2026-08-15
 openwiki:
   roles: [integration, reference]
   change_kinds: [research]
@@ -944,7 +1026,7 @@ openwiki:
 
 ## 使用建议
 
-1. **Phase 2 内部结构**：环形栖息地系列直接对照甲板分区与双环布局——SP-413 报告全文（[PDF](https://ntrs.nasa.gov/citations/19770076862)）含人口 10000 人的质量/面积预算表，正好用于 [人口与农业核算](../design/phase0/population_agriculture.md)（Phase 0）。
+1. **Phase 2 内部结构**：环形栖息地系列直接对照甲板分区与双环布局——SP-413 报告全文（[PDF](https://ntrs.nasa.gov/citations/19770014162)，NTRS ID **19770014162**；⚠️ 旧记 19770076862 已 404）含人口 10000 人的质量/面积预算表，正好用于 [人口与农业核算](../design/phase0/population_agriculture.md)（Phase 0）。Table 4-1 方案对比 / 67 m²/人分解 / 屏蔽论证 / Colin Clark 下限等锚点数据已于 2026-08-15 提取固化入 [ARK-01 任务文件](../design/phase0/ark01_phase0.md) §2。
 2. **材质质感**：环内景画作的「白色骨架 + 绿色农田 + 蓝天窗」是经典范式，但 200 年船可刻意偏离（更暗、更工业），ISS 实景照提供真实管线密度基准。
 3. **推进段外形**：Orion 的盘形脉冲单元 + 减震机构是聚变脉冲级最可信的外形参考。
 4. 检索入口长期有效，需要更多同系列图直接用上方 API 关键词续查。
@@ -957,6 +1039,9 @@ NASA 影像默认公有领域（非商用限制少），使用时署名 "Image c
 
 - [项目交接与待办](./handover.md) - NASA 影像在项目中的定位与待办
 - [人口与农业计算](../design/phase0/population_agriculture.md) - SP-413 预算表锚定的 Phase 0 核算
+- [任务架构](../design/phase1/mission_architecture.md) - 双环栖息地布局对应影像
+- [物理与推进](../design/phase1/physics.md) - 推进影像的现实锚点
+hase0/population_agriculture.md) - SP-413 预算表锚定的 Phase 0 核算
 - [任务架构](../design/phase1/mission_architecture.md) - 双环栖息地布局对应影像
 - [物理与推进](../design/phase1/physics.md) - 推进影像的现实锚点
 
@@ -973,6 +1058,7 @@ okf_version: "0.1"
 # 文件
 
 - [已弃用的骨架文件](_skeleton.md) - 此骨架文件在 wiki 初始化完成后已弃用
+- [Generation Ship Wiki — 聚合全文（Agent 专用）](ALL.md) - openwiki/ 全部 27 个源 Markdown 页面的自动聚合全文，供 agent 一次性读取；含快速入门、设计阶段（含 ARK-01 Phase 0 任务文件）、素材库参考、项目文档与维护计划
 - [快速入门导航](quickstart.md) - Generation Ship Design 项目的 OpenWiki 文档入口，包含导航概览和变更路由
 
 # 目录
@@ -1062,9 +1148,10 @@ tags: [project, planning, phases]
 **文档**：
 - [需求](../design/phase0/requirements.md)
 - [人口与农业](../design/phase0/population_agriculture.md)
+- [ARK-01 任务文件](../design/phase0/ark01_phase0.md)（Phase 0 总纲：SP-413 锚点 + 四大预算表骨架）
 - [NASA 真实影像参考](../docs/nasa_reference.md)（SP-413 万人栖息地预算表是质量/面积核算锚点）
 
-> 详细质量预算表与电力预算表**尚未落成文件**（阶段 0 进行中），见 [交接与待办](../docs/handover.md) 待办清单与快速入门[待办事项](../quickstart.md#待办事项)。
+> [ARK-01 任务文件](../design/phase0/ark01_phase0.md) v0 已启动（2026-08-15）：SP-413 锚点数据已固化，四大预算表骨架待逐项核算；尚未落成的是逐项核算结果与预算 CSV（阶段 0 进行中），见 [交接与待办](../docs/handover.md) 待办清单与快速入门[待办事项](../quickstart.md#待办事项)。
 
 ## 阶段 1：概念架构与参数化建模
 **重点**：制定整体飞船概念架构，并创建外部船体的参数化三维模型。
@@ -1093,7 +1180,7 @@ tags: [project, planning, phases]
 - [任务架构](../design/phase1/mission_architecture.md)（双环布局与屏蔽构型）
 - [NASA 真实影像参考](../docs/nasa_reference.md)（SP-413 环形栖息地、ISS 舱内、NextSTEP 深空舱）
 
-> 阶段 2 的详细设计（屏蔽质量分配、生命保障系统框图、甲板分区图）**尚未落成**，见 [交接与待办](../docs/handover.md) 待办清单。
+> 阶段 2 的详细设计（屏蔽质量分配、生命保障系统框图、甲板分区图）**尚未落成**；辐射屏蔽论证的锚点数据见 [ARK-01 任务文件](../design/phase0/ark01_phase0.md) §2.3（0.5 rem/yr 目标、4.5 t/m² 被动屏蔽基准），后续见 [交接与待办](../docs/handover.md) 待办清单。
 
 ## 阶段 3：渲染
 **重点**：生成完整飞船设计的最终渲染输出。
@@ -1159,7 +1246,7 @@ tags: [navigation, quickstart]
 
 - [核心任务需求](./design/phase0/requirements.md) - 基本任务约束与需求
 - [人口与农业](./design/phase0/population_agriculture.md) - 人口规模与农业面积计算
-- 质量预算 / 电力预算：**尚未落成**，锚点见 [NASA SP-413 预算表](./docs/nasa_reference.md) 与[待办事项](#待办事项)
+- [ARK-01 任务文件](./design/phase0/ark01_phase0.md) - Phase 0 总纲（v0，2026-08-15 启动）：SP-413 锚点已固化，质量/功率/人口/农业四大预算表骨架待逐项核算；锚点见 [NASA SP-413 预算表](./docs/nasa_reference.md)
 
 ### 阶段 1：概念架构与参数化建模
 
@@ -1171,6 +1258,7 @@ tags: [navigation, quickstart]
 
 尚未落成详细设计（屏蔽质量分配、生命保障框图、甲板分区、渲染输出），当前相关证据集中在：
 
+- [ARK-01 任务文件](./design/phase0/ark01_phase0.md) - §2.3 辐射屏蔽论证（SP-413 0.5 rem/yr / 4.5 t/m² 基准、主动屏蔽在飞船上重新成为头号权衡）
 - [NASA 真实影像参考](./docs/nasa_reference.md) - SP-413 环形栖息地 / 推进段 / 舱内 / 农业 / 深空背景影像
 - [人口与农业](./design/phase0/population_agriculture.md) - 闭环生命保障面积需求
 - [任务架构](./design/phase1/mission_architecture.md) - 双环布局与屏蔽构型
@@ -1197,10 +1285,10 @@ tags: [navigation, quickstart]
 | 您想要更改什么？ | 相关页面 | 源入口 |
 |------------------------------|----------------|--------------------|
 | 任务需求或核心物理 | [需求](./design/phase0/requirements.md), [物理与推进](./design/phase1/physics.md) | `docs/讨论稿-概念与待决问题.md` |
-| 质量/电力预算 | [项目阶段](./project/phases.md)（阶段 0 交付物） | `docs/讨论稿-概念与待决问题.md` §2、`docs/nasa_参考影像/README.md`（SP-413 预算表） |
+| 质量/电力预算 | [ARK-01 任务文件](./design/phase0/ark01_phase0.md), [项目阶段](./project/phases.md)（阶段 0 交付物） | `docs/ARK-01_Phase0_任务文件.md` §2/§4（SP-413 锚点 + 预算表骨架）、`docs/讨论稿-概念与待决问题.md` §2 |
 | 飞船整体架构 | [任务架构](./design/phase1/mission_architecture.md) | `docs/讨论稿-概念与待决问题.md` §2 |
 | Blender 参数化建模 | [项目阶段](./project/phases.md)（阶段 1） | 仓库尚无脚本；锚点 `docs/讨论稿-概念与待决问题.md` §4 |
-| 辐射屏蔽 / 生命保障 / 居住区 | [需求](./design/phase0/requirements.md), [人口与农业](./design/phase0/population_agriculture.md), [NASA 真实影像参考](./docs/nasa_reference.md) | `docs/讨论稿-概念与待决问题.md` §1-2、`docs/nasa_参考影像/README.md` |
+| 辐射屏蔽 / 生命保障 / 居住区 | [ARK-01 任务文件](./design/phase0/ark01_phase0.md), [需求](./design/phase0/requirements.md), [人口与农业](./design/phase0/population_agriculture.md), [NASA 真实影像参考](./docs/nasa_reference.md) | `docs/ARK-01_Phase0_任务文件.md` §2.3/§3（屏蔽论证 + 可移植性）、`docs/讨论稿-概念与待决问题.md` §1-2、`docs/nasa_参考影像/README.md` |
 | 参考库整理（CSV 增改） | [参考库概览](./reference/library_overview.md), [类别摘要](./reference/categories.md), [整理脚本](./reference/scripts.md) | `branch/scripts/curate_*.py`（人工清单 KNOWN_*） |
 | 画廊样式/搜索逻辑 | [交互式图库](./reference/gallery.md) | `branch/scripts/make_gallery.py` → `branch/gallery.html` |
 | 画廊数据重新生成/统计 | [数据结构](./reference/data_structure.md), [整理脚本](./reference/scripts.md) | `branch/.venv/bin/python branch/scripts/make_gallery.py`、`make_docs.py` |
@@ -1215,7 +1303,7 @@ tags: [navigation, quickstart]
 
 以下领域已列入计划，但尚未完整记录，因为实现仍在进行中或证据不足：
 
-- **详细质量/电力预算明细**（阶段 0）——仓库尚无预算表文件；锚点：`docs/讨论稿-概念与待决问题.md` §2 参数表、`docs/nasa_参考影像/README.md` SP-413 万人栖息地预算表
+- **质量/功率/人口/农业预算逐项核算**（阶段 0）——[ARK-01 任务文件](./design/phase0/ark01_phase0.md) v0 已启动（2026-08-15）：框架 + SP-413 锚点数据已固化，四大预算表骨架待逐项核算并落成 CSV（`design/budget_*.csv`）；锚点：`docs/ARK-01_Phase0_任务文件.md` §2/§4、`docs/讨论稿-概念与待决问题.md` §2 参数表、`docs/nasa_参考影像/README.md` SP-413 万人栖息地预算表
 - **Blender Python 参数化建模代码**（阶段 1）——仓库尚无 Blender 脚本；锚点：`docs/讨论稿-概念与待决问题.md` §4
 - **阶段 2 内部结构详设**（辐射屏蔽质量分配/生命保障框图/甲板分区）——仅定义量级与开放问题；锚点：`docs/讨论稿-概念与待决问题.md` §1-2、`docs/nasa_参考影像/README.md`
 - **阶段 3 CAD 模型与最终渲染**——仓库尚无渲染产出；锚点：`docs/讨论稿-概念与待决问题.md` §4
@@ -1288,8 +1376,9 @@ openwiki:
 
 ## 🧠 其他-AI精选（53，独立第 8 区）
 
-- AI 主观选品（不限世代飞船），`ship_ref` 一律 0；每日扩 3-8 条，流程见 `branch/other/README.md`，需跑 `health_check_other.py` 健康巡检。截至 2026-08-14 共三批：8-11 首批 12 条、8-12 两批 15 条、8-14 第三批 8 条。
+- AI 主观选品（不限世代飞船），`ship_ref` 一律 0；每日扩 3-8 条，流程见 `branch/other/README.md`，需跑 `health_check_other.py` 健康巡检。截至 2026-08-15 共四批：8-11 首批 12 条、8-12 两批 15 条、8-14 第三批 8 条、8-15 第四批 +6 条（README 批次计数与 CSV 实际行数 53 略有出入，以 `ai_curated.csv` 为准）。
 - 已覆盖维度：巨构/尺度失控、城市形态、人的未来、生态闭环、外星接触、科学前沿、自然生态启发、AI 自身、独立/小众深挖；8-14 第三批按「更深一层」原则扩展：塔比星戴森候选异常、NaissanceE 巨构步行模拟、Kaiba 记忆商品化、与拉玛相会、melodysheep 未来延时、The Line 线性城市、猎户座核脉冲推进、特德·姜《呼吸》
+- 8-15 第四批继续「更深一层」+ 参照系入库：O'Neill 圆柱栖息地原案（SP-413 直系祖先，与 [ARK-01 任务文件](../design/phase0/ark01_phase0.md) 锚点同源）、万年钟（深时间，与《文明纪年法》互为镜像）、All Tomorrows（档案馆美学头号参照，正式入库）、野生建造赞美诗（solarpunk 首开）、Aurora（世代飞船失败学，闭环系统反面论证）、Grabby Aliens（费米悖论深一层）
 
 ## 分级分布
 

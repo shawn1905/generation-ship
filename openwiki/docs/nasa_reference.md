@@ -3,7 +3,7 @@ type: 概念
 title: NASA 真实影像素材
 description: NASA Image Library 免 key 直连的 16 张真实工程参考原图（SP-413 环形栖息地/NERVA/猎户座/深空），按设计需求分区
 tags: [reference, nasa, imagery, phase0, phase2]
-timestamp: 2026-08-13
+timestamp: 2026-08-15
 openwiki:
   roles: [integration, reference]
   change_kinds: [research]
@@ -49,7 +49,7 @@ openwiki:
 
 ## 使用建议
 
-1. **Phase 2 内部结构**：环形栖息地系列直接对照甲板分区与双环布局——SP-413 报告全文（[PDF](https://ntrs.nasa.gov/citations/19770076862)）含人口 10000 人的质量/面积预算表，正好用于 [人口与农业核算](../design/phase0/population_agriculture.md)（Phase 0）。
+1. **Phase 2 内部结构**：环形栖息地系列直接对照甲板分区与双环布局——SP-413 报告全文（[PDF](https://ntrs.nasa.gov/citations/19770014162)，NTRS ID **19770014162**；⚠️ 旧记 19770076862 已 404）含人口 10000 人的质量/面积预算表，正好用于 [人口与农业核算](../design/phase0/population_agriculture.md)（Phase 0）。Table 4-1 方案对比 / 67 m²/人分解 / 屏蔽论证 / Colin Clark 下限等锚点数据已于 2026-08-15 提取固化入 [ARK-01 任务文件](../design/phase0/ark01_phase0.md) §2。
 2. **材质质感**：环内景画作的「白色骨架 + 绿色农田 + 蓝天窗」是经典范式，但 200 年船可刻意偏离（更暗、更工业），ISS 实景照提供真实管线密度基准。
 3. **推进段外形**：Orion 的盘形脉冲单元 + 减震机构是聚变脉冲级最可信的外形参考。
 4. 检索入口长期有效，需要更多同系列图直接用上方 API 关键词续查。
@@ -62,5 +62,8 @@ NASA 影像默认公有领域（非商用限制少），使用时署名 "Image c
 
 - [项目交接与待办](./handover.md) - NASA 影像在项目中的定位与待办
 - [人口与农业计算](../design/phase0/population_agriculture.md) - SP-413 预算表锚定的 Phase 0 核算
+- [任务架构](../design/phase1/mission_architecture.md) - 双环栖息地布局对应影像
+- [物理与推进](../design/phase1/physics.md) - 推进影像的现实锚点
+hase0/population_agriculture.md) - SP-413 预算表锚定的 Phase 0 核算
 - [任务架构](../design/phase1/mission_architecture.md) - 双环栖息地布局对应影像
 - [物理与推进](../design/phase1/physics.md) - 推进影像的现实锚点

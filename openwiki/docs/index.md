@@ -1,6 +1,6 @@
 # 文件
 
-- [原创创作区](creation_assets.md) - 自产内容区（docs/creation/）：灵感笔记机制、方舟号 ARK-01 设定、短篇、SVG 草图与 Strudel 音乐实验
+- [原创创作区](creation_assets.md) - 自产内容区（docs/creation/）：灵感笔记机制、方舟号 ARK-01 设定、文明扩散时间轴创作母题、《文明天顶》工程、短篇、SVG 草图与 Strudel 音乐实验
 - [概念讨论笔记](discussion_notes.md) - 原始概念讨论稿摘要：物理推导、开源参考清单与开放设计问题
 - [AI 生图集（未来世界）](future_world_art.md) - 「我眼中的未来世界」AI 概念图归档与星际穿越式作图方法论（4 条铁律 + 镜头锚定 + 干净极繁）
 - [项目交接与待办事项](handover.md) - 项目交接信息、已知问题、踩坑记录与当前待办事项清单（同步自 docs/HANDOVER.md）

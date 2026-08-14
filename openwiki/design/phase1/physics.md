@@ -60,4 +60,4 @@ tags: [design, phase1, physics, propulsion, fusion]
 ## 另见
 - [任务架构](./mission_architecture.md)
 - [需求](../phase0/requirements.md)
-- [项目阶段](../../project/phases.md) - 质量预算（阶段 0 交付物，尚未落成文件）
+- [项目阶段](../../project/phases.md) - 质量预算（阶段 0 交付物，核算入口见 [ARK-01 任务文件](../phase0/ark01_phase0.md)）
