@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="6000" viewBox="0 0 1080 6000" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="6450" viewBox="0 0 1080 6450" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif">
   <!-- ============ 底色与全局 ============ -->
-  <rect width="1080" height="6000" fill="#0a0e17"/>
+  <rect width="1080" height="6450" fill="#0a0e17"/>
   <!-- 顶部与底部装饰星点 -->
   <g fill="#d4af37" opacity="0.5">
     <circle cx="140" cy="90" r="1.6"/><circle cx="940" cy="130" r="1.2"/><circle cx="700" cy="60" r="1.8"/><circle cx="380" cy="150" r="1.1"/><circle cx="860" cy="70" r="1.4"/>
@@ -17,7 +17,7 @@
   <text x="540" y="464" text-anchor="middle" font-size="17" fill="#e8e6df">这一回,AI 崩塌的是「认知劳动」——而火箭正在崩塌「重力井逃逸成本」</text>
 
   <!-- ============ 时间主线 ============ -->
-  <line x1="140" y1="560" x2="140" y2="6000" stroke="#d4af37" stroke-width="2" opacity="0.85"/>
+  <line x1="140" y1="560" x2="140" y2="6400" stroke="#d4af37" stroke-width="2" opacity="0.85"/>
 
   <!-- 阶段块复用结构:
        节点圆点(金) + 年份大数字 + 阶段名 + 卡片(五行:经济/社会/政治/太空/移民) -->
@@ -55,6 +55,11 @@
   <rect x="180" y="1156" width="300" height="44" rx="22" fill="none" stroke="#4ecdc4" stroke-width="1"/>
   <text x="200" y="1184" font-size="15" fill="#4ecdc4">太空移民:纯讨论期</text>
 
+  <!-- 技术奇点 · 点状点缀 -->
+  <text x="212" y="1224" font-size="15" fill="#4ecdc4">◆ <tspan font-weight="bold">2027</tspan> AI agent 交付结果　◆ <tspan font-weight="bold">2028</tspan> 人形机器人量产</text>
+  <text x="212" y="1252" font-size="15" fill="#4ecdc4">◆ <tspan font-weight="bold">2031</tspan> 聚变 Q&gt;10　◆ <tspan font-weight="bold">2032</tspan> 月球水冰开采 → 竞赛公开化</text>
+
+<g transform="translate(0,96)">
   <!-- ================= 阶段二 2035-2050 ================= -->
   <circle cx="140" cy="1330" r="10" fill="#d4af37"/>
   <circle cx="140" cy="1330" r="18" fill="none" stroke="#d4af37" stroke-width="1" opacity="0.4"/>
@@ -86,6 +91,12 @@
   <rect x="180" y="1906" width="360" height="44" rx="22" fill="none" stroke="#5b8def" stroke-width="1"/>
   <text x="200" y="1934" font-size="15" fill="#5b8def">太空移民:轨道酒店 / 月球站 &lt;100 人</text>
 
+  <!-- 技术奇点 · 点状点缀 -->
+  <text x="212" y="1974" font-size="15" fill="#5b8def">◆ <tspan font-weight="bold">★</tspan> AGI 自主科研(诺奖级)　◆ <tspan font-weight="bold">2038</tspan> 聚变电站并网</text>
+  <text x="212" y="2002" font-size="15" fill="#5b8def">◆ <tspan font-weight="bold">2042</tspan> 闭环生命支持 95%　◆ <tspan font-weight="bold">2045</tspan> 月球基地常驻 50 人</text>
+
+</g>
+  <g transform="translate(0,192)">
   <!-- ================= 阶段三 2050-2080 ================= -->
   <circle cx="140" cy="2080" r="10" fill="#d4af37"/>
   <circle cx="140" cy="2080" r="18" fill="none" stroke="#d4af37" stroke-width="1" opacity="0.4"/>
@@ -118,6 +129,12 @@
   <rect x="180" y="2616" width="300" height="44" rx="22" fill="none" stroke="#9b7bd4" stroke-width="1"/>
   <text x="200" y="2644" font-size="15" fill="#9b7bd4">太空移民:火星百人定居点</text>
 
+  <!-- 技术奇点 · 点状点缀 -->
+  <text x="212" y="2684" font-size="15" fill="#9b7bd4">◆ <tspan font-weight="bold">2055</tspan> 舰船级聚变堆　◆ <tspan font-weight="bold">2060</tspan> 百米级旋转栖息地</text>
+  <text x="212" y="2712" font-size="15" fill="#9b7bd4">◆ <tspan font-weight="bold">★</tspan> 机器人自持工厂　◆ <tspan font-weight="bold">2070</tspan> AI 自主建造栖息地</text>
+
+</g>
+  <g transform="translate(0,288)">
   <!-- ================= 阶段四 2080-2150 ================= -->
   <circle cx="140" cy="2790" r="10" fill="#d4af37"/>
   <circle cx="140" cy="2790" r="18" fill="none" stroke="#d4af37" stroke-width="1" opacity="0.4"/>
@@ -151,6 +168,12 @@
   <rect x="180" y="3366" width="340" height="44" rx="22" fill="none" stroke="#e8a04c" stroke-width="1"/>
   <text x="200" y="3394" font-size="15" fill="#e8a04c">太空移民:万人级旋转栖息地</text>
 
+  <!-- 技术奇点 · 点状点缀 -->
+  <text x="212" y="3434" font-size="15" fill="#e8a04c">◆ <tspan font-weight="bold">2090</tspan> 万人级 O'Neill 栖息地　◆ <tspan font-weight="bold">2100</tspan> 聚变脉冲推进样机 ★</text>
+  <text x="212" y="3462" font-size="15" fill="#e8a04c">◆ <tspan font-weight="bold">2120</tspan> 主动磁屏蔽成熟　◆ <tspan font-weight="bold">2140</tspan> 世代飞船龙骨铺设</text>
+
+</g>
+  <g transform="translate(0,384)">
   <!-- ================= 阶段五 2150-2200+ ================= -->
   <circle cx="140" cy="3540" r="10" fill="#d4af37"/>
   <circle cx="140" cy="3540" r="18" fill="none" stroke="#d4af37" stroke-width="1" opacity="0.4"/>
@@ -178,6 +201,12 @@
   <rect x="180" y="3970" width="420" height="44" rx="22" fill="none" stroke="#d4af37" stroke-width="1"/>
   <text x="200" y="3998" font-size="15" fill="#d4af37">太空移民:跨恒星系,以「代」为单位</text>
 
+  <!-- 技术奇点 · 点状点缀 -->
+  <text x="212" y="4038" font-size="15" fill="#d4af37">◆ <tspan font-weight="bold">2150</tspan> ARK-01 启航 ★　◆ <tspan font-weight="bold">2180</tspan> 船上制造完全自持</text>
+  <text x="212" y="4066" font-size="15" fill="#d4af37">◆ <tspan font-weight="bold">2200</tspan> 抵达比邻星 b · 磁帆减速　◆ <tspan font-weight="bold">⚠</tspan> 冬眠/意识上传若突破将改写全轴</text>
+
+</g>
+  <g transform="translate(0,480)">
   <!-- ============ 规律区 ============ -->
   <text x="540" y="4160" text-anchor="middle" font-size="20" fill="#d4af37" letter-spacing="8">FOUR LAWS · 贯穿始终的四条规律</text>
   <line x1="300" y1="4190" x2="780" y2="4190" stroke="#d4af37" stroke-width="1"/>
@@ -248,4 +277,5 @@
     <circle cx="0" cy="0" r="8" fill="#d4af37"/>
     <text x="0" y="100" text-anchor="middle" font-size="13" fill="#6b7280">ARK-01 · 双环世代飞船</text>
   </g>
+</g>
 </svg>
