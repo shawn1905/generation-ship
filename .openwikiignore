@@ -1,0 +1,21 @@
+# OpenWiki 忽略规则 — 只 doc 化知识文档,排除图片/大数据
+.git/
+node_modules/
+
+# 大数据与图片缓存(不入 wiki)
+branch/data/
+**/*.jpg
+**/*.jpeg
+**/*.png
+**/*.webp
+**/*.gif
+branch/*/posters/
+branch/*/tv_posters/
+branch/*/headers/
+branch/*/covers/
+branch/*/covers_3d/
+branch/*/covers_forum/
+
+# 临时/生成物
+*.log
+.DS_Store
