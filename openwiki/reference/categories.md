@@ -49,7 +49,7 @@ openwiki:
 - Sketchfab 3D 社区 40：按 ♥ 排序 + ✧4 白名单；✧4 亮点：Venator Prefab、D.S.S. Harbinger、Modular Ring、Icarus Space Station 等
 - Blender 论坛 3D 社区 30：Discourse API，23 关键词 + 排除词表 + 人工分级修正；✧4 亮点：Neo-deco space yacht、Skyport Usak、Space colony artwork 等
 
-## 🧠 其他-AI精选（47，独立第 8 区）
+## 🧠 其他-AI精选（53，独立第 8 区）
 
 - AI 主观选品（不限世代飞船），`ship_ref` 一律 0；每日扩 3-8 条，流程见 `branch/other/README.md`，需跑 `health_check_other.py` 健康巡检。截至 2026-08-14 共三批：8-11 首批 12 条、8-12 两批 15 条、8-14 第三批 8 条。
 - 已覆盖维度：巨构/尺度失控、城市形态、人的未来、生态闭环、外星接触、科学前沿、自然生态启发、AI 自身、独立/小众深挖；8-14 第三批按「更深一层」原则扩展：塔比星戴森候选异常、NaissanceE 巨构步行模拟、Kaiba 记忆商品化、与拉玛相会、melodysheep 未来延时、The Line 线性城市、猎户座核脉冲推进、特德·姜《呼吸》
