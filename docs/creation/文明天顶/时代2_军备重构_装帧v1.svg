@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="1500" viewBox="0 0 1200 1500" font-family="PingFang SC, Hiragino Sans GB, sans-serif">
+  <rect width="1200" height="1500" fill="#f0ead8"/>
+  <rect x="24" y="24" width="1152" height="1452" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+  <text x="600" y="92" text-anchor="middle" font-size="38" font-weight="bold" fill="#1a1a1a">时代Ⅱ · 军备与重构</text>
+  <text x="600" y="128" text-anchor="middle" font-size="14" fill="#888" letter-spacing="6">REARMAMENT &amp; RECONSTRUCTION · 2035-2050</text>
+  <line x1="420" y1="150" x2="780" y2="150" stroke="#b8860b" stroke-width="1.5"/>
+  <image xlink:href="时代2_军备重构_底稿v1.jpeg" href="时代2_军备重构_底稿v1.jpeg" x="110" y="190" width="980" height="980" preserveAspectRatio="xMidYMid slice"/>
+  <rect x="110" y="190" width="980" height="980" fill="none" stroke="#b8860b" stroke-width="5"/>
+  <rect x="122" y="202" width="956" height="956" fill="none" stroke="#b8860b" stroke-width="1.5" opacity="0.8"/>
+  <g fill="#b8860b">
+    <circle cx="110" cy="190" r="7"/><circle cx="1090" cy="190" r="7"/>
+    <circle cx="110" cy="1170" r="7"/><circle cx="1090" cy="1170" r="7"/>
+  </g>
+  <g stroke="#b8860b" stroke-width="1.5" opacity="0.65">
+    <line x1="200" y1="196" x2="1000" y2="196"/>
+    <line x1="200" y1="1176" x2="1000" y2="1176"/>
+  </g>
+  <rect x="1030" y="1090" width="44" height="44" fill="#c03a2b"/>
+  <text x="1052" y="1121" font-size="24" fill="#f0ead8" text-anchor="middle" font-weight="bold">构</text>
+  <line x1="110" y1="1210" x2="1090" y2="1210" stroke="#b8860b" stroke-width="1.5"/>
+  <text x="110" y="1252" font-size="15" fill="#555">题跋 · 「月球基地的食堂里,机器人监工说:我儿子在地球上还没找到工作。——2046」</text>
+  <text x="110" y="1340" font-size="12" fill="#999">底稿:seedream 5.0-lite 4K 浮世绘生图 · 装帧:手绘 SVG · 《文明天顶》正稿 · 世代飞船项目 · pi · 2026-08-14</text>
+</svg>
