@@ -69,6 +69,13 @@ PLAN = {
     'the_line':           ('url', 'https://www.neom.com/content/dam/neom/theline/hero/line-hero-thumbnail-new.jpg'),
     'project_orion':      ('wiki', 'Project Orion (nuclear propulsion)'),
     'exhalation':         ('goodreads', '41160292'),
+    # 8-15 第四批 · 更深一层(工程锚点/深时间/纲领参照系/solarpunk/失败学/费米深一层)
+    'o_neill_cylinder':   ('wiki', "O'Neill cylinder"),
+    'long_now_clock':     ('wiki', 'Clock of the Long Now'),
+    'all_tomorrows':      ('goodreads', '16143402'),
+    'psalm_for_wild_built': ('goodreads', '40864002'),
+    'aurora_ksr':         ('goodreads', '23197269'),
+    'grabby_aliens':      ('url', 'https://grabbyaliens.com/index-image.png'),
 }
 
 os.makedirs(COVER_DIR, exist_ok=True)
