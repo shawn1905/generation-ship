@@ -7,7 +7,7 @@ timestamp: 2026-08-14
 openwiki:
   roles: [domain, workflow]
   change_kinds: [creation]
-  source_paths: [docs/creation/README.md, docs/creation/灵感笔记.md, docs/creation/music/README.md, docs/creation/文明扩散时间轴_梗概.md, docs/creation/文明天顶/README.md, docs/creation/文明天顶_构思.md]
+  source_paths: [docs/creation/README.md, docs/creation/灵感笔记.md, docs/creation/music/README.md, docs/creation/文明扩散时间轴_梗概.md, docs/creation/文明天顶/README.md, docs/creation/文明天顶_构思.md, docs/creation/文明纪年法.md, docs/creation/writing/乘员心理学档案_137年.md]
 ---
 
 # 原创创作区（Creation）
@@ -40,6 +40,8 @@ openwiki:
 | 2026-08-14 | 📜 文明扩散时间轴 · 梗概（五时代+奇点索引） | [`docs/creation/文明扩散时间轴_梗概.md`](../../docs/creation/文明扩散时间轴_梗概.md) |
 | 2026-08-14 | ⛪ 《文明天顶》· 工程目录（九格 v1 全部完成 + 总图） | [`docs/creation/文明天顶/`](../../docs/creation/文明天顶/) |
 | 2026-08-14 | 🏛 《文明天顶》· 构思优化案（十格天顶+金缮裂痕+三代血脉） | [`docs/creation/文明天顶_构思.md`](../../docs/creation/文明天顶_构思.md) |
+| 2026-08-14 | 🗂 《乘员心理学档案·137 年》· 伪学术档案袋（纲领首作，无人物出场，与 12-B 层/C 区曲子互文） | [`docs/creation/writing/乘员心理学档案_137年.md`](../../docs/creation/writing/乘员心理学档案_137年.md) |
+| 2026-08-14 | 📆 《文明纪年法》· 设定文档 v1（三体式改元：地球五纪元 + 船上双轨纪年） | [`docs/creation/文明纪年法.md`](../../docs/creation/文明纪年法.md) |
 
 ## 方舟号 ARK-01 世界观
 
@@ -47,7 +49,8 @@ openwiki:
 
 - **船上考古学**（《12-B 层》）：第 137 年，船员在维修通道深处发现第 1 代船员的涂鸦与遗物——飞船本身就是考古现场。
 - **飞船的声音设计**（《C 区的曲子》）：启航时每个舱段有专属环境音乐，137 年设备老化后音高漂移、循环错位，音乐在变异。
-- **三体关联（待展开，HANDOVER §10）**：纪元纪年法（危机纪元→启航纪元）可用于 ARK-01 世界观；星舰文明（蓝色空间号）与 ARK-01 是「黑暗森林版 vs 冗余备份版」对照；候选：①《ARK-01 纪年法》设定文档 ②星舰文明对照短篇 ③三体元素进天顶 v2。
+- **三体关联（2026-08-14 推进）**：①《文明纪年法》✅ 成稿（见上表，只取「按文明处境突变改元」一条规则）②蓝色空间号对照已砍 ③三体元素进天顶 v2 只取结构不取符号。新参照系：辐射避难所实验（程序化冷静 + 终端拼图叙事）。
+- **创作总纲（2026-08-14 用户定调，纲领级）**：无冲突的未来史诗——不写激烈矛盾/伟大道德观/闪耀人格，只做未来世界的局部观察；质量标尺 = 世界密度（任何细节挖进去都连着主干，分形自洽）；「未来博物馆」档案馆美学。全文见灵感笔记 8-14 条目。
 
 ## 音乐实验（Strudel）
 
