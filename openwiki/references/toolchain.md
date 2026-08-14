@@ -48,7 +48,12 @@ All tools used in this project are open source and available free of charge.
 - **Python**: Data processing for the reference material gallery
 - **HTML/CSS/JavaScript**: Interactive gallery (generated from curated data)
 
+## AI Image Generation
+
+- **Volcengine Ark CLI (`arkcli`)**: command-line image generation for the "未来世界" concept-art series. Invocation: `arkcli +gen --model doubao-seedream-5.0-lite --modality image --size 4K --save-to <dir> "<prompt>"` (explicit `--modality image` required on arkcli 1.0.14). Quota: 50 seedream images/month on the agent plan. See [Future World AI Concept Art](../creative/future-world-images.md) for the methodology and scripts.
+
 ## Related Pages
 - [Parametric Modeling](../code/parametric-modeling.md)
 - [Gallery Generation Pipeline](../material-library/generation-pipeline.md)
 - [Open Source Projects](./open-source-projects.md)
+- [Future World AI Concept Art](../creative/future-world-images.md)

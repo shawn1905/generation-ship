@@ -10,17 +10,18 @@ The generation ship follows a Daedalus-style "train" layout, which is the logica
 
 ## Overall Layout Diagram
 
-<!-- openwiki: mermaid parse failed and this diagram was converted to a text fence so it does not break rendering. Fix the diagram source and restore the mermaid fence. Parser error: Heuristic: an unescaped angle bracket inside a label breaks rendering; rephrase the label. -->
-```text
+```mermaid
 flowchart LR
-    A[Payload<br>Landing craft<br>Outpost module] --> B[Whipple Shield]
-    B --> C[Rotating Twin-Ring Habitat<br>Residential / Agricultural / Industrial]
-    C --> D[Water / Propellant Tanks<br>(also serve as radiation shielding)]
-    D --> E[Fusion Propulsion System<br>First Stage (jettisoned after acceleration)]
-    D --> F[Fusion Propulsion System<br>Second Stage (carries habitat to destination)]
-    F --> G[Large Radiators<br>for fusion heat rejection]
-    F --> H[Magnetic Sail<br>for final braking]
+    A["Payload\nLanding craft\nOutpost module"] --> B["Whipple Shield"]
+    B --> C["Rotating Twin-Ring Habitat\nResidential / Agricultural / Industrial"]
+    C --> D["Water / Propellant Tanks\n(also serve as radiation shielding)"]
+    D --> E["Fusion Propulsion System\nFirst Stage (jettisoned after acceleration)"]
+    D --> F["Fusion Propulsion System\nSecond Stage (carries habitat to destination)"]
+    F --> G["Large Radiators\nfor fusion heat rejection"]
+    F --> H["Magnetic Sail\nfor final braking"]
 ```
+
+Front-to-back layout of the Daedalus-style "train" configuration: payload/Whipple shield at the front, twin-ring habitat in the middle surrounded by shielding tanks, propulsion and braking at the rear.
 
 ## Front to Back Arrangement
 

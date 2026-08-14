@@ -22,6 +22,8 @@ Key considerations:
 - Target arrival population: 10,000 - 20,000 people
 - Habitat area allocation: ~50 m² per person (including living space, agriculture, and industry)
 
+> **Phase 0 anchor**: NASA SP-413 (*Space Settlements: A Design Study*, 1975) contains a full mass/area budget table for a **10,000-person** rotating habitat - the most credible historical anchor for this population accounting. The original images and the report link are collected in [NASA Engineering Reference Images](../references/engineering-images.md).
+
 ## Agriculture & Food Budget
 
 For 200-year closed-loop life support, food production must be entirely on-board:

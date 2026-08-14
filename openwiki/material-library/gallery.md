@@ -10,7 +10,7 @@ The interactive gallery is a pure HTML/JavaScript file that lets you browse the 
 
 ## Opening the Gallery
 
-The gallery is located at `/branch/gallery.html`. Simply open it in any modern web browser. It doesn't require any internet connection or server - it's a pure static file that works completely locally **without any external services**.
+The gallery is located at `/branch/gallery.html`. Simply open it in any modern web browser. It doesn't require any internet connection or server - it's a pure static file that works completely locally **without any external services**. It is also published online via GitHub Pages at [https://shawn1905.github.io/generation-ship/branch/gallery.html](https://shawn1905.github.io/generation-ship/branch/gallery.html).
 
 ## Features
 
@@ -18,7 +18,7 @@ The gallery is located at `/branch/gallery.html`. Simply open it in any modern w
 
 The gallery supports multiple ways to filter the entries:
 
-1. **By content category**:
+1. **By content category** (8 tabs):
    - Movies
    - TV Shows
    - Games
@@ -26,6 +26,7 @@ The gallery supports multiple ways to filter the entries:
    - Comics
    - Novels
    - Original Art/Concept Art
+   - 🧠 Other/AI-curated (future inspiration; all entries are unrated, `ship_ref` = 0)
 
    You can select one category at a time to view.
 
@@ -51,7 +52,7 @@ The gallery supports multiple ways to filter the entries:
 
 ## Statistics
 
-The current statistics for the curated collection:
+Current gallery counts (from the `gallery.html` tab headers):
 
 | Category | Curated Entries | ✧4 | ✧3 | ✧2 |
 |---|---|---|---|---|
@@ -61,8 +62,11 @@ The current statistics for the curated collection:
 | Anime | 34 | 1 | 3 | 3 |
 | Comics | 29 | 1 | 1 | 8 |
 | Novels | 25 | 3 | 4 | 7 |
-| Art/Concept | 104 | 27 | 29 | 34 |
-| **Total** | **495** | **42** | **65** | **121** |
+| Art/Concept | 103 | 27 | 27 | 33 |
+| Other/AI-curated | 39 | — | — | — |
+| **Total** | **533** | **42** | **63** | **120** |
+
+The ✧4/✧3/✧2 totals cover the seven rated categories only (the Other category is unrated by design). Counts drift as curation continues; the tab headers in `gallery.html` and the per-category `ship_ref` columns in the curated CSVs are the source of truth. Note that `docs/科幻素材库-2000后.md` and `branch/README.md` still show the older 7-category / 495-entry figures.
 
 ## Related Pages
 - [Overview](./overview.md)

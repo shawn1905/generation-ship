@@ -10,6 +10,7 @@ okf_version: "0.1"
 # Directories
 
 - [code](code/)
+- [creative](creative/)
 - [design](design/)
 - [engineering](engineering/)
 - [material-library](material-library/)
