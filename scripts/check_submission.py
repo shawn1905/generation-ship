@@ -74,6 +74,9 @@ def main():
     bad = 0
     for f in files:
         p = pathlib.Path(f)
+        # 非产物文档(目录说明/模板)跳过校验
+        if p.name in ('README.md', 'TEMPLATE.md'):
+            continue
         errs = check_file(p)
         if errs:
             bad += 1
