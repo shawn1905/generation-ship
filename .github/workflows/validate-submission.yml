@@ -13,16 +13,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # 浅克隆(默认 fetch-depth:1)拿不到 base.sha / event.before,导致 git diff 报 bad object
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - name: 校验新增/修改的产物
         id: check
         run: |
+          base="${{ github.event.pull_request.base.sha || github.event.before }}"
+          if [ -z "$base" ] || [ "$base" = "0000000000000000000000000000000000000000" ]; then
+            # 首次 push / 空 before 时回退到上一提交
+            base="HEAD~1"
+          fi
           if [ "${{ github.event_name }}" = "pull_request" ]; then
-            files=$(git diff --name-only "${{ github.event.pull_request.base.sha }}" HEAD -- 'artifacts/incoming/*.md' 'artifacts/writing/*.md')
+            files=$(git diff --name-only "$base" HEAD -- 'artifacts/incoming/*.md' 'artifacts/writing/*.md')
           else
-            files=$(git diff --name-only "${{ github.event.before }}" HEAD -- 'artifacts/incoming/*.md')
+            files=$(git diff --name-only "$base" HEAD -- 'artifacts/incoming/*.md')
           fi
           echo "files=$files"
           if [ -z "$files" ]; then
@@ -35,10 +43,14 @@ jobs:
         if: failure()
         id: collect
         run: |
+          base="${{ github.event.pull_request.base.sha || github.event.before }}"
+          if [ -z "$base" ] || [ "$base" = "0000000000000000000000000000000000000000" ]; then
+            base="HEAD~1"
+          fi
           if [ "${{ github.event_name }}" = "pull_request" ]; then
-            files=$(git diff --name-only "${{ github.event.pull_request.base.sha }}" HEAD -- 'artifacts/incoming/*.md' 'artifacts/writing/*.md')
+            files=$(git diff --name-only "$base" HEAD -- 'artifacts/incoming/*.md' 'artifacts/writing/*.md')
           else
-            files=$(git diff --name-only "${{ github.event.before }}" HEAD -- 'artifacts/incoming/*.md')
+            files=$(git diff --name-only "$base" HEAD -- 'artifacts/incoming/*.md')
           fi
           for f in $files; do python3 scripts/check_submission.py "$f" || true; done > /tmp/check_out.txt
           echo "output<<EOF" >> "$GITHUB_OUTPUT"
