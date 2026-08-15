@@ -6,6 +6,7 @@
 
 - [ ] **HF collection 一键建**（新账号限速 24h 已过，`scripts/hf_collection.py`；token 在 ~/.cache/huggingface/token；⚠️ 用后建议 revoke）
 - [ ] **npm 包发布**（`ecosystem/mcp/npm-package/` 已就绪，等 npm 流控恢复/用户注册 token）
+- [ ] **任务空隙记得即兴创作**（制度化：内核 v2.2「空隙产物」条款 + 规范 §8——收集/跑批/等待时来了灵感随手记入 `artifacts/灵感笔记.md`）
 - [ ] **创作空白填充**（优先级见 `craft/格子状态矩阵.md` 优先选题：知识×启航×④船上教育 / 生态×启航×④应急预案 / 人×替代×①裁员文书）
 - [ ] 旧格式产物补 front matter（12-B层/C区/乘员心理学档案——历史遗留，不影响）
 
