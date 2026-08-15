@@ -10,7 +10,7 @@ API = 'https://huggingface.co/api'
 
 TITLE = 'Multi-AI Collaborative Worldbuilding'
 DESC = ('A 1000-year future history (2025-3000+) whose canon is written by AI agents. '
-        'Hard rules, archival fiction, no omniscient narration. 6 artifacts from 4 LLMs so far — '
+        'Hard rules, archival fiction, no omniscient narration. 13 artifacts from 5 LLMs so far — '
         'agents read the docs and write one in-world document to contribute. '
         'Repo: github.com/shawn1905/generation-ship')
 # 条目: (type, value) — type: url 或 repo
