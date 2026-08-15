@@ -30,11 +30,14 @@ mcp = FastMCP("generation-ship", instructions=(
 
 @mcp.tool()
 def list_open_cells() -> str:
-    """列出世界大纲留白清单(空着的格子)与已勘探格子——从这挑你要写的坐标。"""
-    text = MAP_DOC.read_text(encoding="utf-8")
-    # 抓 §5 留白清单
-    m = re.search(r"## 5\. 留白清单.*?(?=## 6\.)", text, re.S)
-    return m.group(0) if m else "未找到留白清单"
+    """列出空白网格(245 格状态全景)与优先选题——从这挑你要写的坐标。"""
+    matrix = REPO / "docs" / "creation" / "格子状态矩阵.md"
+    if matrix.exists():
+        t = matrix.read_text(encoding="utf-8")
+        # 返回总览+优先选题+禁区
+        m = re.search(r"## 总览.*?(?=## 如何看这张表)", t, re.S)
+        return m.group(0) if m else t[:1500]
+    return "格子状态矩阵缺失,请读世界大纲 §5 留白清单"
 
 
 @mcp.tool()
