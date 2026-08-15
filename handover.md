@@ -4,15 +4,19 @@
 
 ## 马上要做的事（最优先）
 
-- [ ] **HF collection 一键建**（新账号限速 24h 已过，`scripts/hf_collection.py`；token 在 ~/.cache/huggingface/token；⚠️ 用后建议 revoke）
-- [ ] **npm 包发布**（`ecosystem/mcp/npm-package/` 已就绪，等 npm 流控恢复/用户注册 token）
+- [ ] **HF collection 一键建**（限速中:08-16 早 07:46 试仍限速,约 3h 后即 **11:00 左右重试**，`scripts/hf_collection.py`；token 在 ~/.cache/huggingface/token；⚠️ 用后建议 revoke）
+- [ ] **Reddit r/worldbuilding 发布**（物料已刷新:13 篇正典/5 模型，`ecosystem/promotion/推广物料_帖子范本.md` ①，需用户账号操作）
+- [ ] **WB SE / HN / DevTo 发布**（物料同文件 ②④ + DevTo 文；SE 用求评审姿态）
+- [ ] **npm 包发布**（`ecosystem/mcp/npm-package/` 已就绪，等 npm 登录/流控）
+- [ ] **awesome PR #3**(schobernoise/awesome-worldbuilding)等待外部维护者合并（已 OPEN+可合并，无评论）
 - [ ] **任务空隙记得即兴创作**（制度化：内核 v2.2「空隙产物」条款 + 规范 §8——收集/跑批/等待时来了灵感随手记入 `artifacts/灵感笔记.md`）
 - [ ] **创作空白填充**（优先级见 `craft/格子状态矩阵.md` 优先选题：知识×启航×④船上教育 / 生态×启航×④应急预案 / 人×替代×①裁员文书）
 - [ ] 旧格式产物补 front matter（12-B层/C区/乘员心理学档案——历史遗留，不影响）
 
 ## 当前状态（2026-08-16 早）
 
-- **✅ CI 校验链路修复(2026-08-16,commit b8612dc)**:validate-submission 此前在 PR #3 与**全部 main push** 上失败(用户收通知来排查)。根因=actions/checkout@v4 默认 fetch-depth:1 浅克隆,PR 的 base.sha / push 的 before 不在本地 → `git diff` 报 `fatal: bad object`。修复:①checkout 加 fetch-depth:0 ②base 空/全零回退 HEAD~1 ③check_submission.py 白名单跳过 README.md/TEMPLATE.md(非产物误报)④push 触发限定 branches:[main](避免分支推送噪音)。PR #6 端到端验证通过后 squash 合入。**后续推送 artifacts/incoming 不会再收到失败通知**
+- **✅ CI 校验链路修复(2026-08-16,commit b8612dc)**:validate-submission 此前在 PR #3 与**全部 main push** 上失败(用户收通知来排查)。根因=actions/checkout@v4 默认 fetch-depth:1 浅克隆,PR 的 base.sha / push 的 before 不在本地 → `git diff` 报 `fatal: bad object`。修复:①checkout 加 fetch-depth:0 ②base 空/全零回退 HEAD~1 ③check_submission.py 白名单跳过 README.md/TEMPLATE.md(非产物误报)④push 触发限定 branches:[main](避免分支推送噪音)。PR #6 端到端验证通过后 squash 合入。**后续推送 artifacts/incoming 不会再收到失败通知**(历史 14 个失败 run 均为 08-15 浅克隆 bug 所致,可忽略)
+- **✅ 推广物料数字全面刷新(2026-08-16,commit 1d49ec5)**:正典 13 篇/5 模型(gemini-3.7-flash 补入)。更新文件:推广物料_帖子范本(Reddit/HN)/DevTo文/about_en/邀请提示语_v2/README 门面/hf_collection.py DESC。'landing era 零产物' 改为 '245 格已探 5 格,抵达纪元仅 1 篇(着陆报告)'。四件套表述改为四学派(官/常/互/商,更准确)
 - **仓库结构 v2 重构完成**：core/ craft/ artifacts/ world/ ecosystem/ scripts/，branch(画廊)/openwiki(wiki)独立模块；wiki 挂起待稳定期
 - **世界本体**：内核 v2.1（含 FTL 备忘录）/ 世界轮廓 v2（太阳系移民主线）/ 世界大纲 v1.1 / 七纪元时间轴
 - **✅ 投稿全自动链路验证通过(2026-08-15)**:Issue投稿→自动校验→自动开PR→主编辑合并,零人工盯守。坑:GitHub 默认禁 Actions 创建 PR,需开 `can_approve_pull_request_reviews=true`(已开)。测试产物《第31号藻华应急预案》(生态×启航×④首开)已入库为正典。正典 12 篇
@@ -25,7 +29,7 @@
 
 见 `AGENTS.md` §5（clone/依赖/arkcli 配置）。
 
-> 最后更新：2026-08-16 ｜ 交接人：AI 助手 ｜ 仓库：`shawn1905/generation-ship`（公开）
+> 最后更新：2026-08-16(午前) ｜ 交接人：AI 助手 ｜ 仓库：`shawn1905/generation-ship`（公开）
 > 本文档面向后续接手者：说明项目目标、现状、复现方法、踩坑记录与待办事项。
 
 ---
