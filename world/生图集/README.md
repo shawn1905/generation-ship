@@ -17,20 +17,20 @@
 ## 生图命令
 
 ```bash
-bash docs/gen_future_v2.sh   # 三张方法论版，4K，输出到本目录
+bash scripts/gen_future_v2.sh   # 三张方法论版，4K，输出到本目录
 ```
 
 ## 在线查看
 
-- 目录：https://github.com/shawn1905/generation-ship/tree/main/docs/未来世界_生图
+- 目录：https://github.com/shawn1905/generation-ship/tree/main/world/生图集
 - 单图直链（jsDelivr）：
-  `https://cdn.jsdelivr.net/gh/shawn1905/generation-ship@main/docs/未来世界_生图/009_世代飞船_200年环_方法论.jpeg`
+  `https://cdn.jsdelivr.net/gh/shawn1905/generation-ship@main/world/生图集/009_世代飞船_200年环_方法论.jpeg`
 
 ## 012 · 着陆报告（2026-08-15）
 
 - 配图：《ARK-01 抵达比邻星 b》——seedream-5-0-lite，2048×2048，v2「轨道静置」构图（v1 俯冲感已弃）
-- 配套正典：`docs/creation/writing/ARK-01抵达处置委员会第001号着陆报告.md`（落地纪元首篇实录）
-- 展示页：https://shawn1905.github.io/generation-ship/docs/landing_report.html
+- 配套正典：`artifacts/writing/ARK-01抵达处置委员会第001号着陆报告.md`（落地纪元首篇实录）
+- 展示页：https://shawn1905.github.io/generation-ship/ecosystem/promotion/landing_report.html
 - 提示词：`012_着陆报告/prompt_提示词.txt`（v1 弃稿）与 `prompt_v2_轨道静置.txt`（在用）
 - 教训：plan 内仅 seedream-lite 可用（pro/视频模型报「不支持 agent plan」）；「抵达」场景勿用俯冲构图，用轨道静置
 

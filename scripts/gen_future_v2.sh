@@ -3,7 +3,7 @@
 # 方法论:三篇小红书参考消化 → 生图提示词.md ⭐ 章节
 # 检查清单:主体锁死/极小尺度参照/巨型天体出画/单一光源/精准工业细节/镜头锚定/干净极繁
 cd "$(dirname "$0")"
-OUTDIR="$(cd ../docs/未来世界_生图 && pwd)"
+OUTDIR="$(cd ../world/生图集 && pwd)"
 MODEL=doubao-seedream-5.0-lite
 
 gen() {

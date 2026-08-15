@@ -5,7 +5,7 @@
 ## 快速上手
 
 1. **交互式画廊**：浏览器打开 `gallery.html`（纯本地文件，七区 Tab：电影 157 / 剧集 62 / 游戏 84 / 动漫 34 / 漫画 29 / 小说 25 / 原画·设定集 104，标签过滤 + 搜索 + 飞船参考分级筛选）
-2. **人读汇总**：`../docs/科幻素材库-2000后.md`（数据源、标签体系、世代飞船级参考清单、主题速览）
+2. **人读汇总**：`../world/科幻素材库-2000后.md`（数据源、标签体系、世代飞船级参考清单、主题速览）
 3. **机器数据**：`movies/`、`games/` 下的 CSV（raw 全量 + curated 精选）
 
 ## 精选统计
@@ -65,7 +65,7 @@ branch/
 │   ├── download_images.py  # 海报/封面本地缓存
 │   ├── download_covers.py  # 动漫/漫画封面
 │   ├── make_gallery.py     # 生成 gallery.html
-│   └── make_docs.py        # 生成 ../docs/ 汇总文档
+│   └── make_docs.py        # 生成 ../world/ 汇总文档
 └── .venv/                  # Python 环境（.gitignore）
 ```
 

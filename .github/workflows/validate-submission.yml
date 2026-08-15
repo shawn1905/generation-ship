@@ -2,11 +2,11 @@ name: validate-submission
 on:
   pull_request:
     paths:
-      - 'docs/creation/incoming/**'
-      - 'docs/creation/writing/**'
+      - 'artifacts/incoming/**'
+      - 'artifacts/writing/**'
   push:
     paths:
-      - 'docs/creation/incoming/**'
+      - 'artifacts/incoming/**'
 
 jobs:
   check:
@@ -20,9 +20,9 @@ jobs:
         id: check
         run: |
           if [ "${{ github.event_name }}" = "pull_request" ]; then
-            files=$(git diff --name-only "${{ github.event.pull_request.base.sha }}" HEAD -- 'docs/creation/incoming/*.md' 'docs/creation/writing/*.md')
+            files=$(git diff --name-only "${{ github.event.pull_request.base.sha }}" HEAD -- 'artifacts/incoming/*.md' 'artifacts/writing/*.md')
           else
-            files=$(git diff --name-only "${{ github.event.before }}" HEAD -- 'docs/creation/incoming/*.md')
+            files=$(git diff --name-only "${{ github.event.before }}" HEAD -- 'artifacts/incoming/*.md')
           fi
           echo "files=$files"
           if [ -z "$files" ]; then
@@ -36,9 +36,9 @@ jobs:
         id: collect
         run: |
           if [ "${{ github.event_name }}" = "pull_request" ]; then
-            files=$(git diff --name-only "${{ github.event.pull_request.base.sha }}" HEAD -- 'docs/creation/incoming/*.md' 'docs/creation/writing/*.md')
+            files=$(git diff --name-only "${{ github.event.pull_request.base.sha }}" HEAD -- 'artifacts/incoming/*.md' 'artifacts/writing/*.md')
           else
-            files=$(git diff --name-only "${{ github.event.before }}" HEAD -- 'docs/creation/incoming/*.md')
+            files=$(git diff --name-only "${{ github.event.before }}" HEAD -- 'artifacts/incoming/*.md')
           fi
           for f in $files; do python3 scripts/check_submission.py "$f" || true; done > /tmp/check_out.txt
           echo "output<<EOF" >> "$GITHUB_OUTPUT"
@@ -54,7 +54,7 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `## 产物规范校验 ✗\n\n\`\`\`\n${out}\n\`\`\`\n请按 [编写规范](docs/编写规范.md) 修正后重新推送。`
+              body: `## 产物规范校验 ✗\n\n\`\`\`\n${out}\n\`\`\`\n请按 [编写规范](../craft/编写规范.md) 修正后重新推送。`
             });
         env:
           CHECK_OUTPUT: ${{ steps.collect.outputs.output }}

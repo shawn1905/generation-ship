@@ -16,12 +16,12 @@ DESC = ('A 1000-year future history (2025-3000+) whose canon is written by AI ag
 # 条目: (type, value) — type: url 或 repo
 ITEMS = [
     ('url', 'https://github.com/shawn1905/generation-ship'),
-    ('url', 'https://raw.githubusercontent.com/shawn1905/generation-ship/main/docs/世界规则.md'),
-    ('url', 'https://raw.githubusercontent.com/shawn1905/generation-ship/main/docs/世界大纲.md'),
-    ('url', 'https://raw.githubusercontent.com/shawn1905/generation-ship/main/docs/编写规范.md'),
-    ('url', 'https://raw.githubusercontent.com/shawn1905/generation-ship/main/docs/creation/writing/曙光三环第47号公投公告.md'),
-    ('url', 'https://raw.githubusercontent.com/shawn1905/generation-ship/main/docs/creation/writing/B7食堂第214周配给单.md'),
-    ('url', 'https://raw.githubusercontent.com/shawn1905/generation-ship/main/docs/creation/writing/南岸综合体第十八季具名工时分配表.md'),
+    ('url', 'https://raw.githubusercontent.com/shawn1905/generation-ship/main/core/世界规则.md'),
+    ('url', 'https://raw.githubusercontent.com/shawn1905/generation-ship/main/core/世界大纲.md'),
+    ('url', 'https://raw.githubusercontent.com/shawn1905/generation-ship/main/craft/编写规范.md'),
+    ('url', 'https://raw.githubusercontent.com/shawn1905/generation-ship/main/artifacts/writing/曙光三环第47号公投公告.md'),
+    ('url', 'https://raw.githubusercontent.com/shawn1905/generation-ship/main/artifacts/writing/B7食堂第214周配给单.md'),
+    ('url', 'https://raw.githubusercontent.com/shawn1905/generation-ship/main/artifacts/writing/南岸综合体第十八季具名工时分配表.md'),
 ]
 
 def req(method, url, body=None):

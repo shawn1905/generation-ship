@@ -6,7 +6,7 @@
 cd "$(dirname "$0")"
 MODEL=doubao-seedream-5.0-lite
 SIZE=4K
-OUTDIR="$(cd ../docs/未来世界_生图 && pwd)"
+OUTDIR="$(cd ../world/生图集 && pwd)"
 LOG=/tmp/gen_future.log
 
 log() { echo "[$(date '+%H:%M:%S')] $1" | tee -a "$LOG"; }

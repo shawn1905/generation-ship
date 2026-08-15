@@ -2,7 +2,7 @@ name: OpenWiki Update
 
 on:
   # 定时已停(2026-08-15):OpenWiki --update 是全量 LLM 扫描(增量未实现,git diff 死代码),
-  # 每天自动跑=10min+token 成本;需要时手动 workflow_dispatch 或本地 bash docs/openwiki_update.sh
+  # 每天自动跑=10min+token 成本;需要时手动 workflow_dispatch 或本地 bash scripts/openwiki_update.sh
   workflow_dispatch:
 
 permissions:

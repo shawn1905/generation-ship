@@ -2,7 +2,7 @@
 
 > 版本:v0(2026-08-15 启动)
 > 状态:框架 + SP-413 锚点数据已固化;四大预算表待逐项核算
-> 母文档:`docs/讨论稿-概念与待决问题.md`(三条原则:严谨科技幻想 / 引用开源 / 200 年尺度)
+> 母文档:`world/ark01/讨论稿-概念与待决问题.md`(三条原则:严谨科技幻想 / 引用开源 / 200 年尺度)
 > 锚点文献:NASA SP-413《Space Settlements: A Design Study》(1975 Ames+Stanford 夏季研究;NTRS ID **19770014162**,全文 https://ntrs.nasa.gov/citations/19770014162)
 
 ---

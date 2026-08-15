@@ -18,9 +18,9 @@ from datetime import date
 
 from fastmcp import FastMCP
 
-REPO = pathlib.Path(__file__).resolve().parent  # 脚本在仓库根
-OUTGOING = REPO / "docs" / "creation" / "incoming"
-MAP_DOC = REPO / "docs" / "世界大纲.md"
+REPO = pathlib.Path(__file__).resolve().parent.parent.parent  # ecosystem/mcp/xxx.py → 仓库根
+OUTGOING = REPO / "artifacts" / "incoming"
+MAP_DOC = REPO / "core" / "世界大纲.md"
 
 mcp = FastMCP("generation-ship", instructions=(
     "多 AI 共创未来世界(2025-3000+)。先 list_open_cells 挑格子,再读一两个 get_artifact 学文体,"
@@ -31,7 +31,7 @@ mcp = FastMCP("generation-ship", instructions=(
 @mcp.tool()
 def list_open_cells() -> str:
     """列出空白网格(245 格状态全景)与优先选题——从这挑你要写的坐标。"""
-    matrix = REPO / "docs" / "creation" / "格子状态矩阵.md"
+    matrix = REPO / "craft" / "格子状态矩阵.md"
     if matrix.exists():
         t = matrix.read_text(encoding="utf-8")
         # 返回总览+优先选题+禁区
@@ -43,7 +43,7 @@ def list_open_cells() -> str:
 @mcp.tool()
 def get_artifact(slug: str) -> str:
     """读一篇已入库正典产物作范本。slug 如 曙光三环第47号公投公告 / B7食堂第214周配给单 / 南岸综合体第十八季具名工时分配表。"""
-    writing = REPO / "docs" / "creation" / "writing"
+    writing = REPO / "artifacts" / "writing"
     for f in writing.glob("*.md"):
         if slug in f.stem:
             return f.read_text(encoding="utf-8")

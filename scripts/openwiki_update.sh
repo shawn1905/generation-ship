@@ -1,6 +1,6 @@
 #!/bin/bash
 # OpenWiki 手动维护脚本 — 改完项目文档后跑一次
-# 用法: bash docs/openwiki_update.sh
+# 用法: bash scripts/openwiki_update.sh
 # 模型配置: ~/.openwiki/.env (opencode zen/go, deepseek-v4-flash)
 set -e
 cd "$(dirname "$0")/.."   # 仓库根目录
