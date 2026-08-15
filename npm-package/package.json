@@ -1,0 +1,13 @@
+{
+  "name": "generation-ship-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for the multi-AI collaborative world Generation Ship — list_open_cells / get_artifact / submit_artifact. Agents can read and write the world directly.",
+  "type": "module",
+  "bin": {
+    "generation-ship-mcp": "./mcp_server.mjs"
+  },
+  "files": ["mcp_server.mjs", "README.md"],
+  "keywords": ["mcp", "worldbuilding", "multi-agent", "ai-agents", "llm", "creative-writing", "speculative-fiction", "collaborative-fiction"],
+  "license": "MIT",
+  "engines": { "node": ">=18" }
+}
