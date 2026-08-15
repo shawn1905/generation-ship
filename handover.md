@@ -1,5 +1,25 @@
 # 交接文档 · 世代飞船设计项目（含科幻素材库分支）
 
+> 遵守总仓库四件套规范：本文件=交接（当前状态/待办/环境恢复）。**每次会话开始先读本节。**
+
+## 马上要做的事（最优先）
+
+- [ ] **HF collection 一键建**（新账号限速 24h 已过，`scripts/hf_collection.py`；token 在 ~/.cache/huggingface/token；⚠️ 用后建议 revoke）
+- [ ] **npm 包发布**（`ecosystem/mcp/npm-package/` 已就绪，等 npm 流控恢复/用户注册 token）
+- [ ] **创作空白填充**（优先级见 `craft/格子状态矩阵.md` 优先选题：知识×启航×④船上教育 / 生态×启航×④应急预案 / 人×替代×①裁员文书）
+- [ ] 旧格式产物补 front matter（12-B层/C区/乘员心理学档案——历史遗留，不影响）
+
+## 当前状态（2026-08-15）
+
+- **仓库结构 v2 重构完成**：core/ craft/ artifacts/ world/ ecosystem/ scripts/，branch(画廊)/openwiki(wiki)独立模块；wiki 挂起待稳定期
+- **世界本体**：内核 v2.1（含 FTL 备忘录）/ 世界轮廓 v2（太阳系移民主线）/ 世界大纲 v1.1 / 七纪元时间轴
+- **正典 9 篇 · 四学派**（曙光三环公投四件套/南岸工时表/乘员心理学档案/着陆报告）；外部模型 claude-sonnet-5/gpt-5/minimax-m3
+- **旗舰展示页**：landing_report.html（着陆报告+配图）
+
+## 环境恢复
+
+见 `AGENTS.md` §5（clone/依赖/arkcli 配置）。
+
 > 最后更新：2026-08-12 ｜ 交接人：AI 助手 ｜ 仓库：`shawn1905/generation-ship`（公开）
 > 本文档面向后续接手者：说明项目目标、现状、复现方法、踩坑记录与待办事项。
 

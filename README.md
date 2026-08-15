@@ -41,40 +41,22 @@ generation-ship/
 3. **工程深挖** — [ARK-01 本体](world/ark01/)(Phase 0—3)
 4. **生图集** — [未来世界生图](world/生图集/)(星际穿越式方法论)
 
-## 三条原则（工程深挖线）
+## 文档导航（四件套）
 
-1. **严谨的科技幻想** — 每个数字来自物理推导或可查证研究，不做科幻/玄幻/金手指
-2. **参考开源项目** — 尽量引用 GitHub 已有开源项目与公开研究，不随意编造
-3. **200 年尺度** — 按航行 200 年到达新星球的规模设计
+- **宪法（规则）**：`AGENTS.md`（AI 接手先读）
+- **交接（状态/待办）**：`handover.md`
+- **日志**：`journal/`
+- **门面**：本文件
 
-## 核心判断
-
-「200 年」不是众多方案之一，而是被时间常数逼出来的唯一解：
-
-```
-200 年 + 到达新行星
-  → 目标 ≈ 比邻星 b（4.24 ly），巡航 ~0.03c（9000 km/s）
-  → 化学 / 核热 / 核电推进均不可能（Isp 不够）
-  → 唯一解：聚变脉冲推进（Daedalus / Longshot 谱系，Isp ~10⁶ s）
-  → 两级构型：加速级 + 减速级，末端磁帆辅助制动
-```
-
-真正残酷的难题是 **200 年累计辐射剂量** 与 **200 年零补给的闭环生命支持**——这两项是全船最大不确定项。禁 FTL 的物理依据见 [世界规则·附录](core/世界规则.md)(FTL 备忘录)。
+> 规则细则见 `AGENTS.md` §2-4；当前状态/待办见 `handover.md` 顶部；创作方法见 `core/世界规则.md`（内核）+ `craft/编写规范.md`（工艺）+ `core/世界大纲.md`（地图·挑格子）。
 
 ## 规划（四阶段）
 
-1. **Phase 0** 需求与预算：质量预算、功率预算、人口与农业核算 → [任务文件](world/ark01/ARK-01_Phase0_任务文件.md)
-2. **Phase 1** 概念架构 + 参数化外壳（Blender Python 脚本）
-3. **Phase 2** 内部结构：甲板分区、双环栖息地布局、剖视图
+1. **Phase 0** 需求与预算 → [任务文件](world/ark01/ARK-01_Phase0_任务文件.md)
+2. **Phase 1** 概念架构 + 参数化外壳（Blender）
+3. **Phase 2** 内部结构：甲板分区、双环布局、剖视图
 4. **Phase 3** 渲染：材质、光照、Cycles 出图
 
 ## 主要参考
 
-- Project Longshot（Arrow-air/project-longshot）
-- Project Daedalus 原始报告（BIS 1978）
-- nasa/GMAT、nasa/trick、OpenMDAO/OpenMDAO
-- OpenSpace/OpenSpace、Starshot-Lightsail/FlexSailSim
-- O'Neill《The High Frontier》、Stanford Torus、BIOS-3 / MELiSSA
-- Atomic Rockets（硬科幻工程参数百科）
-
-详细清单见 [讨论稿](world/ark01/讨论稿-概念与待决问题.md)。
+Project Longshot / Project Daedalus / nasa-GMAT-trick-OpenMDAO / OpenSpace / Starshot 光帆 / O'Neill《The High Frontier》/ Stanford Torus / BIOS-3 / MELiSSA / Atomic Rockets。详细清单见 [讨论稿](world/ark01/讨论稿-概念与待决问题.md)。
