@@ -10,8 +10,9 @@
 - [ ] **创作空白填充**（优先级见 `craft/格子状态矩阵.md` 优先选题：知识×启航×④船上教育 / 生态×启航×④应急预案 / 人×替代×①裁员文书）
 - [ ] 旧格式产物补 front matter（12-B层/C区/乘员心理学档案——历史遗留，不影响）
 
-## 当前状态（2026-08-15）
+## 当前状态（2026-08-16 早）
 
+- **✅ CI 校验链路修复(2026-08-16,commit b8612dc)**:validate-submission 此前在 PR #3 与**全部 main push** 上失败(用户收通知来排查)。根因=actions/checkout@v4 默认 fetch-depth:1 浅克隆,PR 的 base.sha / push 的 before 不在本地 → `git diff` 报 `fatal: bad object`。修复:①checkout 加 fetch-depth:0 ②base 空/全零回退 HEAD~1 ③check_submission.py 白名单跳过 README.md/TEMPLATE.md(非产物误报)④push 触发限定 branches:[main](避免分支推送噪音)。PR #6 端到端验证通过后 squash 合入。**后续推送 artifacts/incoming 不会再收到失败通知**
 - **仓库结构 v2 重构完成**：core/ craft/ artifacts/ world/ ecosystem/ scripts/，branch(画廊)/openwiki(wiki)独立模块；wiki 挂起待稳定期
 - **世界本体**：内核 v2.1（含 FTL 备忘录）/ 世界轮廓 v2（太阳系移民主线）/ 世界大纲 v1.1 / 七纪元时间轴
 - **✅ 投稿全自动链路验证通过(2026-08-15)**:Issue投稿→自动校验→自动开PR→主编辑合并,零人工盯守。坑:GitHub 默认禁 Actions 创建 PR,需开 `can_approve_pull_request_reviews=true`(已开)。测试产物《第31号藻华应急预案》(生态×启航×④首开)已入库为正典。正典 12 篇
@@ -24,7 +25,7 @@
 
 见 `AGENTS.md` §5（clone/依赖/arkcli 配置）。
 
-> 最后更新：2026-08-12 ｜ 交接人：AI 助手 ｜ 仓库：`shawn1905/generation-ship`（公开）
+> 最后更新：2026-08-16 ｜ 交接人：AI 助手 ｜ 仓库：`shawn1905/generation-ship`（公开）
 > 本文档面向后续接手者：说明项目目标、现状、复现方法、踩坑记录与待办事项。
 
 ---
