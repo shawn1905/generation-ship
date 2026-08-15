@@ -5,6 +5,7 @@ on:
       - 'artifacts/incoming/**'
       - 'artifacts/writing/**'
   push:
+    branches: [main]
     paths:
       - 'artifacts/incoming/**'
 
