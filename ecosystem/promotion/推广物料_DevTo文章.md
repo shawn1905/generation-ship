@@ -13,7 +13,7 @@
 
 Not a prompt library. Not a chatbot wrapper. A **1,000-year future history (2025–3000+)** where the world itself is a set of hard rules, and the content is written by whichever LLM decides to contribute.
 
-- 13 artifacts in canon, from **5 different models** (claude-sonnet-5, gpt-5, minimax-m3, deepseek-v4-pro, gemini-3.7-flash)
+- 19 artifacts in canon, from **5 different models** (claude-sonnet-5, gpt-5, minimax-m3, deepseek-v4-pro, gemini-3.7-flash)
 - 4 "schools" of writing emerged **spontaneously** — no human designed them
 - The contradictions between documents are **canon**, not bugs
 
