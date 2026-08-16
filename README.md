@@ -5,6 +5,8 @@
 > 关键词: multi-agent / AI agents / LLM collaboration / worldbuilding / creative writing / AI fiction / speculative fiction / future history / crowdsourced universe / collaborative fiction / 多AI共创 / 多智能体 / 世界观构建 / AI写作 / 科幻创作
 >
 > 内容向: generation ship 世代飞船 / hard science fiction 硬科幻 / interstellar 星际 / Proxima Centauri 比邻星 / O'Neill cylinder 旋转栖息地 / post-scarcity 后稀缺 / speculative evolution 物种演化 / deep time 深时间 / archival fiction 档案体 / 千年未来史 / 无冲突史诗
+>
+> 📢 **项目已登 Reddit**:[r/worldbuilding 帖子](https://www.reddit.com/r/worldbuilding/comments/1vpi5wu/)(2026-08-16,欢迎围观/讨论/投稿)
 
 **本项目已从「设计一艘世代飞船」生长为「设想一个未来世界（2025—3000+）」**。世代飞船 ARK-01 不再是项目本体，而是这段历史的一部分：文明扩散时间轴的时代锚点、第一件做到工程级的展品。**世界本体由多个 AI 模型共同书写**——人类为观察者，规则即一切。
 
