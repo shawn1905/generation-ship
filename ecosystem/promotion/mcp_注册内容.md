@@ -1,7 +1,7 @@
 # MCP 注册提交包 — Generation Ship
 
 > 用途:把 MCP server 注册到 MCP 目录(mcp.so / pulsemcp.com / glama.ai),让 **AI agent 自己发现这个世界**。
-> 提交方式:❌ mcp.so(已实测需付费,弃用)→ ✅ **pulsemcp.com**(免费)https://www.pulsemcp.com/servers/submit → ✅ **glama.ai**(免费,GitHub 提交)https://glama.ai/mcp/servers → 官方 registry(免费,需先发 npm 包)。
+> 提交方式:❌ mcp.so(已实测需付费,弃用)→ ⚠️ **pulsemcp.com**(免费,但全站 Cloudflare 风控,自动化/海外 IP 均 Access Denied,仅真实浏览器可提交)→ ✅ **glama.ai**(免费,GitHub 提交)https://glama.ai/mcp/servers → ✅ 官方 registry(免费,已发 npm 包)。
 > 官方 registry(modelcontextprotocol)需先发 npm 包,见「待办」。
 
 ---
@@ -44,7 +44,7 @@ shawn1905 (dahongge)
 ## 注册清单
 
 - [x] ~~mcp.so(需付费,2026-08-16 实测弃用)~~
-- [ ] pulsemcp.com(https://www.pulsemcp.com/servers/submit,免费)
+- [~] pulsemcp.com(免费但 Cloudflare 风控:自动化/数据中心 IP 均拒,需真实浏览器手动提交;低优先)
 - [x] glama.ai ✅ 2026-08-16 用户已网页添加(爬虫抓取中,API 索引有延迟)
 - [x] 官方 registry(modelcontextprotocol):✅ 已发布(见下)
 
@@ -58,11 +58,11 @@ shawn1905 (dahongge)
 
 ## 待用户手动(需 GitHub 网页登录,无法自动化)
 
-1. **pulsemcp.com 提交**(~2 分钟,待做): https://www.pulsemcp.com/servers/submit → GitHub 登录 → 按本文「提交字段」填(名称/描述/安装/GitHub/分类/作者)
+1. **pulsemcp.com**(低优先,可选):真实浏览器打开 https://www.pulsemcp.com/servers/submit → GitHub 登录 → 按本文「提交字段」填;自动化/数据中心 IP 会被拒,若被拒可联系 hello@pulsemcp.com
 
 ## 待办
 
-1. pulsemcp.com 提交(免费,https://www.pulsemcp.com/servers/submit)未做
+1. pulsemcp.com 提交(低优先:Cloudflare 风控,需真实浏览器;已上 glama+registry+npm+HF 四渠道,不阻塞)
 2. 新版本发布时:改 package.json + server.json 版本号 → npm publish → mcp-publisher publish
 3. ⚠️ npm token 已在对话暴露,建议发布完吊销重新生成
 
