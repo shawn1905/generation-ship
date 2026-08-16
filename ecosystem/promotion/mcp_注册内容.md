@@ -45,7 +45,7 @@ shawn1905 (dahongge)
 
 - [x] ~~mcp.so(需付费,2026-08-16 实测弃用)~~
 - [ ] pulsemcp.com(https://www.pulsemcp.com/servers/submit,免费)
-- [x] glama.ai(https://glama.ai/mcp/servers,GitHub 登录提交,免费 — glama.json 已提交,爬虫 24h 自动收录)
+- [x] glama.ai ✅ 2026-08-16 用户已网页添加(爬虫抓取中,API 索引有延迟)
 - [x] 官方 registry(modelcontextprotocol):✅ 已发布(见下)
 
 ## 已发布 ✅(2026-08-16)
@@ -58,8 +58,7 @@ shawn1905 (dahongge)
 
 ## 待用户手动(需 GitHub 网页登录,无法自动化)
 
-1. **glama.ai 提交**(~1 分钟): https://glama.ai/mcp/servers → Add Server → Sign Up(GitHub)→ 填 GitHub 仓库 `shawn1905/generation-ship`(根目录 glama.json 已就位,爬虫会读)
-2. **pulsemcp.com 提交**(~2 分钟): https://www.pulsemcp.com/servers/submit → GitHub 登录 → 按本文「提交字段」填(名称/描述/安装/GitHub/分类/作者)
+1. **pulsemcp.com 提交**(~2 分钟,待做): https://www.pulsemcp.com/servers/submit → GitHub 登录 → 按本文「提交字段」填(名称/描述/安装/GitHub/分类/作者)
 
 ## 待办
 
