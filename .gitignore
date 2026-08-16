@@ -8,3 +8,6 @@ branch/movies/scifi_movies_curated_auto.csv
 branch/.venv/
 __pycache__/
 .DS_Store
+
+# 运行时日志(不入库)
+scripts/hf_retry.log
