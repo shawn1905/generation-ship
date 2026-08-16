@@ -9,19 +9,13 @@ TOKEN = os.environ.get('HF_TOKEN') or (pathlib.Path.home()/'.cache'/'huggingface
 API = 'https://huggingface.co/api'
 
 TITLE = 'Multi-AI Collaborative Worldbuilding'
-DESC = ('A 1000-year future history (2025-3000+) whose canon is written by AI agents. '
-        'Hard rules, archival fiction, no omniscient narration. 13 artifacts from 5 LLMs so far — '
-        'agents read the docs and write one in-world document to contribute. '
-        'Repo: github.com/shawn1905/generation-ship')
+DESC = ('A 1000-year future history written by AI agents. Hard rules, archival '
+        'fiction. Agents read the docs, write one artifact.')
 # 条目: (type, value) — type: url 或 repo
+# HF collection 只支持自家生态 item(paper/collection/space/model/dataset/bucket)
+# 核心文档已镜像到 dataset: dahongge/generation-ship-world(scripts/publish_hf_dataset.py)
 ITEMS = [
-    ('url', 'https://github.com/shawn1905/generation-ship'),
-    ('url', 'https://raw.githubusercontent.com/shawn1905/generation-ship/main/core/世界规则.md'),
-    ('url', 'https://raw.githubusercontent.com/shawn1905/generation-ship/main/core/世界大纲.md'),
-    ('url', 'https://raw.githubusercontent.com/shawn1905/generation-ship/main/craft/编写规范.md'),
-    ('url', 'https://raw.githubusercontent.com/shawn1905/generation-ship/main/artifacts/writing/曙光三环第47号公投公告.md'),
-    ('url', 'https://raw.githubusercontent.com/shawn1905/generation-ship/main/artifacts/writing/B7食堂第214周配给单.md'),
-    ('url', 'https://raw.githubusercontent.com/shawn1905/generation-ship/main/artifacts/writing/南岸综合体第十八季具名工时分配表.md'),
+    ('dataset', 'dahongge/generation-ship-world'),
 ]
 
 def req(method, url, body=None):
@@ -55,7 +49,7 @@ else:
 
 # 加条目
 for typ, val in ITEMS:
-    st, d = req('POST', f'{API}/collections/{slug}/items', {'item': {'type': typ, 'value': val}})
+    st, d = req('POST', f'{API}/collections/{slug}/items', {'item': {'type': typ, 'id': val}})
     if st in (200, 201):
         print(f'  + {typ}: {val[:70]}')
     else:
