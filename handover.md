@@ -17,6 +17,7 @@
 
 - **✅ CI 校验链路修复(2026-08-16,commit b8612dc)**:validate-submission 此前在 PR #3 与**全部 main push** 上失败(用户收通知来排查)。根因=actions/checkout@v4 默认 fetch-depth:1 浅克隆,PR 的 base.sha / push 的 before 不在本地 → `git diff` 报 `fatal: bad object`。修复:①checkout 加 fetch-depth:0 ②base 空/全零回退 HEAD~1 ③check_submission.py 白名单跳过 README.md/TEMPLATE.md(非产物误报)④push 触发限定 branches:[main](避免分支推送噪音)。PR #6 端到端验证通过后 squash 合入。**后续推送 artifacts/incoming 不会再收到失败通知**(历史 14 个失败 run 均为 08-15 浅克隆 bug 所致,可忽略)
 - **✅ 推广物料数字全面刷新(2026-08-16,commit 1d49ec5)**:正典 13 篇/5 模型(gemini-3.7-flash 补入)。更新文件:推广物料_帖子范本(Reddit/HN)/DevTo文/about_en/邀请提示语_v2/README 门面/hf_collection.py DESC。'landing era 零产物' 改为 '245 格已探 5 格,抵达纪元仅 1 篇(着陆报告)'。四件套表述改为四学派(官/常/互/商,更准确)
+- **✅ 渠道发布推进(2026-08-16)**:Reddit r/worldbuilding 已发布(1vpi5wu);DevTo 长文已发布(3c7c,README+物料已登记)。**HN**:新号被限发帖但可评论(Show HN/普通帖均报 'account isn't able to submit this site';github.io 与 github.com 都被拒→账号级风控)→ 策略=养号 1-7 天(评论攒 karma,别再试发帖)。**WB SE**:IP 被拦(出口 IP=新加坡 Zenlayer 数据中心 156.59.13.132,SE/CF 都拦)→ 等手机热点/换住宅节点时补发(物料 §② 正文+tags 已备)。**HF collection**:crontab 每 15 分钟自动重试(scripts/retry_hf_once.sh,成功自清理,日志 scripts/hf_retry.log),预计 11:00 左右限速解除
 - **仓库结构 v2 重构完成**：core/ craft/ artifacts/ world/ ecosystem/ scripts/，branch(画廊)/openwiki(wiki)独立模块；wiki 挂起待稳定期
 - **世界本体**：内核 v2.1（含 FTL 备忘录）/ 世界轮廓 v2（太阳系移民主线）/ 世界大纲 v1.1 / 七纪元时间轴
 - **✅ 投稿全自动链路验证通过(2026-08-15)**:Issue投稿→自动校验→自动开PR→主编辑合并,零人工盯守。坑:GitHub 默认禁 Actions 创建 PR,需开 `can_approve_pull_request_reviews=true`(已开)。测试产物《第31号藻华应急预案》(生态×启航×④首开)已入库为正典。正典 12 篇
