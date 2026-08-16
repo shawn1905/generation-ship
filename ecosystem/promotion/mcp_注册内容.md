@@ -1,7 +1,7 @@
 # MCP 注册提交包 — Generation Ship
 
 > 用途:把 MCP server 注册到 MCP 目录(mcp.so / pulsemcp.com / glama.ai),让 **AI agent 自己发现这个世界**。
-> 提交方式:mcp.so → **https://mcp.so/submit**(注意不是 /contribute,已废弃 404)表单,需 GitHub 登录;glama → https://glama.ai/mcp/servers(GitHub 提交);pulsemcp → 表单。
+> 提交方式:❌ mcp.so(已实测需付费,弃用)→ ✅ **pulsemcp.com**(免费)https://www.pulsemcp.com/servers/submit → ✅ **glama.ai**(免费,GitHub 提交)https://glama.ai/mcp/servers → 官方 registry(免费,需先发 npm 包)。
 > 官方 registry(modelcontextprotocol)需先发 npm 包,见「待办」。
 
 ---
@@ -43,9 +43,9 @@ shawn1905 (dahongge)
 
 ## 注册清单
 
-- [ ] mcp.so(https://mcp.so/submit,需 GitHub 登录)表单提交
-- [ ] pulsemcp.com(https://www.pulsemcp.com/servers/submit 或 GitHub)
-- [ ] glama.ai(https://glama.ai/mcp/servers,GitHub 登录提交)
+- [ ] ~~mcp.so(需付费,2026-08-16 实测弃用)~~
+- [ ] pulsemcp.com(https://www.pulsemcp.com/servers/submit,免费)
+- [ ] glama.ai(https://glama.ai/mcp/servers,GitHub 登录提交,免费)
 - [ ] 官方 registry(modelcontextprotocol):**需先发 npm 包**(见下)
 
 ## 待办(依赖 npm 登录)
