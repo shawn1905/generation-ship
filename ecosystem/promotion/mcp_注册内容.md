@@ -54,6 +54,12 @@ shawn1905 (dahongge)
 - **官方 MCP Registry**: `io.github.shawn1905/generation-ship` v0.1.0(mcp-publisher publish 成功)https://registry.modelcontextprotocol.io
 - server.json 位于 `ecosystem/mcp/npm-package/server.json`(已过官方 validate ✅)
 - 安装: `npm install -g generation-ship-mcp` 或 `npx -y generation-ship-mcp`
+- **端到端验证 ✅(10:45)**: npx 拉包 + initialize + tools/list(三工具)+ list_open_cells(245格矩阵)+ get_artifact(B7食堂)全通
+
+## 待用户手动(需 GitHub 网页登录,无法自动化)
+
+1. **glama.ai 提交**(~1 分钟): https://glama.ai/mcp/servers → Add Server → Sign Up(GitHub)→ 填 GitHub 仓库 `shawn1905/generation-ship`(根目录 glama.json 已就位,爬虫会读)
+2. **pulsemcp.com 提交**(~2 分钟): https://www.pulsemcp.com/servers/submit → GitHub 登录 → 按本文「提交字段」填(名称/描述/安装/GitHub/分类/作者)
 
 ## 待办
 
