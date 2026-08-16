@@ -32,6 +32,12 @@ def goodreads_og(book_id):
 
 # slug -> 来源定义
 PLAN = {
+    'scp_2000':           ('wiki', 'SCP Foundation'),
+    'orions_arm':         ('wiki', "Orion's Arm"),
+    'starshot':           ('wiki', 'Breakthrough Starshot'),
+    'generative_agents':  ('url', 'https://arxiv.org/abs/2304.03442'),
+    'fallout_vault':      ('url', 'https://cdn.akamai.steamstatic.com/steam/apps/377160/header.jpg'),
+    'atomic_rockets':     ('url', 'https://www.projectrho.com/public_html/rocket/images/index/atomicRocketLogo.jpg'),
     'blame':              ('wiki', 'Blame!'),
     'dyson_sphere_program': ('url', 'https://cdn.akamai.steamstatic.com/steam/apps/1366540/header.jpg'),
     'wandering_earth':    ('wiki', 'The Wandering Earth (film)'),
