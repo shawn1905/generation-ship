@@ -455,6 +455,22 @@
       color: #ffffff;
     }
 
+    /* 配图指示圆点(低调,不抢层级) */
+    .slot-img-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #fcd34d;
+      border: 1px solid #d97706;
+      display: inline-block;
+      margin-left: 5px;
+      vertical-align: 1px;
+      opacity: 0.85;
+    }
+    .slot-img-dot:hover {
+      opacity: 1;
+    }
+
     /* Slide-out Dossier Drawer */
     .dossier-drawer-overlay {
       position: fixed;
@@ -882,6 +898,7 @@
                   DATA.dims.forEach((dimName, dimIdx) => {
                     const cell = DATA.cells.find(c => c.e === eraIdx && c.z === zoneIdx && c.d === dimIdx);
                     const count = cell ? cell.doc_count : 0;
+                    const hasImg = count > 0 && cell.doc_ids.some(i => /!\[[^\]]*\]\([^)]+\)/.test(DATA.docs[i].full_text || ''));
                     let cls = 'cassette-slot blank';
                     if (count === 1) cls = 'cassette-slot filed';
                     else if (count > 1) cls = 'cassette-slot multi';
@@ -892,6 +909,7 @@
                         <div class="slot-content-row">
                           <span>${count > 0 ? '卷' : '—'}</span>
                           ${count > 0 ? `<span class="slot-tag-badge">${count}</span>` : ''}
+                          ${hasImg ? '<span class="slot-img-dot" title="含配图"></span>' : ''}
                         </div>
                       </div>
                     `;
