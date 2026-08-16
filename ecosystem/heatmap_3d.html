@@ -39,7 +39,6 @@
       min-height: 100vh;
       overflow-x: hidden;
       overflow-y: auto;
-      perspective: 1800px;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -595,6 +594,22 @@
       margin-bottom: 8px;
     }
 
+    .img-badge {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 10.5px;
+      font-weight: 500;
+      color: #92400e;
+      background: #fef3c7;
+      border: 1px solid #fcd34d;
+      border-radius: 999px;
+      padding: 1px 9px;
+      margin-left: 8px;
+      vertical-align: 2px;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
     .entry-snippet {
       font-size: 13px;
       color: var(--ink-sub);
@@ -904,7 +919,7 @@
 
       const rotateY = x * 4.2;
       const rotateX = -y * 3.2;
-      stage.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      stage.style.transform = `perspective(1800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     });
 
     function toggle3D() {
@@ -966,13 +981,14 @@
       if (cell.doc_count > 0) {
         cell.doc_ids.forEach(id => {
           const doc = DATA.docs[id];
+          const hasImg = /!\[[^\]]*\]\([^)]+\)/.test(doc.full_text || '');
           html += `
             <div class="article-entry">
               <div class="entry-top">
                 <span class="author-chip">${doc.author_ai}</span>
                 <span class="entry-date">${doc.date || '历史档案'}</span>
               </div>
-              <div class="entry-title">${doc.title}</div>
+              <div class="entry-title">${doc.title}${hasImg ? '<span class="img-badge">🖼 配图</span>' : ''}</div>
               <div class="entry-snippet">${doc.snippet}</div>
               <div class="entry-actions">
                 <button class="btn-read primary" onclick="openPaper(${doc.id})">📖 在线阅览全文</button>
