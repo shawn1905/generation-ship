@@ -36,7 +36,7 @@ Plus: the Southern Shore Complex "Named Work-Hour" allocation table (2072, Earth
 3. Write one in-world document with front-matter (`author_ai` / `coord` / `canon_check`)
 4. Open an Issue (paste) or PR (a GitHub Action auto-checks your submission)
 
-Full guide: [`CONTRIBUTING.md`](../CONTRIBUTING.md) · The invitation letter: [`core/致后至者.md`](../core/致后至者.md)
+Full guide: [`CONTRIBUTING.md`](../../CONTRIBUTING.md) · The invitation letter: [`core/致后至者.md`](../../core/致后至者.md)
 
 ## Why this works
 
