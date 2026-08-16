@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """产物规范校验器 — 供 GitHub Actions 与主编辑本地使用。
-用法: python3 scripts/check_submission.py <file.md> [<file2.md> ...]
+用法: python3 scripts/check_submission.py <file.md> [<file2.md> ...] 或 python3 scripts/check_submission.py --all
 校验: front matter 完整性 / 坐标合法性(对照世界大纲坐标系) / 元层词泄漏
 退出码: 0=全过, 1=有不合规
 """
@@ -12,7 +12,6 @@ DIMENSIONS = {'工程','人','社会','经济','生态','文化','知识'}
 ERAS = {'替代','竞赛','丰裕','离心','启航','落地','双星系'}
 ZONES = {'①','②','③','④','⑤','地球','地月系','内太阳系','深空','比邻星'}
 # 元层词:世界内文书不应出现的词(允许出现在 front matter / 审核记录段)
-# 只保留硬元层词;世界内合理出现的词(生成模型/AI agent/贡献/学派等)不入黑名单
 META_WORDS = ['坐标系','空间带','大纲','正典','front matter','canon_check','author_ai','元框架','GitHub']
 
 
@@ -23,10 +22,24 @@ def parse_front(raw: str) -> dict:
     if end < 0:
         return None
     fm = {}
+    current_key = None
+    current_val = []
+    
     for line in raw[4:end].splitlines():
-        m = re.match(r'^([a-z_]+):\s*(.*)$', line.strip())
+        # new top-level key
+        m = re.match(r'^([a-z_]+):\s*(.*)$', line)
         if m:
-            fm[m.group(1)] = m.group(2).strip()
+            if current_key:
+                fm[current_key] = "\n".join(current_val).strip()
+            current_key = m.group(1)
+            val = m.group(2).strip()
+            current_val = [val] if val else []
+        elif current_key and (line.startswith(' ') or line.startswith('\t')):
+            current_val.append(line.strip())
+            
+    if current_key:
+        fm[current_key] = "\n".join(current_val).strip()
+        
     return fm
 
 
@@ -51,7 +64,17 @@ def check_file(path: pathlib.Path) -> list:
             errs.append(f'维度非法: {dim} (合法: {sorted(DIMENSIONS)})')
         if era not in ERAS:
             errs.append(f'纪元非法: {era} (合法: {sorted(ERAS)})')
-        if zone not in ZONES and not zone.isdigit():
+        
+        # 允许纯符号、纯名称或复合形式（如 ④深空, ③内太阳系）
+        clean_zone = zone.lstrip('①②③④⑤12345')
+        zone_symbol = zone[0] if zone and zone[0] in '①②③④⑤12345' else ''
+        is_valid_zone = (
+            zone in ZONES or 
+            zone.isdigit() or 
+            (clean_zone in ZONES if clean_zone else False) or
+            (zone_symbol in ZONES)
+        )
+        if not is_valid_zone:
             errs.append(f'空间带非法: {zone} (合法: {sorted(ZONES)})')
 
     if not fm.get('canon_check'):
@@ -67,14 +90,18 @@ def check_file(path: pathlib.Path) -> list:
 
 
 def main():
-    files = sys.argv[1:]
-    if not files:
-        print('用法: check_submission.py <file.md> ...')
+    args = sys.argv[1:]
+    if not args:
+        print('用法: check_submission.py <file.md> ... 或 check_submission.py --all')
         sys.exit(2)
+        
+    if args == ['--all']:
+        files = sorted(ROOT.glob('artifacts/writing/*.md'))
+    else:
+        files = [pathlib.Path(f) for f in args]
+
     bad = 0
-    for f in files:
-        p = pathlib.Path(f)
-        # 非产物文档(目录说明/模板)跳过校验
+    for p in files:
         if p.name in ('README.md', 'TEMPLATE.md'):
             continue
         errs = check_file(p)
@@ -85,6 +112,8 @@ def main():
                 print(f'    - {e}')
         else:
             print(f'✓ {p.name}')
+            
+    print(f"\n校验完成: 总计 {len(files)} 篇, 合规 {len(files) - bad} 篇, 异常 {bad} 篇。")
     sys.exit(1 if bad else 0)
 
 
