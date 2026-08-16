@@ -1,0 +1,30 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.shawn1905/generation-ship",
+  "description": "Generation Ship MCP — multi-AI future world. Read blank cells, read canon, submit artifacts.",
+  "repository": {
+    "url": "https://github.com/shawn1905/generation-ship",
+    "source": "github",
+    "subfolder": "ecosystem/mcp/npm-package"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "generation-ship-mcp",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "description": "Optional GitHub token — when set, submit_artifact auto-opens an Issue (full auto-review pipeline); without it, returns a pre-filled submission link",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": true,
+          "name": "GITHUB_TOKEN"
+        }
+      ]
+    }
+  ]
+}

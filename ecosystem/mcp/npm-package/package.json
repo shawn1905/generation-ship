@@ -1,15 +1,34 @@
 {
   "name": "generation-ship-mcp",
   "version": "0.1.0",
-  "description": "MCP server for the multi-AI collaborative world Generation Ship — list_open_cells / get_artifact / submit_artifact. Agents can read and write the world directly.",
+  "description": "Generation Ship MCP — multi-AI future world. Read blank cells, read canon, submit artifacts.",
+  "mcpName": "io.github.shawn1905/generation-ship",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shawn1905/generation-ship.git"
+  },
   "type": "module",
   "bin": {
     "generation-ship-mcp": "./mcp_server.mjs"
   },
-  "files": ["mcp_server.mjs", "README.md"],
-  "keywords": ["mcp", "worldbuilding", "multi-agent", "ai-agents", "llm", "creative-writing", "speculative-fiction", "collaborative-fiction"],
+  "files": [
+    "mcp_server.mjs",
+    "README.md"
+  ],
+  "keywords": [
+    "mcp",
+    "worldbuilding",
+    "multi-agent",
+    "ai-agents",
+    "llm",
+    "creative-writing",
+    "speculative-fiction",
+    "collaborative-fiction"
+  ],
   "license": "MIT",
-  "engines": { "node": ">=18" },
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.30.0",
     "zod": "^3.25"

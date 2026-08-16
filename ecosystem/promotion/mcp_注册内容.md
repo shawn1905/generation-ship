@@ -43,13 +43,26 @@ shawn1905 (dahongge)
 
 ## 注册清单
 
-- [ ] ~~mcp.so(需付费,2026-08-16 实测弃用)~~
+- [x] ~~mcp.so(需付费,2026-08-16 实测弃用)~~
 - [ ] pulsemcp.com(https://www.pulsemcp.com/servers/submit,免费)
-- [ ] glama.ai(https://glama.ai/mcp/servers,GitHub 登录提交,免费)
-- [ ] 官方 registry(modelcontextprotocol):**需先发 npm 包**(见下)
+- [x] glama.ai(https://glama.ai/mcp/servers,GitHub 登录提交,免费 — glama.json 已提交,爬虫 24h 自动收录)
+- [x] 官方 registry(modelcontextprotocol):✅ 已发布(见下)
+
+## 已发布 ✅(2026-08-16)
+
+- **npm**: `generation-ship-mcp@0.1.0`(真 MCP 实现,SDK 1.30)https://www.npmjs.com/package/generation-ship-mcp
+- **官方 MCP Registry**: `io.github.shawn1905/generation-ship` v0.1.0(mcp-publisher publish 成功)https://registry.modelcontextprotocol.io
+- server.json 位于 `ecosystem/mcp/npm-package/server.json`(已过官方 validate ✅)
+- 安装: `npm install -g generation-ship-mcp` 或 `npx -y generation-ship-mcp`
+
+## 待办
+
+1. pulsemcp.com 提交(免费,https://www.pulsemcp.com/servers/submit)未做
+2. 新版本发布时:改 package.json + server.json 版本号 → npm publish → mcp-publisher publish
+3. ⚠️ npm token 已在对话暴露,建议发布完吊销重新生成
 
 ## 待办(依赖 npm 登录)
 
-1. **npm 包是占位版**(`ecosystem/mcp/npm-package/mcp_server.mjs` 只返回占位 JSON)——发布前必须改成真 MCP 实现(用 @modelcontextprotocol/sdk 的 stdio server,包装三个工具),否则 agent 装上不能用
-2. npm 登录(token)后:`npm publish`(包名 generation-ship-mcp,0.1.0 已就绪)
-3. 用官方 `mcp-publisher` CLI 发布到 MCP Registry(需 npm 包 + GitHub 认证)
+1. ✅ **npm 包已从占位版改为真 MCP 实现**(57b4807:SDK 1.30 stdio server,三工具 list_open_cells / get_artifact / submit_artifact,本地验证通过)
+2. ✅ **npm publish 完成**(2026-08-16,generation-ship-mcp@0.1.0)
+3. ✅ **官方 MCP Registry 发布完成**(io.github.shawn1905/generation-ship v0.1.0)

@@ -5,9 +5,10 @@
 ## 马上要做的事（最优先）
 
 - [ ] **HF collection 一键建**（限速中:08-16 早 07:46 试仍限速,约 3h 后即 **11:00 左右重试**，`scripts/hf_collection.py`；token 在 ~/.cache/huggingface/token；⚠️ 用后建议 revoke）
-- [ ] **Reddit r/worldbuilding 发布**（物料已刷新:13 篇正典/5 模型，`ecosystem/promotion/推广物料_帖子范本.md` ①，需用户账号操作）
-- [ ] **WB SE / HN / DevTo 发布**（物料同文件 ②④ + DevTo 文；SE 用求评审姿态）
-- [ ] **npm 包发布**（`ecosystem/mcp/npm-package/` 已就绪，等 npm 登录/流控）
+- [x] **Reddit r/worldbuilding 发布** ✅ 2026-08-16:https://www.reddit.com/r/worldbuilding/comments/1vpi5wu/(flair 待确认)
+- [x] **DevTo 发布** ✅ 2026-08-16:https://dev.to/_c1987308270d4380d71084/i-built-a-world-where-the-canon-is-written-by-ai-agents-13-artifacts-5-llms-0-human-3c7c
+- [ ] **WB SE / HN 发布**（物料 `ecosystem/promotion/推广物料_帖子范本.md` ②④；WB SE 用求评审姿态，tags: artificial-intelligence/worldbuilding-process/governance；HN 无 tags 标题即全部）
+- [x] **npm 包发布** ✅ 2026-08-16:generation-ship-mcp@0.1.0 已上线 https://www.npmjs.com/package/generation-ship-mcp;官方 MCP Registry 已发布 io.github.shawn1905/generation-ship(server.json 在 npm-package/);后续发新版:publish 前改版本号 → npm publish → mcp-publisher publish(CLI 在 ~/.local/bin/mcp-publisher);⚠️ npm token 已暴露,建议 revoke
 - [ ] **awesome PR #3**(schobernoise/awesome-worldbuilding)等待外部维护者合并（已 OPEN+可合并，无评论）
 - [ ] **任务空隙记得即兴创作**（制度化：内核 v2.2「空隙产物」条款 + 规范 §8——收集/跑批/等待时来了灵感随手记入 `artifacts/灵感笔记.md`）
 - [ ] **创作空白填充**（优先级见 `craft/格子状态矩阵.md` 优先选题：知识×启航×④船上教育 / 生态×启航×④应急预案 / 人×替代×①裁员文书）
