@@ -690,10 +690,51 @@
       font-size: 15px;
       line-height: 1.85;
       color: #1e293b;
-      white-space: pre-wrap;
       font-family: var(--font-serif);
       user-select: text;
     }
+    /* Markdown 渲染元素样式 */
+    .reader-text h1, .reader-text h2, .reader-text h3,
+    .reader-text h4, .reader-text h5, .reader-text h6 {
+      font-family: var(--font-serif);
+      color: #0f172a;
+      font-weight: 600;
+      line-height: 1.4;
+      margin: 1.6em 0 0.6em;
+    }
+    .reader-text h1 { font-size: 1.5em; }
+    .reader-text h2 { font-size: 1.28em; }
+    .reader-text h3 { font-size: 1.12em; }
+    .reader-text h4 { font-size: 1em; }
+    .reader-text h5, .reader-text h6 { font-size: 0.92em; color: #334155; }
+    .reader-text h1:first-child, .reader-text h2:first-child { margin-top: 0; }
+    .reader-text p { margin: 0 0 1em; }
+    .reader-text strong { color: #0f172a; }
+    .reader-text code {
+      background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 3px;
+      padding: 0.1em 0.35em; font-size: 0.88em;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    .reader-text pre {
+      background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px;
+      padding: 14px 18px; overflow-x: auto; margin: 0 0 1.2em;
+    }
+    .reader-text pre code { background: none; border: none; padding: 0; font-size: 0.86em; line-height: 1.6; }
+    .reader-text table { width: 100%; border-collapse: collapse; margin: 1.2em 0; font-size: 0.92em; }
+    .reader-text th, .reader-text td { border: 1px solid #e2e8f0; padding: 8px 12px; text-align: left; vertical-align: top; }
+    .reader-text th { background: #f8fafc; font-weight: 600; color: #0f172a; white-space: nowrap; }
+    .reader-text tr:nth-child(even) td { background: #fafafa; }
+    .reader-text blockquote {
+      border-left: 3px solid #c9a06a; background: #faf9f6;
+      margin: 1em 0; padding: 10px 18px; color: #475569;
+    }
+    .reader-text blockquote p { margin: 0 0 0.4em; }
+    .reader-text blockquote p:last-child { margin-bottom: 0; }
+    .reader-text ul, .reader-text ol { margin: 0.6em 0 1em 1.6em; padding: 0; }
+    .reader-text li { margin: 0.25em 0; }
+    .reader-text hr { border: none; border-top: 1px solid #e2e8f0; margin: 1.8em 0; }
+    .reader-text img { max-width: 100%; height: auto; border: 1px solid #e2e8f0; border-radius: 4px; margin: 0.8em 0; }
+    .reader-text a { color: #8a6d3b; text-decoration: underline; text-underline-offset: 2px; }
   </style>
 </head>
 <body>
@@ -972,10 +1013,109 @@
     }
 
     // Reader Logic
+    // 内嵌轻量 Markdown 渲染器(离线可用,无外部依赖)
+    function escapeHtml(s) {
+      return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+    }
+    // 把 md 内相对资源路径换算为相对本页面的路径
+    // md 基准:doc.rel_path(相对仓库根);页面基准:仓库根下 'ecosystem' 目录
+    function resolveAsset(src, mdRelPath) {
+      if (/^(https?:|data:|mailto:|#|\/)/.test(src)) return src;
+      const mdDir = mdRelPath.includes('/') ? mdRelPath.slice(0, mdRelPath.lastIndexOf('/')) : '';
+      const stack = [];
+      for (const p of ((mdDir ? mdDir + '/' : '') + src).split('/')) {
+        if (p === '..') { if (stack.length) stack.pop(); }
+        else if (p && p !== '.') stack.push(p);
+      }
+      // stack 现在是相对仓库根的路径;换算到页面目录 'ecosystem'
+      const pageDir = 'ecosystem'.split('/'), target = stack;
+      while (pageDir.length && target.length && pageDir[0] === target[0]) { pageDir.shift(); target.shift(); }
+      return pageDir.map(() => '..').concat(target).join('/');
+    }
+    function inlineMd(s, mdRelPath) {
+      return s
+        .replace(/\*\*([^*]+)\*\*/g, (m, x) => '<strong>' + x + '</strong>')
+        .replace(/\*([^*]+)\*/g, (m, x) => '<em>' + x + '</em>')
+        .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (m, alt, u) => '<img src="' + resolveAsset(u, mdRelPath) + '" alt="' + alt + '" loading="lazy">')
+        .replace(/\[([^\]]*)\]\(([^)]+)\)/g, (m, x, u) => '<a href="' + resolveAsset(u, mdRelPath) + '" target="_blank" rel="noopener">' + x + '</a>');
+    }
+    function renderMarkdown(src, mdRelPath) {
+      let t = src.replace(/^\uFEFF/, '');
+      // 剥离 front matter
+      if (t.startsWith('---\n')) {
+        const m = t.match(/^---\n[\s\S]*?\n---\n?/);
+        if (m) t = t.slice(m[0].length);
+      }
+      // 提取代码块与行内 code(先于 HTML 转义)
+      const codeBlocks = [], inlineCodes = [];
+      t = t.replace(/```[^\n]*\n([\s\S]*?)```/g, (m, c) => { codeBlocks.push(c.replace(/\n$/, '')); return '\u0001C' + (codeBlocks.length - 1) + '\u0001'; });
+      t = t.replace(/`([^`\n]+)`/g, (m, c) => { inlineCodes.push(c); return '\u0001I' + (inlineCodes.length - 1) + '\u0001'; });
+      t = escapeHtml(t);
+      const lines = t.split('\n');
+      let html = '', i = 0;
+      const para = [];
+      const flushPara = () => { if (para.length) { html += '<p>' + para.join('<br>') + '</p>'; para.length = 0; } };
+      while (i < lines.length) {
+        const trimmed = lines[i].trim();
+        if (!trimmed) { flushPara(); i++; continue; }
+        // 表格:表头 + |---| 分隔行
+        if (trimmed.startsWith('|') && i + 1 < lines.length &&
+            /^\|?[\s:|-]+\|?$/.test(lines[i + 1].trim()) && lines[i + 1].includes('-')) {
+          flushPara();
+          const rows = [];
+          while (i < lines.length && lines[i].trim().startsWith('|')) {
+            let r = lines[i].trim();
+            if (r.startsWith('|')) r = r.slice(1);
+            if (r.endsWith('|')) r = r.slice(0, -1);
+            rows.push(r.split('|').map(c => inlineMd(c.trim(), mdRelPath)));
+            i++;
+          }
+          html += '<table><thead><tr>' + rows[0].map(c => '<th>' + c + '</th>').join('') + '</tr></thead><tbody>' +
+            rows.slice(2).map(r => '<tr>' + r.map(c => '<td>' + c + '</td>').join('') + '</tr>').join('') + '</tbody></table>';
+          continue;
+        }
+        // 标题
+        const h = trimmed.match(/^(#{1,6})\s+(.*)$/);
+        if (h) { flushPara(); const lv = h[1].length; html += '<h' + lv + '>' + inlineMd(h[2], mdRelPath) + '</h' + lv + '>'; i++; continue; }
+        // 引用块
+        if (trimmed.startsWith('>')) {
+          flushPara();
+          const q = [];
+          while (i < lines.length && lines[i].trim().startsWith('>')) { q.push(inlineMd(lines[i].trim().replace(/^>\s?/, ''), mdRelPath)); i++; }
+          html += '<blockquote>' + q.map(x => '<p>' + x + '</p>').join('') + '</blockquote>';
+          continue;
+        }
+        // 列表
+        const ul = trimmed.match(/^[-*]\s+(.*)$/);
+        const ol = trimmed.match(/^\d+[.、]\s+(.*)$/);
+        if (ul || ol) {
+          flushPara();
+          const tag = ul ? 'ul' : 'ol';
+          html += '<' + tag + '>';
+          while (i < lines.length) {
+            const mm = lines[i].trim().match(ul ? /^[-*]\s+(.*)$/ : /^\d+[.、]\s+(.*)$/);
+            if (!mm) break;
+            html += '<li>' + inlineMd(mm[1], mdRelPath) + '</li>';
+            i++;
+          }
+          html += '</' + tag + '>';
+          continue;
+        }
+        // 分隔线
+        if (/^-{3,}\s*$/.test(trimmed)) { flushPara(); html += '<hr>'; i++; continue; }
+        para.push(inlineMd(trimmed, mdRelPath));
+        i++;
+      }
+      flushPara();
+      // 还原行内 code 与代码块
+      html = html.replace(/\u0001I(\d+)\u0001/g, (m, k) => '<code>' + inlineCodes[+k] + '</code>');
+      html = html.replace(/\u0001C(\d+)\u0001/g, (m, k) => '<pre><code>' + escapeHtml(codeBlocks[+k]) + '</code></pre>');
+      return html;
+    }
     function openPaper(docId) {
       const doc = DATA.docs[docId];
       document.getElementById('paper-title').innerText = doc.title;
-      document.getElementById('paper-body').innerText = doc.full_text;
+      document.getElementById('paper-body').innerHTML = renderMarkdown(doc.full_text, doc.rel_path);
       document.getElementById('reader-modal-overlay').classList.add('open');
     }
 
