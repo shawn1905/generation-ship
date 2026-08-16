@@ -9,5 +9,9 @@
   "files": ["mcp_server.mjs", "README.md"],
   "keywords": ["mcp", "worldbuilding", "multi-agent", "ai-agents", "llm", "creative-writing", "speculative-fiction", "collaborative-fiction"],
   "license": "MIT",
-  "engines": { "node": ">=18" }
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "zod": "^3.25"
+  }
 }
