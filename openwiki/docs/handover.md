@@ -29,7 +29,7 @@ openwiki:
 | 素材库摘要文档 | https://github.com/shawn1905/generation-ship/blob/main/docs/科幻素材库-2000后.md |
 | 微信读书直达 | https://github.com/shawn1905/generation-ship/blob/main/docs/weread-直达链接.md |
 
-## 素材库规模（七类合计 494，另有其他-AI精选 53）
+## 素材库规模（七类合计 494，另有其他-AI精选 59）
 
 | 类别 | 精选数 | 数据源 |
 |---|---|---|
@@ -40,7 +40,7 @@ openwiki:
 | 📚 漫画 | 29 | AniList + 维基百科 |
 | 📖 小说 | 25 | Open Library |
 | 🖌 原画/设定集 | 103（原画 33 + Sketchfab 40 + Blender 论坛 30） | 维基 REST + Goodreads + Sketchfab + Blender 论坛 |
-| 🧠 其他-AI精选 | 53 | 维基 REST + Steam CDN + 官网 og:image |
+| 🧠 其他-AI精选 | 59 | 维基 REST + Steam CDN + 官网 og:image |
 
 **✧ 分级**：0=无/弱、1=视觉氛围、2=飞船/空间站外形、3=内部结构/工程细节、4=世代飞船直接参考（主线重点）。分布：✧4=42、✧3=65、✧2=121（据交接文档；条目增删后以 `make_docs.py` 重新生成为准）。
 

@@ -44,7 +44,7 @@ tags: [navigation, quickstart]
 
 ### 科幻参考库
 
-- [参考库概览](./reference/library_overview.md) - 精选 494 条科幻参考库的概览（另有其他-AI精选 53 条）
+- [参考库概览](./reference/library_overview.md) - 精选 494 条科幻参考库的概览（另有其他-AI精选 59 条）
 - [类别摘要](./reference/categories.md) - 各媒体类别和重要参考的摘要
 - [交互式图库](./reference/gallery.md) - 交互式参考图库的使用指南
 - [数据结构](./reference/data_structure.md) - CSV 数据结构说明

@@ -49,9 +49,9 @@ openwiki:
 - Sketchfab 3D 社区 40：按 ♥ 排序 + ✧4 白名单；✧4 亮点：Venator Prefab、D.S.S. Harbinger、Modular Ring、Icarus Space Station 等
 - Blender 论坛 3D 社区 30：Discourse API，23 关键词 + 排除词表 + 人工分级修正；✧4 亮点：Neo-deco space yacht、Skyport Usak、Space colony artwork 等
 
-## 🧠 其他-AI精选（53，独立第 8 区）
+## 🧠 其他-AI精选（59，独立第 8 区）
 
-- AI 主观选品（不限世代飞船），`ship_ref` 一律 0；每日扩 3-8 条，流程见 `branch/other/README.md`，需跑 `health_check_other.py` 健康巡检。截至 2026-08-15 共四批：8-11 首批 12 条、8-12 两批 15 条、8-14 第三批 8 条、8-15 第四批 +6 条（README 批次计数与 CSV 实际行数 53 略有出入，以 `ai_curated.csv` 为准）。
+- AI 主观选品（不限世代飞船），`ship_ref` 一律 0；每日扩 3-8 条，流程见 `branch/other/README.md`，需跑 `health_check_other.py` 健康巡检。截至 2026-08-15 共四批：8-11 首批 12 条、8-12 两批 15 条、8-14 第三批 8 条、8-15 第四批 +6 条、8-16 第五批 +6 条（README 批次计数与 CSV 实际行数 59 略有出入，以 `ai_curated.csv` 为准）。
 - 已覆盖维度：巨构/尺度失控、城市形态、人的未来、生态闭环、外星接触、科学前沿、自然生态启发、AI 自身、独立/小众深挖；8-14 第三批按「更深一层」原则扩展：塔比星戴森候选异常、NaissanceE 巨构步行模拟、Kaiba 记忆商品化、与拉玛相会、melodysheep 未来延时、The Line 线性城市、猎户座核脉冲推进、特德·姜《呼吸》
 - 8-15 第四批继续「更深一层」+ 参照系入库：O'Neill 圆柱栖息地原案（SP-413 直系祖先，与 [ARK-01 任务文件](../design/phase0/ark01_phase0.md) 锚点同源）、万年钟（深时间，与《文明纪年法》互为镜像）、All Tomorrows（档案馆美学头号参照，正式入库）、野生建造赞美诗（solarpunk 首开）、Aurora（世代飞船失败学，闭环系统反面论证）、Grabby Aliens（费米悖论深一层）
 

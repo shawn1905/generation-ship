@@ -757,7 +757,7 @@ openwiki:
 | 素材库摘要文档 | https://github.com/shawn1905/generation-ship/blob/main/docs/科幻素材库-2000后.md |
 | 微信读书直达 | https://github.com/shawn1905/generation-ship/blob/main/docs/weread-直达链接.md |
 
-## 素材库规模（七类合计 494，另有其他-AI精选 53）
+## 素材库规模（七类合计 494，另有其他-AI精选 59）
 
 | 类别 | 精选数 | 数据源 |
 |---|---|---|
@@ -768,7 +768,7 @@ openwiki:
 | 📚 漫画 | 29 | AniList + 维基百科 |
 | 📖 小说 | 25 | Open Library |
 | 🖌 原画/设定集 | 103（原画 33 + Sketchfab 40 + Blender 论坛 30） | 维基 REST + Goodreads + Sketchfab + Blender 论坛 |
-| 🧠 其他-AI精选 | 53 | 维基 REST + Steam CDN + 官网 og:image |
+| 🧠 其他-AI精选 | 59 | 维基 REST + Steam CDN + 官网 og:image |
 
 **✧ 分级**：0=无/弱、1=视觉氛围、2=飞船/空间站外形、3=内部结构/工程细节、4=世代飞船直接参考（主线重点）。分布：✧4=42、✧3=65、✧2=121（据交接文档；条目增删后以 `make_docs.py` 重新生成为准）。
 
@@ -1265,7 +1265,7 @@ tags: [navigation, quickstart]
 
 ### 科幻参考库
 
-- [参考库概览](./reference/library_overview.md) - 精选 494 条科幻参考库的概览（另有其他-AI精选 53 条）
+- [参考库概览](./reference/library_overview.md) - 精选 494 条科幻参考库的概览（另有其他-AI精选 59 条）
 - [类别摘要](./reference/categories.md) - 各媒体类别和重要参考的摘要
 - [交互式图库](./reference/gallery.md) - 交互式参考图库的使用指南
 - [数据结构](./reference/data_structure.md) - CSV 数据结构说明
@@ -1374,9 +1374,9 @@ openwiki:
 - Sketchfab 3D 社区 40：按 ♥ 排序 + ✧4 白名单；✧4 亮点：Venator Prefab、D.S.S. Harbinger、Modular Ring、Icarus Space Station 等
 - Blender 论坛 3D 社区 30：Discourse API，23 关键词 + 排除词表 + 人工分级修正；✧4 亮点：Neo-deco space yacht、Skyport Usak、Space colony artwork 等
 
-## 🧠 其他-AI精选（53，独立第 8 区）
+## 🧠 其他-AI精选（59，独立第 8 区）
 
-- AI 主观选品（不限世代飞船），`ship_ref` 一律 0；每日扩 3-8 条，流程见 `branch/other/README.md`，需跑 `health_check_other.py` 健康巡检。截至 2026-08-15 共四批：8-11 首批 12 条、8-12 两批 15 条、8-14 第三批 8 条、8-15 第四批 +6 条（README 批次计数与 CSV 实际行数 53 略有出入，以 `ai_curated.csv` 为准）。
+- AI 主观选品（不限世代飞船），`ship_ref` 一律 0；每日扩 3-8 条，流程见 `branch/other/README.md`，需跑 `health_check_other.py` 健康巡检。截至 2026-08-15 共四批：8-11 首批 12 条、8-12 两批 15 条、8-14 第三批 8 条、8-15 第四批 +6 条、8-16 第五批 +6 条（README 批次计数与 CSV 实际行数 59 略有出入，以 `ai_curated.csv` 为准）。
 - 已覆盖维度：巨构/尺度失控、城市形态、人的未来、生态闭环、外星接触、科学前沿、自然生态启发、AI 自身、独立/小众深挖；8-14 第三批按「更深一层」原则扩展：塔比星戴森候选异常、NaissanceE 巨构步行模拟、Kaiba 记忆商品化、与拉玛相会、melodysheep 未来延时、The Line 线性城市、猎户座核脉冲推进、特德·姜《呼吸》
 - 8-15 第四批继续「更深一层」+ 参照系入库：O'Neill 圆柱栖息地原案（SP-413 直系祖先，与 [ARK-01 任务文件](../design/phase0/ark01_phase0.md) 锚点同源）、万年钟（深时间，与《文明纪年法》互为镜像）、All Tomorrows（档案馆美学头号参照，正式入库）、野生建造赞美诗（solarpunk 首开）、Aurora（世代飞船失败学，闭环系统反面论证）、Grabby Aliens（费米悖论深一层）
 
@@ -1515,7 +1515,7 @@ openwiki:
 
 ## 功能
 
-- **八区 Tab**：🎬 电影 157 / 📺 剧集 62 / 🎮 游戏 84 / 🛸 动漫 34 / 📚 漫画 29 / 📖 小说 25 / 🖌 原画·设定集 103 / 🧠 其他-AI精选 53
+- **八区 Tab**：🎬 电影 157 / 📺 剧集 62 / 🎮 游戏 84 / 🛸 动漫 34 / 📚 漫画 29 / 📖 小说 25 / 🖌 原画·设定集 103 / 🧠 其他-AI精选 59
 - **标签过滤**：按条目 `tags`（内容主题标签）过滤
 - **✧ 分级筛选**：按 `ship_ref`（0-4）筛选，✧4=世代飞船直接参考（主线重点）
 - **搜索**：标题/说明全文搜索
@@ -1643,7 +1643,7 @@ tags: [reference, library, overview]
 
 ## 统计
 
-7 类精选合计：**494**（另有「其他-AI精选」53 条为独立第 8 区；数据以 `branch/gallery.html` 当前构建为准）
+7 类精选合计：**494**（另有「其他-AI精选」59 条为独立第 8 区；数据以 `branch/gallery.html` 当前构建为准）
 
 | 类别 | 精选总数 | 世代飞船级（4级） | 工程细节级（3级） | 仅外部视图级（2级） |
 |----------|---------------|-------------------------|----------------------------|-----------------------|
