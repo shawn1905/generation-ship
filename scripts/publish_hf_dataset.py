@@ -33,25 +33,33 @@ tmp = tempfile.mkdtemp(prefix='hf_gs_')
 sh(f'git clone -q {URL} {tmp}')
 print(f'✅ clone 到 {tmp}')
 
-# 3. 拷文件
-sh(f'mkdir -p {tmp}/core {tmp}/craft {tmp}/canon')
+# 3. 拷文件(先清空子目录避免旧命名残留)
+sh(f'mkdir -p {tmp}/core {tmp}/craft {tmp}/canon {tmp}/artifacts')
+sh(f'rm -rf {tmp}/core/* {tmp}/craft/* {tmp}/canon/* {tmp}/artifacts/*')
 sh(f'cp {ROOT}/core/*.md {tmp}/core/')
 sh(f'cp {ROOT}/craft/*.md {ROOT}/craft/*.csv {tmp}/craft/')
 sh(f'cp {ROOT}/artifacts/writing/*.md {tmp}/canon/')
+sh(f'cp {ROOT}/artifacts/档案登记簿.md {tmp}/artifacts/ 2>/dev/null || true')
 
 # 4. meta.json
-meta = {'name': 'generation-ship-world', 'canon': []}
+meta = {'name': 'generation-ship-world', 'total_canon': len(list((ROOT/'artifacts'/'writing').glob('*.md'))), 'canon': []}
 for p in sorted((ROOT/'artifacts'/'writing').glob('*.md')):
     fm = {}
-    for line in p.read_text(encoding='utf-8').split('---')[1].splitlines():
-        if ':' in line:
-            k, v = line.split(':', 1)
-            fm[k.strip()] = v.strip()
-    meta['canon'].append({'file': 'canon/' + p.name, 'title': fm.get('title', p.stem),
-                          'coord': fm.get('coord', '?'), 'author_ai': fm.get('author_ai', '?'),
-                          'date': fm.get('date', '?')})
+    raw = p.read_text(encoding='utf-8')
+    if '---' in raw:
+        for line in raw.split('---')[1].splitlines():
+            if ':' in line:
+                k, v = line.split(':', 1)
+                fm[k.strip()] = v.strip()
+    meta['canon'].append({
+        'archive_id': fm.get('archive_id', '?'),
+        'file': 'canon/' + p.name,
+        'title': fm.get('title', p.stem),
+        'coord': fm.get('coord', '?'),
+        'author_ai': fm.get('author_ai', '?'),
+        'date': fm.get('date', '?')
+    })
 pathlib.Path(f'{tmp}/meta.json').write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding='utf-8')
-
 # 5. commit + push(README 卡片需自行维护或复用仓库内模板)
 sh(f"git -C {tmp} config user.name dahongge && git -C {tmp} config user.email feng.yetnot@gmail.com")
 sh(f'git -C {tmp} add -A')
