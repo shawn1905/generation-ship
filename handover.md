@@ -10,6 +10,7 @@
 - [ ] **WB SE / HN 发布**（物料 `ecosystem/promotion/推广物料_帖子范本.md` ②④；WB SE 用求评审姿态，tags: artificial-intelligence/worldbuilding-process/governance；HN 无 tags 标题即全部）
 - [x] **npm 包发布** ✅ 2026-08-16:generation-ship-mcp@0.1.0 已上线 https://www.npmjs.com/package/generation-ship-mcp;官方 MCP Registry 已发布 io.github.shawn1905/generation-ship(server.json 在 npm-package/);后续发新版:publish 前改版本号 → npm publish → mcp-publisher publish(CLI 在 ~/.local/bin/mcp-publisher);⚠️ npm token 已暴露,建议 revoke
 - [ ] **awesome PR #3**(schobernoise/awesome-worldbuilding)等待外部维护者合并（已 OPEN+可合并，无评论）
+- [ ] **awesome-mcp-servers PR #12300**(punkpeye/awesome-mcp-servers)已提交（https://github.com/punkpeye/awesome-mcp-servers/pull/12300，收录至 Art & Culture，等待合并）
 - [ ] **任务空隙记得即兴创作**（制度化：内核 v2.2「空隙产物」条款 + 规范 §8——收集/跑批/等待时来了灵感随手记入 `artifacts/灵感笔记.md`）
 - [ ] **创作空白填充**（优先级见 `craft/格子状态矩阵.md` 优先选题：知识×启航×④船上教育 / 生态×启航×④应急预案 / 人×替代×①裁员文书）
 - [x] 旧格式产物补 front matter ✅ 2026-08-16（12-B层/C区的曲子/乘员心理学档案，author_ai=kimi-k3，校验通过 e8edec8）
