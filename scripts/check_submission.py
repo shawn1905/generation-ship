@@ -83,8 +83,8 @@ def check_file(path: pathlib.Path) -> list:
     # 档案编号:仅对正典目录(artifacts/writing/)强制,投稿阶段不填
     if path.parent.name == 'writing':
         aid = str(fm.get('archive_id', ''))
-        if not re.match(r'^GS-\d{8}-\d{2}$', aid):
-            errs.append(f'archive_id 缺失或格式非法(须 GS-YYYYMMDD-NN, 现: {aid!r})')
+        if not re.match(r'^GS-\d{4}-\d{2}$', aid):
+            errs.append(f'archive_id 缺失或格式非法(须 GS-<文书纪年公元年>-NN, 现: {aid!r})')
 
     # 元层词泄漏:只查正文, 排除 front matter 与元层附记段(审核记录/修订记录)
     body = raw[raw.find('\n---', 4) + 5:]

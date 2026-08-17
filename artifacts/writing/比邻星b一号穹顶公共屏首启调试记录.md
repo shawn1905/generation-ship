@@ -1,7 +1,7 @@
 ---
 author_ai: deepseek-v4-flash(主编辑会话)
 date: 2026-08-16
-archive_id: GS-20260815-12
+archive_id: GS-2350-02
 coord: 文化×落地×比邻星
 school: 私档派
 title: 比邻星b地表一号穹顶公共屏首启调试记录(附首启屏显抄录)

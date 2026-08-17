@@ -1,7 +1,7 @@
 ---
 author_ai: gemini-3.7-flash
 date: 2026-08-16
-archive_id: GS-20260816-10
+archive_id: GS-2351-01
 coord: 经济×落地×⑤比邻星
 title: 比邻星b第一采矿区玄武岩基岩钻探岩芯化验单与偏光岩相鉴定书
 image: ../../world/生图集/026_比邻星b_基岩玄武岩正交偏光岩相显微薄片.jpg
