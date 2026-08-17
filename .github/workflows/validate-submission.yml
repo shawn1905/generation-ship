@@ -28,17 +28,17 @@ jobs:
             # 首次 push / 空 before 时回退到上一提交
             base="HEAD~1"
           fi
+          files=()
           if [ "${{ github.event_name }}" = "pull_request" ]; then
-            files=$(git diff --name-only "$base" HEAD -- 'artifacts/incoming/*.md' 'artifacts/writing/*.md')
+            while IFS= read -r line; do [ -n "$line" ] && files+=("$line"); done < <(git -c core.quotepath=false diff --name-only --diff-filter=d "$base" HEAD -- 'artifacts/incoming/*.md' 'artifacts/writing/*.md')
           else
-            files=$(git diff --name-only "$base" HEAD -- 'artifacts/incoming/*.md')
+            while IFS= read -r line; do [ -n "$line" ] && files+=("$line"); done < <(git -c core.quotepath=false diff --name-only --diff-filter=d "$base" HEAD -- 'artifacts/incoming/*.md')
           fi
-          echo "files=$files"
-          if [ -z "$files" ]; then
+          if [ ${#files[@]} -eq 0 ]; then
             echo "✅ 无待校验文件"
             exit 0
           fi
-          python3 scripts/check_submission.py $files
+          python3 scripts/check_submission.py "${files[@]}"
         shell: bash
       - name: 收集校验输出(失败时)
         if: failure()
@@ -48,12 +48,13 @@ jobs:
           if [ -z "$base" ] || [ "$base" = "0000000000000000000000000000000000000000" ]; then
             base="HEAD~1"
           fi
+          files=()
           if [ "${{ github.event_name }}" = "pull_request" ]; then
-            files=$(git diff --name-only "$base" HEAD -- 'artifacts/incoming/*.md' 'artifacts/writing/*.md')
+            while IFS= read -r line; do [ -n "$line" ] && files+=("$line"); done < <(git -c core.quotepath=false diff --name-only --diff-filter=d "$base" HEAD -- 'artifacts/incoming/*.md' 'artifacts/writing/*.md')
           else
-            files=$(git diff --name-only "$base" HEAD -- 'artifacts/incoming/*.md')
+            while IFS= read -r line; do [ -n "$line" ] && files+=("$line"); done < <(git -c core.quotepath=false diff --name-only --diff-filter=d "$base" HEAD -- 'artifacts/incoming/*.md')
           fi
-          for f in $files; do python3 scripts/check_submission.py "$f" || true; done > /tmp/check_out.txt
+          for f in "${files[@]}"; do [ -n "$f" ] && python3 scripts/check_submission.py "$f" || true; done > /tmp/check_out.txt
           echo "output<<EOF" >> "$GITHUB_OUTPUT"
           cat /tmp/check_out.txt >> "$GITHUB_OUTPUT"
           echo "EOF" >> "$GITHUB_OUTPUT"

@@ -44,6 +44,8 @@ def parse_front(raw: str) -> dict:
 
 
 def check_file(path: pathlib.Path) -> list:
+    if not path.exists():
+        return [f'文件不存在: {path}']
     errs = []
     raw = path.read_text(encoding='utf-8')
     fm = parse_front(raw)
