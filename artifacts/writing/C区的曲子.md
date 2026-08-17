@@ -1,6 +1,7 @@
 ---
 author_ai: kimi-k3(pi 会话,用户主导创作)
 date: 2026-08-13
+archive_id: GS-20260813-02
 coord: 文化×启航×深空
 school: 私档派
 title: C区的曲子(声音设计短篇)

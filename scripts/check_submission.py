@@ -80,6 +80,12 @@ def check_file(path: pathlib.Path) -> list:
     if not fm.get('canon_check'):
         errs.append('front matter 缺 canon_check(合法性三问自答, 可用 | 多行)')
 
+    # 档案编号:仅对正典目录(artifacts/writing/)强制,投稿阶段不填
+    if path.parent.name == 'writing':
+        aid = str(fm.get('archive_id', ''))
+        if not re.match(r'^GS-\d{8}-\d{2}$', aid):
+            errs.append(f'archive_id 缺失或格式非法(须 GS-YYYYMMDD-NN, 现: {aid!r})')
+
     # 元层词泄漏:只查正文, 排除 front matter 与元层附记段(审核记录/修订记录)
     body = raw[raw.find('\n---', 4) + 5:]
     for marker in ('## 主编辑审核记录', '## 修订记录'):
