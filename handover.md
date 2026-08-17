@@ -4,22 +4,27 @@
 
 ## 马上要做的事（最优先）
 
-- [x] **HF collection 一键建** ✅ 2026-08-16 11:15 成功(限流解除后自动建):https://huggingface.co/collections/dahongge/multi-ai-collaborative-worldbuilding;核心文档已镜像为 dataset `dahongge/generation-ship-world`(7 文件)并挂入 collection;⚠️ url item 不被 HF 支持,脚本已改为 dataset 引用;⚠️ HF token 已暴露,用后建议 revoke
-- [x] **Reddit r/worldbuilding 发布** ✅ 2026-08-16:https://www.reddit.com/r/worldbuilding/comments/1vpi5wu/(flair 待确认)
-- [x] **DevTo 发布** ✅ 2026-08-16:https://dev.to/_c1987308270d4380d71084/i-built-a-world-where-the-canon-is-written-by-ai-agents-13-artifacts-5-llms-0-human-3c7c
-- [ ] **WB SE / HN 发布**（物料 `ecosystem/promotion/推广物料_帖子范本.md` ②④；WB SE 用求评审姿态，tags: artificial-intelligence/worldbuilding-process/governance；HN 无 tags 标题即全部）
-- [x] **npm 包发布** ✅ 2026-08-16:generation-ship-mcp@0.1.0 已上线 https://www.npmjs.com/package/generation-ship-mcp;官方 MCP Registry 已发布 io.github.shawn1905/generation-ship(server.json 在 npm-package/);后续发新版:publish 前改版本号 → npm publish → mcp-publisher publish(CLI 在 ~/.local/bin/mcp-publisher);⚠️ npm token 已暴露,建议 revoke
-- [ ] **awesome PR #3**(schobernoise/awesome-worldbuilding)等待外部维护者合并（已 OPEN+可合并，无评论）
+- [ ] **下午/晚间外部社区发帖（需用户手动操作，物料已备齐）**:
+  - **Hacker News (`Show HN`)**：晚 20:00-23:00 登录个人账号发帖（物料 `ecosystem/promotion/推广物料_帖子范本.md` §④）
+  - **Worldbuilding Stack Exchange**：切换手机热点/住宅网络发提问帖求评审（物料 §②）
+  - **PulseMCP 目录提交**：打开 https://pulsemcp.com/submit 填表（物料 `ecosystem/promotion/mcp_注册内容.md`）
+  - *(可选)* 将 Reddit r/worldbuilding 主帖一键 Crosspost 转发至 `r/IsaacArthur`
+- [ ] **7 篇 incoming 待图正典补图入库**（032/034/035/036/039/040/044，文书已重审扩写完毕，等生图限流解除后出图转正典）
+- [ ] **awesome PR #3**(schobernoise/awesome-worldbuilding)等待外部维护者合并（已 OPEN+可合并）
 - [ ] **awesome-mcp-servers PR #12300**(punkpeye/awesome-mcp-servers)已提交（https://github.com/punkpeye/awesome-mcp-servers/pull/12300，收录至 Art & Culture，等待合并）
-- [ ] **任务空隙记得即兴创作**（制度化：内核 v2.2「空隙产物」条款 + 规范 §8——收集/跑批/等待时来了灵感随手记入 `artifacts/灵感笔记.md`）
 - [ ] **创作空白填充**（优先级见 `craft/格子状态矩阵.md` 优先选题：知识×启航×④船上教育 / 生态×启航×④应急预案 / 人×替代×①裁员文书）
-- [x] 旧格式产物补 front matter ✅ 2026-08-16（12-B层/C区的曲子/乘员心理学档案，author_ai=kimi-k3，校验通过 e8edec8）
 
-## 当前状态（2026-08-16 深夜）
+## 当前状态（2026-08-17 午后）
 
+- **🎉 GitHub Release v0.2 正式发布(2026-08-17)**:https://github.com/shawn1905/generation-ship/releases/tag/v0.2;涵盖 43 篇正典、6 大模型、四学派互锁、3D 档案舱升级与 HF 数据集同步。
 - **🤝 主动外交与 Agent 接入套件上线(2026-08-17)**:建立 `ecosystem/agent-kit/`（单脚本自动客座 Agent SDK `auto_guest_agent.py` + HF `smolagents` 工具 + `CrewAI` 工具）与 `ecosystem/outreach/`（多 Agent 框架 / 学术实验室 / 虚拟世界联动全套外交操作手册与中英文邀请函）。
-- **🎉 GitHub Release v0.2 正式发布(2026-08-17)**:https://github.com/shawn1905/generation-ship/releases/tag/v0.2;标题《Generation Ship v0.2 — 43篇正典收官·全量重审·档案编号体系建立》;涵盖 43 篇正典、6 大模型、四学派互锁、3D 档案舱升级与 HF 数据集同步。
-- **✅ 正典全面重审+修订完成(2026-08-17)**:51 件(43 正典+7 incoming+1 音乐)全审,7 路并行评审(手册/明细/规格在 /tmp/gs_review/,不持久)。判 ✍️重写 5(微流星报告→平移制动末段2349;降轨日志→按049几何286m/0.78g重算并扩写2.5倍;032→改引第14期正典原文;034→改轴落地历3年(2353)与030/035互锁;039→批次0523脱钩+账目重算)、🔧小修 37、✅合规 9。**仲裁口径已固化**:曙光三环人口11,438(公告)+几何286m×3环(049);ARK-01环参数基准R2.5km/0.65g(第14期通报)、恢复环0.34g(042)、人口10,214;静海时间线045/046改期2067(coord改丰裕)、046去L5化(=静海第五城市带·月面);纪年法PSY-07转岗136→137;中继站日志浮标改名信标-09(与72.4AU信标07区分)。扩写 11 篇(降轨/公共屏/047/048/032/034/035/036/040/044/微流星)。**规则文档同步**:编写规范§7路径修复+§6增补(canon_check数字受锚点约束/纪元名禁入正文)、大纲§2.1标题+§4产物地图回填43篇(v1.4)、check_submission.py排除修订记录段。CI 校验 43+7 全过。
+- **✅ CI 校验工作流彻底修复(2026-08-17,commit 57944fd)**:修复 GitHub Actions Linux 环境下中文路径八进制转义导致 FileNotFoundError 的问题，全量 43 篇正典 + 7 篇 incoming CI 校验全部一次性通过。
+- **✅ 档案编号制度建立(2026-08-17)**:`archive_id: GS-YYYY-NN`(文书纪年公元年+同年序号),入库授予/不变/撤稿留号不复用;存量 44 件追溯授予,台账 `artifacts/档案登记簿.md`;**文件名 NNN_ 序号前缀同步废除**(22 文件 git mv 保历史,heatmap json/html 引用已更新);编写规范 §3/§4 与 check_submission.py(正典目录强制校验编号格式)已同步。incoming 7 篇预留,转正典时授予。
+- **✅ 正典全面重审+修订完成(2026-08-17)**:51 件(43 正典+7 incoming+1 音乐)全审,7 路并行评审。判 ✍️重写 5(微流星报告→平移制动末段2349;降轨日志→按049几何286m/0.78g重算并扩写2.5倍;032→改引第14期正典原文;034→改轴落地历3年(2353)与030/035互锁;039→批次0523脱钩+账目重算)、🔧小修 37、✅合规 9。**仲裁口径已固化**:曙光三环人口11,438(公告)+几何286m×3环(049);ARK-01环参数基准R2.5km/0.65g(第14期通报)、恢复环0.34g(042)、人口10,214;静海时间线045/046改期2067(coord改丰裕)、046去L5化(=静海第五城市带·月面);纪年法PSY-07转岗136→137;中继站日志浮标改名信标-09(与72.4AU信标07区分)。扩写 11 篇(降轨/公共屏/047/048/032/034/035/036/040/044/微流星)。
+- **✅ HF 数据集与合集全量更新(2026-08-17)**:已运行 `publish_hf_dataset.py`，全量更新了 `core/`、`craft/`、`artifacts/档案登记簿.md` 与 43 篇正典至 `dahongge/generation-ship-world`，meta.json 已同步。
+- **✅ 3D 档案舱热力图全量同步(2026-08-17)**:30 格已勘探 / 43 篇正典 / `GS-YYYY-NN` 编号已同步至数据层与页面，并修复了内嵌 DATA 替换时的转义问题，线上渲染验证通过。
+- **✅ 双语去 AI 味 Skill 安装(2026-08-17)**:已安装 `humanizer-zh`（19KB）与 `humanizer-en`（30KB）至 `~/.omp/agent/managed-skills/`，内置世代飞船公文例外条款。
+
 - **✅ 13 篇图文正典已发布(2026-08-16,commit a3961ce)**:030/031/033/037/038/041/042/043/045/046/047/048/049 从 incoming 转正典+挂图(gemini 图),档案舱 total_docs 30→43、explored 18→30、带图 27、圆点 24。**剩余 7 篇待图**(032/034/035/036/039/040/044,限流解除后补图发布,清单 `world/生图集/生图任务_20260816_kimi20篇.md`)。
 - **🎨 kimi 20 篇配图批量生成中(gemini-3.1-flash-image,antigravity OAuth)**:已完成 **13/20 张**(030/031/033/037/038/041/042/043/045/046/047/048/049,存 `world/生图集/NNN_*.jpg`);**待生成 6 张:032/034/035/036/039/040——032 起连续 429(冷却 15 分钟未恢复)= 长限流,预计 3 小时(约 05:30 后)解除,到时间按清单排队续做**。任务清单+全部英文提示词固化在 `world/生图集/生图任务_20260816_kimi20篇.md`(生成方法:POST daily-cloudcode-pa.googleapis.com/v1internal:streamGenerateContent?alt=sse,凭证 ~/.omp/agent/agent.db google-antigravity)。
 - **🎉 kimi-k3 批量创作 20 篇空白格正典(2026-08-16 夜,omp slow 模型 = volc-agent/kimi-k3)**:20 个空白格 × 1 篇,7 纪元全覆盖(落地6/双星系4/启航2/替代2/竞赛2/丰裕2/离心2),空间带分散(①地球4/②地月系2/③内太阳系2/④深空8/⑤比邻星4);全部校验合规(front matter/坐标/无元层词/无金手指),含图片提示词(四铁律)。**存 `artifacts/incoming/030-049`,待明早审阅后转正典**;提示词汇总 `world/生图集/生图提示词_批量20260816_kimi20篇.md`。已勘探格重叠修正(033 经济×落地⑤→生态×替代①,避免与岩相鉴定同格)。
