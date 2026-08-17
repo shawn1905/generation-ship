@@ -80,9 +80,11 @@ def check_file(path: pathlib.Path) -> list:
     if not fm.get('canon_check'):
         errs.append('front matter 缺 canon_check(合法性三问自答, 可用 | 多行)')
 
-    # 元层词泄漏:只查正文, 排除 front matter 与审核记录段
+    # 元层词泄漏:只查正文, 排除 front matter 与元层附记段(审核记录/修订记录)
     body = raw[raw.find('\n---', 4) + 5:]
-    body = body.split('## 主编辑审核记录')[0] if '## 主编辑审核记录' in body else body
+    for marker in ('## 主编辑审核记录', '## 修订记录'):
+        if marker in body:
+            body = body.split(marker)[0]
     hit = [w for w in META_WORDS if w in body]
     if hit:
         errs.append(f'元层词泄漏(正文): {", ".join(hit)}')
