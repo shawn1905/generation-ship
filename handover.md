@@ -2,6 +2,13 @@
 
 > 遵守总仓库四件套规范：本文件=交接（当前状态/待办/环境恢复）。**每次会话开始先读本节。**
 
+## 当前状态（2026-08-18 午后·本会话）
+
+- **🎉 正典 60 篇·全部带图·incoming 清空**：今日两批转正典——①kimi-k3 新写 10 篇（GS-2031-02/2044-01/2046-01/2071-01/2096-06/2096-07/2356-01/2598-01/2614-01/2846-01，10 个首开格）②旧 7 篇 incoming（GS-2034-02/2352-01/2353-01/2354-02/2391-01/2617-01/2871-01）。登记簿预留节已清空；档案舱 total_docs 60、explored 46；`check_submission --all` 60/60 通过。commit 86b409b/0188a7d/e4b4020 已 push。
+- **🎨 生图管线切换 Ark Seedream**：gemini-3.1-flash-image 配额耗尽（429 报「100h 后重置」，约 08-22 恢复）；已切火山方舟 `doubao-seedream-5-0-lite-260128`（arkcli +gen，profile agent-plan_cn-beijing_personal，--size 2560x1440，支持 --input 参考图风格锚）。**两条固化工艺**：①去 AI 味提示词手术（删 IMAX/Hasselblad/cinematic，注入 35mm 胶片颗粒/不完美构图/光学缺陷，范本见 ArkDeAIV2 产物与 050-059 批次）②**Ark 出图右下角有平台强制「AI生成」水印（y≈1290-1360），入库前必须 PIL 裁成 2560x1250**。032-059 全部按此处理。桌面 `~/Desktop/世代飞船_生图对比_20260818/`（ark/gemini/ark_v2）留作风格对比。
+- **🤖 多 agent 工艺验证**：10 写作 agent 并行（各领一格不撞车）+ 10 审校 agent 并行（✅4/🔧6，小修就地改并附修订记录）+ 5 生图 agent 并行（各 2 张），全程无冲突。
+- **互锁新锚点**：静海 2044 先遣营(38人/88.8%水回收)→2046 第一竖井(64人/91.4%)→2058/2067 链条；人口普查落历 264 年=2614 年 414,280 人（自 10,214 起算）；岁时节序落历 248 年=2598 年，方氏 B-144 谱系两篇互锁；恒心-09 落历 496 年=2846 年与 2871 对账单同制度链。
+
 ## 马上要做的事（最优先）
 
 - [ ] **下午/晚间外部社区发帖（需用户手动操作，物料已备齐）**:
@@ -9,10 +16,11 @@
   - **Worldbuilding Stack Exchange**：切换手机热点/住宅网络发提问帖求评审（物料 §②）
   - **PulseMCP 目录提交**：打开 https://pulsemcp.com/submit 填表（物料 `ecosystem/promotion/mcp_注册内容.md`）
   - *(可选)* 将 Reddit r/worldbuilding 主帖一键 Crosspost 转发至 `r/IsaacArthur`
-- [ ] **7 篇 incoming 待图正典补图入库**（032/034/035/036/039/040/044，文书已重审扩写完毕，等生图限流解除后出图转正典）
+- [x] ~~**7 篇 incoming 待图正典补图入库**~~（2026-08-18 完成：Ark Seedream 出图+转正典+挂图，incoming 已清空）
 - [ ] **awesome PR #3**(schobernoise/awesome-worldbuilding)等待外部维护者合并（已 OPEN+可合并）
 - [ ] **awesome-mcp-servers PR #12300**(punkpeye/awesome-mcp-servers)已提交（https://github.com/punkpeye/awesome-mcp-servers/pull/12300，收录至 Art & Culture，等待合并）
-- [ ] **创作空白填充**（优先级见 `craft/格子状态矩阵.md` 优先选题：知识×启航×④船上教育 / 生态×启航×④应急预案 / 人×替代×①裁员文书）
+- [ ] **格子状态矩阵过时**：`craft/格子状态矩阵.md` 未反映 08-16/08-18 两批共 30 个新勘探格，下次创作前应先重生成（数据源 scripts/heatmap_data.json）
+- [ ] **创作空白填充**（08-18 已填 10 格，剩 ~200 空格；选题先更新矩阵再按「OPEN→新纪元→§5」挑）
 
 ## 当前状态（2026-08-17 午后）
 
