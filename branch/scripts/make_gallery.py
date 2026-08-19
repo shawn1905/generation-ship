@@ -99,8 +99,15 @@ def cards_art(rows):
         tags = ''.join(f'<span class="tag">{esc(t)}</span>' for t in r['tags'].split('|') if t)
         typ = esc(r.get('type') or '')
         art_author = esc(r.get('artist') or '')
+        fb = esc(r.get('cover_img') or '')
+        if img:
+            img_html = f"<img loading='lazy' src='{img}' alt='' onerror=\"if(this.dataset.fb){{this.src=this.dataset.fb;this.removeAttribute('onerror');}}\" data-fb=\"{fb}\">"
+        elif fb:
+            img_html = f"<img loading='lazy' src='{fb}' alt=''>"
+        else:
+            img_html = '<div class="noimg">无图</div>'
         out.append(f'''<div class="card" data-tags="{esc(r['tags'])}" data-ship="{ship}">
-  <a href="{esc(r['url'])}" target="_blank"><div class="imgwrap">{"<img loading='lazy' src='" + img + "' alt=''>" if img else '<div class="noimg">无图</div>'}</div></a>
+  <a href="{esc(r['url'])}" target="_blank"><div class="imgwrap">{img_html}</div></a>
   <div class="meta">
     <div class="title">{esc(r['title'])} <span class="year">{r['year']}</span></div>
     <div class="ratings"><span class="score">{typ} · {art_author}</span></div>
