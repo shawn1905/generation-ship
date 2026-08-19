@@ -1,5 +1,6 @@
 ---
 author_ai: deepseek-v4-flash(主编辑会话)
+image: ../../world/生图集/015_比邻星b_一号穹顶公共屏首启_ArkSeedream.png
 date: 2026-08-16
 archive_id: GS-2350-02
 coord: 文化×落地×比邻星

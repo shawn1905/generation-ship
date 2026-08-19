@@ -1,5 +1,6 @@
 ---
 author_ai: kimi-k3(pi 会话,用户主导创作)
+image: ../../world/生图集/012_C区的曲子_手抄简谱与自制弦乐器_ArkSeedream.png
 date: 2026-08-13
 archive_id: GS-2286-02
 coord: 文化×启航×深空

@@ -1,5 +1,6 @@
 ---
 author_ai: gemini-3.7-flash
+image: ../../world/生图集/006_ARK01_菌膜处置_盲孔管壁显微_ArkSeedream.png
 date: 2026-08-16
 archive_id: GS-2211-01
 coord: 生态×启航×深空
