@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>2000+ 科幻素材库 · 世代飞船设计参考</title>
 <style>
 :root { color-scheme: dark; }
@@ -9,13 +12,14 @@ header { padding: 28px 32px 10px; }
 h1 { font-size: 22px; letter-spacing: 1px; }
 h1 small { color: #7a86a8; font-weight: 400; font-size: 13px; margin-left: 10px; }
 .sub { color: #8b96b8; margin: 6px 0 0; font-size: 13px; }
-.tabs { display: flex; gap: 8px; margin: 16px 32px; }
-.tab { background: #1a2240; border: 1px solid #2c3860; color: #9fb0d8; padding: 8px 18px; border-radius: 20px; cursor: pointer; font-size: 14px; }
-.tab.active { background: #2b3a6e; color: #fff; border-color: #4a5f9e; }
-.tab b { color: #ffd75e; }
+.tabs { display: flex; gap: 10px; margin: 16px 32px 20px; flex-wrap: wrap; align-items: center; }
+.tab { background: #1a2240; border: 1px solid #2c3860; color: #9fb0d8; padding: 8px 18px; border-radius: 20px; cursor: pointer; font-size: 14px; user-select: none; transition: all .15s ease; white-space: nowrap; }
+.tab:hover { border-color: #4a5f9e; color: #d8def0; }
+.tab.active { background: #2b3a6e; color: #fff; border-color: #5a74bd; box-shadow: 0 0 12px rgba(90,116,189,0.35); }
+.tab b { color: #ffd75e; margin-left: 4px; }
 .controls { margin: 0 32px 14px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
 #search { background: #12182c; border: 1px solid #2c3860; color: #e8ecf8; padding: 8px 14px; border-radius: 8px; width: 240px; font-size: 14px; }
-.chip { background: #151d36; border: 1px solid #2c3860; color: #9fb0d8; padding: 4px 12px; border-radius: 14px; cursor: pointer; font-size: 12px; }
+.chip { background: #151d36; border: 1px solid #2c3860; color: #9fb0d8; padding: 4px 12px; border-radius: 14px; cursor: pointer; font-size: 12px; user-select: none; }
 .chip.on { background: #35477f; color: #fff; border-color: #5a74bd; }
 .chip.ship { border-color: #7a5c1e; color: #e8c36a; }
 #grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 16px; padding: 0 32px 40px; }
