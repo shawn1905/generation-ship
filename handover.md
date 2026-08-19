@@ -139,7 +139,7 @@
 | 🎌 动漫 | 34 | 边界可到 1988 | AniList GraphQL |
 | 📚 漫画 | 29 | 日漫+欧美 | AniList + 维基百科 |
 | 📖 小说 | 25 | 经典可到 1961 | Open Library |
-| 🖌 原画/设定集 | 103 | 原画 33 + 3D社区 70 | 维基 REST + Goodreads + ArtStation + Sketchfab + Blender 论坛 |
+| 🖌 原画/设定集 | 216 | 原画 146（含 2026-08 A站/Pinterest 采集 113 张） + 3D社区 70 | 维基 REST + Goodreads + ArtStation + Sketchfab + Blender 论坛 |
 | 🧠 其他-AI精选 | 31 | 未来灵感（AI 主观选品，不限世代飞船，每日可扩） | 维基 REST + Steam CDN + 官网 og:image |
 
 **✧ 分级**：0=无/弱、1=视觉氛围、2=飞船/空间站外形、3=内部结构/工程细节、4=世代飞船直接参考（主线重点）。分布：✧4=42、✧3=65、✧2=121。
