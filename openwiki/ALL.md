@@ -1,3 +1,9 @@
+---
+type: "参考"
+title: "Generation Ship Wiki — 聚合全文（Agent 专用）"
+openwiki_generated: true
+---
+
 # Generation Ship Wiki — 聚合全文（Agent 专用）
 
 > 本文件由 openwiki/ 所有页面聚合而成（openwiki/merge_all.py 生成），供 agent 一次性读取。
