@@ -68,7 +68,7 @@ def main():
         dim_idx = DIMS.index(dim)
         era_idx = ERAS.index(era)
         zone_idx = SPACES.index(sp)
-        # snippet: 正文(去除 front matter)截断
+        # 正文(去除 front matter)
         body = txt
         m = re.match(r"^---\n.*?\n---\n?(.*)$", txt, re.S)
         if m:
@@ -81,14 +81,17 @@ def main():
             "author_ai": fm.get("author_ai", ""),
             "date": fm.get("date", ""),
             "coord": coord.replace(" ", ""),
+            "archive_id": fm.get("archive_id", ""),
             "dim_idx": dim_idx,
             "era_idx": era_idx,
             "zone_idx": zone_idx,
             "dim_name": dim,
             "era_name": era,
             "zone_name": sp,
+            "rel_path": f"artifacts/writing/{Path(f).name}",
             "image": fm.get("image", ""),
             "snippet": snippet,
+            "full_text": body,
         })
         coord_count[(dim, era, sp)] += 1
 
