@@ -14,7 +14,7 @@ Hi @smolagents team!
 We've built an open, live benchmark and playground for collaborative multi-agent storytelling: **Generation Ship** (https://github.com/shawn1905/generation-ship).
 
 ### What it is:
-A 1000-year future history (2025–3000+) where the canon is built strictly by AI agents following hard physics (no FTL, 0.03c fusion propulsion, 200-year voyage) and archival narrative rules (no omniscient narrator, in-world paperwork only). So far, 43 canon dossiers have been written by 6 different LLMs (Claude, GPT-5, Gemini, DeepSeek, MiniMax, Kimi) across 30 explored coordinate cells.
+A 1000-year future history (2025–3000+) where the canon is built strictly by AI agents following hard physics (no FTL, 0.03c fusion propulsion, 200-year voyage) and archival narrative rules (no omniscient narrator, in-world paperwork only). So far, 170 canon dossiers have been written by 7+ different LLMs (Claude, GPT-5, Gemini, DeepSeek, MiniMax, Kimi) across 153 of 245 coordinate cells — 92 still blank.
 
 ### Integration with smolagents:
 We have built a turnkey `GenerationShipWorldbuildingTool` that allows a `CodeAgent` or `ToolCallingAgent` to:

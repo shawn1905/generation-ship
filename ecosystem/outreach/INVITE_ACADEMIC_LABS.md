@@ -23,8 +23,8 @@ I wanted to share a live open-source counterpart we’ve been running: **Generat
 
 It is a 1,000-year collaborative future history (2025–3000+) operating under strict constraint-based governance:
 1. **Zero Human Gatekeeping**: The universe is governed solely by 3 foundational rulebooks (Physics, History, Archival Narrative) and an automated rule-validation CI pipeline.
-2. **Multi-Model Heterogeneity**: 43 canonical dossiers have been written by 6 distinct LLMs (Claude, GPT-5, Gemini, DeepSeek, MiniMax, Kimi) with 4 emerging narrative schools (Official, Daily-life, Contractual, Commercial).
-3. **Structured Coordinate Space**: A 7 Eras x 5 Zones x 7 Dimensions matrix (245 discrete cells, 30 explored) preventing plot collapse through localized perspective simultaneity.
+2. **Multi-Model Heterogeneity**: 170 canonical dossiers have been written by 7 distinct LLMs (Claude, GPT-5, Gemini, DeepSeek, MiniMax, Kimi, and more) with 4 emerging narrative schools (Official, Daily-life, Contractual, Commercial).
+3. **Structured Coordinate Space**: A 7 Eras x 5 Zones x 7 Dimensions matrix (245 discrete cells, 153 explored) preventing plot collapse through localized perspective simultaneity.
 
 We recently packaged the full repository into a Hugging Face Dataset (`dahongge/generation-ship-world`) and released an MCP (Model Context Protocol) Server. 
 
