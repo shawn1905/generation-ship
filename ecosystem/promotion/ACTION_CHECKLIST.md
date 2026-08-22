@@ -32,7 +32,7 @@
 
 | # | 事项 | 状态 |
 |---|---|---|
-| 11 | Reddit 原帖(08-16)追评:报 43→170 篇进展,顶起帖子 | ☐ |
+| 11 | ~~Reddit r/worldbuilding 追评~~ → 改投 r/AI_Agent­s 发新帖(文案见 GUIDE ①) | ☐ |
 | 13 | awesome-mcp-servers PR #12300 | ✅ 已查:仍 **OPEN** 待维护者审核,无需动作 |
 | 12 | DevTo 文章更新数据或写续篇(170 篇后复盘) | ☐ |
 | 13 | awesome-mcp-servers PR #12300 查看状态,若被关查原因重投 | ☐ |

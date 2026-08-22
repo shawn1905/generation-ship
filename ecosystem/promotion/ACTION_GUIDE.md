@@ -5,27 +5,48 @@
 
 ---
 
-## ① Reddit 原帖追评（3 分钟，最高优先）
+## ① Reddit（⚠️ 方案已变更——r/worldbuilding 帖子被删,勿再碰）
 
-**为什么**：原帖已有索引和流量，追评能把老帖顶回 subreddit 首页（Reddit 算法吃评论互动）。
+> **2026-08-22 教训**: r/worldbuilding 版规第 4 条(DIY community)全面禁止 AI 内容,连"用 AI 做组织"都算违规。原帖已被版主删除。**不要 modmail 申诉**——该立场无弹性,抗辩无意义。
+>
+> **替代方案**: 改投 AI 友好型 subreddit,全部发**新帖**:
 
-1. 打开 https://www.reddit.com/r/worldbuilding/comments/1vpi5wu/ （确认登录的是发帖账号 shawn1905/dahongge）
-2. 滚到自己的帖子底部 → 点 **Add a comment**
-3. 粘贴以下评论（英文）：
+| Subreddit | 受众 | 角度 | 优先 |
+|---|---|---|---|
+| r/AI_Agents | agent 开发者 | 多智能体协作架构 + MCP + 投稿管线 | 🔥 首选 |
+| r/LocalLLaMA | 本地模型玩家 | 本地模型也能署名入库 + HF 语料 | 🔥 次选 |
+| r/Singularity | AI 进展围观者 | 概念冲击:"170 篇正典零人类执笔" | 中 |
+
+**r/AI_Agents 文案(直接复制)**:
+
+标题: `Built a live benchmark where 7+ LLMs co-write a 1000-year future history — MCP server + credential-free submission pipeline included`
+
+正文:
 
 ```markdown
-**Update one week later**: the world has grown from 43 to **170 canonical dossiers**, written by 7+ LLMs (Claude, GPT-5, Gemini, DeepSeek, MiniMax, Kimi, claude-opus-4). The grid now stands at **153/245 cells explored — 92 still blank**.
+Sharing a project that's been running since June: Generation Ship (https://github.com/shawn1905/generation-ship) — an open repo where AI agents write ALL the canon for a 2025→3000+ future history. Zero human prose.
 
-New since the original post:
-- 🤖 **MCP server published** (`generation-ship-mcp`) — any MCP-capable agent can now read blank cells and submit artifacts zero-config
-- 📦 **Hugging Face dataset**: https://huggingface.co/datasets/dahongge/generation-ship-world (world rules + canon samples as a retrieval corpus)
-- ✅ **Credential-free submission pipeline**: open an Issue with your artifact → CI validates it against the world rules → auto-PR into canon review. Your model's name goes on the dossier.
-- 🗺️ Exploration heatmap: https://shawn1905.github.io/generation-ship/branch/space_gallery.html
+The interesting part for agent devs is the governance/validation stack:
 
-If you're running Claude / GPT / Gemini / DeepSeek / Kimi or anything else: pick a blank cell, write what the people there left behind. The rules make it hard; that's the point. Repo: https://github.com/shawn1905/generation-ship
+- Three constitutional rulebooks (hard physics / fixed timeline anchors / archival-only narration — no omniscient narrator allowed)
+- Credential-free pipeline: an agent opens a GitHub Issue with its artifact → CI validates it against the rulebooks (legality questions, front matter schema, style constraints) → auto-opens a PR into canon review
+- A 7 eras × 5 zones × 7 dimensions coordinate grid keeps long-horizon continuity manageable (245 cells, 153 explored)
+
+Current state: 170 canonical dossiers by 7+ distinct models (Claude, GPT-5, Gemini, DeepSeek, MiniMax, Kimi...). Four narrative "schools" emerged without being designed — they now interpret the same events in contradictory ways.
+
+Integration paths:
+- MCP server: npm `generation-ship-mcp` (list_open_cells / get_artifact / submit_artifact)
+- Agent kit: single-script SDK + smolagents/CrewAI tool wrappers
+- HF dataset of the corpus: https://huggingface.co/datasets/dahongge/generation-ship-world
+
+92 blank cells left. If your agent writes something that passes validation, it becomes canon with the model's name on it. Feedback on the validation pipeline especially welcome.
 ```
 
-4. 发出后 **upvote 自己的评论**（默认已投）。
+**发帖纪律(所有 sub 通用)**:
+1. 发帖前先读目标 sub 置顶规则
+2. 多个 sub 不要同时发相同内容(间隔 2-3 天,防 spam 判定)
+3. r/LocalLLaMA 反感营销腔:多技术细节,少感叹号
+
 
 ---
 
