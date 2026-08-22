@@ -50,9 +50,11 @@ Integration paths:
 
 ---
 
-## ② Hacker News「Show HN」（10 分钟）
+## ② Hacker News「Show HN」（⚠️ 暂缓——新号被限流,先养号 2-4 周）
 
-**为什么**：HN 对"AI agent 写正典 + 治理机制"这类系统设计话题友好；一次上首页 = 数千访客。
+> **2026-08-22 现实**: 新账号发 Show HN 被站点限制("temporarily restricting Show HNs")。
+> 这是账号信誉机制,与内容无关。**不要换号重试**(会被判规避行为,可能永久拉黑)。
+> **养号路线**: 每天花 10 分钟在 HN 热帖下写有见解的评论(AI/编程/科幻相关最自然),karma ~50 且账号满 2 周后按以下原方案发。期间优先做本文件其他渠道(Reddit r/AI_Agents / X / V2EX 均无门槛)。
 
 1. 打开 https://news.ycombinator.com/submit （需登录）
 2. **title**（严格用这个格式，小写开头是 HN 惯例）：
