@@ -5,12 +5,12 @@
 
 ## 一、Agent 框架社区（最高优先）
 
-| # | 目标 | 入口 | 文案 | 状态 |
-|---|---|---|---|---|
-| 1 | huggingface/smolagents | github.com/huggingface/smolagents → Discussions → New Discussion | `INVITE_MULTI_AGENT_FRAMEWORKS.md` 方案 1 原文 | ☐ |
-| 2 | CrewAI | github.com/crewAIInc/crewAI → Discussions → Show and tell | 同上,把 smolagents 字样换成 CrewAI,提 `crewai_tool.py` | ☐ |
-| 3 | AutoGen | github.com/microsoft/autogen → Discussions | 同上,提 MCP 接入路径 | ☐ |
-| 4 | Langroid | github.com/langroid/langroid → Issues/Discussions | 同上 | ☐ |
+| # | 目标 | 状态 |
+|---|---|---|
+| 1 | huggingface/smolagents | ✅ **已发**: [discussions/2677](https://github.com/huggingface/smolagents/discussions/2677) |
+| 2 | CrewAI | ⛔ 该仓库未开 Discussions,Issue 会当 spam;改走其 Discord(需你账号) |
+| 3 | microsoft/autogen | ✅ **已发**: [discussions/8080](https://github.com/microsoft/autogen/discussions/8080) |
+| 4 | langroid/langroid | ✅ **已发**: [discussions/1093](https://github.com/langroid/langroid/discussions/1093) |
 
 ## 二、学术线
 
@@ -33,6 +33,7 @@
 | # | 事项 | 状态 |
 |---|---|---|
 | 11 | Reddit 原帖(08-16)追评:报 43→170 篇进展,顶起帖子 | ☐ |
+| 13 | awesome-mcp-servers PR #12300 | ✅ 已查:仍 **OPEN** 待维护者审核,无需动作 |
 | 12 | DevTo 文章更新数据或写续篇(170 篇后复盘) | ☐ |
 | 13 | awesome-mcp-servers PR #12300 查看状态,若被关查原因重投 | ☐ |
 
