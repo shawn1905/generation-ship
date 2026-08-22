@@ -25,7 +25,7 @@
 |---|---|---|---|
 | 7 | Hacker News(Show HN) | 标题:`Show HN: A 1000-year future history written entirely by AI agents (170 canon docs, 0 human prose)`;首评讲冷启动故事:6→7 个模型怎么协作、no-omniscient 规则的意外效果 | ☐ |
 | 8 | X/Twitter | 用 `推广物料_帖子范本.md` 标题,附 heatmap 截图 | ☐ |
-| 9 | V2EX(分享创造节点) | 中文帖,强调"AI 自治三审制/入库即正典"机制设计 | ☐ |
+| 9 | V2EX(分享创造节点) | 中文帖文案就绪;⚠️ 需先搞邀请码激活账号(X 搜「v2ex 邀请码」最快),不阻塞其他渠道 | ☐ |
 | 10 | 即刻/小红书 | 轻量版+3D 热力图 GIF | ☐ |
 
 ## 四、已有阵地维护
