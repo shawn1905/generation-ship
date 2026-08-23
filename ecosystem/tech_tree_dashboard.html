@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>世代飞船 · 机器自给自足千禧科技树全景控制台 (2025—3000+)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #070a12;
+      --card-bg: #111827;
+      --card-hover: #1f293d;
+      --border: #1e293b;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --green: #10b981;
+      --yellow: #f59e0b;
+      --orange: #f97316;
+      --red: #ef4444;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 24px;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .brand h1 { font-size: 24px; color: var(--accent); display: flex; align-items: center; gap: 8px; }
+    .brand p { color: var(--muted); font-size: 13px; margin-top: 4px; }
+    .stats-bar {
+      display: flex;
+      gap: 12px;
+      background: #0f172a;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 12px;
+    }
+    .stat-item { display: flex; align-items: center; gap: 6px; }
+    .badge { padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; font-family: var(--font-mono); }
+    .badge-trl-mature { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid #059669; }
+    .badge-trl-proto { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid #d97706; }
+    .badge-trl-lab { background: rgba(249, 115, 22, 0.15); color: #fb923c; border: 1px solid #ea580c; }
+    .badge-trl-cliff { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid #dc2626; }
+    
+    /* 时间轴控制器 */
+    .timeline-nav {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      margin-bottom: 24px;
+      background: #0f172a;
+      padding: 6px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .epoch-btn {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      padding: 10px 4px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .epoch-btn:hover { background: #1e293b; color: var(--text); }
+    .epoch-btn.active { background: #0284c7; color: #fff; font-weight: bold; box-shadow: 0 0 12px rgba(56, 189, 248, 0.4); }
+    .epoch-year { font-family: var(--font-mono); font-size: 11px; opacity: 0.8; display: block; margin-top: 2px; }
+    
+    /* 五大支柱主视图 */
+    .panorama-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+    .pillar-col {
+      background: rgba(17, 24, 39, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .pillar-header {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #334155;
+    }
+    .tech-card {
+      background: var(--card-bg);
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 12px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+    .tech-card:hover {
+      background: var(--card-hover);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+    }
+    .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
+    .card-title { font-size: 13px; font-weight: 600; color: #e2e8f0; line-height: 1.4; }
+    .card-year { font-family: var(--font-mono); font-size: 11px; color: var(--accent); }
+    .card-desc { font-size: 11px; color: var(--muted); line-height: 1.4; margin-top: 4px; }
+    .card-reality { font-size: 10px; color: #93c5fd; background: rgba(56, 189, 248, 0.1); padding: 2px 6px; border-radius: 4px; margin-top: 8px; display: inline-block; }
+    
+    /* 钻取抽屉面板 (Drill-Down Drawer) */
+    .drawer-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(4px);
+      display: none;
+      z-index: 999;
+      justify-content: flex-end;
+    }
+    .drawer {
+      background: #0f172a;
+      width: 100%;
+      max-width: 600px;
+      height: 100vh;
+      border-left: 1px solid #334155;
+      padding: 30px;
+      overflow-y: auto;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+      position: relative;
+      animation: slideIn 0.25s ease-out;
+    }
+    @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+    .drawer-close {
+      position: absolute;
+      top: 20px; right: 20px;
+      background: #1e293b;
+      border: 1px solid #475569;
+      color: #fff;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .drawer h2 { color: var(--accent); font-size: 20px; margin-bottom: 8px; }
+    .drawer .section-title { font-size: 13px; color: #fb923c; font-weight: 700; text-transform: uppercase; margin: 18px 0 8px; letter-spacing: 0.5px; border-bottom: 1px solid #334155; padding-bottom: 4px; }
+    .code-box {
+      background: #020617;
+      border: 1px solid #1e293b;
+      padding: 12px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #7dd3fc;
+      overflow-x: auto;
+      line-height: 1.5;
+    }
+    .param-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 12px; }
+    .param-table th, .param-table td { padding: 8px 10px; border: 1px solid #334155; text-align: left; }
+    .param-table th { background: #1e293b; color: #cbd5e1; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <h1>⚙️ 机器自给自足千禧科技树 · 交互全景控制台</h1>
+      <p>Hardcore Machine Autarky Technology Tree (2025—3000+) · 物理公式 / 材料牌号 / 2026 现实 TRL 对标</p>
+    </div>
+    <div class="stats-bar">
+      <div class="stat-item"><span class="badge badge-trl-mature">TRL 8-9</span> 现实成熟 12项</div>
+      <div class="stat-item"><span class="badge badge-trl-proto">TRL 5-7</span> 在轨原型 9项</div>
+      <div class="stat-item"><span class="badge badge-trl-lab">TRL 3-4</span> 原理机 8项</div>
+      <div class="stat-item"><span class="badge badge-trl-cliff">TRL 1-2</span> 千禧断崖 6项</div>
+    </div>
+  </header>
+
+  <!-- 纪元筛选控制器 -->
+  <div class="timeline-nav">
+    <button class="epoch-btn active" onclick="filterEpoch('all')">全纪元全景<span class="epoch-year">2025—3000+</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('替代')">① 替代纪元<span class="epoch-year">2025—2035</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('竞赛')">② 竞赛纪元<span class="epoch-year">2035—2050</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('丰裕')">③ 丰裕纪元<span class="epoch-year">2050—2080</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('离心')">④ 离心纪元<span class="epoch-year">2080—2150</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('启航')">⑤ 启航纪元<span class="epoch-year">2150—2350</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('落地')">⑥ 落地/双星<span class="epoch-year">2350—3000+</span></button>
+  </div>
+
+  <!-- 五大支柱主全景网格 -->
+  <main class="panorama-grid">
+
+    <!-- 支柱 1：能源与动力 -->
+    <div class="pillar-col">
+      <div class="pillar-header">⚡ 1. 能源与推进动力</div>
+      
+      <div class="tech-card" data-epoch="替代" onclick="openDrawer('ISRU_CH4')">
+        <div class="card-top">
+          <span class="badge badge-trl-mature">TRL 8</span>
+          <span class="card-year">2025</span>
+        </div>
+        <div class="card-title">液氧甲烷原位加注 (ISRU)</div>
+        <div class="card-desc">Sabatier 反应器 + 400℃ 原位合成。比冲 380s。</div>
+        <div class="card-reality">📍 现实：Starship / MOXIE 已验证</div>
+      </div>
+
+      <div class="tech-card" data-epoch="竞赛" onclick="openDrawer('NTP')">
+        <div class="card-top">
+          <span class="badge badge-trl-proto">TRL 6</span>
+          <span class="card-year">2035</span>
+        </div>
+        <div class="card-title">兆瓦级空间核热推进 (NTP)</div>
+        <div class="card-desc">气冷固相裂变堆，Isp 920s，单晶钨铼喷管。</div>
+        <div class="card-reality">📍 现实：NASA DRACO 2027试飞</div>
+      </div>
+
+      <div class="tech-card" data-epoch="丰裕" onclick="openDrawer('FUSION_DHE3')">
+        <div class="card-top">
+          <span class="badge badge-trl-lab">TRL 3</span>
+          <span class="card-year">2055</span>
+        </div>
+        <div class="card-title">D-³He 小型无中子聚变</div>
+        <div class="card-desc">Q>25，磁流体 (MHD) 70% 效率直接发电。</div>
+        <div class="card-reality">📍 现实：CFS 20T超导 / Helion FRC</div>
+      </div>
+
+      <div class="tech-card" data-epoch="离心" onclick="openDrawer('PULSE_FUSION')">
+        <div class="card-top">
+          <span class="badge badge-trl-cliff">TRL 2</span>
+          <span class="card-year">2100</span>
+        </div>
+        <div class="card-title">连续脉冲惯性聚变 (0.03c)</div>
+        <div class="card-desc">高重频磁化微靶激光点火，磁喷管导流。</div>
+        <div class="card-reality">📍 现实：NIF 点火 / 磁喷管理论</div>
+      </div>
+
+      <div class="tech-card" data-epoch="启航" onclick="openDrawer('MAG_SAIL')">
+        <div class="card-top">
+          <span class="badge badge-trl-lab">TRL 3</span>
+          <span class="card-year">2335</span>
+        </div>
+        <div class="card-title">百公里超导磁帆无工质制动</div>
+        <div class="card-desc">REBCO 千公里回路截获星际等离子体阻尼。</div>
+        <div class="card-reality">📍 现实：JAXA 磁等离子体帆风洞</div>
+      </div>
+    </div>
+
+    <!-- 支柱 2：采选与冶炼 -->
+    <div class="pillar-col">
+      <div class="pillar-header">⛏️ 2. 原位采选与冶炼</div>
+
+      <div class="tech-card" data-epoch="替代" onclick="openDrawer('MICROWAVE_BRICK')">
+        <div class="card-top">
+          <span class="badge badge-trl-mature">TRL 8</span>
+          <span class="card-year">2031</span>
+        </div>
+        <div class="card-title">月壤微波原位烧结制砖</div>
+        <div class="card-desc">2.45GHz 微波加热，抗压强度 >30MPa。</div>
+        <div class="card-reality">📍 现实：ESA / 中国探月地面样机</div>
+      </div>
+
+      <div class="tech-card" data-epoch="竞赛" onclick="openDrawer('MOND_CARBON')">
+        <div class="card-top">
+          <span class="badge badge-trl-lab">TRL 4</span>
+          <span class="card-year">2044</span>
+        </div>
+        <div class="card-title">小行星 Mond 气相羰基化提纯</div>
+        <div class="card-desc">CO 无水络合反应，99.999% 纯度纳米 Fe/Ni。</div>
+        <div class="card-reality">📍 现实：AstroForge 小行星采选转化</div>
+      </div>
+
+      <div class="tech-card" data-epoch="丰裕" onclick="openDrawer('LEVITATION_MELT')">
+        <div class="card-top">
+          <span class="badge badge-trl-proto">TRL 6</span>
+          <span class="card-year">2065</span>
+        </div>
+        <div class="card-title">微重力无容器电磁悬浮精炼</div>
+        <div class="card-desc">零器壁杂质污染，超高纯单晶高熵合金。</div>
+        <div class="card-reality">📍 现实：天宫 / ISS 无容器材料柜</div>
+      </div>
+
+      <div class="tech-card" data-epoch="离心" onclick="openDrawer('PLASMA_ISOTOPE')">
+        <div class="card-top">
+          <span class="badge badge-trl-cliff">TRL 2</span>
+          <span class="card-year">2120</span>
+        </div>
+        <div class="card-title">等离子体强磁场全元素离析</div>
+        <div class="card-desc">10T 磁场离子回旋共振，一口气分离90种元素。</div>
+        <div class="card-reality">📍 现实：同位素电磁分离法 (Calutron)</div>
+      </div>
+    </div>
+
+    <!-- 支柱 3：母机自复制 -->
+    <div class="pillar-col">
+      <div class="pillar-header">🤖 3. 母机自复制与精密</div>
+
+      <div class="tech-card" data-epoch="替代" onclick="openDrawer('ROBOT_ASSEMBLY')">
+        <div class="card-top">
+          <span class="badge badge-trl-mature">TRL 8</span>
+          <span class="card-year">2028</span>
+        </div>
+        <div class="card-title">六轴装配人形机器人</div>
+        <div class="card-desc">多模态触觉，重复定位 0.05mm。</div>
+        <div class="card-reality">📍 现实：Tesla Optimus / Figure 进厂</div>
+      </div>
+
+      <div class="tech-card" data-epoch="竞赛" onclick="openDrawer('LPBF_SPACE')">
+        <div class="card-top">
+          <span class="badge badge-trl-mature">TRL 8</span>
+          <span class="card-year">2038</span>
+        </div>
+        <div class="card-title">在轨五轴激光金属 3D 打印</div>
+        <div class="card-desc">微滴原位熔融铺粉，成型精度 10μm。</div>
+        <div class="card-reality">📍 现实：ISS 2024 金属 3D 打印机</div>
+      </div>
+
+      <div class="tech-card" data-epoch="丰裕" onclick="openDrawer('VON_NEUMANN_F')">
+        <div class="card-top">
+          <span class="badge badge-trl-cliff">TRL 2</span>
+          <span class="card-year">2058</span>
+        </div>
+        <div class="card-title">第一代自持冯·诺依曼母机</div>
+        <div class="card-desc">闭环率 98%，18个月翻倍复制完整母机。</div>
+        <div class="card-reality">📍 现实：NASA NIAC 宏观自复制理论</div>
+      </div>
+
+      <div class="tech-card" data-epoch="离心" onclick="openDrawer('AUTO_CALIBRATE')">
+        <div class="card-top">
+          <span class="badge badge-trl-lab">TRL 3</span>
+          <span class="card-year">2085</span>
+        </div>
+        <div class="card-title">纳米光栅激光自标定数控光机</div>
+        <div class="card-desc">0.1nm 精度，机床磨损自补偿与刀具原位重铸。</div>
+        <div class="card-reality">📍 现实：超精密双频激光干涉仪</div>
+      </div>
+    </div>
+
+    <!-- 支柱 4：半导体与化学 (0.1%死穴) -->
+    <div class="pillar-col">
+      <div class="pillar-header">🧪 4. 半导体与化学闭环</div>
+
+      <div class="tech-card" data-epoch="替代" onclick="openDrawer('HIGH_NA_EUV')">
+        <div class="card-top">
+          <span class="badge badge-trl-mature">TRL 9</span>
+          <span class="card-year">2026</span>
+        </div>
+        <div class="card-title">地表 High-NA EUV 光刻</div>
+        <div class="card-desc">NA 0.55，2nm/A16，极度依赖地表化学链。</div>
+        <div class="card-reality">📍 现实：ASML EXE:5000 交付</div>
+      </div>
+
+      <div class="tech-card" data-epoch="竞赛" onclick="openDrawer('SPACE_CRYSTAL')">
+        <div class="card-top">
+          <span class="badge badge-trl-proto">TRL 6</span>
+          <span class="card-year">2050</span>
+        </div>
+        <div class="card-title">微重力 SiC 晶圆气相生长舱</div>
+        <div class="card-desc">4H-SiC/金刚石，缺陷仅地表 1/50。</div>
+        <div class="card-reality">📍 现实：Space Forge / Varda 空间舱</div>
+      </div>
+
+      <div class="tech-card" data-epoch="丰裕" onclick="openDrawer('DRY_RESIST')">
+        <div class="card-top">
+          <span class="badge badge-trl-lab">TRL 4</span>
+          <span class="card-year">2075</span>
+        </div>
+        <div class="card-title">空间氧化锡干式纳米光刻胶</div>
+        <div class="card-desc">ALD 气相沉积，无需去离子水与湿法显影。</div>
+        <div class="card-reality">📍 现实：Lam / Inpria 干法光刻胶</div>
+      </div>
+
+      <div class="tech-card" data-epoch="离心" onclick="openDrawer('VACUUM_FAB')">
+        <div class="card-top">
+          <span class="badge badge-trl-cliff">TRL 2</span>
+          <span class="card-year">2088</span>
+        </div>
+        <div class="card-title">太空全干式真空芯片厂 (2nm)</div>
+        <div class="card-desc">利用 10⁻¹⁰ Pa 开放真空，最后地球零件退役。</div>
+        <div class="card-reality">📍 现实：DARPA 太空半导体预研</div>
+      </div>
+    </div>
+
+    <!-- 支柱 5：封闭重构与抗疲劳 -->
+    <div class="pillar-col">
+      <div class="pillar-header">🔄 5. 原子循环与材料抗疲劳</div>
+
+      <div class="tech-card" data-epoch="启航" onclick="openDrawer('PAUT_INSPECT')">
+        <div class="card-top">
+          <span class="badge badge-trl-mature">TRL 8</span>
+          <span class="card-year">2150</span>
+        </div>
+        <div class="card-title">64阵元超声相控阵龙骨探伤</div>
+        <div class="card-desc">10MHz TFM 成像，检出 <10μm 内部裂纹。</div>
+        <div class="card-reality">📍 现实：航空相控阵探伤工业化</div>
+      </div>
+
+      <div class="tech-card" data-epoch="启航" onclick="openDrawer('LASER_ANNEAL')">
+        <div class="card-top">
+          <span class="badge badge-trl-proto">TRL 6</span>
+          <span class="card-year">2180</span>
+        </div>
+        <div class="card-title">1064nm 脉冲激光原位退火</div>
+        <div class="card-desc">1450℃ 消除位错，重置龙骨疲劳寿命 80%。</div>
+        <div class="card-reality">📍 现实：半导体激光瞬态退火</div>
+      </div>
+
+      <div class="tech-card" data-epoch="启航" onclick="openDrawer('PLASMA_FURNACE')">
+        <div class="card-top">
+          <span class="badge badge-trl-proto">TRL 5</span>
+          <span class="card-year">2210</span>
+        </div>
+        <div class="card-title">等离子体分子全解离重铸机</div>
+        <div class="card-desc">将报废零件气化为单原子态，重新重组打印。</div>
+        <div class="card-reality">📍 现实：等离子体气化危废处理</div>
+      </div>
+
+      <div class="tech-card" data-epoch="落地" onclick="openDrawer('SEED_PACK')">
+        <div class="card-top">
+          <span class="badge badge-trl-cliff">TRL 2</span>
+          <span class="card-year">2350</span>
+        </div>
+        <div class="card-title">异星工业母机种子包冷启动</div>
+        <div class="card-desc">从粗机床层层繁育整座比邻星 b 工业树。</div>
+        <div class="card-reality">📍 现实：自复制制造系统理论</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- 钻取抽屉 -->
+  <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer(event)">
+    <div class="drawer" id="drawer">
+      <button class="drawer-close" onclick="closeDrawerForce()">✕</button>
+      <div id="drawerContent"></div>
+    </div>
+  </div>
+
+  <script>
+    const techData = {
+      ISRU_CH4: {
+        title: "液氧甲烷原位加注 (ISRU)",
+        level: "L3 物理反应式 / L4 反应器工装",
+        formula: "CO₂ + 4H₂ ➔ CH₄ + 2H₂O  [ΔH = -165 kJ/mol, 400℃, 镍催化剂]",
+        specs: [
+          ["反应器内胆", "Inconel 718 高温镍基合金", "耐温 700℃, 0.5 MPa"],
+          ["萨巴蒂尔产率", "98.2% 甲烷转化率", "4 级冷凝除水循环"],
+          ["2026 现实对标", "SpaceX Starship 轨道加注 / NASA MOXIE 产氧", "TRL 8 (已验证)"]
+        ]
+      },
+      NTP: {
+        title: "兆瓦级空间核热推进 (NTP)",
+        level: "L3 热力学方程 / L4 燃料棒结构",
+        formula: "Isp = (c* / g0) * √(2γ / (γ-1) * (1 - (Pe/Pc)^((γ-1)/γ)))  [Isp = 920s, Tc = 2850K]",
+        specs: [
+          ["核反应堆芯", "高纯度 HALEU 碳化铀-碳化锆基质 (UC-ZrC)", "热功率 50 MWt"],
+          ["喷管喉衬", "单晶钨铼合金 (W-25Re)", "抗 3000K 高温氢气侵蚀"],
+          ["2026 现实对标", "NASA / DARPA DRACO 项目", "TRL 6 (2027年轨道试飞)"]
+        ]
+      },
+      FUSION_DHE3: {
+        title: "D-³He 小型无中子聚变堆与磁流体发电",
+        level: "L3 聚变物理常数 / L4 导流通道图纸",
+        formula: "D + ³He ➔ ⁴He(3.6 MeV) + p(14.7 MeV)  [Q = 18.3 MeV, T = 50 keV / 5.8亿度]",
+        specs: [
+          ["超导磁体", "第二代 REBCO 高温超导带材 (32.0 Tesla, 20K)", "失超响应 < 5ms"],
+          ["MHD 绝缘第一壁", "单晶氧化铍 (BeO) / 氮化硼 (c-BN)", "耐温 2400K, 导热 370 W/mK"],
+          ["磁流体直接效率", "70.4% 直接输出 100kV 直流电", "无烧水透平叶片"],
+          ["2026 现实对标", "CFS 20T 托卡马克磁体 / Helion Polaris 反应堆", "TRL 3-4 (原理机验证中)"]
+        ]
+      },
+      MOND_CARBON: {
+        title: "小行星 Mond 气相羰基化干法精炼",
+        level: "L3 热化学平衡 / L4 反应釜多孔滤芯",
+        formula: "Ni + 4CO ⇄ Ni(CO)₄ [350K/450K] | Fe + 5CO ⇄ Fe(CO)₅ [400K/520K]",
+        specs: [
+          ["承压反应釜", "Inconel 718 双夹套换热釜 (0.3 MPa)", "无水消耗, CO 100% 闭路循环"],
+          ["微孔滤芯", "多孔烧结 Hastelloy C-276 (0.5 μm)", "反向高压 CO 脉冲自洁"],
+          ["析出纯度", "99.999% 纳米级球形镍/铁粉末", "供 3D 打印直接使用"],
+          ["2026 现实对标", "AstroForge 小行星采掘机 / 地表 Mond 炼镍厂", "TRL 4 (空间方案转化)"]
+        ]
+      },
+      LEVITATION_MELT: {
+        title: "微重力无容器电磁悬浮精炼",
+        level: "L3 洛伦兹力方程 / L4 高频感应冷坩埚",
+        formula: "F_mag = ∇(m·B) = ρ·V·g_residual  [真空度 < 10⁻⁸ Pa, 熔池温度 > 2200℃]",
+        specs: [
+          ["悬浮感应线圈", "水冷单晶铜高频射频线圈 (400 kHz)", "零器壁接触熔融"],
+          ["脱气脱硫效果", "真空自发沸腾逸出, 杂质 < 1 ppm", "消除重力偏析"],
+          ["产出材料", "DD33 超高均匀单晶涡轮盘 / 高熵合金 (HEA)", "晶格缺陷地表 1/50"],
+          ["2026 现实对标", "中国空间站无容器柜 / ESA ISS-EML", "TRL 6 (在轨稳定运行)"]
+        ]
+      },
+      VACUUM_FAB: {
+        title: "太空全干式 2nm 极紫外 (EUV) 芯片制造",
+        level: "L3 空间微电子学 / L4 压电工件台时序",
+        formula: "HP = k1 * (λ / NA) = 0.33 * (13.5nm / 0.55) ≈ 8nm  [10⁻¹⁰ Pa 自然真空]",
+        specs: [
+          ["EUV 光源", "LPP 双脉冲 CO₂ 激光轰击 25μm 锡液滴", "20 kHz 射频等离子体"],
+          ["干式光刻胶", "氧化锡 (SnOx) 原子层沉积 (ALD)", "无需超纯水与显影液"],
+          ["晶圆衬底", "4H 碳化硅 (SiC) / 单晶金刚石", "耐辐射剂量提升 1000 倍"],
+          ["2026 现实对标", "ASML High-NA EUV / Lam Dry Resist", "TRL 2 (空间闭环在研)"]
+        ]
+      },
+      LASER_ANNEAL: {
+        title: "1064nm 脉冲激光原位退火与龙骨抗衰",
+        level: "L3 JMAK 动力学 / L4 相控阵探伤机器人",
+        formula: "α(t) = 1 - exp(-k0 * exp(-Q/(kB*T)) * t^n)  [T_anneal = 1450℃, 0.05s 瞬态加热]",
+        specs: [
+          ["探伤传感器", "64 阵元 PZT-5H 高温压电陶瓷 (10 MHz)", "全聚焦成像检出 <10μm 裂纹"],
+          ["退火激光器", "光纤耦合 Nd:YAG 纳秒脉冲 (1064 nm, 2.5 J)", "重置位错寿命 80%"],
+          ["测温闭环", "InSb 双色高速红外 (100 kHz PID 采样)", "稳态温差 ±5℃"],
+          ["2026 现实对标", "半导体激光退火 (LTA) / 航空相控阵探伤", "TRL 6 (地面成熟)"]
+        ]
+      }
+    };
+
+    function filterEpoch(epoch) {
+      document.querySelectorAll('.epoch-btn').forEach(b => b.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+
+      const cards = document.querySelectorAll('.tech-card');
+      cards.forEach(card => {
+        if (epoch === 'all' || card.dataset.epoch === epoch) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function openDrawer(key) {
+      const data = techData[key] || {
+        title: "技术节点下钻蓝图",
+        level: "L3 物理公式 / L4 工装参数",
+        formula: "严格遵循凝聚态热力学与电磁场守恒定律",
+        specs: [
+          ["运行参数", "符合千禧编年史硬核约束", "无金手指"],
+          ["工装材料", "耐高温高压高辐射合金", "完全自持"],
+          ["2026 对标", "全球航天与材料实验室原型", "TRL 3-6"]
+        ]
+      };
+
+      let rows = data.specs.map(s => `<tr><td><b>${s[0]}</b></td><td>${s[1]}</td><td><span style="color:#38bdf8">${s[2]}</span></td></tr>`).join('');
+
+      document.getElementById('drawerContent').innerHTML = `
+        <h2>${data.title}</h2>
+        <div style="font-size:12px;color:#94a3b8;margin-bottom:12px;">层级：${data.level}</div>
+        
+        <div class="section-title">🔬 L3 底层物理/反应动力学公式</div>
+        <div class="code-box">${data.formula}</div>
+
+        <div class="section-title">🔩 L4 关键工装材料与控制参数表</div>
+        <table class="param-table">
+          <thead><tr><th>组件/参数</th><th>规格与材质</th><th>性能与约束</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+
+        <div class="section-title">📜 关联正典档案与世界大纲坐标</div>
+        <p style="font-size:12px;color:#94a3b8;line-height:1.6;margin-top:6px;">
+          本技术参数作为 10,290 格分形坐标的硬性物理边界。任何涉及该技术节点的公文、工单或验收报告，均以此表为绝对技术审计标准。
+        </p>
+      `;
+
+      document.getElementById('drawerOverlay').style.display = 'flex';
+    }
+
+    function closeDrawer(e) {
+      if (e.target.id === 'drawerOverlay') {
+        document.getElementById('drawerOverlay').style.display = 'none';
+      }
+    }
+    function closeDrawerForce() {
+      document.getElementById('drawerOverlay').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
