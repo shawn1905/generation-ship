@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>世代飞船 · 3D 银河宏伟全景与 4.24 光年星际跃迁引擎 (Cinematic Warp Engine v5.0)</title>
+  <title>世代飞船 · 3D 真实宇宙地理与天体测量学星图 (Astrometric Galaxy Engine v5.1)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     :root {
@@ -128,12 +128,12 @@
     .tel-lbl { font-family: var(--font-mono); font-size: 9.5px; color: var(--muted); }
     .tel-val { font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: #f8fafc; margin-top: 2px; }
 
-    /* 跃迁飞掠光效遮罩 (Warp Speed Flash Overlay) */
+    /* 跃迁飞掠光效遮罩 */
     #warp-overlay {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background: radial-gradient(circle at center, rgba(56,189,248,0.2) 0%, transparent 80%);
+      background: radial-gradient(circle at center, rgba(56,189,248,0.25) 0%, transparent 80%);
       opacity: 0; pointer-events: none; z-index: 15;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.25s ease;
     }
 
     /* 底部操作指引 */
@@ -164,7 +164,7 @@
   <header>
     <div class="hud-title">
       <span>ASTROMETRIC GALAXY ENGINE</span>
-      <span class="hud-badge">WARP·V5.0</span>
+      <span class="hud-badge">PHYSICAL·V5.1</span>
     </div>
     <div class="hud-sub">MILKY WAY 100,000 LY ➔ SOL-PROXIMA 4.24 LY TRAJECTORY</div>
 
@@ -193,7 +193,7 @@
     <div class="tel-tag" id="telTag">GALACTIC DISK SURVEY</div>
     <div class="tel-title" id="telName">银河系 (Milky Way Galaxy)</div>
     <div class="tel-body" id="telDesc">
-      巨型棒旋星盘（SBbc），直径十万光年，厚度约三千光年，拥有 4000 亿颗恒星。中央为超大质量黑洞人马座 A*。太阳系位于猎户座支臂内侧。
+      直径十万光年棒旋星盘。中央核球遵循真实德沃库勒尔恒星密度梯度分布，被密集的暗分子尘埃带（CMZ）消光遮挡。太阳系位于距离银心 2.6 万光年的猎户座支臂内侧。
     </div>
     <div class="tel-grid">
       <div class="tel-cell">
@@ -310,18 +310,19 @@
       }
     ];
 
+    // 精细径向高斯微光贴图
     function createSmoothGlowTexture() {
       const canvas = document.createElement('canvas');
-      canvas.width = 128; canvas.height = 128;
+      canvas.width = 64; canvas.height = 64;
       const ctx = canvas.getContext('2d');
-      const grad = ctx.createRadialGradient(64, 64, 0, 64, 64, 64);
+      const grad = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
       grad.addColorStop(0, 'rgba(255,255,255,1)');
-      grad.addColorStop(0.12, 'rgba(255,255,255,0.9)');
-      grad.addColorStop(0.35, 'rgba(200,230,255,0.3)');
-      grad.addColorStop(0.65, 'rgba(56,189,248,0.06)');
+      grad.addColorStop(0.18, 'rgba(255,255,255,0.75)');
+      grad.addColorStop(0.45, 'rgba(180,220,255,0.2)');
+      grad.addColorStop(0.75, 'rgba(56,189,248,0.04)');
       grad.addColorStop(1, 'rgba(0,0,0,0)');
       ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, 128, 128);
+      ctx.fillRect(0, 0, 64, 64);
       return new THREE.CanvasTexture(canvas);
     }
 
@@ -329,7 +330,7 @@
       const container = document.getElementById('canvas-container');
 
       scene = new THREE.Scene();
-      scene.fog = new THREE.FogExp2(0x010206, 0.0002);
+      scene.fog = new THREE.FogExp2(0x010206, 0.00025);
 
       camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 12000);
       camera.position.set(0, 1100, 1600);
@@ -338,7 +339,7 @@
       renderer.setSize(window.innerWidth, window.innerHeight);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
-      renderer.toneMappingExposure = 1.25;
+      renderer.toneMappingExposure = 1.2;
       container.appendChild(renderer.domElement);
 
       controls = new THREE.OrbitControls(camera, renderer.domElement);
@@ -351,7 +352,7 @@
       raycaster = new THREE.Raycaster();
       mouse = new THREE.Vector2();
 
-      buildVolumetricGalacticDisk();
+      buildRealisticGalacticDisk();
       buildWarpStreakParticleField();
       buildLocalAstrometricNeighborhood();
       buildRelativisticCorridor();
@@ -364,74 +365,58 @@
       animate();
     }
 
-    // 1. 彻底告别“电风扇”：构建 20 万颗连续密度波、暗尘埃带与发光厚盘的宏伟银河
-    function buildVolumetricGalacticDisk() {
+    // 1. 真实物理银河系：彻底移除人工实心大光球，采用真实德沃库勒尔恒星密度梯度与暗尘埃消光带
+    function buildRealisticGalacticDisk() {
       galaxyCloudGroup = new THREE.Group();
       const glowTex = createSmoothGlowTexture();
 
-      // A. 银心超大质量黑洞人马座 A* 炽热核球 (Core Bulge)
-      const coreMesh = new THREE.Mesh(
-        new THREE.SphereGeometry(22, 32, 32),
-        new THREE.MeshBasicMaterial({ color: 0xfffbeb, transparent: true, opacity: 0.98 })
-      );
-      coreMesh.position.set(320, 0, -260);
-      galaxyCloudGroup.add(coreMesh);
-
-      // 核球多层指数衰减光雾 (Multi-Scale Accretion Glow)
-      [70, 140, 220].forEach((r, idx) => {
-        const glow = new THREE.Mesh(
-          new THREE.SphereGeometry(r, 32, 32),
-          new THREE.MeshBasicMaterial({
-            color: idx === 0 ? 0xfef08a : (idx === 1 ? 0xfb923c : 0x38bdf8),
-            transparent: true,
-            opacity: 0.18 / (idx + 1),
-            blending: THREE.AdditiveBlending
-          })
-        );
-        glow.position.set(320, 0, -260);
-        galaxyCloudGroup.add(glow);
-      });
-
-      // B. 200,000 颗高精密度波连续星盘 (Logarithmic Spiral Density Wave)
+      // 200,000 颗纯物理密度波与核球粒子（绝无实心大光球）
       const count = 200000;
       const positions = new Float32Array(count * 3);
       const colors = new Float32Array(count * 3);
 
-      const cCore = new THREE.Color('#fef3c7');
-      const cDisk = new THREE.Color('#cbd5e1'); // 冷银灰恒星盘
-      const cArms = new THREE.Color('#38bdf8'); // 旋臂年轻星云蓝
-      const cDust = new THREE.Color('#020617'); // 尘埃消光吸收
+      const cBulge = new THREE.Color('#fde68a'); // 柔和温润的核球老恒星浅黄
+      const cDisk = new THREE.Color('#94a3b8');  // 冷银灰恒星薄盘
+      const cArms = new THREE.Color('#38bdf8');  // 旋臂年轻恒星蓝
+      const cDust = new THREE.Color('#020617');  // 星际暗尘埃消光吸收
 
       for (let i = 0; i < count; i++) {
         const i3 = i * 3;
-        // 指数径向衰减分布
-        const radius = Math.pow(Math.random(), 1.6) * 900;
-        const spinAngle = radius * 0.0042;
         
-        // 4 条主旋臂 + 旋臂间弥散盘 (Inter-arm bridge)
-        const isArm = Math.random() < 0.65;
+        // 按照自然指数衰减分布（r从0到850）
+        const radius = Math.pow(Math.random(), 1.65) * 850;
+        const spinAngle = radius * 0.0045;
+        
+        // 4 条主要密度波旋臂 + 盘面连续弥散
+        const isArm = Math.random() < 0.6;
         const branchAngle = isArm ? (((i % 4) / 4) * Math.PI * 2) : (Math.random() * Math.PI * 2);
 
-        // 垂直双曲正割厚盘剖面 (Scale-Height z-distribution)
-        const scaleHeight = 25 * (1 + radius * 0.001);
-        const zDisp = (Math.random() - 0.5) * scaleHeight * Math.pow(Math.random(), 2);
+        // 真实银盘垂直厚度分布 (中央核球厚度大，外盘扁平)
+        const scaleHeight = radius < 120 ? (35 * (1 - radius/120) + 12) : (18 * (1 + radius * 0.0008));
+        const zDisp = (Math.random() - 0.5) * scaleHeight * Math.pow(Math.random(), 1.5);
 
-        // 径向弥散扰动
-        const rSpread = (Math.random() - 0.5) * radius * (isArm ? 0.22 : 0.65);
+        // 径向弥散
+        const rSpread = (Math.random() - 0.5) * radius * (isArm ? 0.2 : 0.6);
 
-        positions[i3] = Math.cos(branchAngle + spinAngle) * radius + rSpread + 320;
+        // 银心坐标 (280, 0, -220)
+        positions[i3] = Math.cos(branchAngle + spinAngle) * radius + rSpread + 280;
         positions[i3 + 1] = zDisp;
-        positions[i3 + 2] = Math.sin(branchAngle + spinAngle) * radius + rSpread - 260;
+        positions[i3 + 2] = Math.sin(branchAngle + spinAngle) * radius + rSpread - 220;
 
-        let col = cCore.clone();
-        if (radius < 140) {
-          col.lerp(cCore, 0.95);
-        } else if (radius < 450) {
-          col.lerp(cDisk, (radius - 140) / 310);
-          if (i % 8 === 0) col.lerp(cDust, 0.85); // 尘埃暗带
+        let col = cBulge.clone();
+        if (radius < 90) {
+          // 银心核球：柔和温和的恒星自然聚集，绝不过曝
+          col.lerp(cBulge, 0.85);
+          // 在银心前方注入贯穿的暗分子尘埃带 (Central Molecular Zone Silhouettes)
+          if (Math.abs(zDisp) < 6 && (i % 5 === 0)) {
+            col.lerp(cDust, 0.9);
+          }
+        } else if (radius < 380) {
+          col.lerp(cDisk, (radius - 90) / 290);
+          if (i % 7 === 0) col.lerp(cDust, 0.85); // 旋臂间暗尘埃
         } else {
-          col.lerp(cArms, (radius - 450) / 450);
-          if (i % 6 === 0) col.lerp(cDust, 0.75);
+          col.lerp(cArms, (radius - 380) / 470);
+          if (i % 5 === 0) col.lerp(cDust, 0.75);
         }
 
         colors[i3] = col.r;
@@ -444,10 +429,10 @@
       geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
       const mat = new THREE.PointsMaterial({
-        size: 1.5,
+        size: 1.25,
         map: glowTex,
         transparent: true,
-        opacity: 0.85,
+        opacity: 0.82,
         vertexColors: true,
         blending: THREE.AdditiveBlending,
         depthWrite: false
@@ -458,7 +443,7 @@
       scene.add(galaxyCloudGroup);
     }
 
-    // 2. 电影级超光速星光拉丝跃迁粒子场 (Warp Speed Streaks)
+    // 2. 超光速星光拉丝跃迁粒子场
     function buildWarpStreakParticleField() {
       const count = 4000;
       const geo = new THREE.BufferGeometry();
@@ -473,14 +458,14 @@
         size: 0.3,
         color: 0x38bdf8,
         transparent: true,
-        opacity: 0.0, // 默认隐藏，跃迁时点亮
+        opacity: 0.0,
         blending: THREE.AdditiveBlending
       });
       warpStreakPoints = new THREE.Points(geo, mat);
       scene.add(warpStreakPoints);
     }
 
-    // 3. 太阳周边 15 光年恒星：带银道面精密投影针与黑体辐射
+    // 3. 太阳周边 15 光年恒星系统
     function buildLocalAstrometricNeighborhood() {
       localStarGroup = new THREE.Group();
       const glowTex = createSmoothGlowTexture();
@@ -495,7 +480,7 @@
         const starNode = new THREE.Group();
         starNode.position.set(...star.pos);
 
-        // 垂直投影高程针 (Astrometric Drop Stalk)
+        // 垂直投影高程针
         const h = star.pos[1];
         if (Math.abs(h) > 0.05) {
           const stalkGeo = new THREE.BufferGeometry().setFromPoints([
@@ -520,9 +505,9 @@
           starNode.add(disc);
         }
 
-        // 恒星白炽核心
+        // 恒星核心白炽球
         const core = new THREE.Mesh(
-          new THREE.SphereGeometry(star.size * 0.06, 20, 20),
+          new THREE.SphereGeometry(star.size * 0.05, 20, 20),
           new THREE.MeshBasicMaterial({ color: star.color })
         );
         core.userData = star;
@@ -531,7 +516,7 @@
 
         // 恒星扩散日冕
         const halo = new THREE.Mesh(
-          new THREE.PlaneGeometry(star.size * 0.8, star.size * 0.8),
+          new THREE.PlaneGeometry(star.size * 0.75, star.size * 0.75),
           new THREE.MeshBasicMaterial({
             map: glowTex, color: star.haloColor,
             transparent: true, opacity: 0.85,
@@ -556,7 +541,7 @@
           map: new THREE.CanvasTexture(canvas),
           transparent: true, opacity: 0.9
         }));
-        sprite.position.set(0, star.size * 0.2 + 0.28, 0);
+        sprite.position.set(0, star.size * 0.18 + 0.25, 0);
         sprite.scale.set(3.2, 0.75, 1);
         starNode.add(sprite);
 
@@ -659,7 +644,7 @@
       plume.position.z = -0.34;
       shipMeshGroup.add(plume);
 
-      shipMeshGroup.position.set(-0.8, 0.22, 1.1); // 第50年中途点
+      shipMeshGroup.position.set(-0.8, 0.22, 1.1);
       shipMeshGroup.lookAt(-3.2, 0.8, 4.4);
       scene.add(shipMeshGroup);
     }
@@ -689,7 +674,7 @@
         hudData = {
           tag: "GALACTIC DISK SURVEY · 100,000 LY",
           name: "银河系 (Milky Way Galaxy)",
-          desc: "4000 亿颗恒星构成的宏伟棒旋星盘。中央为超大质量黑洞人马座 A* 与炽热核球。人类文明在猎户座支臂的微小光点中诞生，并开始向外延伸触角。",
+          desc: "巨型棒旋星盘（SBbc），直径十万光年。核球为数十亿颗老恒星组成的自然密度梯度，被厚厚的星际暗分子尘埃带（CMZ）消光遮蔽。太阳系位于猎户座支臂内侧。",
           v1: "26,000 ly", v2: "100,000 ly", v3: "0.03c (9000 km/s)", v4: "4.24 ly (200年)"
         };
       } else if (mode === 'local') {
@@ -724,12 +709,11 @@
         };
       }
 
-      // 1. 触发跃迁星光拉丝光效
+      // 1. 触发跃迁星光拉丝
       const warpOverlay = document.getElementById('warp-overlay');
       warpOverlay.style.opacity = '1';
-      warpStreakPoints.material.opacity = 0.9;
+      warpStreakPoints.material.opacity = 0.85;
 
-      // 动态比例尺跳动更新动画
       document.getElementById('fovScaleVal').innerText = scaleText;
 
       // 2. 指数级加速与减速平滑运镜
@@ -803,12 +787,12 @@
       TWEEN.update();
       controls.update();
 
-      // 银河系极慢旋转
+      // 银河系极慢宏观自转
       if (galaxyCloudGroup) {
-        galaxyCloudGroup.rotation.y = (time || 0) * 0.00001;
+        galaxyCloudGroup.rotation.y = (time || 0) * 0.000008;
       }
 
-      // 飞船双联环反向自转
+      // 飞船双联环自转
       if (shipMeshGroup && shipMeshGroup.r1) {
         shipMeshGroup.r1.rotation.z = (time || 0) * 0.0016;
         shipMeshGroup.r2.rotation.z = -(time || 0) * 0.0016;
