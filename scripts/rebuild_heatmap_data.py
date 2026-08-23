@@ -30,14 +30,16 @@ SNIPPET_LEN = 223
 
 
 def parse_coord(cell: str):
-    parts = cell.replace(" ", "").split("×")
-    if len(parts) != 3:
+    parts = [p.strip() for p in cell.replace(" ", "").split("×")]
+    if len(parts) < 3 or len(parts) > 5:
         return None
-    dim, era, sp = parts
+    dim, era, sp = parts[0], parts[1], parts[2]
     sp = SP_MAP.get(sp)
-    if sp is None:
+    if sp is None or dim not in DIMS or era not in ERAS:
         return None
-    return (dim, era, sp)
+    school = parts[3] if len(parts) >= 4 else "官档"
+    facet = parts[4] if len(parts) == 5 else "01主格"
+    return (dim, era, sp, school, facet)
 
 
 def parse_front_matter(txt: str):
@@ -64,7 +66,7 @@ def main():
         if not p:
             print(f"SKIP(coord 解析失败): {Path(f).name}")
             continue
-        dim, era, sp = p
+        dim, era, sp, school, facet = p
         dim_idx = DIMS.index(dim)
         era_idx = ERAS.index(era)
         zone_idx = SPACES.index(sp)
@@ -89,6 +91,8 @@ def main():
             "era_name": era,
             "zone_name": sp,
             "rel_path": f"artifacts/writing/{Path(f).name}",
+            "school": school,
+            "facet": facet,
             "image": fm.get("image", ""),
             "snippet": snippet,
             "full_text": body,

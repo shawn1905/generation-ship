@@ -11,6 +11,8 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 DIMENSIONS = {'工程','人','社会','经济','生态','文化','知识'}
 ERAS = {'替代','竞赛','丰裕','离心','启航','落地','双星系'}
 ZONES = {'①','②','③','④','⑤','地球','地月系','内太阳系','深空','比邻星'}
+SCHOOLS = {'官档','私档','互济','互济契约','商贸','商档','工技','工程技术','科医','科学医疗','通用','官','私','契','商','工','科'}
+THREAD_PREFIXES = ('person/', 'object/', 'lineage/', 'system/', 'event/')
 # 元层词:世界内文书不应出现的词(允许出现在 front matter / 审核记录段)
 META_WORDS = ['坐标系','空间带','大纲','正典','front matter','canon_check','author_ai','元框架','GitHub']
 
@@ -58,8 +60,8 @@ def check_file(path: pathlib.Path) -> list:
 
     coord = str(fm.get('coord', ''))
     parts = [p.strip() for p in coord.split('×')]
-    if len(parts) < 3:
-        errs.append(f'coord 应含 维度×纪元×空间带 三段, 现: {coord!r}')
+    if len(parts) < 3 or len(parts) > 5:
+        errs.append(f'coord 应为 3 段式(维度×纪元×空间带) 或 5 段分形式(维度×纪元×空间带×学派×切片), 现: {coord!r}')
     else:
         dim, era, zone = parts[0], parts[1], parts[2]
         if dim not in DIMENSIONS:
@@ -79,8 +81,26 @@ def check_file(path: pathlib.Path) -> list:
         if not is_valid_zone:
             errs.append(f'空间带非法: {zone} (合法: {sorted(ZONES)})')
 
+        if len(parts) >= 4:
+            school = parts[3]
+            if school not in SCHOOLS:
+                errs.append(f'微观学派非法: {school} (合法: {sorted(SCHOOLS)})')
+        
+        if len(parts) == 5:
+            facet = parts[4]
+            if not facet or len(facet) < 2:
+                errs.append(f'微观切片非法: {facet} (须包含切片编号与名称，如 01主承力)')
     if not fm.get('canon_check'):
         errs.append('front matter 缺 canon_check(合法性三问自答, 可用 | 多行)')
+    threads_raw = fm.get('threads', '')
+    if threads_raw:
+        thread_items = [t.strip().lstrip('- ') for t in threads_raw.splitlines() if t.strip().lstrip('- ')]
+        for t in thread_items:
+            if not any(t.startswith(p) for p in THREAD_PREFIXES):
+                errs.append(f'thread 命名空间非法: {t!r} (须以 person/ object/ lineage/ system/ event/ 开头)')
+            elif len(t.split('/', 1)[1]) < 2:
+                errs.append(f'thread 标识符过短: {t!r}')
+
 
     # 档案编号:仅对正典目录(artifacts/writing/)强制,投稿阶段不填
     if path.parent.name == 'writing':
