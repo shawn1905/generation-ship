@@ -1,0 +1,8 @@
+file '/Users/dahongge/generation-ship/scripts/tmp_audio/line1_radio.wav'
+file '/Users/dahongge/generation-ship/scripts/tmp_audio/silence.wav'
+file '/Users/dahongge/generation-ship/scripts/tmp_audio/line2_radio.wav'
+file '/Users/dahongge/generation-ship/scripts/tmp_audio/silence.wav'
+file '/Users/dahongge/generation-ship/scripts/tmp_audio/line3_radio.wav'
+file '/Users/dahongge/generation-ship/scripts/tmp_audio/silence.wav'
+file '/Users/dahongge/generation-ship/scripts/tmp_audio/line4_radio.wav'
+file '/Users/dahongge/generation-ship/scripts/tmp_audio/silence.wav'
