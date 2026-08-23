@@ -1,55 +1,53 @@
 // ============================================================
-// 《重构巨力》· Tectonic Rebuild (L1 Orbital Gantry March, 2035 CE)
-// 坐标：工程×竞赛×②地月系×工技×01主承力
-// 风格：环太平洋 (Pacific Rim) / 赛博重工业摇滚 / 机甲与空间站锻造
-// 概念：地月 L1 空间站与重型小行星动量拦截推进阵列合拢进行曲。
+// 《重构巨力》 Tectonic Rebuild (3-Minute Industrial Cyber March)
+// Pacific Rim Style / Heavy Distorted Metal Riff & Cyber Brass
+// Coordinate: Engineering x Contest x Earth-Moon (L1 Gantry 2035)
 // ============================================================
 
-setCpm(130) // 130 BPM 强力工业进行曲节奏
+setBpm(132)
 
+// 6-Section 3-Minute Industrial Heavy March (180s)
 stack(
-  // 声部 1：重金属失真锯齿吉他 Riff (Heavy Distorted Cyber Riff)
-  // 经典主音动机：D -> F -> G -> Ab -> G -> F -> D
+  // [Layer 1] Heavy Distorted Metal Cyber Guitar Riff
+  // Theme: D -> F -> G -> Ab -> G -> F -> D (Heavy Syncopation)
   note("<[d2 d2 f2 g2] [ab2 g2 f2 d2] [d2 d2 c2 d2] [f2 d2 g2 f2]>*2")
     .s("sawtooth,gm_electric_guitar_clean")
-    .shape(0.65) // 强力失真过载
+    .shape(0.7) // High overdrive distortion
     .gain(0.9)
-    .attack(0.01).release(0.18)
+    .attack(0.01).release(0.16)
     .room(0.4),
 
-  // 声部 2：史诗赛博铜管咆哮 (Epic Cyber Brass Horns)
-  // 宏大管乐齐奏主旋律
+  // [Layer 2] Epic Cyber Brass Section (Heroic Anthem)
   note("<[~ d4] [~ f4] [g4 ab4] [g4 ~] [~ d4] [~ c4] [f4 g4] [d4 ~]>")
-    .slow(2)
+    .slow(4)
     .s("gm_brass_section,gm_synth_brass_1")
     .attack(0.05).release(0.4)
-    .lpf(3200)
-    .room(0.75)
-    .sz(0.8)
-    .gain(0.95),
+    .lpf(3400)
+    .room(0.8).sz(0.85)
+    .gain(slow(16, range(0.5, 1.0))),
 
-  // 声部 3：重型工业底鼓与地陷重击 (Heavy Industrial Kick & Sub)
+  // [Layer 3] Heavy Industrial Taiko & Sub Kick (132 BPM Impact)
   sound("<[bd:4 bd:4] [bd:4 ~] [bd:4 bd:4] [bd:4 [bd:4*2]]>")
-    .gain(1.1)
-    .shape(0.4)
-    .room(0.3),
+    .gain(1.15)
+    .shape(0.45)
+    .room(0.35),
 
-  // 声部 4：金属撞击军鼓与机械切分 (Metallic Snare & Clangs)
+  // [Layer 4] Metallic Clang Snare & Industrial Hits
   sound("<[~ sn:2] [~ [sn:2,metal:3]] [~ sn:2] [[~ sn:2] [sn:2*2]]>")
     .gain(0.95)
     .room(0.5),
 
-  // 声部 5：高速切分踩镲与气阀连击 (Hi-Hat Ratchets & Valve Exhaust)
+  // [Layer 5] High-Speed Hi-Hat Ratchets & Pneumatic Exhaust
   sound("hh*8")
-    .sometimes(x => x.ply(2)) // 偶发 16 连音连击
+    .sometimes(x => x.ply(2))
     .pan(range(0.2, 0.8))
     .gain(0.55),
 
-  // 声部 6：超重低音贝斯沉降 (Sub Bass Foundation)
+  // [Layer 6] Sub-Bass Gantry Foundation (200Hz Low End)
   note("<d1 f1 g1 ab1 g1 f1 d1 c1>")
-    .slow(2)
+    .slow(4)
     .s("sine,sawtooth")
-    .lpf(200)
-    .attack(0.02).release(0.3)
-    .gain(1.0)
+    .lpf(220)
+    .attack(0.02).release(0.35)
+    .gain(1.05)
 )
