@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>世代飞船 · ARK-01 建造与全系统工程全景控制台 (2080—2350+)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #060913;
+      --card-bg: #0f172a;
+      --card-hover: #1e293b;
+      --border: #1e293b;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --purple: #c084fc;
+      --orange: #fb923c;
+      --green: #4ade80;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 24px;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .brand h1 { font-size: 24px; color: var(--purple); display: flex; align-items: center; gap: 8px; }
+    .brand p { color: var(--muted); font-size: 13px; margin-top: 4px; }
+    .stats-bar {
+      display: flex;
+      gap: 12px;
+      background: #0f172a;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 12px;
+    }
+    .stat-item { display: flex; align-items: center; gap: 6px; }
+    .badge { padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; font-family: var(--font-mono); }
+    .badge-phase { background: rgba(192, 132, 252, 0.15); color: #c084fc; border: 1px solid #9333ea; }
+    
+    /* 工程阶段导航器 */
+    .timeline-nav {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+      margin-bottom: 24px;
+      background: #0f172a;
+      padding: 6px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .phase-btn {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      padding: 10px 4px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .phase-btn:hover { background: #1e293b; color: var(--text); }
+    .phase-btn.active { background: #7c3aed; color: #fff; font-weight: bold; box-shadow: 0 0 12px rgba(192, 132, 252, 0.4); }
+    .phase-year { font-family: var(--font-mono); font-size: 11px; opacity: 0.8; display: block; margin-top: 2px; }
+    
+    /* 五大子系统主网格 */
+    .panorama-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+    .pillar-col {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .pillar-header {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #334155;
+    }
+    .tech-card {
+      background: var(--card-bg);
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 12px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+    .tech-card:hover {
+      background: var(--card-hover);
+      border-color: var(--purple);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+    }
+    .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
+    .card-title { font-size: 13px; font-weight: 600; color: #e2e8f0; line-height: 1.4; }
+    .card-year { font-family: var(--font-mono); font-size: 11px; color: var(--purple); }
+    .card-desc { font-size: 11px; color: var(--muted); line-height: 1.4; margin-top: 4px; }
+    .card-spec { font-size: 10px; color: #cbd5e1; background: rgba(192, 132, 252, 0.1); padding: 2px 6px; border-radius: 4px; margin-top: 8px; display: inline-block; border: 1px solid rgba(192, 132, 252, 0.2); }
+    
+    /* 钻取抽屉面板 */
+    .drawer-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(4px);
+      display: none;
+      z-index: 999;
+      justify-content: flex-end;
+    }
+    .drawer {
+      background: #0f172a;
+      width: 100%;
+      max-width: 620px;
+      height: 100vh;
+      border-left: 1px solid #334155;
+      padding: 30px;
+      overflow-y: auto;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+      position: relative;
+      animation: slideIn 0.25s ease-out;
+    }
+    @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+    .drawer-close {
+      position: absolute;
+      top: 20px; right: 20px;
+      background: #1e293b;
+      border: 1px solid #475569;
+      color: #fff;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .drawer h2 { color: var(--purple); font-size: 20px; margin-bottom: 8px; }
+    .drawer .section-title { font-size: 13px; color: var(--orange); font-weight: 700; text-transform: uppercase; margin: 18px 0 8px; letter-spacing: 0.5px; border-bottom: 1px solid #334155; padding-bottom: 4px; }
+    .code-box {
+      background: #020617;
+      border: 1px solid #1e293b;
+      padding: 12px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #c084fc;
+      overflow-x: auto;
+      line-height: 1.5;
+    }
+    .param-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 12px; }
+    .param-table th, .param-table td { padding: 8px 10px; border: 1px solid #334155; text-align: left; }
+    .param-table th { background: #1e293b; color: #cbd5e1; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <h1>🛸 世代飞船 ARK-01 · 建造与全系统工程全景控制台</h1>
+      <p>Generation Ship ARK-01 Master Engineering Console (2080—2350+) · 5.2km 巨构总装 / 0.65g 双联旋转环 / 30T 磁防</p>
+    </div>
+    <div class="stats-bar">
+      <div class="stat-item"><span class="badge badge-phase">总长</span> 5.2 公里中轴</div>
+      <div class="stat-item"><span class="badge badge-phase">乘员</span> 10,214 人</div>
+      <div class="stat-item"><span class="badge badge-phase">巡航</span> 0.03c (9000 km/s)</div>
+      <div class="stat-item"><span class="badge badge-phase">寿命</span> 200 年零补给</div>
+    </div>
+  </header>
+
+  <!-- 阶段筛选控制器 -->
+  <div class="timeline-nav">
+    <button class="phase-btn active" onclick="filterPhase('all')">全生命周期<span class="phase-year">Phase 0—5</span></button>
+    <button class="phase-btn" onclick="filterPhase('P0')">Phase 0 论证<span class="phase-year">2080—2120</span></button>
+    <button class="phase-btn" onclick="filterPhase('P1')">Phase 1 龙骨总装<span class="phase-year">2120—2140</span></button>
+    <button class="phase-btn" onclick="filterPhase('P2')">Phase 2-3 殖装出港<span class="phase-year">2140—2150</span></button>
+    <button class="phase-btn" onclick="filterPhase('P4')">Phase 4 航渡自持<span class="phase-year">2150—2335</span></button>
+    <button class="phase-btn" onclick="filterPhase('P5')">Phase 5 制动抵港<span class="phase-year">2335—2350+</span></button>
+  </div>
+
+  <!-- 五大子系统主网格 -->
+  <main class="panorama-grid">
+
+    <!-- 支柱 1：主动磁屏蔽与防冲 -->
+    <div class="pillar-col">
+      <div class="pillar-header">🛡️ 1. 主动磁屏蔽与防冲</div>
+      
+      <div class="tech-card" data-phase="P0" onclick="openDrawer('MAG_SHIELD_P0')">
+        <div class="card-top">
+          <span class="badge badge-phase">Phase 0</span>
+          <span class="card-year">2080</span>
+        </div>
+        <div class="card-title">主动磁防替代被动屏蔽论证</div>
+        <div class="card-desc">放弃 9.9Mt 死重，确立 30T 超导磁泡方案。</div>
+        <div class="card-spec">干重仅 8.5 万吨 (减重 99.1%)</div>
+      </div>
+
+      <div class="tech-card" data-phase="P1" onclick="openDrawer('WHIPPLE_BUMPER')">
+        <div class="card-top">
+          <span class="badge badge-phase">Phase 1</span>
+          <span class="card-year">2135</span>
+        </div>
+        <div class="card-title">200m 多层惠普尔防冲盾总装</div>
+        <div class="card-desc">SiC 纳米陶瓷 + UHMWPE 纤维抵挡微尘。</div>
+        <div class="card-spec">迎风面相对速度 0.03c</div>
+      </div>
+
+      <div class="tech-card" data-phase="P4" onclick="openDrawer('MAGNETIC_COILS')">
+        <div class="card-top">
+          <span class="badge badge-phase">Phase 4</span>
+          <span class="card-year">2150</span>
+        </div>
+        <div class="card-title">12 组 REBCO 跑道型超导线圈</div>
+        <div class="card-desc">500 米斯特默截断磁泡，年剂量 < 15 mSv。</div>
+        <div class="card-spec">中心磁场 30.0 Tesla</div>
+      </div>
+    </div>
+
+    <!-- 支柱 2：人工重力双联旋转环 -->
+    <div class="pillar-col">
+      <div class="pillar-header">🎡 2. 双联旋转环人工重力</div>
+
+      <div class="tech-card" data-phase="P1" onclick="openDrawer('KEEL_5KM')">
+        <div class="card-top">
+          <span class="badge badge-phase">Phase 1</span>
+          <span class="card-year">2125</span>
+        </div>
+        <div class="card-title">5.2 公里单晶钨钼铼中轴龙骨</div>
+        <div class="card-desc">L5 建木船台铺设，抗弯刚度 EI > 10¹⁴ N·m²。</div>
+        <div class="card-spec">非旋转主中轴核心</div>
+      </div>
+
+      <div class="tech-card" data-phase="P1" onclick="openDrawer('DUAL_RINGS')">
+        <div class="card-top">
+          <span class="badge badge-phase">Phase 1</span>
+          <span class="card-year">2138</span>
+        </div>
+        <div class="card-title">双联反向自转力矩平衡系统</div>
+        <div class="card-desc">主环 0.65g / 恢复环 0.34g，净角动量为零。</div>
+        <div class="card-spec">消除全船陀螺进动撕裂</div>
+      </div>
+
+      <div class="tech-card" data-phase="P2" onclick="openDrawer('MAG_BEARING')">
+        <div class="card-top">
+          <span class="badge badge-phase">Phase 2</span>
+          <span class="card-year">2142</span>
+        </div>
+        <div class="card-title">直径 120m 主动磁悬浮轴承 (AMB)</div>
+        <div class="card-desc">气隙精度 ±10μm，承载力 2.4×10⁸ N。</div>
+        <div class="card-spec">48 组水箱自适应动态配平</div>
+      </div>
+    </div>
+
+    <!-- 支柱 3：万人绝对闭环生态 -->
+    <div class="pillar-col">
+      <div class="pillar-header">🌾 3. 万人闭环生态生保</div>
+
+      <div class="tech-card" data-phase="P0" onclick="openDrawer('SP413_BUDGET')">
+        <div class="card-top">
+          <span class="badge badge-phase">Phase 0</span>
+          <span class="card-year">2090</span>
+        </div>
+        <div class="card-title">NASA SP-413 万人空间预算模型</div>
+        <div class="card-desc">人均 67 m² 黄金预算 (居住23/农业28/设备16)。</div>
+        <div class="card-spec">10,214 人全寿命平账</div>
+      </div>
+
+      <div class="tech-card" data-phase="P2" onclick="openDrawer('SCWO_SYSTEM')">
+        <div class="card-top">
+          <span class="badge badge-phase">Phase 2</span>
+          <span class="card-year">2146</span>
+        </div>
+        <div class="card-title">超临界水氧化反应釜 (SCWO)</div>
+        <div class="card-desc">374℃/22.1MPa，30 秒 100% 矿化全船排泄物。</div>
+        <div class="card-spec">水回收率 99.97%</div>
+      </div>
+
+      <div class="tech-card" data-phase="P3" onclick="openDrawer('ALGAE_FARM')">
+        <div class="card-top">
+          <span class="badge badge-phase">Phase 3</span>
+          <span class="card-year">2148</span>
+        </div>
+        <div class="card-title">平板小球藻反应器与水培麦槽</div>
+        <div class="card-desc">静海『方舟母本系』耐辐射矮秆作物殖装。</div>
+        <div class="card-spec">每日产粮 6.1 吨 / 产氧 8.4 吨</div>
+      </div>
+    </div>
+
+    <!-- 支柱 4：6联装聚变脉冲推进 -->
+    <div class="pillar-col">
+      <div class="pillar-header">🚀 4. 6联装脉冲聚变推进</div>
+
+      <div class="tech-card" data-phase="P0" onclick="openDrawer('PULSE_TARGET')">
+        <div class="card-top">
+          <span class="badge badge-phase">Phase 0</span>
+          <span class="card-year">2105</span>
+        </div>
+        <div class="card-title">D-³He 磁化微靶百万秒试车</div>
+        <div class="card-desc">单靶产额 10¹¹ 焦耳，Q>50，柯伊伯靶场验证。</div>
+        <div class="card-spec">排气速度 15,000 km/s (0.05c)</div>
+      </div>
+
+      <div class="tech-card" data-phase="P2" onclick="openDrawer('LASER_ARRAY')">
+        <div class="card-top">
+          <span class="badge badge-phase">Phase 2</span>
+          <span class="card-year">2145</span>
+        </div>
+        <div class="card-title">500 万焦耳紫外脉冲激光阵列</div>
+        <div class="card-desc">351nm · 5ns 脉宽 · 10Hz 重频对称点火。</div>
+        <div class="card-spec">192 路相位共轭自适应对焦</div>
+      </div>
+
+      <div class="tech-card" data-phase="P3" onclick="openDrawer('MAG_NOZZLE')">
+        <div class="card-top">
+          <span class="badge badge-phase">Phase 3</span>
+          <span class="card-year">2150</span>
+        </div>
+        <div class="card-title">35T 同轴超导磁喷管与锂第一壁</div>
+        <div class="card-desc">液体锂发汗吸热，等离子体无接触偏转导流。</div>
+        <div class="card-spec">推力转换效率 η = 82%</div>
+      </div>
+    </div>
+
+    <!-- 支柱 5：百公里磁帆星际制动 -->
+    <div class="pillar-col">
+      <div class="pillar-header">🪂 5. 百公里磁帆星际制动</div>
+
+      <div class="tech-card" data-phase="P4" onclick="openDrawer('MAG_SAIL_NET')">
+        <div class="card-top">
+          <span class="badge badge-phase">Phase 4</span>
+          <span class="card-year">2335</span>
+        </div>
+        <div class="card-title">百公里级 REBCO 超导磁帆展开</div>
+        <div class="card-desc">自旋离心展开，截获星际等离子体阻尼制动。</div>
+        <div class="card-spec">产生 10⁶ N 无工质连续减速推力</div>
+      </div>
+
+      <div class="tech-card" data-phase="P5" onclick="openDrawer('LANDING_PROBE')">
+        <div class="card-top">
+          <span class="badge badge-phase">Phase 5</span>
+          <span class="card-year">2350</span>
+        </div>
+        <div class="card-title">先遣大气进入过驳艇 (HIAD)</div>
+        <div class="card-desc">运载工业母机种子包与防风坑基穹顶降落。</div>
+        <div class="card-spec">再入速度 11.2 km/s</div>
+      </div>
+
+      <div class="tech-card" data-phase="P5" onclick="openDrawer('ORBITAL_STATION')">
+        <div class="card-top">
+          <span class="badge badge-phase">Phase 5</span>
+          <span class="card-year">2353</span>
+        </div>
+        <div class="card-title">ARK-01 船体转为高轨永久空间站</div>
+        <div class="card-desc">全息档案馆与备件拆解库，见证新海安诞生。</div>
+        <div class="card-spec">千禧历史第一座轨道丰碑</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- 钻取抽屉 -->
+  <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer(event)">
+    <div class="drawer" id="drawer">
+      <button class="drawer-close" onclick="closeDrawerForce()">✕</button>
+      <div id="drawerContent"></div>
+    </div>
+  </div>
+
+  <script>
+    const shipData = {
+      MAG_SHIELD_P0: {
+        title: "30 Tesla 主动超导磁屏蔽系统",
+        level: "L3 斯特默截断公式 / L4 超导线圈与杜瓦冷箱",
+        formula: "r_cutoff = √( (q * M) / (m * v) ) > 500 m  [偏转 1~5 GeV 宇宙线高能质子]",
+        specs: [
+          ["超导线圈带材", "铜稳定化 REBCO 高温超导带材 (12 组跑道型)", "工作温度 20K, 励磁电流 1.2×10⁷ A"],
+          ["系统干重与减重比", "85,000 吨 (传统 5m 岩石屏蔽需 990 万吨)", "减重 99.1%"],
+          ["乘员舱受照剂量", "< 15 mSv/year", "彻底消除两百年航程代际突变风险"]
+        ]
+      },
+      DUAL_RINGS: {
+        title: "双联反向旋转居住环力矩平衡系统",
+        level: "L3 角动量守恒方程 / L4 动平衡注排水回路",
+        formula: "Σ (I1 * ω1 + I2 * ω2) = 0  [ω = 0.159 rad/s (1.52 rpm), a = 0.65g]",
+        specs: [
+          ["主居住环 Ring-A", "半径 R = 2.50 km · 顺时针 1.52 rpm", "地板重力 0.65g (7500人生活区)"],
+          ["恢复环 Ring-B", "半径 R = 1.30 km · 逆时针 1.52 rpm", "地板重力 0.34g (重工业与实验室)"],
+          ["自适应配平系统", "48 组环向自适应注排水箱 (2.5 吨/s 流量转移)", "30 秒消除千人集会偏载"]
+        ]
+      },
+      SCWO_SYSTEM: {
+        title: "超临界水氧化反应釜 (SCWO 生保核心)",
+        level: "L3 超临界热化学反应动力学 / L4 反应釜结构",
+        formula: "T = 420℃, P = 24.5 MPa  [30秒无害化, 有机物矿化率 TOC > 99.999%]",
+        specs: [
+          ["反应釜内胆", "Haynes 282 镍基抗腐蚀合金衬钽", "耐受超临界高腐蚀盐水"],
+          ["日处理通量", "全船 10,214 人排泄物与厨余 100% 处理", "产出无菌纯水与无机肥料"],
+          ["全船水循环率", "99.97% 闭环再生", "每日仅需补充 <10 kg 损失"]
+        ]
+      },
+      MAG_NOZZLE: {
+        title: "35T 同轴脉冲磁喷管与液体锂发汗第一壁",
+        level: "L3 磁流体等离子体膨胀加速 / L4 磁镜与锂热沉",
+        formula: "ve = √( (2 * η_nozzle * E_yield) / m_pellet ) = 15,000 km/s (0.05c)",
+        specs: [
+          ["驱动激光器", "192 路 351nm 紫外脉冲激光阵列 (5.0 MJ, 5ns, 10Hz)", "对焦误差 < 50 μm"],
+          ["磁喷管线圈", "35.0 Tesla 梯度强化 REBCO 磁镜", "推力转换效率 η = 82%"],
+          ["第一壁抗烧蚀", "多孔钨骨架渗金属锂发汗冷却", "耐受 25 MW/m² 瞬态热流"]
+        ]
+      },
+      MAG_SAIL_NET: {
+        title: "百公里级超导磁帆星际无工质制动系统",
+        level: "L3 磁等离子体阻力方程 / L4 自旋离心张力网",
+        formula: "FD = CD * 0.5 * ρ_ISM * v² * π * R_mag²  [产生 10⁶ N 连续减速阻力]",
+        specs: [
+          ["超导主缆网", "碳纤维铠装 REBCO 细线 (直径 100 km, 重 42 吨)", "稳态超导电流 5000 A"],
+          ["等离子体膨胀枪", "4 组高功率霍尔推力器注入微量等离子体", "有效截面膨胀 10 倍 (M2P2)"],
+          ["制动总冲", "2.7×10¹⁴ N·s (15年平滑减速抛物线)", "从 0.03c 减速至泊入轨道"]
+        ]
+      }
+    };
+
+    function filterPhase(phase) {
+      document.querySelectorAll('.phase-btn').forEach(b => b.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+
+      const cards = document.querySelectorAll('.tech-card');
+      cards.forEach(card => {
+        if (phase === 'all' || card.dataset.phase === phase) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function openDrawer(key) {
+      const data = shipData[key] || {
+        title: "世代飞船工程蓝图",
+        level: "L3 物理公式 / L4 工装参数",
+        formula: "遵循 NASA SP-413 规范与恒星际相对论动力学",
+        specs: [
+          ["工程规格", "ARK-01 龙骨标准", "100% 自持"],
+          ["材料牌号", "单晶钨钼铼 / REBCO 超导", "耐两百年疲劳"],
+          ["对应正典", "GS-2140 / GS-2150 / GS-2252", "已入库"]
+        ]
+      };
+
+      let rows = data.specs.map(s => `<tr><td><b>${s[0]}</b></td><td>${s[1]}</td><td><span style="color:#c084fc">${s[2]}</span></td></tr>`).join('');
+
+      document.getElementById('drawerContent').innerHTML = `
+        <h2>${data.title}</h2>
+        <div style="font-size:12px;color:#94a3b8;margin-bottom:12px;">层级：${data.level}</div>
+        
+        <div class="section-title">🔬 L3 物理力学与热力学公式</div>
+        <div class="code-box">${data.formula}</div>
+
+        <div class="section-title">🔩 L4 关键工装材料与机电参数表</div>
+        <table class="param-table">
+          <thead><tr><th>系统组件</th><th>规格与材料牌号</th><th>工程指标与冗余</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+
+        <div class="section-title">📜 飞船建造全寿命档案关联</div>
+        <p style="font-size:12px;color:#94a3b8;line-height:1.6;margin-top:6px;">
+          本图纸直接支撑《ARK-01在轨总装终审验收单》（GS-2140-01）、《生态系统出港检疫鉴定书》（GS-2150-01）与《第一航行世纪决算公报》（GS-2252-01）。
+        </p>
+      `;
+
+      document.getElementById('drawerOverlay').style.display = 'flex';
+    }
+
+    function closeDrawer(e) {
+      if (e.target.id === 'drawerOverlay') {
+        document.getElementById('drawerOverlay').style.display = 'none';
+      }
+    }
+    function closeDrawerForce() {
+      document.getElementById('drawerOverlay').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
