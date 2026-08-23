@@ -2,25 +2,24 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>世代飞船 · 3D银河全景与4.24光年星际航线图 (Galaxy to Trajectory Engine)</title>
+  <title>世代飞船 · 3D 银河史诗全景与 4.24 光年星际航线 (Cinematic Galaxy Engine v3.0)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     :root {
-      --bg: #030712;
-      --panel-bg: rgba(15, 23, 42, 0.88);
-      --border: rgba(56, 189, 248, 0.3);
+      --bg: #010409;
+      --panel-bg: rgba(6, 11, 25, 0.85);
+      --border: rgba(56, 189, 248, 0.35);
       --text: #f8fafc;
       --muted: #94a3b8;
       --accent: #38bdf8;
       --gold: #facc15;
-      --red: #f87171;
-      --purple: #c084fc;
-      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --cyan: #22d3ee;
+      --red: #f43f5e;
+      --font-mono: "SF Mono", "Fira Code", Menlo, Monaco, Consolas, monospace;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body, html {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       overflow: hidden;
       background: var(--bg);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -28,442 +27,606 @@
       user-select: none;
     }
     #canvas-container {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0; left: 0;
+      width: 100%; height: 100%;
+      position: absolute; top: 0; left: 0;
       z-index: 1;
     }
-    
-    /* 顶部 HUD 控制栏 */
+
+    /* 电影级宽画幅上下黑边 (Cinematic 2.39:1 Letterbox) */
+    .letterbox-top, .letterbox-bottom {
+      position: absolute; left: 0; width: 100%; height: 32px;
+      background: #000; z-index: 20; pointer-events: none;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .letterbox-bottom { bottom: 0; top: auto; border-bottom: none; border-top: 1px solid rgba(255,255,255,0.05); }
+
+    /* 顶部 HUD 控制台 */
     header {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      z-index: 10;
+      position: absolute; top: 48px; left: 32px; z-index: 25;
       background: var(--panel-bg);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(16px);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 16px 20px;
-      max-width: 440px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+      padding: 18px 24px;
+      max-width: 480px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.8), inset 0 0 20px rgba(56, 189, 248, 0.05);
     }
-    h1 { font-size: 18px; color: var(--accent); display: flex; align-items: center; gap: 8px; }
-    p.subtitle { font-size: 12px; color: var(--muted); margin-top: 4px; line-height: 1.4; }
-    
-    /* 运镜控制按钮组 */
+    .brand-title {
+      font-size: 19px; font-weight: 800; color: #fff;
+      display: flex; align-items: center; gap: 10px;
+      letter-spacing: 0.5px;
+    }
+    .brand-badge {
+      background: linear-gradient(135deg, #0284c7, #0369a1);
+      color: #fff; font-size: 10px; font-weight: 700;
+      padding: 2px 7px; border-radius: 4px; font-family: var(--font-mono);
+    }
+    p.subtitle {
+      font-size: 12px; color: var(--muted); margin-top: 6px;
+      line-height: 1.5; font-family: var(--font-mono);
+    }
+
+    /* 电影级运镜导航按钮 */
     .cam-nav {
-      display: flex;
-      gap: 6px;
-      margin-top: 12px;
-      flex-wrap: wrap;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 8px; margin-top: 14px;
     }
     .cam-btn {
-      background: rgba(30, 41, 59, 0.8);
+      background: rgba(15, 23, 42, 0.8);
       border: 1px solid rgba(56, 189, 248, 0.3);
       color: #e2e8f0;
-      padding: 6px 12px;
+      padding: 9px 12px;
       border-radius: 6px;
-      font-size: 11px;
-      font-weight: 600;
+      font-size: 12px; font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .cam-btn:hover {
-      background: #0284c7;
-      color: #fff;
+      background: rgba(2, 132, 199, 0.3);
       border-color: var(--accent);
-      box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+      color: #fff;
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.4);
+      transform: translateY(-1px);
     }
     .cam-btn.active {
       background: #0284c7;
-      border-color: var(--accent);
+      border-color: #38bdf8;
       color: #fff;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
     }
+    .btn-key { font-family: var(--font-mono); font-size: 10px; opacity: 0.6; }
 
-    /* 右侧天体物理与航线信息面板 */
+    /* 右侧天体与航线深度 HUD 面板 */
     .info-panel {
-      position: absolute;
-      bottom: 24px;
-      right: 24px;
-      z-index: 10;
+      position: absolute; bottom: 54px; right: 32px; z-index: 25;
       background: var(--panel-bg);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(16px);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 20px;
-      max-width: 380px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+      padding: 22px;
+      max-width: 420px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.8);
       transition: all 0.3s ease;
     }
-    .info-title { font-size: 16px; font-weight: 700; color: var(--gold); display: flex; align-items: center; justify-content: space-between; }
-    .info-meta { font-family: var(--font-mono); font-size: 11px; color: var(--accent); margin-top: 4px; }
-    .info-body { font-size: 12px; color: #cbd5e1; line-height: 1.6; margin-top: 10px; }
-    .info-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; font-size: 11px; }
-    .stat-box { background: rgba(2, 6, 23, 0.6); padding: 6px 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05); }
+    .info-tag { font-family: var(--font-mono); font-size: 10px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
+    .info-title { font-size: 18px; font-weight: 800; color: #fff; margin-top: 4px; display: flex; align-items: center; justify-content: space-between; }
+    .info-body { font-size: 12.5px; color: #cbd5e1; line-height: 1.6; margin-top: 10px; }
+    .info-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
+    .stat-box {
+      background: rgba(2, 6, 23, 0.7);
+      padding: 8px 12px; border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
     .stat-label { color: var(--muted); font-size: 10px; }
-    .stat-val { color: var(--text); font-family: var(--font-mono); font-weight: 600; margin-top: 2px; }
-    
+    .stat-val { color: var(--text); font-family: var(--font-mono); font-size: 12px; font-weight: 700; margin-top: 3px; }
+
     /* 底部操作提示 */
     .controls-hint {
-      position: absolute;
-      bottom: 24px;
-      left: 20px;
-      z-index: 10;
-      background: rgba(15, 23, 42, 0.7);
+      position: absolute; bottom: 54px; left: 32px; z-index: 25;
+      background: rgba(15, 23, 42, 0.75);
       backdrop-filter: blur(8px);
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-size: 11px;
-      color: var(--muted);
-      border: 1px solid rgba(255,255,255,0.05);
+      padding: 8px 16px; border-radius: 6px;
+      font-size: 11px; color: var(--muted);
+      border: 1px solid rgba(255,255,255,0.08);
       font-family: var(--font-mono);
+      display: flex; gap: 16px;
     }
-    
-    /* 加载蒙层 */
-    #loader {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: #030712;
-      z-index: 999;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      color: var(--accent);
-      transition: opacity 0.4s ease;
-      pointer-events: none;
-    }
-    .spinner {
-      width: 40px; height: 40px;
-      border: 3px solid rgba(56, 189, 248, 0.2);
-      border-top-color: var(--accent);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin-bottom: 16px;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
+    .hint-k { color: var(--accent); font-weight: bold; }
   </style>
 
-  <!-- 经典极稳版本 CDN 依赖 -->
+  <!-- 引入稳定版本 Three.js、控制器与补间动画引擎 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
 </head>
 <body>
 
-  <div id="loader">
-    <div class="spinner"></div>
-    <div>正在初始化银河系十万光年三维空间坐标与真实星表...</div>
-  </div>
+  <div class="letterbox-top"></div>
+  <div class="letterbox-bottom"></div>
 
   <div id="canvas-container"></div>
 
   <header>
-    <h1>🌌 世代飞船 · 3D 宇宙地理全景星图</h1>
-    <p class="subtitle">从银河系猎户座旋臂到 4.24 光年 ARK-01 航线 · 宏微观无级平滑运镜</p>
+    <div class="brand-title">
+      <span>🌌 世代飞船 · 3D 宇宙地理全景星图</span>
+      <span class="brand-badge">CINEMATIC 3.0</span>
+    </div>
+    <p class="subtitle">100,000 ly 银河棒旋星盘 ➔ 4.24 ly ARK-01 恒星际航迹</p>
     
     <div class="cam-nav">
-      <button class="cam-btn active" id="btnGalaxy" onclick="switchView('galaxy')">🌌 银河系十万光年全景</button>
-      <button class="cam-btn" id="btnLocal" onclick="switchView('local')">✨ 太阳邻域 15 光年星表</button>
-      <button class="cam-btn" id="btnCorridor" onclick="switchView('corridor')">🚀 4.24光年 ARK-01 航迹</button>
-      <button class="cam-btn" id="btnProxima" onclick="switchView('proxima')">🔴 比邻星 b 目的地</button>
+      <button class="cam-btn active" id="btnGalaxy" onclick="switchView('galaxy')">
+        <span>🌌 银河十万光年全景</span><span class="btn-key">[1]</span>
+      </button>
+      <button class="cam-btn" id="btnLocal" onclick="switchView('local')">
+        <span>✨ 太阳周边 15 光年</span><span class="btn-key">[2]</span>
+      </button>
+      <button class="cam-btn" id="btnCorridor" onclick="switchView('corridor')">
+        <span>🚀 4.24 光年航迹特写</span><span class="btn-key">[3]</span>
+      </button>
+      <button class="cam-btn" id="btnProxima" onclick="switchView('proxima')">
+        <span>🔴 比邻星 b 极轨前哨</span><span class="btn-key">[4]</span>
+      </button>
     </div>
   </header>
 
   <div class="info-panel" id="infoPanel">
+    <div class="info-tag" id="targetTag">GALACTIC TOPOGRAPHY</div>
     <div class="info-title" id="targetName">银河系 (Milky Way Galaxy)</div>
-    <div class="info-meta" id="targetMeta">棒旋星系 (SBbc) ｜ 直径 100,000 光年</div>
     <div class="info-body" id="targetDesc">
-      由 4000 亿颗恒星构成的宏伟旋转星盘。太阳系位于距离银心 2.6 万光年的猎户座支臂（Orion Spur）内侧。
+      由 4000 亿颗恒星构成的宏伟棒旋星盘。中央为超大质量黑洞人马座 A* 与炽热核球，四支大旋臂在十万光年尺度上旋转。太阳系位于猎户座支臂（Orion Spur）。
     </div>
-    <div class="info-stat-grid" id="statGrid">
+    <div class="info-stat-grid">
       <div class="stat-box">
         <div class="stat-label">银心距离</div>
         <div class="stat-val" id="stat1">26,000 ly</div>
       </div>
       <div class="stat-box">
-        <div class="stat-label">旋臂位置</div>
-        <div class="stat-val" id="stat2">猎户座支臂</div>
+        <div class="stat-label">恒星坐标</div>
+        <div class="stat-val" id="stat2">猎户座支臂内侧</div>
       </div>
       <div class="stat-box">
         <div class="stat-label">航程目标</div>
         <div class="stat-val" id="stat3">比邻星 b (4.24 ly)</div>
       </div>
       <div class="stat-box">
-        <div class="stat-label">巡航航速</div>
+        <div class="stat-label">相对论航速</div>
         <div class="stat-val" id="stat4">0.03c (9000 km/s)</div>
       </div>
     </div>
   </div>
 
   <div class="controls-hint">
-    🖱️ 鼠标左键：3D 旋转视角 ｜ 滚轮：无极缩放 ｜ 右键：平移视角 ｜ 点击发光恒星查看档案
+    <span><span class="hint-k">左键拖拽</span> 旋转三维视角</span>
+    <span><span class="hint-k">滚轮</span> 十万光年至航道无级缩放</span>
+    <span><span class="hint-k">点击天体</span> 调阅物理与正典档案</span>
   </div>
 
   <script>
     let scene, camera, renderer, controls;
-    let galaxyPoints, localStarsGroup, trajectoryGroup;
+    let galaxyGroup, coreMesh, localStarsGroup, trajectoryGroup, shipModelGroup;
     let raycaster, mouse;
     let clickableObjects = [];
 
-    const GALAXY_PARAMS = {
-      count: 65000,
-      size: 0.8,
-      radius: 450,
-      branches: 4,
-      spin: 1,
-      randomness: 0.5,
-      power: 4,
-      insideColor: '#ffd8a8',
-      outsideColor: '#38bdf8'
-    };
-
+    // 太阳周边 15 光年真实恒星物理参数 (Gaia / Gliese Catalog)
     const REAL_STARS = [
-      { name: "太阳系 (Sol)", dist: "0.00 ly", type: "G2V 黄矮星", pos: [0, 0, 0], color: 0xffea00, size: 2.2, desc: "人类文明发源地。2150年 ARK-01 从地月 L5 船台点火启航。" },
-      { name: "半人马座比邻星 (Proxima Centauri)", dist: "4.24 ly", type: "M5.5Ve 红矮星", pos: [-2.2, 0.7, 4.2], color: 0xff5533, size: 1.8, desc: "ARK-01 目的地。拥有比邻星 b 宜居行星，落地历元年（2350）抵达。" },
-      { name: "半人马座 α/β 双星 (Alpha Centauri A/B)", dist: "4.37 ly", type: "G2V + K1V 双星", pos: [-2.3, 0.8, 4.3], color: 0xffeedd, size: 2.0, desc: "比邻星的伴星系统，双星系纪元第二代恒星际采矿驳船勘探地。" },
-      { name: "巴纳德星 (Barnard's Star)", dist: "5.96 ly", type: "M4.0V 红矮星", pos: [1.0, 6.2, -1.2], color: 0xff6644, size: 1.4, desc: "全天自行速度最快的恒星，太阳系外缘巡天雷达重要导航信标。" },
-      { name: "卢曼 16 (Luhman 16)", dist: "6.52 ly", type: "L7.5 + T0.5 褐矮星双星", pos: [-4.6, -2.0, 5.0], color: 0xaa4422, size: 1.2, desc: "距离太阳系第三近的褐矮星系统，极端天体物理探测站所在地。" },
-      { name: "天狼星 (Sirius A/B)", dist: "8.60 ly", type: "A1V 蓝白主序星", pos: [-5.8, -5.2, -4.8], color: 0x88ccff, size: 3.0, desc: "全天视亮度最高的恒星，光际激光中继网高纬度校准光源。" },
-      { name: "拉兰德 21185 (Lalande 21185)", dist: "8.30 ly", type: "M2.0V 红矮星", pos: [2.3, 8.2, -2.6], color: 0xff7755, size: 1.3, desc: "北天红矮星，太阳系外围防御司令部极远哨所覆盖区。" }
+      { name: "太阳系 (Sol)", dist: "0.00 ly", type: "G2V 黄矮星", temp: "5778 K", pos: [0, 0, 0], color: 0xffea33, corona: 0xffaa00, size: 3.2, desc: "人类文明摇篮。2150年 ARK-01 在此完成龙骨总装与生物圈殖装后点火离港。" },
+      { name: "半人马座比邻星 (Proxima Centauri)", dist: "4.24 ly", type: "M5.5Ve 红矮星", temp: "3042 K", pos: [-3.4, 0.9, 5.8], color: 0xff3b30, corona: 0xff1100, size: 2.2, desc: "ARK-01 目的地。拥有比邻星 b 宜居行星（重力 1.07g），落地历元年（2350）抵达时刻。" },
+      { name: "半人马座 α/β 双星 (Alpha Centauri A/B)", dist: "4.37 ly", type: "G2V + K1V 双星", temp: "5790 K", pos: [-3.6, 1.1, 6.0], color: 0xffeedd, corona: 0xffbb77, size: 3.0, desc: "比邻星的伴星系统，双星系纪元第二代采矿驳船基地。" },
+      { name: "巴纳德星 (Barnard's Star)", dist: "5.96 ly", type: "M4.0V 红矮星", temp: "3134 K", pos: [1.6, 9.2, -1.8], color: 0xff6b4a, corona: 0xff3311, size: 1.8, desc: "全天自行速度最高恒星（10.3角秒/年），深空巡天雷达导航校准信标。" },
+      { name: "天狼星双星 (Sirius A/B)", dist: "8.60 ly", type: "A1V 蓝白超巨星", temp: "9940 K", pos: [-8.8, -7.6, -7.2], color: 0xa5f3fc, corona: 0x38bdf8, size: 4.6, desc: "全天最亮恒星（视星等 -1.46），光际激光中继网主偏振校准源。" },
+      { name: "卢曼 16 (Luhman 16)", dist: "6.52 ly", type: "L7.5+T0.5 褐矮星双星", temp: "1400 K", pos: [-6.8, -3.2, 7.4], color: 0x991b1b, corona: 0x450a0a, size: 1.4, desc: "距离太阳第三近系统，红外深空暗天体物理科考站。" },
+      { name: "拉兰德 21185 (Lalande 21185)", dist: "8.30 ly", type: "M2.0V 红矮星", temp: "3828 K", pos: [3.4, 12.4, -4.0], color: 0xf87171, corona: 0xdc2626, size: 1.9, desc: "北天红矮星前哨，太阳系外围防御司令部极远哨所覆盖区。" }
     ];
+
+    function createStarTexture() {
+      const canvas = document.createElement('canvas');
+      canvas.width = 128; canvas.height = 128;
+      const ctx = canvas.getContext('2d');
+      const grad = ctx.createRadialGradient(64, 64, 0, 64, 64, 64);
+      grad.addColorStop(0, 'rgba(255,255,255,1)');
+      grad.addColorStop(0.2, 'rgba(255,255,255,0.8)');
+      grad.addColorStop(0.5, 'rgba(56,189,248,0.25)');
+      grad.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, 128, 128);
+      return new THREE.CanvasTexture(canvas);
+    }
 
     function init() {
       const container = document.getElementById('canvas-container');
       
-      // 1. 场景与相机
       scene = new THREE.Scene();
-      scene.fog = new THREE.FogExp2(0x030712, 0.0006);
+      scene.fog = new THREE.FogExp2(0x010409, 0.0004);
 
-      camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 4000);
-      camera.position.set(0, 450, 600);
+      camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 5000);
+      camera.position.set(0, 680, 950);
 
-      // 2. 渲染器
-      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
       renderer.setSize(window.innerWidth, window.innerHeight);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.3;
       container.appendChild(renderer.domElement);
 
-      // 3. 控制器 (带容错兜底)
-      if (typeof THREE.OrbitControls !== 'undefined') {
-        controls = new THREE.OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true;
-        controls.dampingFactor = 0.05;
-        controls.maxDistance = 2200;
-        controls.minDistance = 1.5;
-        controls.target.set(0, 0, 0);
-      } else {
-        console.warn("OrbitControls fallback to basic controls");
-        controls = { update: () => {}, target: { set: () => {}, x:0, y:0, z:0 } };
-      }
+      controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.05;
+      controls.maxDistance = 3000;
+      controls.minDistance = 2;
+      controls.target.set(0, 0, 0);
 
       raycaster = new THREE.Raycaster();
       mouse = new THREE.Vector2();
 
-      buildMilkyWayGalaxy();
+      buildEpicMilkyWay();
       buildLocalStarCluster();
       buildInterstellarTrajectory();
+      buildARK01ProceduralShip();
 
       window.addEventListener('resize', onWindowResize);
       window.addEventListener('click', onCanvasClick);
-
-      // 强制在 300ms 后解除加载蒙层，绝不卡住用户！
-      setTimeout(() => {
-        const loader = document.getElementById('loader');
-        if (loader) {
-          loader.style.opacity = '0';
-          setTimeout(() => loader.style.display = 'none', 400);
-        }
-      }, 300);
+      window.addEventListener('keydown', onKeyDown);
 
       animate();
     }
 
-    // 生成银河系旋臂与核球
-    function buildMilkyWayGalaxy() {
+    // 1. 电影级银河系：12 万颗多层次高密度粒子 + 银心炽热黑洞核球 + 暗星云吸收带
+    function buildEpicMilkyWay() {
+      galaxyGroup = new THREE.Group();
+      const starTex = createStarTexture();
+
+      // 银心发光核球 (Galactic Bulge & Sgr A* Glow)
+      const coreGeo = new THREE.SphereGeometry(18, 32, 32);
+      const coreMat = new THREE.MeshBasicMaterial({
+        color: 0xffe8ba,
+        transparent: true,
+        opacity: 0.9,
+        blending: THREE.AdditiveBlending
+      });
+      coreMesh = new THREE.Mesh(coreGeo, coreMat);
+      coreMesh.position.set(220, 0, -180);
+      galaxyGroup.add(coreMesh);
+
+      // 核球外层巨大辉光
+      const coreGlowGeo = new THREE.SphereGeometry(65, 32, 32);
+      const coreGlowMat = new THREE.MeshBasicMaterial({
+        color: 0xffa94d,
+        transparent: true,
+        opacity: 0.35,
+        blending: THREE.AdditiveBlending
+      });
+      const coreGlow = new THREE.Mesh(coreGlowGeo, coreGlowMat);
+      coreGlow.position.set(220, 0, -180);
+      galaxyGroup.add(coreGlow);
+
+      // 120,000 颗高精银河粒子 (四支主要旋臂 + 尘埃带)
+      const count = 120000;
       const geometry = new THREE.BufferGeometry();
-      const positions = new Float32Array(GALAXY_PARAMS.count * 3);
-      const colors = new Float32Array(GALAXY_PARAMS.count * 3);
+      const positions = new Float32Array(count * 3);
+      const colors = new Float32Array(count * 3);
+      const scales = new Float32Array(count);
 
-      const colorInside = new THREE.Color(GALAXY_PARAMS.insideColor);
-      const colorOutside = new THREE.Color(GALAXY_PARAMS.outsideColor);
+      const colorCore = new THREE.Color('#ffe8ba');
+      const colorMid = new THREE.Color('#38bdf8');
+      const colorOuter = new THREE.Color('#818cf8');
+      const colorDust = new THREE.Color('#f43f5e');
 
-      for (let i = 0; i < GALAXY_PARAMS.count; i++) {
+      for (let i = 0; i < count; i++) {
         const i3 = i * 3;
-        const radius = Math.random() * GALAXY_PARAMS.radius;
-        const spinAngle = radius * GALAXY_PARAMS.spin * 0.008;
-        const branchAngle = ((i % GALAXY_PARAMS.branches) / GALAXY_PARAMS.branches) * Math.PI * 2;
+        const radius = Math.pow(Math.random(), 1.5) * 650;
+        const spinAngle = radius * 0.0055;
+        const branchAngle = ((i % 4) / 4) * Math.PI * 2;
 
-        const randomX = Math.pow(Math.random(), GALAXY_PARAMS.power) * (Math.random() < 0.5 ? 1 : -1) * GALAXY_PARAMS.randomness * radius * 0.3;
-        const randomY = Math.pow(Math.random(), GALAXY_PARAMS.power) * (Math.random() < 0.5 ? 1 : -1) * GALAXY_PARAMS.randomness * radius * 0.15;
-        const randomZ = Math.pow(Math.random(), GALAXY_PARAMS.power) * (Math.random() < 0.5 ? 1 : -1) * GALAXY_PARAMS.randomness * radius * 0.3;
+        const rx = Math.pow(Math.random(), 3) * (Math.random() < 0.5 ? 1 : -1) * 0.25 * radius;
+        const ry = Math.pow(Math.random(), 3) * (Math.random() < 0.5 ? 1 : -1) * 0.08 * radius;
+        const rz = Math.pow(Math.random(), 3) * (Math.random() < 0.5 ? 1 : -1) * 0.25 * radius;
 
-        positions[i3] = Math.cos(branchAngle + spinAngle) * radius + randomX;
-        positions[i3 + 1] = randomY;
-        positions[i3 + 2] = Math.sin(branchAngle + spinAngle) * radius + randomZ;
+        positions[i3] = Math.cos(branchAngle + spinAngle) * radius + rx + 220;
+        positions[i3 + 1] = ry;
+        positions[i3 + 2] = Math.sin(branchAngle + spinAngle) * radius + rz - 180;
 
-        const mixedColor = colorInside.clone();
-        mixedColor.lerp(colorOutside, radius / GALAXY_PARAMS.radius);
+        // 颜色渐变层次
+        let c = colorCore.clone();
+        if (radius < 120) {
+          c.lerp(colorCore, 0.8);
+          scales[i] = Math.random() * 2.5 + 1.0;
+        } else if (radius < 350) {
+          c.lerp(colorMid, (radius - 120) / 230);
+          scales[i] = Math.random() * 1.8 + 0.6;
+        } else {
+          c.lerp(colorOuter, (radius - 350) / 300);
+          if (i % 7 === 0) c.lerp(colorDust, 0.4); // 星际发射星云微红
+          scales[i] = Math.random() * 1.2 + 0.4;
+        }
 
-        colors[i3] = mixedColor.r;
-        colors[i3 + 1] = mixedColor.g;
-        colors[i3 + 2] = mixedColor.b;
+        colors[i3] = c.r;
+        colors[i3 + 1] = c.g;
+        colors[i3 + 2] = c.b;
       }
 
       geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
       geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
-      const material = new THREE.PointsMaterial({
-        size: GALAXY_PARAMS.size,
-        sizeAttenuation: true,
-        depthWrite: false,
+      const mat = new THREE.PointsMaterial({
+        size: 1.8,
+        map: starTex,
+        transparent: true,
+        opacity: 0.85,
+        vertexColors: true,
         blending: THREE.AdditiveBlending,
-        vertexColors: true
+        depthWrite: false
       });
 
-      galaxyPoints = new THREE.Points(geometry, material);
-      galaxyPoints.position.set(100, 0, -80); // 银心偏移
-      scene.add(galaxyPoints);
+      const pSystem = new THREE.Points(geometry, mat);
+      galaxyGroup.add(pSystem);
+      scene.add(galaxyGroup);
     }
 
-    // 生成太阳邻域真实恒星节点
+    // 2. 太阳周边真实恒星群（带脉动日冕、十字星芒与高清标牌）
     function buildLocalStarCluster() {
       localStarsGroup = new THREE.Group();
+      const starTex = createStarTexture();
 
       REAL_STARS.forEach(star => {
-        const geo = new THREE.SphereGeometry(star.size * 0.18, 16, 16);
+        const starSubGroup = new THREE.Group();
+        starSubGroup.position.set(...star.pos);
+
+        // 恒星核心白炽球
+        const geo = new THREE.SphereGeometry(star.size * 0.12, 24, 24);
         const mat = new THREE.MeshBasicMaterial({ color: star.color });
         const mesh = new THREE.Mesh(geo, mat);
-        mesh.position.set(...star.pos);
         mesh.userData = star;
         clickableObjects.push(mesh);
-        localStarsGroup.add(mesh);
+        starSubGroup.add(mesh);
 
-        // 恒星外发光晕
-        const glowGeo = new THREE.SphereGeometry(star.size * 0.45, 12, 12);
-        const glowMat = new THREE.MeshBasicMaterial({
-          color: star.color,
+        // 动态日冕发光光晕 (Multi-Layer Corona)
+        const coronaGeo = new THREE.PlaneGeometry(star.size * 1.6, star.size * 1.6);
+        const coronaMat = new THREE.MeshBasicMaterial({
+          map: starTex,
+          color: star.corona,
           transparent: true,
-          opacity: 0.35,
-          blending: THREE.AdditiveBlending
+          opacity: 0.85,
+          blending: THREE.AdditiveBlending,
+          depthWrite: false
         });
-        const glowMesh = new THREE.Mesh(glowGeo, glowMat);
-        glowMesh.position.set(...star.pos);
-        localStarsGroup.add(glowMesh);
+        const coronaMesh = new THREE.Mesh(coronaGeo, coronaMat);
+        coronaMesh.lookAt(camera.position);
+        starSubGroup.add(coronaMesh);
+
+        // 天狼星等亮星附带十字衍射星芒 (Diffraction Spikes)
+        if (star.size > 2.5) {
+          const spikeGeo = new THREE.PlaneGeometry(star.size * 4.0, star.size * 0.15);
+          const spikeMat = new THREE.MeshBasicMaterial({
+            color: star.color,
+            transparent: true,
+            opacity: 0.45,
+            blending: THREE.AdditiveBlending
+          });
+          const spike1 = new THREE.Mesh(spikeGeo, spikeMat);
+          const spike2 = new THREE.Mesh(spikeGeo, spikeMat);
+          spike2.rotation.z = Math.PI / 2;
+          starSubGroup.add(spike1, spike2);
+        }
+
+        // 高清立体文字标牌
+        const canvas = document.createElement('canvas');
+        canvas.width = 512; canvas.height = 128;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 32px -apple-system, sans-serif';
+        ctx.shadowColor = 'rgba(0,0,0,0.9)';
+        ctx.shadowBlur = 8;
+        ctx.fillText(star.name.split(' ')[0], 16, 50);
+        ctx.fillStyle = '#38bdf8';
+        ctx.font = 'bold 22px monospace';
+        ctx.fillText(star.dist + " ｜ " + star.type, 16, 85);
+
+        const tex = new THREE.CanvasTexture(canvas);
+        const spriteMat = new THREE.SpriteMaterial({ map: tex, transparent: true, opacity: 0.95 });
+        const sprite = new THREE.Sprite(spriteMat);
+        sprite.position.set(0, star.size * 0.4 + 0.6, 0);
+        sprite.scale.set(6, 1.5, 1);
+        starSubGroup.add(sprite);
+
+        localStarsGroup.add(starSubGroup);
       });
 
       scene.add(localStarsGroup);
     }
 
-    // 构建 4.24 光年金色航线
+    // 3. 构建 4.24 光年金色相对论航道与深空信标
     function buildInterstellarTrajectory() {
       trajectoryGroup = new THREE.Group();
 
       const solPos = new THREE.Vector3(0, 0, 0);
-      const proximaPos = new THREE.Vector3(-2.2, 0.7, 4.2);
-      const midPoint = new THREE.Vector3(-1.1, 0.4, 2.1);
+      const proximaPos = new THREE.Vector3(-3.4, 0.9, 5.8);
+      const midPoint = new THREE.Vector3(-1.7, 0.55, 2.9);
 
       const curve = new THREE.QuadraticBezierCurve3(solPos, midPoint, proximaPos);
-      const points = curve.getPoints(80);
+      const points = curve.getPoints(120);
+
+      // 主金色光轴
       const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
       const lineMat = new THREE.LineBasicMaterial({
         color: 0xfacc15,
-        linewidth: 2,
+        linewidth: 3,
         transparent: true,
         opacity: 0.95
       });
-      const flightLine = new THREE.Line(lineGeo, lineMat);
-      trajectoryGroup.add(flightLine);
+      const line = new THREE.Line(lineGeo, lineMat);
+      trajectoryGroup.add(line);
 
-      // 里程碑标记点
+      // 航道光晕外壳 (发光能量束)
+      const tubeGeo = new THREE.TubeGeometry(curve, 80, 0.03, 8, false);
+      const tubeMat = new THREE.MeshBasicMaterial({
+        color: 0xfef08a,
+        transparent: true,
+        opacity: 0.35,
+        blending: THREE.AdditiveBlending
+      });
+      const tube = new THREE.Mesh(tubeGeo, tubeMat);
+      trajectoryGroup.add(tube);
+
+      // 里程碑脉冲雷达站
       const milestones = [
-        { label: "信标 07 号站 (72.4 AU)", pos: [0, 0.04, 0.08] },
-        { label: "第 100 年决算点 (1.5 ly)", pos: [-1.1, 0.4, 2.1] },
-        { label: "第 185 年磁帆展开 (3.9 ly)", pos: [-1.9, 0.6, 3.7] }
+        { label: "深空信标 07 号站 (72.4 AU)", pos: [-0.15, 0.05, 0.25], tag: "GS-2096-05 激光中继总站" },
+        { label: "第 50 年向光日 (1.06 ly)", pos: [-0.85, 0.27, 1.45], tag: "全船熄灯观测太阳微光" },
+        { label: "第 100 年决算点 (2.12 ly)", pos: [-1.7, 0.55, 2.9], tag: "GS-2252-01 首世纪龙骨退火" },
+        { label: "第 185 年磁帆展开 (3.92 ly)", pos: [-2.95, 0.78, 5.05], tag: "GS-2349-01 超导磁帆制动" }
       ];
 
-      milestones.forEach(m => {
-        const pGeo = new THREE.SphereGeometry(0.05, 8, 8);
-        const pMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8 });
-        const pMesh = new THREE.Mesh(pGeo, pMat);
-        pMesh.position.set(...m.pos);
-        trajectoryGroup.add(pMesh);
+      milestones.forEach((m, idx) => {
+        const ringGeo = new THREE.RingGeometry(0.08, 0.12, 24);
+        const ringMat = new THREE.MeshBasicMaterial({
+          color: 0x38bdf8,
+          side: THREE.DoubleSide,
+          transparent: true,
+          opacity: 0.85,
+          blending: THREE.AdditiveBlending
+        });
+        const ring = new THREE.Mesh(ringGeo, ringMat);
+        ring.position.set(...m.pos);
+        ring.lookAt(camera.position);
+        trajectoryGroup.add(ring);
       });
 
       scene.add(trajectoryGroup);
     }
 
+    // 4. 在航道上程序化构建 5.2 公里 ARK-01 世代飞船实体模型
+    function buildARK01ProceduralShip() {
+      shipModelGroup = new THREE.Group();
+      
+      // 5.2 公里主中轴龙骨 (Keel)
+      const keelGeo = new THREE.CylinderGeometry(0.025, 0.035, 0.8, 16);
+      const keelMat = new THREE.MeshStandardMaterial({ color: 0x94a3b8, metalness: 0.8, roughness: 0.2 });
+      const keel = new THREE.Mesh(keelGeo, keelMat);
+      keel.rotation.x = Math.PI / 2;
+      shipModelGroup.add(keel);
+
+      // 头部 200m 碳氢防冲盾 (Whipple Shield)
+      const shieldGeo = new THREE.ConeGeometry(0.12, 0.15, 24);
+      const shieldMat = new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.9, roughness: 0.1 });
+      const shield = new THREE.Mesh(shieldGeo, shieldMat);
+      shield.rotation.x = -Math.PI / 2;
+      shield.position.z = 0.45;
+      shipModelGroup.add(shield);
+
+      // 头部主动超导磁防发光蓝泡
+      const magGlowGeo = new THREE.SphereGeometry(0.22, 16, 16);
+      const magGlowMat = new THREE.MeshBasicMaterial({
+        color: 0x38bdf8,
+        transparent: true,
+        opacity: 0.35,
+        blending: THREE.AdditiveBlending
+      });
+      const magGlow = new THREE.Mesh(magGlowGeo, magGlowMat);
+      magGlow.position.z = 0.45;
+      shipModelGroup.add(magGlow);
+
+      // 双联反向旋转居住环 (Dual Counter-Rotating Habitat Rings)
+      const ring1Geo = new THREE.TorusGeometry(0.28, 0.02, 16, 32);
+      const ringMat = new THREE.MeshStandardMaterial({ color: 0xe2e8f0, metalness: 0.7, roughness: 0.3 });
+      const ring1 = new THREE.Mesh(ring1Geo, ringMat);
+      ring1.position.z = 0.1;
+      shipModelGroup.add(ring1);
+      shipModelGroup.ring1 = ring1;
+
+      const ring2Geo = new THREE.TorusGeometry(0.18, 0.015, 16, 32);
+      const ring2 = new THREE.Mesh(ring2Geo, ringMat);
+      ring2.position.z = -0.08;
+      shipModelGroup.add(ring2);
+      shipModelGroup.ring2 = ring2;
+
+      // 尾部 6 联装聚变脉冲等离子体喷流 (Fusion Thruster Glow)
+      const plumeGeo = new THREE.ConeGeometry(0.08, 0.4, 16);
+      const plumeMat = new THREE.MeshBasicMaterial({
+        color: 0x60a5fa,
+        transparent: true,
+        opacity: 0.85,
+        blending: THREE.AdditiveBlending
+      });
+      const plume = new THREE.Mesh(plumeGeo, plumeMat);
+      plume.rotation.x = Math.PI / 2;
+      plume.position.z = -0.55;
+      shipModelGroup.add(plume);
+
+      // 放置在航道第 50 年中途点
+      shipModelGroup.position.set(-0.85, 0.27, 1.45);
+      shipModelGroup.lookAt(-3.4, 0.9, 5.8);
+      scene.add(shipModelGroup);
+    }
+
+    // 电影级平滑多级运镜 (Cinematic Transitions)
     function switchView(view) {
       document.querySelectorAll('.cam-btn').forEach(b => b.classList.remove('active'));
-      const activeBtn = {
+      const btnMap = {
         'galaxy': 'btnGalaxy',
         'local': 'btnLocal',
         'corridor': 'btnCorridor',
         'proxima': 'btnProxima'
-      }[view];
-      if (document.getElementById(activeBtn)) {
-        document.getElementById(activeBtn).classList.add('active');
+      };
+      if (document.getElementById(btnMap[view])) {
+        document.getElementById(btnMap[view]).classList.add('active');
       }
 
       let targetPos, targetLookAt, targetData;
 
       if (view === 'galaxy') {
-        targetPos = { x: 0, y: 480, z: 650 };
-        targetLookAt = { x: 100, y: 0, z: -80 };
+        targetPos = { x: 0, y: 720, z: 1050 };
+        targetLookAt = { x: 180, y: 0, z: -140 };
         targetData = {
+          tag: "GALACTIC SCALE · 100,000 LIGHT-YEARS",
           name: "银河系 (Milky Way Galaxy)",
-          meta: "棒旋星系 (SBbc) ｜ 直径 100,000 光年",
-          desc: "包含 4000 亿颗恒星的宏伟星海。人类文明在猎户座支臂的微小光点中诞生，并开始向外延伸触角。",
-          s1: "26,000 ly", s2: "猎户座支臂", s3: "比邻星 b (4.24 ly)", s4: "0.03c (9000 km/s)"
+          desc: "4000 亿颗恒星构成的宏伟棒旋星盘。中央为超大质量黑洞人马座 A*。人类文明在猎户座支臂的微小光点中诞生，并开始向外延伸触角。",
+          s1: "26,000 ly", s2: "猎户座支臂内侧", s3: "比邻星 b (4.24 ly)", s4: "0.03c (9000 km/s)"
         };
       } else if (view === 'local') {
-        targetPos = { x: -8, y: 15, z: 24 };
-        targetLookAt = { x: -1, y: 0.5, z: 2 };
+        targetPos = { x: -14, y: 22, z: 32 };
+        targetLookAt = { x: -1.7, y: 0.5, z: 2.9 };
         targetData = {
-          name: "太阳邻域 15 光年恒星泡 (Local Bubble)",
-          meta: "恒星分布星表 (Gaia / Gliese Catalog) ｜ 7 大主要恒星系统",
-          desc: "太阳（Sol）与半人马座比邻星（4.24 ly）、天狼星双星（8.60 ly）、巴纳德星（5.96 ly）构成的局域宇宙地理图谱。",
-          s1: "4.24 ly", s2: "半人马座 α/β/比邻星", s3: "天狼星 A/B (8.6ly)", s4: "巴纳德星 (5.96ly)"
+          tag: "LOCAL BUBBLE · 15 LIGHT-YEARS",
+          name: "太阳邻域恒星泡 (Local Interstellar Bubble)",
+          desc: "太阳（Sol）与半人马座比邻星（4.24 ly）、天狼星双星（8.60 ly）、巴纳德星（5.96 ly）构成的局域真实宇宙地理星表。",
+          s1: "4.24 ly", s2: "半人马座三合星系统", s3: "天狼星 A/B (8.6ly)", s4: "巴纳德星 (5.96ly)"
         };
       } else if (view === 'corridor') {
-        targetPos = { x: -1.3, y: 1.9, z: 5.2 };
-        targetLookAt = { x: -1.1, y: 0.4, z: 2.1 };
+        targetPos = { x: -1.4, y: 0.65, z: 2.4 };
+        targetLookAt = { x: -0.85, y: 0.27, z: 1.45 };
         targetData = {
-          name: "ARK-01 恒星际航线 (4.24 光年航程)",
-          meta: "起点：地月 L5『建木』船台 ➔ 终点：比邻星 b 极轨 ｜ 航时：200 年",
-          desc: "5.2公里长世代飞船以 0.03c 匀速巡航。途径 72.4 AU 信标07号站、向光日观测点、首世纪决算点与磁帆制动段。",
+          tag: "FLIGHT CORRIDOR · ARK-01 TRAJECTORY",
+          name: "ARK-01 恒星际航迹 (4.24 光年航程)",
+          desc: "5.2公里长世代飞船以 0.03c 匀速巡航。当前特写：第 50 航行年向光日观测点，双联旋转居住环正在 1.52 rpm 反向自转消除陀螺力矩。",
           s1: "4.24 ly (200年)", s2: "0.03c (9000 km/s)", s3: "10,214 名乘员", s4: "30T 超导主动磁防"
         };
       } else if (view === 'proxima') {
-        targetPos = { x: -2.8, y: 1.0, z: 5.0 };
-        targetLookAt = { x: -2.2, y: 0.7, z: 4.2 };
+        targetPos = { x: -4.4, y: 1.4, z: 7.2 };
+        targetLookAt = { x: -3.4, y: 0.9, z: 5.8 };
         targetData = {
+          tag: "DESTINATION · ARRIVAL EPOCH (2350 CE)",
           name: "半人马座比邻星系统 (Proxima Centauri)",
-          meta: "红矮星 (M5.5Ve) ｜ 落地历元年（2350）抵达时刻",
           desc: "ARK-01 泊入轨道，第001号着陆报告发布，新海安第一暂栖营地地籍公证书签署，理由消失的一代在此扎根。",
           s1: "4.24 ly", s2: "比邻星 b 宜居行星", s3: "地表重力 1.07g", s4: "红矮星耀斑监测"
         };
       }
 
-      if (typeof TWEEN !== 'undefined') {
-        new TWEEN.Tween(camera.position).to(targetPos, 1800).easing(TWEEN.Easing.Cubic.InOut).start();
-        if (controls && controls.target) {
-          new TWEEN.Tween(controls.target).to(targetLookAt, 1800).easing(TWEEN.Easing.Cubic.InOut).start();
-        }
-      } else {
-        camera.position.set(targetPos.x, targetPos.y, targetPos.z);
-        if (controls && controls.target) controls.target.set(targetLookAt.x, targetLookAt.y, targetLookAt.z);
-      }
+      new TWEEN.Tween(camera.position)
+        .to(targetPos, 2200)
+        .easing(TWEEN.Easing.Cubic.InOut)
+        .start();
+
+      new TWEEN.Tween(controls.target)
+        .to(targetLookAt, 2200)
+        .easing(TWEEN.Easing.Cubic.InOut)
+        .start();
 
       updateHUD(targetData);
     }
 
     function updateHUD(d) {
+      document.getElementById('targetTag').innerText = d.tag;
       document.getElementById('targetName').innerText = d.name;
-      document.getElementById('targetMeta').innerText = d.meta;
       document.getElementById('targetDesc').innerText = d.desc;
       document.getElementById('stat1').innerText = d.s1;
       document.getElementById('stat2').innerText = d.s2;
@@ -480,25 +643,32 @@
       if (intersects.length > 0) {
         const star = intersects[0].object.userData;
         updateHUD({
+          tag: `REAL ASTRONOMICAL STAR · ${star.dist}`,
           name: star.name,
-          meta: `恒星光谱：${star.type} ｜ 距离太阳：${star.dist}`,
-          desc: star.desc,
+          desc: `${star.desc} ｜ 恒星光谱型：${star.type}，表面有效温度：${star.temp}。`,
           s1: star.dist,
           s2: star.type,
-          s3: "真实天文星表",
-          s4: "已勘探坐标"
+          s3: star.temp,
+          s4: "真实 Gaia 星表"
         });
 
-        const targetCam = { x: star.pos[0] - 1.8, y: star.pos[1] + 1.2, z: star.pos[2] + 2.8 };
-        if (typeof TWEEN !== 'undefined') {
-          new TWEEN.Tween(camera.position).to(targetCam, 1200).easing(TWEEN.Easing.Cubic.Out).start();
-          if (controls && controls.target) {
-            new TWEEN.Tween(controls.target).to({ x: star.pos[0], y: star.pos[1], z: star.pos[2] }, 1200).easing(TWEEN.Easing.Cubic.Out).start();
-          }
-        } else {
-          camera.position.set(targetCam.x, targetCam.y, targetCam.z);
-        }
+        new TWEEN.Tween(camera.position)
+          .to({ x: star.pos[0] - 2.2, y: star.pos[1] + 1.4, z: star.pos[2] + 3.6 }, 1600)
+          .easing(TWEEN.Easing.Cubic.Out)
+          .start();
+
+        new TWEEN.Tween(controls.target)
+          .to({ x: star.pos[0], y: star.pos[1], z: star.pos[2] }, 1600)
+          .easing(TWEEN.Easing.Cubic.Out)
+          .start();
       }
+    }
+
+    function onKeyDown(e) {
+      if (e.key === '1') switchView('galaxy');
+      if (e.key === '2') switchView('local');
+      if (e.key === '3') switchView('corridor');
+      if (e.key === '4') switchView('proxima');
     }
 
     function onWindowResize() {
@@ -509,12 +679,18 @@
 
     function animate(time) {
       requestAnimationFrame(animate);
-      if (typeof TWEEN !== 'undefined') TWEEN.update();
-      if (controls && controls.update) controls.update();
+      TWEEN.update();
+      controls.update();
 
-      // 银河系粒子极慢旋转
-      if (galaxyPoints) {
-        galaxyPoints.rotation.y = (time || 0) * 0.00002;
+      // 银河系宏观旋转
+      if (galaxyGroup) {
+        galaxyGroup.rotation.y = (time || 0) * 0.000025;
+      }
+
+      // 飞船双联环反向自转动画 (0.65g 与 0.34g 动力学平衡)
+      if (shipModelGroup && shipModelGroup.ring1) {
+        shipModelGroup.ring1.rotation.z = (time || 0) * 0.0018;
+        shipModelGroup.ring2.rotation.z = -(time || 0) * 0.0018;
       }
 
       renderer.render(scene, camera);
