@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>世代飞船 · 人体增强与义体演化千禧工程全景控制台 (2030—2600+)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #070a12;
+      --card-bg: #111827;
+      --card-hover: #1f293d;
+      --border: #1e293b;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #ef4444;
+      --red: #ef4444;
+      --red-glow: rgba(239, 68, 68, 0.4);
+      --purple: #c084fc;
+      --orange: #fb923c;
+      --yellow: #f59e0b;
+      --green: #10b981;
+      --cyan: #06b6d4;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 24px;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .brand h1 { font-size: 24px; color: var(--red); display: flex; align-items: center; gap: 8px; }
+    .brand p { color: var(--muted); font-size: 13px; margin-top: 4px; }
+    .stats-bar {
+      display: flex;
+      gap: 12px;
+      background: #0f172a;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 12px;
+      flex-wrap: wrap;
+    }
+    .stat-item { display: flex; align-items: center; gap: 6px; }
+    .badge { padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; font-family: var(--font-mono); }
+    .badge-stat { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid #dc2626; }
+    
+    .badge-tidai { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid #dc2626; }
+    .badge-jingsai { background: rgba(249, 115, 22, 0.15); color: #fb923c; border: 1px solid #ea580c; }
+    .badge-fengyu { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid #d97706; }
+    .badge-lixin { background: rgba(139, 92, 246, 0.15); color: #c084fc; border: 1px solid #9333ea; }
+    .badge-qihang { background: rgba(6, 182, 212, 0.15); color: #38bdf8; border: 1px solid #0891b2; }
+    .badge-luodi { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid #059669; }
+    .badge-shuangxing { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid #059669; }
+
+    /* 纪元时间轴导航器 */
+    .timeline-nav {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      margin-bottom: 24px;
+      background: #0f172a;
+      padding: 6px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .epoch-btn {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      padding: 10px 4px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .epoch-btn:hover { background: #1e293b; color: var(--text); }
+    .epoch-btn.active { background: #dc2626; color: #fff; font-weight: bold; box-shadow: 0 0 12px var(--red-glow); }
+    .epoch-year { font-family: var(--font-mono); font-size: 11px; opacity: 0.8; display: block; margin-top: 2px; }
+    
+    /* 五大支柱主网格 */
+    .panorama-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+    .pillar-col {
+      background: rgba(17, 24, 39, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .pillar-header {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #334155;
+    }
+    .tech-card {
+      background: var(--card-bg);
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 12px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+    .tech-card:hover {
+      background: var(--card-hover);
+      border-color: var(--red);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+    }
+    .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
+    .card-title { font-size: 13px; font-weight: 600; color: #e2e8f0; line-height: 1.4; }
+    .card-year { font-family: var(--font-mono); font-size: 11px; color: #f87171; }
+    .card-desc { font-size: 11px; color: var(--muted); line-height: 1.4; margin-top: 4px; }
+    .card-spec { font-size: 10px; color: #e9d5ff; background: rgba(192, 132, 252, 0.12); padding: 2px 6px; border-radius: 4px; margin-top: 8px; display: inline-block; border: 1px solid rgba(192, 132, 252, 0.25); }
+    
+    /* 钻取抽屉面板 */
+    .drawer-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(4px);
+      display: none;
+      z-index: 999;
+      justify-content: flex-end;
+    }
+    .drawer {
+      background: #0f172a;
+      width: 100%;
+      max-width: 620px;
+      height: 100vh;
+      border-left: 1px solid #334155;
+      padding: 30px;
+      overflow-y: auto;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+      position: relative;
+      animation: slideIn 0.25s ease-out;
+    }
+    @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+    .drawer-close {
+      position: absolute;
+      top: 20px; right: 20px;
+      background: #1e293b;
+      border: 1px solid #475569;
+      color: #fff;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .drawer h2 { color: #f87171; font-size: 20px; margin-bottom: 8px; }
+    .drawer .section-title { font-size: 13px; color: var(--orange); font-weight: 700; text-transform: uppercase; margin: 18px 0 8px; letter-spacing: 0.5px; border-bottom: 1px solid #334155; padding-bottom: 4px; }
+    .code-box {
+      background: #020617;
+      border: 1px solid #1e293b;
+      padding: 12px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #fca5a5;
+      overflow-x: auto;
+      line-height: 1.5;
+    }
+    .param-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 12px; }
+    .param-table th, .param-table td { padding: 8px 10px; border: 1px solid #334155; text-align: left; }
+    .param-table th { background: #1e293b; color: #cbd5e1; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <h1>🧬 世代飞船 · 人体增强与义体演化千禧工程全景控制台 (2030—2600+)</h1>
+      <p>Cyborg Evolution Console · 脑机接口 / 义体维修 / 重力逆适应 / 物种分化</p>
+    </div>
+    <div class="stats-bar">
+      <div class="stat-item"><span class="badge badge-stat">植入覆盖</span> 67%乘员携带植入物</div>
+      <div class="stat-item"><span class="badge badge-stat">寿命阶梯</span> 增强人142年寿命</div>
+      <div class="stat-item"><span class="badge badge-stat">突触上限</span> 神经可塑性墙512ch</div>
+      <div class="stat-item"><span class="badge badge-stat">能量枷锁</span> 能量依附陷阱45W</div>
+    </div>
+  </header>
+
+  <!-- 纪元筛选控制器 -->
+  <div class="timeline-nav">
+    <button class="epoch-btn active" onclick="filterEpoch('all')">全纪元全景<span class="epoch-year">2025—3000+</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('替代')">① 替代纪元<span class="epoch-year">2025—2035</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('竞赛')">② 竞赛纪元<span class="epoch-year">2035—2050</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('丰裕')">③ 丰裕纪元<span class="epoch-year">2050—2080</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('离心')">④ 离心纪元<span class="epoch-year">2080—2150</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('启航')">⑤ 启航纪元<span class="epoch-year">2150—2350</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('落地')">⑥ 落地/双星<span class="epoch-year">2350—3000+</span></button>
+  </div>
+
+  <!-- 五大支柱主全景网格 -->
+  <main class="panorama-grid">
+
+    <!-- 支柱 1：脑机接口医疗认证 -->
+    <div class="pillar-col">
+      <div class="pillar-header">🧠 1. 脑机接口医疗认证</div>
+      
+      <div class="tech-card" data-epoch="替代" onclick="openDrawer('BCI_MEDICAL')">
+        <div class="card-top">
+          <span class="badge badge-tidai">替代纪元</span>
+          <span class="card-year">2030</span>
+        </div>
+        <div class="card-title">非侵入式/微创脑机接口BCI</div>
+        <div class="card-desc">皮层电信号解码256通道，1.2kHz采样，双向感觉-运动闭环。</div>
+        <div class="card-spec">全行业医疗与工控安全认证</div>
+      </div>
+
+      <div class="tech-card" data-epoch="替代" onclick="openDrawer('NEURO_ADDICTION')">
+        <div class="card-top">
+          <span class="badge badge-tidai">替代纪元</span>
+          <span class="card-year">2034</span>
+        </div>
+        <div class="card-title">首例神经接口成瘾症报告</div>
+        <div class="card-desc">患者无法脱离高带宽模式，替代纪元末期道德恐慌。</div>
+        <div class="card-spec">植入物感染率2.3%</div>
+      </div>
+    </div>
+
+    <!-- 支柱 2：工伤义体化 -->
+    <div class="pillar-col">
+      <div class="pillar-header">🔧 2. 工伤义体化</div>
+
+      <div class="tech-card" data-epoch="竞赛" onclick="openDrawer('MINER_CYBORG')">
+        <div class="card-top">
+          <span class="badge badge-jingsai">竞赛纪元</span>
+          <span class="card-year">2045</span>
+        </div>
+        <div class="card-title">月面矿工工伤义体化</div>
+        <div class="card-desc">钛合金关节假体，碳纤维骨骼增强，辐射损伤组织再生植入物。</div>
+        <div class="card-spec">月面矿工义体改造率突破40%</div>
+      </div>
+
+      <div class="tech-card" data-epoch="竞赛" onclick="openDrawer('GRAVITY_COMPENSATION')">
+        <div class="card-top">
+          <span class="badge badge-jingsai">竞赛纪元</span>
+          <span class="card-year">2045</span>
+        </div>
+        <div class="card-title">假性重力代偿综合征</div>
+        <div class="card-desc">月面0.166g骨吸收速度1.2%/年，辐射累积>50mSv需植入造血干细胞支架。</div>
+        <div class="card-spec">太空蓝领工伤从休养变成换零件</div>
+      </div>
+    </div>
+
+    <!-- 支柱 3：感官增强鸿沟 -->
+    <div class="pillar-col">
+      <div class="pillar-header">👁️ 3. 感官增强鸿沟</div>
+
+      <div class="tech-card" data-epoch="丰裕" onclick="openDrawer('SENSORY_AUGMENT')">
+        <div class="card-top">
+          <span class="badge badge-fengyu">丰裕纪元</span>
+          <span class="card-year">2070</span>
+        </div>
+        <div class="card-title">感官增强植入体商业化</div>
+        <div class="card-desc">视网膜增强近红外/紫外波段，人工耳蜗Gen-4，触觉传感器手套。</div>
+        <div class="card-spec">增强视域扩展至IR/UV，听力20Hz-80kHz</div>
+      </div>
+
+      <div class="tech-card" data-epoch="丰裕" onclick="openDrawer('AUGMENT_DIVIDE')">
+        <div class="card-top">
+          <span class="badge badge-fengyu">丰裕纪元</span>
+          <span class="card-year">2070</span>
+        </div>
+        <div class="card-title">增强鸿沟社会辩论</div>
+        <div class="card-desc">未经增强儿童入学测试落后30%，15年累积不可跨越分层。</div>
+        <div class="card-spec">物质免费后新的不平等来源</div>
+      </div>
+    </div>
+
+    <!-- 支柱 4：义体共生维修 -->
+    <div class="pillar-col">
+      <div class="pillar-header">🔌 4. 义体共生维修</div>
+
+      <div class="tech-card" data-epoch="离心" onclick="openDrawer('EMC_STANDARDS')">
+        <div class="card-top">
+          <span class="badge badge-lixin">离心纪元</span>
+          <span class="card-year">2120</span>
+        </div>
+        <div class="card-title">船载义体电磁兼容标准</div>
+        <div class="card-desc">主动磁屏蔽与神经植入物电磁兼容，超导屏蔽编织层。</div>
+        <div class="card-spec">5.2km飞船磁场梯度0.5-3T</div>
+      </div>
+
+      <div class="tech-card" data-epoch="离心" onclick="openDrawer('ENERGY_LEASH')">
+        <div class="card-top">
+          <span class="badge badge-lixin">离心纪元</span>
+          <span class="card-year">2150</span>
+        </div>
+        <div class="card-title">义体供电与能量依附陷阱</div>
+        <div class="card-desc">全功能义肢功耗12-45W，每日充电2-4小时，飞船独立充电配额。</div>
+        <div class="card-spec">待机功耗2.3mW / 代谢率15-60%</div>
+      </div>
+
+      <div class="tech-card" data-epoch="启航" onclick="openDrawer('STANDARD_EXO')">
+        <div class="card-top">
+          <span class="badge badge-qihang">启航纪元</span>
+          <span class="card-year">2180</span>
+        </div>
+        <div class="card-title">第三代船生者义体依赖出厂标配</div>
+        <div class="card-desc">椎间盘增厚15%，足弓退化，无外骨骼无法在0.65g行走。</div>
+        <div class="card-spec">新生儿义体植入审批制vs家长自愿选择权之争</div>
+      </div>
+    </div>
+
+    <!-- 支柱 5：重力适应物种分化 -->
+    <div class="pillar-col">
+      <div class="pillar-header">🦾 5. 重力适应物种分化</div>
+
+      <div class="tech-card" data-epoch="落地" onclick="openDrawer('PROXIMA_GRAVITY')">
+        <div class="card-top">
+          <span class="badge badge-luodi">落地纪元</span>
+          <span class="card-year">2350</span>
+        </div>
+        <div class="card-title">比邻星b 1.07g重力逆适应</div>
+        <div class="card-desc">全腿承重骨骼增强框架，心肌收缩辅助泵，前庭神经电刺激器。</div>
+        <div class="card-spec">先遣队27%落地第一周接受紧急改造</div>
+      </div>
+
+      <div class="tech-card" data-epoch="双星系" onclick="openDrawer('SPECIATION')">
+        <div class="card-top">
+          <span class="badge badge-shuangxing">双星系纪元</span>
+          <span class="card-year">2500</span>
+        </div>
+        <div class="card-title">增强人与自然人物种分化</div>
+        <div class="card-desc">双星系义体兼容性总纲，碳基-硅基神经接口互认协议。</div>
+        <div class="card-spec">增强人平均寿命142年vs自然人89年</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- 钻取抽屉 -->
+  <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer(event)">
+    <div class="drawer" id="drawer">
+      <button class="drawer-close" onclick="closeDrawerForce()">✕</button>
+      <div id="drawerContent"></div>
+    </div>
+  </div>
+
+  <script>
+    const cyborgData = {
+      BCI_MEDICAL: {
+        title: "非侵入式/微创脑机接口医疗认证 (2030)",
+        level: "L3 神经可塑性墙 / L4 256通道皮层电信号解码",
+        formula: "神经接口带宽上限 = 100 bit/s (人类皮层有意识处理上限) 任何>512通道植入引发皮层映射紊乱",
+        specs: [
+          ["通道数", "256通道，1.2kHz采样", "双向感觉-运动闭环"],
+          ["感染率", "植入物感染率2.3%", "全行业医疗与工控安全认证"],
+          ["成瘾风险", "首例神经接口成瘾症2034", "无法脱离高带宽模式"]
+        ]
+      },
+      NEURO_ADDICTION: {
+        title: "首例神经接口成瘾症临床报告 (2034)",
+        level: "L3 突触多巴胺重连模型 / L4 高带宽模式熔断保护",
+        formula: "ΔPlasticity ≈ 3%~5%/year [突触重连率上限; 超限将诱发皮层映射紊乱与幻肢痛]",
+        specs: [
+          ["病理机制", "患者无法脱离高带宽模式 (100 bit/s 溢出)", "替代纪元末期道德恐慌"],
+          ["感染与并发症", "第一代微创电极感染率 2.3%", "急功近利引发不可逆神经崩溃"],
+          ["伦理与安全", "强制设置每两次手术间 6 个月神经适应期", "全行业工控安全与医疗规程"]
+        ]
+      },
+      MINER_CYBORG: {
+        title: "月面矿工工伤义体化与劳工公约 (2045)",
+        level: "L3 界面生物相容性漂移 / L4 钛合金骨骼假体工装",
+        formula: "腐蚀速率 = 0.02 μm/year (pH 7.35~7.45, 37℃) [聚合物绝缘层 5 年弹性模量下降 30%]",
+        specs: [
+          ["假体材料", "钛合金关节假体 + 碳纤维骨骼增强", "耐受月面高真空与微尘磨损"],
+          ["改装普及率", "月面矿工义体改造率突破 40%", "地月劳工安全公约增补『义体维修期』"],
+          ["工伤异化", "太空蓝领工伤从『休养』变成『换零件』", "陈初九膝关节假体磨损典型案例"]
+        ]
+      },
+      GRAVITY_COMPENSATION: {
+        title: "假性重力代偿综合征与辐射再生支架 (2045)",
+        level: "L3 骨质吸收与造血抑制动力学 / L4 压电晶格干细胞支架",
+        formula: "Rate_resorption = 1.2%/year (在 0.166g 下) | 辐射累积 > 50 mSv 触发骨髓衰竭",
+        specs: [
+          ["病理表现", "0.166g 月面低重力导致骨密度急剧流失", "假性重力代偿综合征大规模爆发"],
+          ["干细胞支架", "多孔压电陶瓷骨架 + 造血干细胞诱导因子", "定向分化修复骨髓损伤"],
+          ["装备补充", "作业人员强制配发重负荷铅靴与承重背心", "GS-2038-02 陈初九档案存证"]
+        ]
+      },
+      SENSORY_AUGMENT: {
+        title: "感官增强植入体商业化 (2070)",
+        level: "L3 神经电编码与频宽扩展 / L4 视网膜光电阵列与耳蜗 Gen-4",
+        formula: "Bandwidth_auditory = 20 Hz ~ 80 kHz | Bandwidth_visual = 300 nm ~ 1200 nm (UV-IR)",
+        specs: [
+          ["视网膜植入体", "光电微电极阵列 (近红外 1200nm / 紫外 300nm)", "夜间与强辐射环境全光谱直视"],
+          ["人工耳蜗 Gen-4", "超声波/次声波宽频解码芯片", "听力频宽提升至 80 kHz"],
+          ["触觉手套", "石墨烯压阻微阵列 (0.01 N 高灵敏度)", "极端工况微米级触感反馈"]
+        ]
+      },
+      AUGMENT_DIVIDE: {
+        title: "增强鸿沟社会辩论与教育代沟 (2070)",
+        level: "L3 认知不对称增长模型 / L4 增强补贴与平等法案",
+        formula: "ΔScore = 30% (未经增强儿童入学基线差) → 15年累积转化为不可逆社会阶层分化",
+        specs: [
+          ["认知差距", "感官与海马体增强儿童测试领先 30%", "未增强者陷入代际认知鸿沟"],
+          ["辩论焦点", "物质免费后人对『更好用的人』的追求", "成为新纪元核心不平等来源"],
+          ["制度演化", "2070 辩论导致 2120 年确立全员义体补贴制", "确立全民最低感官增强保障"]
+        ]
+      },
+      EMC_STANDARDS: {
+        title: "船载义体电磁兼容标准与磁屏蔽共生 (2120)",
+        level: "L3 磁场梯度屏蔽衰减方程 / L4 超导屏蔽编织层与热插拔协议",
+        formula: "B_leak = B_0 * e^(-d/λ) < 0.05 mT (5.2km飞船磁场梯度 0.5~3 T 环境下安全裕度)",
+        specs: [
+          ["屏蔽编织层", "高温超导微丝编织层 + 坡莫合金多层屏蔽", "隔离 30T 磁防与等离子体火花"],
+          ["热插拔规程", "第 17 起消磁事故后确立在线安全更换规范", "人在船上与机器一样定期维护"],
+          ["接口基线", "全船 10,214 人 67% 植入物电磁兼容认证", "为 2140 年 ARK-01 总装扫清障碍"]
+        ]
+      },
+      ENERGY_LEASH: {
+        title: "能量依附陷阱 (The Energy Leash)",
+        level: "L3 义体功耗预算 / L4 充电配额系统",
+        formula: "全功能义肢功耗12-45W = 人体基础代谢率15-60%，待机2.3mW",
+        specs: [
+          ["待机功耗", "标准神经接口芯片2.3mW", "永久待机"],
+          ["工作功耗", "全功能义肢12-45W", "人体代谢率15-60%"],
+          ["充电需求", "每天充电2-4小时", "飞船配额系统/野外生存能力"]
+        ]
+      },
+      STANDARD_EXO: {
+        title: "第三代船生者义体依赖与出厂标配 (2180)",
+        level: "L3 低重力骨骼畸变退化动力学 / L4 压电晶格与外骨骼出厂植入",
+        formula: "ΔSpine = +15% (椎间盘平均增厚) | a_floor = 0.65g (无外骨骼无法正常站立)",
+        specs: [
+          ["生理畸变", "足弓退化、肌纤维蛋白表达漂移、骨质疏松", "第 3-4 代船生者出现生存依赖"],
+          ["出厂标配运动", "父母要求新生儿强制植入标准神经接口", "伦理委员会审议审批制 vs 选择权"],
+          ["基线翻转", "不装义体者反成为功能障碍者", "义体从『外加补偿』变为『人身基准』"]
+        ]
+      },
+      PROXIMA_GRAVITY: {
+        title: "比邻星 b 1.07g 重力逆适应工程 (2350)",
+        level: "L3 重力跃迁血流动力学 / L4 全腿承重骨骼与心肌辅助泵",
+        formula: "G_local = 1.07g (从 0.65g 飞船重力跃迁) | 站立 15 min 诱发前庭晕厥与心力衰竭",
+        specs: [
+          ["逆适应危机", "先遣队 27% 成员在落地第一周内急救", "200 年低重力进化的生理总清算"],
+          ["承重框架", "钛合金全腿外骨骼 + 压电动力液压节", "分担 60% 地表承重负荷"],
+          ["循环维持", "植入式心肌收缩辅助泵 + 前庭电刺激", "消除重力跃迁性脑缺血与晕厥"]
+        ]
+      },
+      SPECIATION: {
+        title: "增强人与自然人物种分化 (2500+)",
+        level: "L3 物种分类学定义漂移 / L4 双星系义体兼容性总纲",
+        formula: "寿命差 = 142年 - 89年 = 53年 (生殖隔离未出现，但谁代表人类未来成为政治议题)",
+        specs: [
+          ["增强人寿命", "平均142年", "双星系义体兼容性总纲"],
+          ["自然人寿命", "平均89年", "基线漂移"],
+          ["兼容性", "4.24光年通信延迟下固件版本无法实时同步", "碳基-硅基神经接口互认协议"]
+        ]
+      }
+    };
+
+    function filterEpoch(epoch) {
+      document.querySelectorAll('.epoch-btn').forEach(b => b.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+
+      const cards = document.querySelectorAll('.tech-card');
+      cards.forEach(card => {
+        if (epoch === 'all' || card.dataset.epoch === epoch || (epoch === '落地' && (card.dataset.epoch === '落地' || card.dataset.epoch === '双星系')) || (epoch === '双星系' && card.dataset.epoch === '双星系')) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function openDrawer(key) {
+      const data = cyborgData[key] || {
+        title: "人体增强与义体演化工程蓝图",
+        level: "L3 生理动力学公式 / L4 植入物参数",
+        formula: "严格遵循神经可塑性墙与生物相容性物理铁律",
+        specs: [
+          ["工程规格", "全生命周期义体标准", "在线自校准"],
+          ["材料牌号", "钛合金 / 超导微丝 / 压电陶瓷", "耐受体内高腐蚀"],
+          ["对应正典", "GS-2038-02 / GS-2150-01", "已入库"]
+        ]
+      };
+
+      let rows = data.specs.map(s => `<tr><td><b>${s[0]}</b></td><td>${s[1]}</td><td><span style="color:#f87171">${s[2]}</span></td></tr>`).join('');
+
+      document.getElementById('drawerContent').innerHTML = `
+        <h2>${data.title}</h2>
+        <div style="font-size:12px;color:#94a3b8;margin-bottom:12px;">层级：${data.level}</div>
+        
+        <div class="section-title">🔬 L3 底层物理/生理力学公式与铁律</div>
+        <div class="code-box">${data.formula}</div>
+
+        <div class="section-title">🔩 L4 关键植入材料与机电控制参数表</div>
+        <table class="param-table">
+          <thead><tr><th>系统组件/指标</th><th>规格与材料牌号</th><th>性能约束与社会工程机制</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+
+        <div class="section-title">📜 人体增强千禧编年史档案关联</div>
+        <p style="font-size:12px;color:#94a3b8;line-height:1.6;margin-top:6px;">
+          本图纸与参数直接支撑《陈初九人事档案袋》（GS-2038-02）、《生态系统出港检疫鉴定书》（GS-2150-01）及《千禧工程志 · 人体增强与义体演化史》。
+        </p>
+      `;
+
+      document.getElementById('drawerOverlay').style.display = 'flex';
+    }
+
+    function closeDrawer(e) {
+      if (e.target.id === 'drawerOverlay') {
+        document.getElementById('drawerOverlay').style.display = 'none';
+      }
+    }
+    function closeDrawerForce() {
+      document.getElementById('drawerOverlay').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>世代飞船 · 意义资产与法权演进千禧制度全景控制台 (2028—2353+)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #060913;
+      --card-bg: #0f172a;
+      --card-hover: #1e293b;
+      --border: #1e293b;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #fbbf24;
+      --gold: #fbbf24;
+      --purple: #c084fc;
+      --orange: #fb923c;
+      --green: #4ade80;
+      --cyan: #38bdf8;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 24px;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .brand h1 { font-size: 24px; color: var(--gold); display: flex; align-items: center; gap: 8px; }
+    .brand p { color: var(--muted); font-size: 13px; margin-top: 4px; }
+    .stats-bar {
+      display: flex;
+      gap: 12px;
+      background: #0f172a;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 12px;
+      flex-wrap: wrap;
+    }
+    .stat-item { display: flex; align-items: center; gap: 6px; }
+    .badge { padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; font-family: var(--font-mono); }
+    .badge-gold { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid #d97706; }
+    
+    .badge-epoch-tidai { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid #dc2626; }
+    .badge-epoch-jingsai { background: rgba(249, 115, 22, 0.15); color: #fb923c; border: 1px solid #ea580c; }
+    .badge-epoch-fengyu { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid #d97706; }
+    .badge-epoch-lixin { background: rgba(139, 92, 246, 0.15); color: #c084fc; border: 1px solid #9333ea; }
+    .badge-epoch-qihang { background: rgba(6, 182, 212, 0.15); color: #38bdf8; border: 1px solid #0284c7; }
+    .badge-epoch-luodi { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid #059669; }
+
+    /* 纪元筛选控制器 */
+    .timeline-nav {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      margin-bottom: 24px;
+      background: #0f172a;
+      padding: 6px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .epoch-btn {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      padding: 10px 4px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .epoch-btn:hover { background: #1e293b; color: var(--text); }
+    .epoch-btn.active { background: #0284c7; color: #fff; font-weight: bold; box-shadow: 0 0 12px rgba(56, 189, 248, 0.4); }
+    .epoch-year { font-family: var(--font-mono); font-size: 11px; opacity: 0.8; display: block; margin-top: 2px; }
+    
+    /* 五大支柱主全景网格 */
+    .panorama-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+    .pillar-col {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .pillar-header {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #334155;
+    }
+    .tech-card {
+      background: var(--card-bg);
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 12px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+    .tech-card:hover {
+      background: var(--card-hover);
+      border-color: var(--gold);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+    }
+    .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
+    .card-title { font-size: 13px; font-weight: 600; color: #e2e8f0; line-height: 1.4; }
+    .card-year { font-family: var(--font-mono); font-size: 11px; color: var(--gold); }
+    .card-desc { font-size: 11px; color: var(--muted); line-height: 1.4; margin-top: 4px; }
+    .card-spec { font-size: 10px; color: #cbd5e1; background: rgba(192, 132, 252, 0.1); padding: 2px 6px; border-radius: 4px; margin-top: 8px; display: inline-block; border: 1px solid rgba(192, 132, 252, 0.2); }
+    
+    /* 钻取抽屉面板 */
+    .drawer-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(4px);
+      display: none;
+      z-index: 999;
+      justify-content: flex-end;
+    }
+    .drawer {
+      background: #0f172a;
+      width: 100%;
+      max-width: 620px;
+      height: 100vh;
+      border-left: 1px solid #334155;
+      padding: 30px;
+      overflow-y: auto;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+      position: relative;
+      animation: slideIn 0.25s ease-out;
+    }
+    @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+    .drawer-close {
+      position: absolute;
+      top: 20px; right: 20px;
+      background: #1e293b;
+      border: 1px solid #475569;
+      color: #fff;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .drawer h2 { color: var(--gold); font-size: 20px; margin-bottom: 8px; }
+    .drawer .section-title { font-size: 13px; color: var(--orange); font-weight: 700; text-transform: uppercase; margin: 18px 0 8px; letter-spacing: 0.5px; border-bottom: 1px solid #334155; padding-bottom: 4px; }
+    .code-box {
+      background: #020617;
+      border: 1px solid #1e293b;
+      padding: 12px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #fde68a;
+      overflow-x: auto;
+      line-height: 1.5;
+    }
+    .param-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 12px; }
+    .param-table th, .param-table td { padding: 8px 10px; border: 1px solid #334155; text-align: left; }
+    .param-table th { background: #1e293b; color: #cbd5e1; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <h1>⚖️ 世代飞船 · 意义资产与法权演进千禧制度全景控制台 (2028—2353+)</h1>
+      <p>Generation Ship Institutional Console · UBI / 具名工时三级制 / 离心公约 / 防风坑基法</p>
+    </div>
+    <div class="stats-bar">
+      <div class="stat-item"><span class="badge badge-gold">生计底线</span> UBI 基础点券</div>
+      <div class="stat-item"><span class="badge badge-gold">意义资产</span> 具名工时三级制</div>
+      <div class="stat-item"><span class="badge badge-gold">政治博弈</span> 关税公投四学派</div>
+      <div class="stat-item"><span class="badge badge-gold">殖民物权</span> 防风坑基用益物权</div>
+    </div>
+  </header>
+
+  <!-- 纪元筛选控制器 -->
+  <div class="timeline-nav">
+    <button class="epoch-btn active" onclick="filterEpoch('all')">全纪元全景<span class="epoch-year">2025—3000+</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('替代')">① 替代纪元<span class="epoch-year">2025—2035</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('竞赛')">② 竞赛纪元<span class="epoch-year">2035—2050</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('丰裕')">③ 丰裕纪元<span class="epoch-year">2050—2080</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('离心')">④ 离心纪元<span class="epoch-year">2080—2150</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('启航')">⑤ 启航纪元<span class="epoch-year">2150—2350</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('落地')">⑥ 落地/双星<span class="epoch-year">2350—3000+</span></button>
+  </div>
+
+  <!-- 五大支柱主全景网格 -->
+  <main class="panorama-grid">
+
+    <!-- 支柱 1：普遍基本生计 (UBI) -->
+    <div class="pillar-col">
+      <div class="pillar-header">💰 1. 普遍基本生计 (UBI)</div>
+      
+      <div class="tech-card" data-epoch="替代" onclick="openDrawer('UBI_ACT')">
+        <div class="card-top">
+          <span class="badge badge-epoch-tidai">替代纪元</span>
+          <span class="card-year">2028</span>
+        </div>
+        <div class="card-title">地联劳动力去技能化保障法</div>
+        <div class="card-desc">AI替代白领后的生计保障与社会稳定。</div>
+        <div class="card-spec">设立UBI基础点券与算力税</div>
+      </div>
+
+      <div class="tech-card" data-epoch="替代" onclick="openDrawer('GS_2033_01')">
+        <div class="card-top">
+          <span class="badge badge-epoch-tidai">替代纪元</span>
+          <span class="card-year">2033</span>
+        </div>
+        <div class="card-title">GS-2033-01 巡检签名员求职信</div>
+        <div class="card-desc">传统白领转岗地月劳务通道。</div>
+        <div class="card-spec">地月劳务转岗通道</div>
+      </div>
+    </div>
+
+    <!-- 支柱 2：低重力劳动法权 -->
+    <div class="pillar-col">
+      <div class="pillar-header">⚖️ 2. 低重力劳动法权</div>
+
+      <div class="tech-card" data-epoch="竞赛" onclick="openDrawer('SPACE_LABOR_ACT')">
+        <div class="card-top">
+          <span class="badge badge-epoch-jingsai">竞赛纪元</span>
+          <span class="card-year">2042</span>
+        </div>
+        <div class="card-title">地月低重力劳动安全公约</div>
+        <div class="card-desc">地球资本vs太空蓝领的辐射与骨丢失补偿。</div>
+        <div class="card-spec">强制低重力工休期</div>
+      </div>
+
+      <div class="tech-card" data-epoch="竞赛" onclick="openDrawer('GS_2068_02')">
+        <div class="card-top">
+          <span class="badge badge-epoch-jingsai">竞赛纪元</span>
+          <span class="card-year">2068</span>
+        </div>
+        <div class="card-title">GS-2068-02 陈初九人事档案</div>
+        <div class="card-desc">不可逆失锚人员终身养老兜底。</div>
+        <div class="card-spec">膝关节假体严重磨损</div>
+      </div>
+    </div>
+
+    <!-- 支柱 3：具名工时制度 -->
+    <div class="pillar-col">
+      <div class="pillar-header">📜 3. 具名工时制度</div>
+
+      <div class="tech-card" data-epoch="丰裕" onclick="openDrawer('NAMED_HOURS')">
+        <div class="card-top">
+          <span class="badge badge-epoch-fengyu">丰裕纪元</span>
+          <span class="card-year">2072</span>
+        </div>
+        <div class="card-title">南岸具名工时分配条例</div>
+        <div class="card-desc">物质免费后80亿人对存在感与署名权的争夺。</div>
+        <div class="card-spec">A级独占/B级集体/C级不具名三级答辩制</div>
+      </div>
+
+      <div class="tech-card" data-epoch="丰裕" onclick="openDrawer('GS_2072_01')">
+        <div class="card-top">
+          <span class="badge badge-epoch-fengyu">丰裕纪元</span>
+          <span class="card-year">2072</span>
+        </div>
+        <div class="card-title">GS-2072-01 南岸具名工时表</div>
+        <div class="card-desc">署名权成为核心法定财产。</div>
+        <div class="card-spec">物质越免费，意义越昂贵</div>
+      </div>
+    </div>
+
+    <!-- 支柱 4：关税与自治公约 -->
+    <div class="pillar-col">
+      <div class="pillar-header">🏛️ 4. 关税与自治公约</div>
+
+      <div class="tech-card" data-epoch="离心" onclick="openDrawer('TARIFF_ACCORD')">
+        <div class="card-top">
+          <span class="badge badge-epoch-lixin">离心纪元</span>
+          <span class="card-year">2096</span>
+        </div>
+        <div class="card-title">曙光三环关税平准协议</div>
+        <div class="card-desc">地球地联航运税权vs殖民地自给自治诉求。</div>
+        <div class="card-spec">自给定居点免税清单</div>
+      </div>
+
+      <div class="tech-card" data-epoch="离心" onclick="openDrawer('GS_2096_FOUR')">
+        <div class="card-top">
+          <span class="badge badge-epoch-lixin">离心纪元</span>
+          <span class="card-year">2096</span>
+        </div>
+        <div class="card-title">GS-2096-01~04 四学派公文博弈</div>
+        <div class="card-desc">官府/食堂/互济社/商会四方博弈。</div>
+        <div class="card-spec">距离即法权</div>
+      </div>
+    </div>
+
+    <!-- 支柱 5：殖民地基法 -->
+    <div class="pillar-col">
+      <div class="pillar-header">🏠 5. 殖民地基法</div>
+
+      <div class="tech-card" data-epoch="落地" onclick="openDrawer('CHARTER_2353')">
+        <div class="card-top">
+          <span class="badge badge-epoch-luodi">落地/双星</span>
+          <span class="card-year">2353</span>
+        </div>
+        <div class="card-title">新海安地籍与防风坑基公约</div>
+        <div class="card-desc">落地一代对有限地表防风掩体的使用权分配。</div>
+        <div class="card-spec">废除土地私有，确立用益物权</div>
+      </div>
+
+      <div class="tech-card" data-epoch="落地" onclick="openDrawer('GS_2353_01')">
+        <div class="card-top">
+          <span class="badge badge-epoch-luodi">落地/双星</span>
+          <span class="card-year">2353</span>
+        </div>
+        <div class="card-title">GS-2353-01 防风坑基公证书</div>
+        <div class="card-desc">以气压维持与结构贡献核发使用权证。</div>
+        <div class="card-spec">官僚主义就是历史本身</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- 钻取抽屉 -->
+  <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer(event)">
+    <div class="drawer" id="drawer">
+      <button class="drawer-close" onclick="closeDrawerForce()">✕</button>
+      <div id="drawerContent"></div>
+    </div>
+  </div>
+
+  <script>
+    const institutionData = {
+      UBI_ACT: {
+        title: "地联劳动力去技能化保障法 (UBI法案)",
+        level: "L3 社会分配制度 / L4 点券+算力税机制",
+        formula: "基础生计点券 = f(通胀率, 能源成本, 人口基数) 每年重新校准",
+        specs: [
+          ["保障范围", "传统白领被AI替代后的生计", "UBI基础点券发放"],
+          ["资金来源", "全球算力税", "AI运算量阶梯税率"],
+          ["转岗通道", "地月劳务转岗计划", "巡检签名员等新职业"]
+        ]
+      },
+      GS_2033_01: {
+        title: "GS-2033-01 巡检签名员求职信",
+        level: "L3 白领劳动力转岗通道 / L4 岗位责任与人工签名核验",
+        formula: "岗位效用 = 人工责任背书(不可替代) × 签名法律效力 × 物理现场核验",
+        specs: [
+          ["历史背景", "白领算法化失业潮", "传统文职岗位全面贬值"],
+          ["求职岗位", "静海地月劳务转运段 巡检签名员", "承担物理现场最终责任"],
+          ["核心意义", "保留人类责任归属", "从智力劳动转向法律见证"]
+        ]
+      },
+      SPACE_LABOR_ACT: {
+        title: "地月低重力劳动安全公约",
+        level: "L3 太空劳动生理学法典 / L4 骨丢失监测与工休配额",
+        formula: "工休配额 T_rest = k_gravity × (1 - g_local) × 累积低重力暴露月数",
+        specs: [
+          ["工休制度", "强制低重力工休期与地表轮调", "每在轨18个月强制休整3个月"],
+          ["医疗救济", "骨小梁进行性稀疏与前庭损伤治疗", "全额雇主保险覆盖"],
+          ["终身保障", "不可逆失锚人员兜底养老机制", "终身基本生计与假体维护"]
+        ]
+      },
+      GS_2068_02: {
+        title: "GS-2068-02 陈初九人事档案卷",
+        level: "L3 失锚劳动者权益清算 / L4 伤残评定与终身抚恤",
+        formula: "抚恤等级 = f(骨密度流失率 ΔBMD, 关节假体磨损, 辐射累积剂量)",
+        specs: [
+          ["伤残鉴定", "膝关节假体严重磨损 / 骨密度不可逆流失", "三级失锚重度"],
+          ["安置待遇", "月面养老基地终身床位与生计配给", "享地联公费医疗全覆盖"],
+          ["历史判例", "首例低重力蓝领工伤全责赔付案", "确立太空蓝领法益优先原则"]
+        ]
+      },
+      NAMED_HOURS: {
+        title: "南岸具名工时分配条例 (三级制)",
+        level: "L3 意义资产定价模型 / L4 署名权登记与答辩系统",
+        formula: "工时价值 = 劳动贡献 × 社会认可系数 × 不可替代性指数",
+        specs: [
+          ["A级独占署名", "个人独立完成的核心贡献", "独占署名权与历史定位"],
+          ["B级集体署名", "团队协作完成", "集体署名，按贡献分配"],
+          ["C级不具名", "可替代性高的例行劳动", "不具名，仅计工时"]
+        ]
+      },
+      GS_2072_01: {
+        title: "GS-2072-01 南岸具名工时表",
+        level: "L3 署名资产公示与争议仲裁 / L4 具名工时流水账册",
+        formula: "意义资产流通性 = 署名权稀缺度 / (物质免费度 + 公共算力池规模)",
+        specs: [
+          ["账册记录", "南岸第三重工聚变喷管研制工时表", "精准记至0.1工时"],
+          ["答辩争议", "C级日常装配申请晋升B级集体署名", "技术委员会公开听证"],
+          ["法理结论", "物质越免费，意义越昂贵", "署名权成为核心法定非物质财产"]
+        ]
+      },
+      TARIFF_ACCORD: {
+        title: "曙光三环关税平准协议",
+        level: "L3 空间关税与税权离心公约 / L4 免税口岸清单与平准基金",
+        formula: "关税抵扣率 = (自给闭环率 η_local × 距离衰减因数) / 地联航运依赖度",
+        specs: [
+          ["关税博弈", "地联航运税权 vs 殖民地自给诉求", "确立免税物资负面清单"],
+          ["平准机制", "曙光三环出入境货物平准金池", "平抑地月与主带物价剪刀差"],
+          ["管辖边界", "光速延迟超过30分钟区域", "确立局地自治法权"]
+        ]
+      },
+      GS_2096_FOUR: {
+        title: "GS-2096-01~04 曙光三环四学派公文博弈",
+        level: "L3 政治哲学与四学派博弈 / L4 官府/食堂/互济社/商会四方批单",
+        formula: "政策合力 = w1·官府(秩序) + w2·食堂(配给) + w3·互济社(人权) + w4·商会(流通)",
+        specs: [
+          ["官府学派", "强调集权管控与航行安全优先", "主张保留统购统销税权"],
+          ["食堂/互济社", "主张无条件基本配给与劳工自治", "推动生存必需物资永久免税"],
+          ["商会学派", "主张自由兑换与跨定居点自由贸易", "推动算力与矿产自由流通"],
+          ["公文结语", "距离即法权", "公文从不解释，但公文就是历史本身"]
+        ]
+      },
+      CHARTER_2353: {
+        title: "新海安地籍与防风坑基公约",
+        level: "L3 殖民地物权法 / L4 气压维持与结构贡献核发制",
+        formula: "坑基使用权 = wage(气压维持贡献, 结构改造成本, 居住时长) 不可继承",
+        specs: [
+          ["产权制度", "彻底废除旧地球土地私有制", "用益物权"],
+          ["使用权核发", "以气压维持与结构贡献为基准", "不可继承"],
+          ["防风坑基", "有限地表防风掩体", "气压穹顶分配"]
+        ]
+      },
+      GS_2353_01: {
+        title: "GS-2353-01 防风坑基公证书",
+        level: "L3 异星地基用益物权确权 / L4 防风穹顶气压维护核验证书",
+        formula: "用益物权存续 = 1 [当且仅当 气压维持率 ≥ 99.8% 且 结构巡检无断裂]",
+        specs: [
+          ["公证标的", "新海安第二防风坑基 047号地块", "有效容积 1,200 m³"],
+          ["权属主体", "落地第一代联合垦荒小组", "享有50年使用权与维护责任"],
+          ["继承条款", "身故后收归公社按贡献重新配给", "官僚主义就是历史本身"]
+        ]
+      }
+    };
+
+    function filterEpoch(epoch) {
+      document.querySelectorAll('.epoch-btn').forEach(b => b.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+
+      const cards = document.querySelectorAll('.tech-card');
+      cards.forEach(card => {
+        if (epoch === 'all' || card.dataset.epoch === epoch) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function openDrawer(key) {
+      const data = institutionData[key] || {
+        title: "千禧制度档案",
+        level: "L3 制度模型 / L4 条款参数",
+        formula: "遵循千禧制度演进三大铁律与法权演进公理",
+        specs: [
+          ["制度层级", "法典条约标准", "全域适用"],
+          ["历史定位", "GS 正典文献", "权威归档"],
+          ["对应法典", "千禧典制志 Line 4", "已入库"]
+        ]
+      };
+
+      let rows = data.specs.map(s => `<tr><td><b>${s[0]}</b></td><td>${s[1]}</td><td><span style="color:#fbbf24">${s[2]}</span></td></tr>`).join('');
+
+      document.getElementById('drawerContent').innerHTML = `
+        <h2>${data.title}</h2>
+        <div style="font-size:12px;color:#94a3b8;margin-bottom:12px;">层级：${data.level}</div>
+        
+        <div class="section-title">⚖️ L3 法权逻辑与制度模型</div>
+        <div class="code-box">${data.formula}</div>
+
+        <div class="section-title">📜 L4 关键条款机制与执行参数表</div>
+        <table class="param-table">
+          <thead><tr><th>制度维度</th><th>条文规格与运作机制</th><th>法律效力与历史判例</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+
+        <div class="section-title">🏛️ 正典文献与千禧制度志关联</div>
+        <p style="font-size:12px;color:#94a3b8;line-height:1.6;margin-top:6px;">
+          本制度节点直接支撑《千禧制度志 · 意义资产与法权演进史》（Line 4）。制度演化三大铁律确立了“物质越免费，意义越昂贵”、“距离即法权”以及“官僚主义就是历史本身”的核心法理边界。
+        </p>
+      `;
+
+      document.getElementById('drawerOverlay').style.display = 'flex';
+    }
+
+    function closeDrawer(e) {
+      if (e.target.id === 'drawerOverlay') {
+        document.getElementById('drawerOverlay').style.display = 'none';
+      }
+    }
+    function closeDrawerForce() {
+      document.getElementById('drawerOverlay').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

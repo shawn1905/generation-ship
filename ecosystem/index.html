@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>世代飞船 · 千禧科技树全景控制台总索引 (2025—3000+)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="世代飞船 · 千禧科技树全景控制台总索引">
+  <meta property="og:description" content="7 条文明主线完整交互看板：机器自给自足、飞船建造、生态驯化、制度演进、光际通信、地理扩散、人体增强。">
+  <meta property="og:image" content="https://shawn1905.github.io/generation-ship/world/生图集/012_ARK01_抵达比邻星b_4K超清.jpg">
+  <meta property="og:url" content="https://shawn1905.github.io/generation-ship/ecosystem/index.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    :root {
+      --bg: #060913;
+      --card-bg: #0f172a;
+      --card-hover: #1e293b;
+      --border: #1e293b;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 32px 24px;
+      min-height: 100vh;
+    }
+    header {
+      text-align: center;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 32px;
+    }
+    header h1 { font-size: 28px; color: var(--accent); margin-bottom: 8px; }
+    header p { color: var(--muted); font-size: 14px; max-width: 640px; margin: 0 auto; line-height: 1.6; }
+    .epoch-strip {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    .epoch-pill {
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      font-weight: 600;
+    }
+    .epoch-pill.e0 { background: #0284c7; color: #fff; }
+    .epoch-pill.e1 { background: #ef4444; color: #fff; }
+    .epoch-pill.e2 { background: #f97316; color: #fff; }
+    .epoch-pill.e3 { background: #f59e0b; color: #000; }
+    .epoch-pill.e4 { background: #8b5cf6; color: #fff; }
+    .epoch-pill.e5 { background: #06b6d4; color: #000; }
+    .epoch-pill.e6 { background: #10b981; color: #000; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+      gap: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .line-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      transition: all 0.25s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .line-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .line-card a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .line-card .accent-bar {
+      height: 4px;
+      width: 100%;
+      margin-bottom: 16px;
+      border-radius: 2px;
+    }
+    .line-card .line-number {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .line-card h2 {
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+    .line-card .subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+    .line-card .pillar-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+    .line-card .pillar-tag {
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid #334155;
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      color: #cbd5e1;
+    }
+    .line-card .meta-bar {
+      display: flex;
+      gap: 12px;
+      font-size: 11px;
+      color: var(--muted);
+      font-family: var(--font-mono);
+    }
+    .line-card .meta-bar span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .open-icon {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #1e293b;
+      border: 1px solid #475569;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .line-card:hover .open-icon {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+    }
+    .footer {
+      text-align: center;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .footer a { color: var(--accent); text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+    .footer .links { display: flex; justify-content: center; gap: 20px; margin-top: 8px; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🌌 世代飞船 · 千禧科技树全景控制台总索引</h1>
+  <p>7 条文明主线 · 7 个交互式全景看板 —— 每条主线以 L3 物理公式 + L4 工程参数 + 纪元筛选驱动的沉浸式工程控制台，覆盖 2025—3000+ 千年文明演化全貌。</p>
+  <div class="epoch-strip">
+    <span class="epoch-pill e0">全纪元 2025—3000+</span>
+    <span class="epoch-pill e1">① 替代 2025—2035</span>
+    <span class="epoch-pill e2">② 竞赛 2035—2050</span>
+    <span class="epoch-pill e3">③ 丰裕 2050—2080</span>
+    <span class="epoch-pill e4">④ 离心 2080—2150</span>
+    <span class="epoch-pill e5">⑤ 启航 2150—2350</span>
+    <span class="epoch-pill e6">⑥ 落地/双星 2350—3000+</span>
+  </div>
+</header>
+
+<main class="grid">
+
+  <!-- Line 1 -->
+  <div class="line-card">
+    <a href="tech_tree_dashboard.html">
+      <div class="accent-bar" style="background:linear-gradient(90deg,#38bdf8,#0284c7)"></div>
+      <div class="line-number">Line 1 · 千禧科技树</div>
+      <h2 style="color:#38bdf8">⚙️ 机器自给自足</h2>
+      <div class="subtitle">Machine Autarky Technology Tree · 从月壤烧结到百公里超导磁帆的千年工程全景</div>
+      <div class="pillar-list">
+        <span class="pillar-tag">⚡ 能源与推进动力</span>
+        <span class="pillar-tag">⛏️ 原位采选与冶炼</span>
+        <span class="pillar-tag">🤖 母机自复制与精密</span>
+        <span class="pillar-tag">🧪 半导体与化学闭环</span>
+        <span class="pillar-tag">🔄 原子循环与材料抗疲劳</span>
+      </div>
+      <div class="meta-bar">
+        <span>📐 35 项技术</span>
+        <span>📊 4 级 TRL 标注</span>
+        <span>📜 7 纪元筛选</span>
+      </div>
+      <div class="open-icon">↗</div>
+    </a>
+  </div>
+
+  <!-- Line 2 -->
+  <div class="line-card">
+    <a href="shipbuilding_tech_dashboard.html">
+      <div class="accent-bar" style="background:linear-gradient(90deg,#c084fc,#7c3aed)"></div>
+      <div class="line-number">Line 2 · 千禧工程志</div>
+      <h2 style="color:#c084fc">🛸 世代飞船建造</h2>
+      <div class="subtitle">ARK-01 Master Engineering Console · 5.2km 巨构总装 / 6 Phase 工程阶段 / 0.03c 巡航</div>
+      <div class="pillar-list">
+        <span class="pillar-tag">🛡️ 主动磁屏蔽与防冲</span>
+        <span class="pillar-tag">🎡 双联旋转环人工重力</span>
+        <span class="pillar-tag">🌾 万人闭环生态生保</span>
+        <span class="pillar-tag">🚀 6联装脉冲聚变推进</span>
+        <span class="pillar-tag">🪂 百公里磁帆星际制动</span>
+      </div>
+      <div class="meta-bar">
+        <span>📐 15 项子系统</span>
+        <span>📊 6 阶段筛选</span>
+        <span>📜 L3 公式 + L4 参数</span>
+      </div>
+      <div class="open-icon">↗</div>
+    </a>
+  </div>
+
+  <!-- Line 3 -->
+  <div class="line-card">
+    <a href="line3_dashboard.html">
+      <div class="accent-bar" style="background:linear-gradient(90deg,#4ade80,#059669)"></div>
+      <div class="line-number">Line 3 · 千禧工程志</div>
+      <h2 style="color:#4ade80">🌱 生态圈与异星驯化</h2>
+      <div class="subtitle">Biosphere Engineering Console · 月面螺旋藻反应器 / 方舟母本系 / 两百年真菌漂变 / 比邻星土壤熟化</div>
+      <div class="pillar-list">
+        <span class="pillar-tag">🌿 微藻光生物反应器</span>
+        <span class="pillar-tag">🌾 方舟母本系选育</span>
+        <span class="pillar-tag">🌱 飞船农业环</span>
+        <span class="pillar-tag">🍄 船内真菌共生生态</span>
+        <span class="pillar-tag">🌍 异星风化层熟化</span>
+      </div>
+      <div class="meta-bar">
+        <span>📐 10 项生物工程</span>
+        <span>📊 7 纪元筛选</span>
+        <span>📜 生化反应动力学</span>
+      </div>
+      <div class="open-icon">↗</div>
+    </a>
+  </div>
+
+  <!-- Line 4 -->
+  <div class="line-card">
+    <a href="line4_dashboard.html">
+      <div class="accent-bar" style="background:linear-gradient(90deg,#fbbf24,#d97706)"></div>
+      <div class="line-number">Line 4 · 千禧制度志</div>
+      <h2 style="color:#fbbf24">⚖️ 意义资产与法权演进</h2>
+      <div class="subtitle">Institutional Console · UBI / 具名工时三级制 / 关税公投 / 离心公约 / 防风坑基法</div>
+      <div class="pillar-list">
+        <span class="pillar-tag">💰 普遍基本生计 UBI</span>
+        <span class="pillar-tag">⚖️ 低重力劳动法权</span>
+        <span class="pillar-tag">📜 具名工时制度</span>
+        <span class="pillar-tag">🏛️ 关税与自治公约</span>
+        <span class="pillar-tag">🏠 殖民地基法</span>
+      </div>
+      <div class="meta-bar">
+        <span>📐 10 项制度条文</span>
+        <span>📊 7 纪元筛选</span>
+        <span>📜 制度演化铁律</span>
+      </div>
+      <div class="open-icon">↗</div>
+    </a>
+  </div>
+
+  <!-- Line 5 -->
+  <div class="line-card">
+    <a href="line5_dashboard.html">
+      <div class="accent-bar" style="background:linear-gradient(90deg,#22d3ee,#0891b2)"></div>
+      <div class="line-number">Line 5 · 千禧工程志</div>
+      <h2 style="color:#22d3ee">📡 光际通信与深时间网络</h2>
+      <div class="subtitle">Deep Time Communication Console · 相干激光网 / 72.4AU 信标 / 4.24 年光时延 / 双星系镜像</div>
+      <div class="pillar-list">
+        <span class="pillar-tag">📡 地月相干光通信</span>
+        <span class="pillar-tag">🚥 深空信标中继</span>
+        <span class="pillar-tag">💌 光际家书通道</span>
+        <span class="pillar-tag">📯 太阳系发射阵</span>
+        <span class="pillar-tag">🔄 双星系镜像协议</span>
+      </div>
+      <div class="meta-bar">
+        <span>📐 10 项通信节点</span>
+        <span>📊 7 纪元筛选</span>
+        <span>📜 相对论通信铁律</span>
+      </div>
+      <div class="open-icon">↗</div>
+    </a>
+  </div>
+
+  <!-- Line 6 -->
+  <div class="line-card">
+    <a href="line6_dashboard.html">
+      <div class="accent-bar" style="background:linear-gradient(90deg,#f59e0b,#b45309)"></div>
+      <div class="line-number">Line 6 · 千禧地理志</div>
+      <h2 style="color:#f59e0b">🌍 太阳系扩散与地球野化</h2>
+      <div class="subtitle">Solar System Expansion Console · 空间五带 / 地球去工业化 / 静海巨城 / 主带工区 / 母星原乡</div>
+      <div class="pillar-list">
+        <span class="pillar-tag">🌍 地球母星·去工业化</span>
+        <span class="pillar-tag">🌙 地月系·巨城崛起</span>
+        <span class="pillar-tag">🪐 内太阳系·工区与联邦</span>
+        <span class="pillar-tag">🚀 深空航程·船队</span>
+        <span class="pillar-tag">⭐ 比邻星系·新大陆</span>
+      </div>
+      <div class="meta-bar">
+        <span>📐 13 项地理节点</span>
+        <span>📊 7 纪元筛选</span>
+        <span>📜 空间经济学</span>
+      </div>
+      <div class="open-icon">↗</div>
+    </a>
+  </div>
+
+  <!-- Line 7 -->
+  <div class="line-card">
+    <a href="line7_dashboard.html">
+      <div class="accent-bar" style="background:linear-gradient(90deg,#ef4444,#b91c1c)"></div>
+      <div class="line-number">Line 7 · 千禧工程志</div>
+      <h2 style="color:#ef4444">🧬 人体增强与义体演化</h2>
+      <div class="subtitle">Cyborg Evolution Console · 脑机接口 / 义体维修 / 重力逆适应 / 增强人与自然人物种分化</div>
+      <div class="pillar-list">
+        <span class="pillar-tag">🧠 脑机接口医疗认证</span>
+        <span class="pillar-tag">🔧 工伤义体化</span>
+        <span class="pillar-tag">👁️ 感官增强鸿沟</span>
+        <span class="pillar-tag">🔌 义体共生维修</span>
+        <span class="pillar-tag">🦾 重力适应物种分化</span>
+      </div>
+      <div class="meta-bar">
+        <span>📐 11 项增强节点</span>
+        <span>📊 7 纪元筛选</span>
+        <span>📜 四大物理铁律</span>
+      </div>
+      <div class="open-icon">↗</div>
+    </a>
+  </div>
+
+</main>
+
+<div class="footer">
+  <p>世代飞船 · 未来考古项目 · 千禧科技树全景控制台系列</p>
+  <div class="links">
+    <a href="https://shawn1905.github.io/generation-ship/ecosystem/heatmap_3d.html">📦 档案舱热力图</a>
+    <a href="https://shawn1905.github.io/generation-ship/ecosystem/galaxy_map_3d.html">🌌 星图航迹</a>
+    <a href="https://shawn1905.github.io/generation-ship/ecosystem/promotion/landing_report.html">📜 着陆报告</a>
+    <a href="https://github.com/shawn1905/generation-ship">💻 GitHub 仓库</a>
+  </div>
+</div>
+
+</body>
+</html>

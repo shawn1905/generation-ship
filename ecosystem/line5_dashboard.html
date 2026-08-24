@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>世代飞船 · 光际通信与深时间网络千禧工程全景控制台 (2035—3000+)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #060913;
+      --card-bg: #0f172a;
+      --card-hover: #1e293b;
+      --border: #1e293b;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --cyan: #22d3ee;
+      --accent: #22d3ee;
+      --purple: #c084fc;
+      --orange: #fb923c;
+      --green: #4ade80;
+      --blue: #38bdf8;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 24px;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .brand h1 { font-size: 24px; color: var(--cyan); display: flex; align-items: center; gap: 8px; }
+    .brand p { color: var(--muted); font-size: 13px; margin-top: 4px; }
+    .stats-bar {
+      display: flex;
+      gap: 12px;
+      background: #0f172a;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 12px;
+    }
+    .stat-item { display: flex; align-items: center; gap: 6px; }
+    .badge { padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; font-family: var(--font-mono); }
+    .badge-stat { background: rgba(34, 211, 238, 0.15); color: #22d3ee; border: 1px solid rgba(34, 211, 238, 0.3); }
+    
+    /* 纪元徽章配色 */
+    .badge-epoch-replace { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); }
+    .badge-epoch-race { background: rgba(249, 115, 22, 0.15); color: #f97316; border: 1px solid rgba(249, 115, 22, 0.3); }
+    .badge-epoch-abundance { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .badge-epoch-centrifuge { background: rgba(139, 92, 246, 0.15); color: #8b5cf6; border: 1px solid rgba(139, 92, 246, 0.3); }
+    .badge-epoch-sail { background: rgba(6, 182, 212, 0.15); color: #06b6d4; border: 1px solid rgba(6, 182, 212, 0.3); }
+    .badge-epoch-land { background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); }
+
+    /* 纪元导航器 */
+    .timeline-nav {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      margin-bottom: 24px;
+      background: #0f172a;
+      padding: 6px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .epoch-btn {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      padding: 10px 4px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .epoch-btn:hover { background: #1e293b; color: var(--text); }
+    .epoch-btn.active { color: #fff; font-weight: bold; }
+    .epoch-btn[data-epoch-btn="all"].active { background: #0284c7; box-shadow: 0 0 12px rgba(2, 132, 199, 0.4); }
+    .epoch-btn[data-epoch-btn="替代"].active { background: #ef4444; box-shadow: 0 0 12px rgba(239, 68, 68, 0.4); }
+    .epoch-btn[data-epoch-btn="竞赛"].active { background: #f97316; box-shadow: 0 0 12px rgba(249, 115, 22, 0.4); }
+    .epoch-btn[data-epoch-btn="丰裕"].active { background: #f59e0b; box-shadow: 0 0 12px rgba(245, 158, 11, 0.4); }
+    .epoch-btn[data-epoch-btn="离心"].active { background: #8b5cf6; box-shadow: 0 0 12px rgba(139, 92, 246, 0.4); }
+    .epoch-btn[data-epoch-btn="启航"].active { background: #06b6d4; box-shadow: 0 0 12px rgba(6, 182, 212, 0.4); }
+    .epoch-btn[data-epoch-btn="落地"].active { background: #10b981; box-shadow: 0 0 12px rgba(16, 185, 129, 0.4); }
+    .epoch-year { font-family: var(--font-mono); font-size: 11px; opacity: 0.8; display: block; margin-top: 2px; }
+    
+    /* 五大支柱主网格 */
+    .panorama-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+    .pillar-col {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .pillar-header {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #334155;
+    }
+    .tech-card {
+      background: var(--card-bg);
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 12px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+    .tech-card:hover {
+      background: var(--card-hover);
+      border-color: var(--cyan);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+    }
+    .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
+    .card-title { font-size: 13px; font-weight: 600; color: #e2e8f0; line-height: 1.4; }
+    .card-year { font-family: var(--font-mono); font-size: 11px; color: var(--cyan); }
+    .card-desc { font-size: 11px; color: var(--muted); line-height: 1.4; margin-top: 4px; }
+    .card-spec { font-size: 10px; color: #cbd5e1; background: rgba(34, 211, 238, 0.1); padding: 2px 6px; border-radius: 4px; margin-top: 8px; display: inline-block; border: 1px solid rgba(34, 211, 238, 0.2); }
+    
+    /* 钻取抽屉面板 */
+    .drawer-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(4px);
+      display: none;
+      z-index: 999;
+      justify-content: flex-end;
+    }
+    .drawer {
+      background: #0f172a;
+      width: 100%;
+      max-width: 620px;
+      height: 100vh;
+      border-left: 1px solid #334155;
+      padding: 30px;
+      overflow-y: auto;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+      position: relative;
+      animation: slideIn 0.25s ease-out;
+    }
+    @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+    .drawer-close {
+      position: absolute;
+      top: 20px; right: 20px;
+      background: #1e293b;
+      border: 1px solid #475569;
+      color: #fff;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .drawer h2 { color: var(--cyan); font-size: 20px; margin-bottom: 8px; }
+    .drawer .section-title { font-size: 13px; color: var(--orange); font-weight: 700; text-transform: uppercase; margin: 18px 0 8px; letter-spacing: 0.5px; border-bottom: 1px solid #334155; padding-bottom: 4px; }
+    .code-box {
+      background: #020617;
+      border: 1px solid #1e293b;
+      padding: 12px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #22d3ee;
+      overflow-x: auto;
+      line-height: 1.5;
+    }
+    .param-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 12px; }
+    .param-table th, .param-table td { padding: 8px 10px; border: 1px solid #334155; text-align: left; }
+    .param-table th { background: #1e293b; color: #cbd5e1; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <h1>📡 世代飞船 · 光际通信与深时间网络千禧工程全景控制台 (2035—3000+)</h1>
+      <p>Deep Time Communication Console · 相干深空激光网 / 72.4AU节点 / 极化纠错码 / 双星系镜像</p>
+    </div>
+    <div class="stats-bar">
+      <div class="stat-item"><span class="badge badge-stat">光时延</span> 4.24年单程光时延</div>
+      <div class="stat-item"><span class="badge badge-stat">容错度</span> 丢包14.8%可恢复</div>
+      <div class="stat-item"><span class="badge badge-stat">吞吐量</span> 500Mbps吞吐量</div>
+      <div class="stat-item"><span class="badge badge-stat">编码机制</span> FEC/LDPC纠错码</div>
+    </div>
+  </header>
+
+  <!-- 纪元筛选控制器 -->
+  <div class="timeline-nav">
+    <button class="epoch-btn active" data-epoch-btn="all" onclick="filterEpoch('all', this)">全纪元<span class="epoch-year">2035—3000+</span></button>
+    <button class="epoch-btn" data-epoch-btn="替代" onclick="filterEpoch('替代', this)">① 替代<span class="epoch-year">2025—2035</span></button>
+    <button class="epoch-btn" data-epoch-btn="竞赛" onclick="filterEpoch('竞赛', this)">② 竞赛<span class="epoch-year">2035—2050</span></button>
+    <button class="epoch-btn" data-epoch-btn="丰裕" onclick="filterEpoch('丰裕', this)">③ 丰裕<span class="epoch-year">2050—2080</span></button>
+    <button class="epoch-btn" data-epoch-btn="离心" onclick="filterEpoch('离心', this)">④ 离心<span class="epoch-year">2080—2150</span></button>
+    <button class="epoch-btn" data-epoch-btn="启航" onclick="filterEpoch('启航', this)">⑤ 启航<span class="epoch-year">2150—2350</span></button>
+    <button class="epoch-btn" data-epoch-btn="落地" onclick="filterEpoch('落地', this)">⑥ 落地/双星<span class="epoch-year">2350—3000+</span></button>
+  </div>
+
+  <!-- 五大支柱主网格 -->
+  <main class="panorama-grid">
+
+    <!-- 支柱 1：地月相干光通信 -->
+    <div class="pillar-col">
+      <div class="pillar-header">📡 1. 地月相干光通信</div>
+      
+      <div class="tech-card" data-epoch="替代" onclick="openDrawer('LASER_ARRAY_L5')">
+        <div class="card-top">
+          <span class="badge badge-epoch-replace">替代</span>
+          <span class="card-year">2035</span>
+        </div>
+        <div class="card-title">地月相干光通信阵</div>
+        <div class="card-desc">1550nm近红外/50kW，亚角秒级光学对准。</div>
+        <div class="card-spec">1.28s光时延，丢包&lt;0.01%</div>
+      </div>
+
+      <div class="tech-card" data-epoch="替代" onclick="openDrawer('AO_SYSTEM')">
+        <div class="card-top">
+          <span class="badge badge-epoch-replace">替代</span>
+          <span class="card-year">2035</span>
+        </div>
+        <div class="card-title">压电自适应光学系统</div>
+        <div class="card-desc">消除大气抖动与轨道多普勒频移。</div>
+        <div class="card-spec">GS-2035-DA7</div>
+      </div>
+    </div>
+
+    <!-- 支柱 2：深空信标中继 -->
+    <div class="pillar-col">
+      <div class="pillar-header">🚥 2. 深空信标中继</div>
+
+      <div class="tech-card" data-epoch="离心" onclick="openDrawer('BEACON_07')">
+        <div class="card-top">
+          <span class="badge badge-epoch-centrifuge">离心</span>
+          <span class="card-year">2096</span>
+        </div>
+        <div class="card-title">深空信标07号站</div>
+        <div class="card-desc">柯伊伯带外缘72.4AU，532nm绿光/2MW。</div>
+        <div class="card-spec">10.03小时光时延，丢包2.4%</div>
+      </div>
+
+      <div class="tech-card" data-epoch="离心" onclick="openDrawer('SIC_MIRROR')">
+        <div class="card-top">
+          <span class="badge badge-epoch-centrifuge">离心</span>
+          <span class="card-year">2096</span>
+        </div>
+        <div class="card-title">30米碳化硅轻量化主镜</div>
+        <div class="card-desc">太阳系出港与入港总信标。</div>
+        <div class="card-spec">GS-2096-05</div>
+      </div>
+    </div>
+
+    <!-- 支柱 3：光际家书通道 -->
+    <div class="pillar-col">
+      <div class="pillar-header">💌 3. 光际家书通道</div>
+
+      <div class="tech-card" data-epoch="启航" onclick="openDrawer('FAMILY_LETTER')">
+        <div class="card-top">
+          <span class="badge badge-epoch-sail">启航</span>
+          <span class="card-year">2158</span>
+        </div>
+        <div class="card-title">ARK-01光际家书转递通道</div>
+        <div class="card-desc">351nm紫外脉冲/500kW，单向只读发射。</div>
+        <div class="card-spec">60小时→2.1年光时延</div>
+      </div>
+
+      <div class="tech-card" data-epoch="启航" onclick="openDrawer('FAMILY_BULLETIN')">
+        <div class="card-top">
+          <span class="badge badge-epoch-sail">启航</span>
+          <span class="card-year">2158</span>
+        </div>
+        <div class="card-title">GS-2158-01 光际家书公报</div>
+        <div class="card-desc">民政部门民事公证，记录两代人不可逆离别。</div>
+        <div class="card-spec">单向只读发射</div>
+      </div>
+    </div>
+
+    <!-- 支柱 4：太阳系发射阵 -->
+    <div class="pillar-col">
+      <div class="pillar-header">📯 4. 太阳系发射阵</div>
+
+      <div class="tech-card" data-epoch="落地" onclick="openDrawer('CANDLE_ARRAY')">
+        <div class="card-top">
+          <span class="badge badge-epoch-land">落地</span>
+          <span class="card-year">2375</span>
+        </div>
+        <div class="card-title">烛照超大基线发射阵</div>
+        <div class="card-desc">月背齐奥尔科夫斯基环形山，192路多波束相干合成/50MW。</div>
+        <div class="card-spec">4.24年单程，丢包14.8%</div>
+      </div>
+
+      <div class="tech-card" data-epoch="落地" onclick="openDrawer('FEC_LOG')">
+        <div class="card-top">
+          <span class="badge badge-epoch-land">落地</span>
+          <span class="card-year">2375</span>
+        </div>
+        <div class="card-title">0419批次丢包纠错日志</div>
+        <div class="card-desc">超高冗余度FEC/LDPC码，允许丢失20%数学无损还原。</div>
+        <div class="card-spec">GS-2375-01</div>
+      </div>
+    </div>
+
+    <!-- 支柱 5：双星系镜像协议 -->
+    <div class="pillar-col">
+      <div class="pillar-header">🔄 5. 双星系镜像协议</div>
+
+      <div class="tech-card" data-epoch="双星系" onclick="openDrawer('MIRROR_PROTOCOL')">
+        <div class="card-top">
+          <span class="badge badge-epoch-land">双星系</span>
+          <span class="card-year">2500</span>
+        </div>
+        <div class="card-title">双星系知识增量镜像协议</div>
+        <div class="card-desc">太赫兹频段+极化码，5年周期异步全量增量同步。</div>
+        <div class="card-spec">吞吐量500Mbps</div>
+      </div>
+
+      <div class="tech-card" data-epoch="双星系" onclick="openDrawer('LEVELING_PROTOCOL')">
+        <div class="card-top">
+          <span class="badge badge-epoch-land">双星系</span>
+          <span class="card-year">2500</span>
+        </div>
+        <div class="card-title">GS-2500-01 数据平准协议</div>
+        <div class="card-desc">两星系科学/专利/文学数据库永久对等共享。</div>
+        <div class="card-spec">4.24年同步周期</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- 钻取抽屉 -->
+  <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer(event)">
+    <div class="drawer" id="drawer">
+      <button class="drawer-close" onclick="closeDrawerForce()">✕</button>
+      <div id="drawerContent"></div>
+    </div>
+  </div>
+
+  <script>
+    const commsData = {
+      LASER_ARRAY_L5: {
+        title: "地月相干光通信阵 (L2拉格朗日点)",
+        level: "L3 自由空间光链路预算 / L4 压电倾斜镜自适应光学",
+        formula: "P_rx = P_tx × G_tx × G_rx × (λ / (4πR))² × η_atm  [1550nm, 50kW, 1.28s时延]",
+        specs: [
+          ["载波频段", "1550nm近红外，50kW连续波", "大气窗口高透"],
+          ["自适应光学", "压电倾斜镜，消除大气抖动与轨道多普勒频移", "1000Hz闭环校正"],
+          ["链路性能", "1.28s光时延，丢包率<0.01%", "GS-2035-DA7"]
+        ]
+      },
+      AO_SYSTEM: {
+        title: "压电自适应光学系统 (AO-Piezo)",
+        level: "L3 泽尼克多项式波前校正 / L4 高速压电微倾斜镜",
+        formula: "W(r, θ) = Σ c_i · Z_i(r, θ)  [1000Hz闭环校正，亚角秒对准精度 < 0.05 μrad]",
+        specs: [
+          ["核心机电", "压电陶瓷微位移作动器 (1024 单元矩阵)", "响应时间 < 0.5 ms"],
+          ["频移消除", "双向多普勒频移动态实时相位锁定", "GS-2035-DA7 技术规范"],
+          ["工作环境", "地月拉格朗日 L2 轨道平台", "零重力低热膨胀维持"]
+        ]
+      },
+      BEACON_07: {
+        title: "深空信标07号站 (72.4AU柯伊伯带外缘)",
+        level: "L3 深空自由空间光链路 / L4 30米碳化硅轻量化主镜",
+        formula: "链路预算：P_rx = 2MW × G_tx × G_rx × (532nm / (4π × 72.4AU))² = 可解调信噪比",
+        specs: [
+          ["部署位置", "太阳系柯伊伯带外缘，72.4AU", "日球层前沿中继站"],
+          ["发射系统", "532nm绿光激光，2MW功率", "太阳系出港与入港总信标"],
+          ["主镜", "30米碳化硅轻量化主镜", "10.03小时光时延，丢包2.4%"]
+        ]
+      },
+      SIC_MIRROR: {
+        title: "30米碳化硅轻量化反射主镜",
+        level: "L3 衍射极限光学角分辨率 / L4 SiC反应烧结与抛光",
+        formula: "θ = 1.22 · λ / D = 1.22 × 532nm / 30m ≈ 2.16×10⁻⁸ rad  [远场超低发散角]",
+        specs: [
+          ["基底材质", "反应烧结碳化硅 (RB-SiC) 蜂窝轻量化构型", "面密度 < 25 kg/m²"],
+          ["热机械特性", "极高比刚度 E/ρ，热膨胀系数 α < 2.2×10⁻⁶/K", "耐受 40K 极低温深空"],
+          ["维护规程", "自旋姿态微调与离子束镜面保洁 (GS-2096-05)", "出港入港双向捕获"]
+        ]
+      },
+      FAMILY_LETTER: {
+        title: "ARK-01光际家书转递通道",
+        level: "L3 相对论通信延迟方程 / L4 单向只读公证发射协议",
+        formula: "τ = d/c + Δt_Doppler [单向60h→2.1年，记录两代人不可逆离别]",
+        specs: [
+          ["载波频段", "351nm紫外脉冲，500kW", "深空低衰减窗口"],
+          ["通信模式", "单向只读发射，无确认握手", "TCP在三体问题中失效"],
+          ["民政职能", "民事公证，记录两代人离别", "GS-2158-01"]
+        ]
+      },
+      FAMILY_BULLETIN: {
+        title: "GS-2158-01 光际家书公报",
+        level: "L3 深空单向广播编码协议 / L4 民事公证与血缘法权",
+        formula: "Packet_Format = [Header_64b | Hash_256b | Payload_100MB | FEC_Parity_30%]",
+        specs: [
+          ["公报性质", "飞船与地球母星民政部门联合民事法定公报", "不可逆离别官方凭据"],
+          ["发射参数", "351nm 脉冲紫外光，单次发送持续 1800 秒", "包含家书、全息影像与遗嘱"],
+          ["法权效力", "单向到达地球后自动生效，不可撤销", "两代人生理与法律隔离"]
+        ]
+      },
+      CANDLE_ARRAY: {
+        title: "烛照超大基线光学干涉发射阵 (月背)",
+        level: "L3 超大基线相干合成 / L4 192路多波束相位共轭",
+        formula: "192路相干合成：P_eff = 50MW × 192² / N_phase [4.24年单程，丢包14.8%]",
+        specs: [
+          ["部署位置", "月球背面齐奥尔科夫斯基环形山", "极低电磁干扰"],
+          ["发射系统", "192路多波束相干合成，50MW", "直对比邻星b接收端"],
+          ["链路性能", "4.24年单程，丢包14.8%", "超高冗余FEC/LDPC纠错码，20%丢失无损还原"]
+        ]
+      },
+      FEC_LOG: {
+        title: "0419批次丢包纠错与前向信道日志",
+        level: "L3 稀疏奇偶校验码 (LDPC) / L4 级联极化译码器",
+        formula: "H · cᵀ = 0 (mod 2)  [信道删除率 ε = 0.148 < 0.20，数学无损还原定理]",
+        specs: [
+          ["纠错算法", "准循环低密度奇偶校验码 (QC-LDPC) + Polar Codes", "冗余率 35%"],
+          ["日志批次", "GS-2375-01 / 0419 数据包", "4.24光年星际尘埃散射恢复"],
+          ["还原精度", "误比特率 BER < 10⁻¹⁵", "两星系无损数据平准基石"]
+        ]
+      },
+      MIRROR_PROTOCOL: {
+        title: "双星系知识增量镜像协议 (2500+)",
+        level: "L3 极化纠错码率方程 / L4 异步知识库对等同步",
+        formula: "R_code = 1 - H(W_N)  [500Mbps吞吐量，5年异步增量同步，4.24年光时延]",
+        specs: [
+          ["载波与编码", "太赫兹频段 + 极化码 (Polar Codes)", "超高冗余前向纠错"],
+          ["同步机制", "5年周期异步全量增量同步", "知识平准化共享"],
+          ["对应正典", "GS-2500-01 数据平准协议", "两星系科学/专利/文学永久对等"]
+        ]
+      },
+      LEVELING_PROTOCOL: {
+        title: "GS-2500-01 数据平准协议",
+        level: "L3 跨星系对等版权与学术互认 / L4 分布式异地冷存储",
+        formula: "Sync_Interval = 5.0 Years, Round_Trip_Delay = 8.48 Years  [双向对等全量互备]",
+        specs: [
+          ["协议范围", "两星系科学实验、专利库、文学艺术永久对等共享", "消除技术孤岛与文明断层"],
+          ["对等原则", "无知识产权壁垒，全人类共有知识财产", "GS-2500-01 正典公约"],
+          ["存储介质", "五维光学石英晶体永久介质", "耐受 10 亿年深时间退化"]
+        ]
+      }
+    };
+
+    function filterEpoch(epoch, btn) {
+      document.querySelectorAll('.epoch-btn').forEach(b => b.classList.remove('active'));
+      if (btn) {
+        btn.classList.add('active');
+      } else if (event && event.currentTarget) {
+        event.currentTarget.classList.add('active');
+      }
+
+      const cards = document.querySelectorAll('.tech-card');
+      cards.forEach(card => {
+        const cardEpoch = card.dataset.epoch;
+        if (epoch === 'all') {
+          card.style.display = 'block';
+        } else if (epoch === '落地' || epoch === '落地/双星') {
+          if (cardEpoch === '落地' || cardEpoch === '双星系' || cardEpoch === '落地/双星') {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        } else if (cardEpoch === epoch) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function openDrawer(key) {
+      const data = commsData[key] || {
+        title: "光际通信工程技术蓝图",
+        level: "L3 物理公式 / L4 工装参数",
+        formula: "遵循麦克斯韦电磁场方程组与深空极化纠错码标准",
+        specs: [
+          ["工程规格", "深时间通信网标准", "100% 自持与对等"],
+          ["物理机制", "相干激光阵列 / 极化纠错码", "耐跨光年时延"],
+          ["对应正典", "GS-2035 / GS-2096 / GS-2158 / GS-2375 / GS-2500", "已入库"]
+        ]
+      };
+
+      let rows = data.specs.map(s => `<tr><td><b>${s[0]}</b></td><td>${s[1]}</td><td><span style="color:#22d3ee">${s[2]}</span></td></tr>`).join('');
+
+      document.getElementById('drawerContent').innerHTML = `
+        <h2>${data.title}</h2>
+        <div style="font-size:12px;color:#94a3b8;margin-bottom:12px;">层级：${data.level}</div>
+        
+        <div class="section-title">🔬 L3 物理光学与相对论通信公式</div>
+        <div class="code-box">${data.formula}</div>
+
+        <div class="section-title">🔩 L4 关键工装参数与信道指标表</div>
+        <table class="param-table">
+          <thead><tr><th>系统组件</th><th>技术规格与工作频段</th><th>性能指标与工程冗余</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+
+        <div class="section-title">📜 深时间通信网络正典档案关联</div>
+        <p style="font-size:12px;color:#94a3b8;line-height:1.6;margin-top:6px;">
+          本技术参数直接支撑《信标07维护单》（GS-2096-05）、《光际家书公报》（GS-2158-01）、《0419批次丢包纠错日志》（GS-2375-01）与《数据平准协议》（GS-2500-01）。
+        </p>
+      `;
+
+      document.getElementById('drawerOverlay').style.display = 'flex';
+    }
+
+    function closeDrawer(e) {
+      if (e.target.id === 'drawerOverlay') {
+        document.getElementById('drawerOverlay').style.display = 'none';
+      }
+    }
+    function closeDrawerForce() {
+      document.getElementById('drawerOverlay').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

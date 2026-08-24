@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>世代飞船 · 文明生物圈与异星驯化千禧科技树全景控制台 (2038—2500+)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #060c0a;
+      --card-bg: #0b1713;
+      --card-hover: #122820;
+      --border: #183328;
+      --border-light: #234c3c;
+      --text: #f0fdf4;
+      --muted: #86a798;
+      --green: #4ade80;
+      --green-glow: rgba(74, 222, 128, 0.35);
+      --accent: #4ade80;
+      --emerald: #10b981;
+      --teal: #14b8a6;
+      --purple: #c084fc;
+      --orange: #fb923c;
+      --amber: #f59e0b;
+      --red: #ef4444;
+      --cyan: #06b6d4;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      padding: 24px;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .brand h1 {
+      font-size: 23px;
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: -0.02em;
+    }
+    .brand p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 5px;
+      font-family: var(--font-mono);
+    }
+    .stats-bar {
+      display: flex;
+      gap: 12px;
+      background: var(--card-bg);
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 12px;
+      flex-wrap: wrap;
+    }
+    .stat-item { display: flex; align-items: center; gap: 6px; }
+    .badge {
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+    }
+    .badge-bio {
+      background: rgba(74, 222, 128, 0.15);
+      color: var(--green);
+      border: 1px solid rgba(74, 222, 128, 0.4);
+    }
+    .badge-epoch {
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 600;
+      font-family: var(--font-mono);
+    }
+    .badge-epoch[data-epoch="替代"] { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); }
+    .badge-epoch[data-epoch="竞赛"] { background: rgba(249, 115, 22, 0.15); color: #fb923c; border: 1px solid rgba(249, 115, 22, 0.4); }
+    .badge-epoch[data-epoch="丰裕"] { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); }
+    .badge-epoch[data-epoch="离心"] { background: rgba(139, 92, 246, 0.15); color: #c084fc; border: 1px solid rgba(139, 92, 246, 0.4); }
+    .badge-epoch[data-epoch="启航"] { background: rgba(6, 182, 212, 0.15); color: #22d3ee; border: 1px solid rgba(6, 182, 212, 0.4); }
+    .badge-epoch[data-epoch="落地"] { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); }
+
+    /* 纪元筛选导航栏 */
+    .timeline-nav {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      margin-bottom: 24px;
+      background: var(--card-bg);
+      padding: 6px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .epoch-btn {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      padding: 10px 4px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      text-align: center;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .epoch-btn:hover {
+      background: #142a20;
+      color: var(--text);
+    }
+    .epoch-btn.active {
+      background: #059669;
+      color: #fff;
+      font-weight: bold;
+      box-shadow: 0 0 14px var(--green-glow);
+    }
+    .epoch-year {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      opacity: 0.85;
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* 五大支柱主网格 */
+    .panorama-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+    .pillar-col {
+      background: rgba(11, 23, 19, 0.85);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      min-height: 480px;
+    }
+    .pillar-header {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .tech-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 12px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+    .tech-card:hover {
+      background: var(--card-hover);
+      border-color: var(--green);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6), 0 0 10px rgba(74, 222, 128, 0.15);
+    }
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .card-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #e2e8f0;
+      line-height: 1.45;
+    }
+    .card-year {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--green);
+    }
+    .card-desc {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.45;
+      margin-top: 6px;
+    }
+    .card-spec {
+      font-size: 10px;
+      color: #e9d5ff;
+      background: rgba(192, 132, 252, 0.12);
+      padding: 3px 6px;
+      border-radius: 4px;
+      margin-top: 8px;
+      display: inline-block;
+      border: 1px solid rgba(192, 132, 252, 0.28);
+      font-family: var(--font-mono);
+    }
+
+    /* 钻取抽屉面板 */
+    .drawer-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(5px);
+      display: none;
+      z-index: 999;
+      justify-content: flex-end;
+    }
+    .drawer {
+      background: #09130f;
+      width: 100%;
+      max-width: 620px;
+      height: 100vh;
+      border-left: 1px solid var(--border-light);
+      padding: 30px;
+      overflow-y: auto;
+      box-shadow: -12px 0 35px rgba(0, 0, 0, 0.85);
+      position: relative;
+      animation: slideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes slideIn {
+      from { transform: translateX(100%); }
+      to { transform: translateX(0); }
+    }
+    .drawer-close {
+      position: absolute;
+      top: 20px; right: 20px;
+      background: #15261f;
+      border: 1px solid var(--border-light);
+      color: #fff;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .drawer-close:hover {
+      background: #234336;
+      color: var(--green);
+    }
+    .drawer h2 {
+      color: var(--green);
+      font-size: 20px;
+      margin-bottom: 6px;
+      line-height: 1.35;
+    }
+    .drawer .section-title {
+      font-size: 13px;
+      color: var(--orange);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin: 20px 0 8px;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 4px;
+    }
+    .code-box {
+      background: #030806;
+      border: 1px solid var(--border-light);
+      padding: 12px 14px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #86efac;
+      overflow-x: auto;
+      line-height: 1.55;
+    }
+    .param-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      font-size: 12px;
+    }
+    .param-table th, .param-table td {
+      padding: 9px 11px;
+      border: 1px solid var(--border-light);
+      text-align: left;
+    }
+    .param-table th {
+      background: #11231c;
+      color: #cbd5e1;
+      font-weight: 600;
+    }
+    .param-table td {
+      background: rgba(11, 23, 19, 0.6);
+    }
+
+    @media (max-width: 1280px) {
+      .panorama-grid { grid-template-columns: repeat(3, 1fr); }
+      .timeline-nav { grid-template-columns: repeat(4, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .panorama-grid { grid-template-columns: 1fr; }
+      .timeline-nav { grid-template-columns: repeat(2, 1fr); }
+      header { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <h1>🌱 世代飞船 · 文明生物圈与异星驯化千禧科技树全景控制台 (2038—2500+)</h1>
+      <p>ARK-01 Biosphere Engineering Console · 碳基生态自持 / 两百年真菌漂变 / 异星土壤熟化</p>
+    </div>
+    <div class="stats-bar">
+      <div class="stat-item"><span class="badge badge-bio">光反应器</span> TRL 8-9</div>
+      <div class="stat-item"><span class="badge badge-bio">母本系</span> TRL 7</div>
+      <div class="stat-item"><span class="badge badge-bio">农业环</span> 28m²/人</div>
+      <div class="stat-item"><span class="badge badge-bio">真菌共生</span> 受控</div>
+    </div>
+  </header>
+
+  <!-- 纪元筛选控制器 (7 Epochs) -->
+  <div class="timeline-nav">
+    <button class="epoch-btn active" onclick="filterEpoch('all')">全纪元全景<span class="epoch-year">2025—3000+</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('替代')">① 替代纪元<span class="epoch-year">2025—2035</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('竞赛')">② 竞赛纪元<span class="epoch-year">2035—2050</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('丰裕')">③ 丰裕纪元<span class="epoch-year">2050—2080</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('离心')">④ 离心纪元<span class="epoch-year">2080—2150</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('启航')">⑤ 启航纪元<span class="epoch-year">2150—2350</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('落地')">⑥ 落地/双星<span class="epoch-year">2350—3000+</span></button>
+  </div>
+
+  <!-- 五大支柱主网格 -->
+  <main class="panorama-grid">
+
+    <!-- 支柱 1：微藻光生物反应器 -->
+    <div class="pillar-col">
+      <div class="pillar-header">🌿 1. 微藻光生物反应器</div>
+      
+      <div class="tech-card" data-epoch="替代" onclick="openDrawer('ALGAE_REACTOR')">
+        <div class="card-top">
+          <span class="badge-epoch" data-epoch="替代">替代</span>
+          <span class="card-year">2038</span>
+        </div>
+        <div class="card-title">月面50L螺旋藻平板反应器</div>
+        <div class="card-desc">CO₂吸收率1.8g/(L·d)，单日产氧65L</div>
+        <div class="card-spec">气液分离微重力气泡栓塞</div>
+      </div>
+    </div>
+
+    <!-- 支柱 2：方舟母本系选育 -->
+    <div class="pillar-col">
+      <div class="pillar-header">🌾 2. 方舟母本系选育</div>
+
+      <div class="tech-card" data-epoch="丰裕" onclick="openDrawer('SEED_BANK')">
+        <div class="card-top">
+          <span class="badge-epoch" data-epoch="丰裕">丰裕</span>
+          <span class="card-year">2068</span>
+        </div>
+        <div class="card-title">耐辐射矮秆小麦方舟母本系</div>
+        <div class="card-desc">诱变修复酶基因过表达，耐受20mGy/d慢性辐照</div>
+        <div class="card-spec">每5年与地表基线比对校正</div>
+      </div>
+    </div>
+
+    <!-- 支柱 3：飞船农业环 -->
+    <div class="pillar-col">
+      <div class="pillar-header">🌱 3. 飞船农业环</div>
+
+      <div class="tech-card" data-epoch="启航" onclick="openDrawer('AGRI_RING')">
+        <div class="card-top">
+          <span class="badge-epoch" data-epoch="启航">启航</span>
+          <span class="card-year">2150</span>
+        </div>
+        <div class="card-title">环形多层人造黑土槽+小球藻管道</div>
+        <div class="card-desc">人均28m²耕地，日供热量2800kcal，氮磷钾闭路循环</div>
+        <div class="card-spec">全面采用组织培养肉</div>
+      </div>
+
+      <div class="tech-card" data-epoch="启航" onclick="openDrawer('SEED_COLONIZATION')">
+        <div class="card-top">
+          <span class="badge-epoch" data-epoch="启航">启航</span>
+          <span class="card-year">2150</span>
+        </div>
+        <div class="card-title">静海方舟母本系殖装</div>
+        <div class="card-desc">耐辐射矮秆作物从月面种质库移植到飞船农业环</div>
+        <div class="card-spec">两百年连续自持</div>
+      </div>
+    </div>
+
+    <!-- 支柱 4：船内真菌共生生态 -->
+    <div class="pillar-col">
+      <div class="pillar-header">🍄 4. 船内真菌共生生态</div>
+
+      <div class="tech-card" data-epoch="启航" onclick="openDrawer('FUNGUS_BIOFILM')">
+        <div class="card-top">
+          <span class="badge-epoch" data-epoch="启航">启航</span>
+          <span class="card-year">2210</span>
+        </div>
+        <div class="card-title">盲孔管壁变异型青霉/镰刀菌复合菌膜</div>
+        <div class="card-desc">以聚乙二醇挥发物为碳源，附着冷凝水管壁</div>
+        <div class="card-spec">无法灭绝，转为受控共生</div>
+      </div>
+
+      <div class="tech-card" data-epoch="启航" onclick="openDrawer('CLEANING_PROTOCOL')">
+        <div class="card-top">
+          <span class="badge-epoch" data-epoch="启航">启航</span>
+          <span class="card-year">2210</span>
+        </div>
+        <div class="card-title">第408区菌膜清洗规程</div>
+        <div class="card-desc">定期人工划定区域清洗，船上野生物种演化</div>
+        <div class="card-spec">人-藻-菌共生新生态</div>
+      </div>
+    </div>
+
+    <!-- 支柱 5：异星风化层熟化 -->
+    <div class="pillar-col">
+      <div class="pillar-header">🌍 5. 异星风化层熟化</div>
+
+      <div class="tech-card" data-epoch="落地" onclick="openDrawer('SOIL_CURING')">
+        <div class="card-top">
+          <span class="badge-epoch" data-epoch="落地">落地</span>
+          <span class="card-year">2353</span>
+        </div>
+        <div class="card-title">比邻星b原生红矮星光谱温室</div>
+        <div class="card-desc">厌氧脱氯菌降解高氯酸盐 ClO₄⁻→Cl⁻+2O₂</div>
+        <div class="card-spec">三百年熟化为地外粮仓</div>
+      </div>
+
+      <div class="tech-card" data-epoch="落地" onclick="openDrawer('FIRST_CROP_REPORT')">
+        <div class="card-top">
+          <span class="badge-epoch" data-epoch="落地">落地</span>
+          <span class="card-year">2354</span>
+        </div>
+        <div class="card-title">新海安温室首作报告</div>
+        <div class="card-desc">重金属络合钝化，有机质堆肥与工程线虫熟化</div>
+        <div class="card-spec">GS-2354-01</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- 钻取抽屉 -->
+  <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer(event)">
+    <div class="drawer" id="drawer">
+      <button class="drawer-close" onclick="closeDrawerForce()">✕</button>
+      <div id="drawerContent"></div>
+    </div>
+  </div>
+
+  <script>
+    const bioData = {
+      ALGAE_REACTOR: {
+        title: "月面50L螺旋藻平板光生物反应器",
+        level: "L3 光合有效辐射能量方程 / L4 低剪切离心膜脱气",
+        formula: "PAR = 800 μmol/(m²·s) LED补光，全船生保18%聚变电站发电量",
+        specs: [
+          ["反应器构型", "平板式光生物反应器，50L工作体积", "CO₂吸收率1.8g/(L·d)"],
+          ["气液分离", "低剪切离心膜脱气装置", "防止微重力气泡栓塞"],
+          ["日氧产量", "单日产氧65L", "占总氧需求12%"]
+        ]
+      },
+      SEED_BANK: {
+        title: "方舟母本系耐辐射矮秆小麦JM-68选育",
+        level: "L3 辐射诱变基因表达动力学 / L4 甲基化表观校正",
+        formula: "耐受20mGy/d慢性辐照，诱变修复酶基因过表达",
+        specs: [
+          ["种质系", "JM-68 耐辐射矮秆小麦", "耐受20mGy/d慢性辐照"],
+          ["基因监控", "每5年与地表基线比对", "甲基化表观漂变校正"],
+          ["静海种质库", "方舟母本系全谱系低温保存", "GS-2068-01"]
+        ]
+      },
+      AGRI_RING: {
+        title: "飞船环形多层人造黑土槽与小球藻管道",
+        level: "L3 物质守恒与氮磷钾闭路循环方程 / L4 培养槽与生物质反应器",
+        formula: "Δ(N, P, K) / Δt = 0  [平账误差 < 0.01%/年，日供热量 2800 kcal/人]",
+        specs: [
+          ["耕地预算", "人均 28 m² 种植面积 (10,214人闭环配置)", "NASA SP-413 标准"],
+          ["蛋白供给", "小球藻水培管道 + 组织培养肉反应釜", "全面替代大型牲畜"],
+          ["元素循环", "SCWO 矿化液与人造黑土槽高效复配", "水与矿质闭路循环"]
+        ]
+      },
+      SEED_COLONIZATION: {
+        title: "静海方舟母本系农业环殖装与自持",
+        level: "L3 表观遗传漂变动力学 / L4 种质复苏与育种舱",
+        formula: "R_mutation ≤ 1.2 × 10⁻⁸ / bp / gen  [0.65g人工重力下表观稳定]",
+        specs: [
+          ["种质移植", "从月面静海冷冻种质库向 ARK-01 移交", "耐受 20mGy/d 慢性辐照"],
+          ["繁殖代次", "200 年航程约 600 代连续繁育", "基因漂变 < 0.05%"],
+          ["正典档案", "《生态系统出港检疫鉴定书》", "GS-2150-01"]
+        ]
+      },
+      FUNGUS_BIOFILM: {
+        title: "盲孔管壁变异型青霉/镰刀菌复合菌膜",
+        level: "L3 挥发性有机碳代谢网络 / L4 冷凝管壁微生态",
+        formula: "C₂H₆O₂ (PEG 挥发物) + O₂ → 复合菌膜生物质 + H₂O + 微量生物酸",
+        specs: [
+          ["碳源捕获", "以电缆/管道聚乙二醇挥发物为碳源", "附着于冷凝水管壁"],
+          ["生态漂变", "两百年封闭环境演化为船上野生物种", "无法彻底灭绝"],
+          ["共生定型", "从灭绝控制转向受控共生平衡", "GS-2210-01 档案记录"]
+        ]
+      },
+      CLEANING_PROTOCOL: {
+        title: "第408区菌膜清洗规程与人-藻-菌共生",
+        level: "L3 群落动力学生态位竞争方程 / L4 物理刮洗与紫外灭活",
+        formula: "dN_fungi/dt = r*N*(1 - N/K) - E_clean  [周期性清洗维持生态稳态]",
+        specs: [
+          ["分区作业", "划定第 408 区等冷凝管网进行物理清洗", "周期 30 天/轮"],
+          ["微生态学", "人-藻-菌共生新生态替代绝对无菌", "验证《Aurora 失败学》"],
+          ["系统安全", "防止菌丝过度附着阻塞换热器与阀门", "全寿命闭环受控"]
+        ]
+      },
+      SOIL_CURING: {
+        title: "比邻星b原生风化层脱毒熟化工程",
+        level: "L3 厌氧脱氯反应动力学 / L4 堆肥-线虫熟化工艺",
+        formula: "ClO₄⁻ + 4H₂ → Cl⁻ + 2O₂ + 2H₂O (厌氧脱氯菌催化)",
+        specs: [
+          ["脱氯机理", "厌氧脱氯菌降解高氯酸盐", "氯离子无毒终产物"],
+          ["重金属钝化", "络合吸附固定工艺", "根系吸收阻隔"],
+          ["土壤熟化", "有机质堆肥+工程线虫", "三百年达地外粮仓标准"]
+        ]
+      },
+      FIRST_CROP_REPORT: {
+        title: "新海安温室首作报告与异星熟化",
+        level: "L3 络合吸附热力学 / L4 工程线虫与堆肥熟化",
+        formula: "K_d(HeavyMetal) > 10⁴ L/kg · 风化层有机质含量提升至 4.5%",
+        specs: [
+          ["重金属控制", "工程络合剂钝化活性重金属离子", "阻隔进入作物根系"],
+          ["土壤熟化", "SCWO 有机质堆肥 + 基因工程线虫", "风化层团粒结构形成"],
+          ["收成验证", "第一代比邻星矮秆小麦成功抽穗", "正典文献 GS-2354-01"]
+        ]
+      }
+    };
+
+    function filterEpoch(epoch) {
+      document.querySelectorAll('.epoch-btn').forEach(b => b.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+
+      const cards = document.querySelectorAll('.tech-card');
+      cards.forEach(card => {
+        if (epoch === 'all' || card.dataset.epoch === epoch) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function openDrawer(key) {
+      const data = bioData[key] || {
+        title: "生态工程技术蓝图",
+        level: "L3 反应动力学 / L4 生物载荷参数",
+        formula: "遵循千禧生态圈守恒定律与地外驯化规范",
+        specs: [
+          ["生物工程", "方舟母本系标准", "100% 自持"],
+          ["闭环约束", "氮磷钾绝对平衡", "平账误差 < 0.01%/年"],
+          ["对应正典", "GS-2038 / GS-2150 / GS-2354", "已入库"]
+        ]
+      };
+
+      let rows = data.specs.map(s => `<tr><td><b>${s[0]}</b></td><td>${s[1]}</td><td><span style="color:#4ade80;font-weight:600">${s[2]}</span></td></tr>`).join('');
+
+      document.getElementById('drawerContent').innerHTML = `
+        <h2>${data.title}</h2>
+        <div style="font-size:12px;color:#86a798;margin-bottom:12px;font-family:var(--font-mono)">层级：${data.level}</div>
+        
+        <div class="section-title">🔬 L3 底层物理/生化反应动力学公式</div>
+        <div class="code-box">${data.formula}</div>
+
+        <div class="section-title">🔩 L4 关键工装材料与生化控制参数表</div>
+        <table class="param-table">
+          <thead><tr><th>系统/生物载荷</th><th>规格与生化工艺</th><th>性能指标与约束</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+
+        <div class="section-title">📜 文明生物圈全寿命档案关联</div>
+        <p style="font-size:12px;color:#86a798;line-height:1.65;margin-top:6px;">
+          本生物工程参数直接支撑《静海螺旋藻运行报告》（GS-2038-03）、《方舟母本系血缘档案》（GS-2068-01）、《生态系统出港检疫鉴定书》（GS-2150-01）、《菌膜清洗作业日志》（GS-2210-01）与《新海安温室首作报告》（GS-2354-01）。
+        </p>
+      `;
+
+      document.getElementById('drawerOverlay').style.display = 'flex';
+    }
+
+    function closeDrawer(e) {
+      if (e.target.id === 'drawerOverlay') {
+        document.getElementById('drawerOverlay').style.display = 'none';
+      }
+    }
+    function closeDrawerForce() {
+      document.getElementById('drawerOverlay').style.display = 'none';
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.getElementById('drawerOverlay').style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

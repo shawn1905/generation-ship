@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>世代飞船 · 太阳系大扩散与地球野化千禧地理全景控制台 (2035—2638+)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #060913;
+      --card-bg: #0f172a;
+      --card-hover: #1e293b;
+      --border: #1e293b;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --amber: #f59e0b;
+      --amber-glow: rgba(245, 158, 11, 0.35);
+      --accent: #f59e0b;
+      --purple: #c084fc;
+      --blue: #38bdf8;
+      --green: #10b981;
+      --orange: #f97316;
+      --red: #ef4444;
+      --cyan: #06b6d4;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 24px;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .brand h1 { font-size: 24px; color: var(--amber); display: flex; align-items: center; gap: 8px; }
+    .brand p { color: var(--muted); font-size: 13px; margin-top: 4px; }
+    .stats-bar {
+      display: flex;
+      gap: 12px;
+      background: #0f172a;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 12px;
+      flex-wrap: wrap;
+    }
+    .stat-item { display: flex; align-items: center; gap: 6px; }
+    .badge { padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; font-family: var(--font-mono); }
+    .badge-amber { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid #d97706; }
+    
+    /* 纪元徽章配色 */
+    .badge-epoch-替代 { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid #dc2626; }
+    .badge-epoch-竞赛 { background: rgba(249, 115, 22, 0.15); color: #fb923c; border: 1px solid #ea580c; }
+    .badge-epoch-丰裕 { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid #d97706; }
+    .badge-epoch-离心 { background: rgba(139, 92, 246, 0.15); color: #a78bfa; border: 1px solid #7c3aed; }
+    .badge-epoch-启航 { background: rgba(6, 182, 212, 0.15); color: #22d3ee; border: 1px solid #0891b2; }
+    .badge-epoch-落地 { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid #059669; }
+    .badge-epoch-双星系 { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid #059669; }
+
+    /* 纪元时间轴控制器 */
+    .timeline-nav {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      margin-bottom: 24px;
+      background: #0f172a;
+      padding: 6px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .epoch-btn {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      padding: 10px 4px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .epoch-btn:hover { background: #1e293b; color: var(--text); }
+    .epoch-btn.active { background: #0284c7; color: #fff; font-weight: bold; box-shadow: 0 0 12px rgba(56, 189, 248, 0.4); }
+    .epoch-year { font-family: var(--font-mono); font-size: 11px; opacity: 0.8; display: block; margin-top: 2px; }
+    
+    /* 五大支柱主全景网格 */
+    .panorama-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+    .pillar-col {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .pillar-header {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #334155;
+    }
+    .tech-card {
+      background: var(--card-bg);
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 12px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+    .tech-card:hover {
+      background: var(--card-hover);
+      border-color: var(--amber);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(245, 158, 11, 0.15);
+    }
+    .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
+    .card-title { font-size: 13px; font-weight: 600; color: #e2e8f0; line-height: 1.4; }
+    .card-year { font-family: var(--font-mono); font-size: 11px; color: var(--amber); }
+    .card-desc { font-size: 11px; color: var(--muted); line-height: 1.4; margin-top: 4px; }
+    .card-spec { font-size: 10px; color: #cbd5e1; background: rgba(245, 158, 11, 0.1); padding: 2px 6px; border-radius: 4px; margin-top: 8px; display: inline-block; border: 1px solid rgba(245, 158, 11, 0.2); }
+    
+    /* 钻取抽屉面板 */
+    .drawer-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(4px);
+      display: none;
+      z-index: 999;
+      justify-content: flex-end;
+    }
+    .drawer {
+      background: #0f172a;
+      width: 100%;
+      max-width: 620px;
+      height: 100vh;
+      border-left: 1px solid #334155;
+      padding: 30px;
+      overflow-y: auto;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+      position: relative;
+      animation: slideIn 0.25s ease-out;
+    }
+    @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+    .drawer-close {
+      position: absolute;
+      top: 20px; right: 20px;
+      background: #1e293b;
+      border: 1px solid #475569;
+      color: #fff;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .drawer h2 { color: var(--amber); font-size: 20px; margin-bottom: 8px; }
+    .drawer .section-title { font-size: 13px; color: var(--orange); font-weight: 700; text-transform: uppercase; margin: 18px 0 8px; letter-spacing: 0.5px; border-bottom: 1px solid #334155; padding-bottom: 4px; }
+    .code-box {
+      background: #020617;
+      border: 1px solid #1e293b;
+      padding: 12px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #fbbf24;
+      overflow-x: auto;
+      line-height: 1.5;
+    }
+    .param-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 12px; }
+    .param-table th, .param-table td { padding: 8px 10px; border: 1px solid #334155; text-align: left; }
+    .param-table th { background: #1e293b; color: #cbd5e1; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <h1>🌍 世代飞船 · 太阳系大扩散与地球野化千禧地理全景控制台 (2035—2638+)</h1>
+      <p>Solar System Expansion Console · 空间五带 / 地球去工业化 / 静海巨城 / 主带工区 / 母星野化</p>
+    </div>
+    <div class="stats-bar">
+      <div class="stat-item"><span class="badge badge-amber">空间格局</span> 5 空间带</div>
+      <div class="stat-item"><span class="badge badge-amber">母星人口</span> 70亿 → 千万级</div>
+      <div class="stat-item"><span class="badge badge-amber">去工业化</span> 100% 工业迁出</div>
+      <div class="stat-item"><span class="badge badge-amber">文明原乡</span> 全人类文化原乡</div>
+    </div>
+  </header>
+
+  <!-- 纪元筛选控制器 -->
+  <div class="timeline-nav">
+    <button class="epoch-btn active" onclick="filterEpoch('all')">全纪元<span class="epoch-year">2025—3000+</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('替代')">① 替代<span class="epoch-year">2025—2035</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('竞赛')">② 竞赛<span class="epoch-year">2035—2050</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('丰裕')">③ 丰裕<span class="epoch-year">2050—2080</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('离心')">④ 离心<span class="epoch-year">2080—2150</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('启航')">⑤ 启航<span class="epoch-year">2150—2350</span></button>
+    <button class="epoch-btn" onclick="filterEpoch('落地/双星')">⑥ 落地/双星<span class="epoch-year">2350—3000+</span></button>
+  </div>
+
+  <!-- 五大支柱主全景网格 -->
+  <main class="panorama-grid">
+
+    <!-- 支柱 1：地球母星——去工业化与野化 -->
+    <div class="pillar-col">
+      <div class="pillar-header">🌍 1. 地球母星——去工业化与野化</div>
+
+      <div class="tech-card" data-epoch="替代" onclick="openDrawer('YANGSHAN_ORBIT')">
+        <div class="card-top">
+          <span class="badge badge-epoch-替代">替代</span>
+          <span class="card-year">2035</span>
+        </div>
+        <div class="card-title">洋山港重工业在轨转移</div>
+        <div class="card-desc">自动化集疏运与算力上天，高污染工厂100%迁出</div>
+        <div class="card-spec">GS-2035-02</div>
+      </div>
+
+      <div class="tech-card" data-epoch="离心" onclick="openDrawer('TAIHU_SYMBIOSIS')">
+        <div class="card-top">
+          <span class="badge badge-epoch-离心">离心</span>
+          <span class="card-year">2122</span>
+        </div>
+        <div class="card-title">华东太湖低密共生带</div>
+        <div class="card-desc">退役化工带深层脱毒野化，地表巨构演化为垂直森林</div>
+        <div class="card-spec">GS-2122-01</div>
+      </div>
+
+      <div class="tech-card" data-epoch="启航" onclick="openDrawer('CHANGJIANG_HYDRO')">
+        <div class="card-top">
+          <span class="badge badge-epoch-启航">启航</span>
+          <span class="card-year">2262</span>
+        </div>
+        <div class="card-title">长江全流域水文贯通</div>
+        <div class="card-desc">高塔垂直森林与荒野巡护，地球演化为全人类文化原乡</div>
+        <div class="card-spec">GS-2262-01</div>
+      </div>
+
+      <div class="tech-card" data-epoch="双星系" onclick="openDrawer('JINSHA_GREEN')">
+        <div class="card-top">
+          <span class="badge badge-epoch-双星系">双星系</span>
+          <span class="card-year">2638</span>
+        </div>
+        <div class="card-title">千禧地球：金沙江矿坑复绿</div>
+        <div class="card-desc">全人类文化圣地与原乡研学游</div>
+        <div class="card-spec">GS-2638-01</div>
+      </div>
+    </div>
+
+    <!-- 支柱 2：地月系——巨城崛起 -->
+    <div class="pillar-col">
+      <div class="pillar-header">🌙 2. 地月系——巨城崛起</div>
+
+      <div class="tech-card" data-epoch="丰裕" onclick="openDrawer('LUNAR_CITY')">
+        <div class="card-top">
+          <span class="badge badge-epoch-丰裕">丰裕</span>
+          <span class="card-year">2065</span>
+        </div>
+        <div class="card-title">静海低重力巨城崛起</div>
+        <div class="card-desc">千万级慢病老龄人口迁出，多穹顶生态系统稳态运行</div>
+        <div class="card-spec">GS-2065-01</div>
+      </div>
+
+      <div class="tech-card" data-epoch="双星系" onclick="openDrawer('LUNAR_HEALTH')">
+        <div class="card-top">
+          <span class="badge badge-epoch-双星系">双星系</span>
+          <span class="card-year">2603</span>
+        </div>
+        <div class="card-title">月面健康监测公报</div>
+        <div class="card-desc">静海五城400年老熟人工黑土层</div>
+        <div class="card-spec">GS-2603-01</div>
+      </div>
+    </div>
+
+    <!-- 支柱 3：内太阳系——工区与联邦 -->
+    <div class="pillar-col">
+      <div class="pillar-header">🪐 3. 内太阳系——工区与联邦</div>
+
+      <div class="tech-card" data-epoch="离心" onclick="openDrawer('SOLAR_INDUSTRY')">
+        <div class="card-top">
+          <span class="badge badge-epoch-离心">离心</span>
+          <span class="card-year">2090</span>
+        </div>
+        <div class="card-title">火星联邦与主带工区</div>
+        <div class="card-desc">太阳系重工业心脏，小行星金属采冶，总人口突破亿级</div>
+        <div class="card-spec">数亿级人口</div>
+      </div>
+
+      <div class="tech-card" data-epoch="离心" onclick="openDrawer('BELT_OUTPOST')">
+        <div class="card-top">
+          <span class="badge badge-epoch-离心">离心</span>
+          <span class="card-year">2077</span>
+        </div>
+        <div class="card-title">GS-2077-03 主带前哨自治公约</div>
+        <div class="card-desc">火星地下熔岩管联邦城市群，谷神星自持采选</div>
+        <div class="card-spec">GS-2077-03</div>
+      </div>
+
+      <div class="tech-card" data-epoch="离心" onclick="openDrawer('XUANWU_DEPOT')">
+        <div class="card-top">
+          <span class="badge badge-epoch-离心">离心</span>
+          <span class="card-year">2085</span>
+        </div>
+        <div class="card-title">GS-2085-01 玄武礁储备库清算</div>
+        <div class="card-desc">小行星带储备库与太阳能加注基地</div>
+        <div class="card-spec">GS-2085-01</div>
+      </div>
+    </div>
+
+    <!-- 支柱 4：深空航程——船队 -->
+    <div class="pillar-col">
+      <div class="pillar-header">🚀 4. 深空航程——船队</div>
+
+      <div class="tech-card" data-epoch="启航" onclick="openDrawer('ARK01_BIOSPHERE')">
+        <div class="card-top">
+          <span class="badge badge-epoch-启航">启航</span>
+          <span class="card-year">2150</span>
+        </div>
+        <div class="card-title">ARK-01 全封闭人工旋转环生态圈</div>
+        <div class="card-desc">5.2公里人工重力环，200年零补给自持演化</div>
+        <div class="card-spec">十万级人口</div>
+      </div>
+
+      <div class="tech-card" data-epoch="启航" onclick="openDrawer('FIRST_CENTURY')">
+        <div class="card-top">
+          <span class="badge badge-epoch-启航">启航</span>
+          <span class="card-year">2252</span>
+        </div>
+        <div class="card-title">首世纪决算公报</div>
+        <div class="card-desc">飞船两百年航程中的人口与社会治理</div>
+        <div class="card-spec">GS-2252-01</div>
+      </div>
+    </div>
+
+    <!-- 支柱 5：比邻星系——新大陆 -->
+    <div class="pillar-col">
+      <div class="pillar-header">⭐ 5. 比邻星系——新大陆</div>
+
+      <div class="tech-card" data-epoch="落地" onclick="openDrawer('PROXIMA_DOME')">
+        <div class="card-top">
+          <span class="badge badge-epoch-落地">落地</span>
+          <span class="card-year">2353</span>
+        </div>
+        <div class="card-title">比邻星b防风坑基气压穹顶</div>
+        <div class="card-desc">极地防风坑基，高氯酸盐风化层熟化</div>
+        <div class="card-spec">GS-2353-01</div>
+      </div>
+
+      <div class="tech-card" data-epoch="双星系" onclick="openDrawer('TERMINATOR_ZONE')">
+        <div class="card-top">
+          <span class="badge badge-epoch-双星系">双星系</span>
+          <span class="card-year">2603</span>
+        </div>
+        <div class="card-title">晨昏定居带岁时通报</div>
+        <div class="card-desc">红矮星晨昏圈定居带，千万级人口起步</div>
+        <div class="card-spec">GS-2603-02</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- 钻取抽屉 -->
+  <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer(event)">
+    <div class="drawer" id="drawer">
+      <button class="drawer-close" onclick="closeDrawerForce()">✕</button>
+      <div id="drawerContent"></div>
+    </div>
+  </div>
+
+  <script>
+    const geoData = {
+      YANGSHAN_ORBIT: {
+        title: "洋山港重工业在轨转移与算力上天工程",
+        level: "L3 轨道运力与大气逸散动力学 / L4 自动化集疏运港口",
+        formula: "ΔE_trans = ∫ (F_thrust · v) dt  [重污染工业100%迁出大气层，在轨算力与集疏运全自动化]",
+        specs: [
+          ["工业迁移", "高污染化工厂与重工业 100% 迁出大气层", "聚变能源与小行星采矿全面替代"],
+          ["集疏运架构", "自动化无人深水港转为地轨货物中继站", "自动化集疏运与在轨超算直联"],
+          ["对应正典", "GS-2035-02 洋山港在轨工业转移验收", "替代纪元起点"]
+        ]
+      },
+      TAIHU_SYMBIOSIS: {
+        title: "华东太湖低密共生带与化工深层脱毒",
+        level: "L3 生态毒理降解方程 / L4 垂直森林生物修复",
+        formula: "C_toxin(t) = C0 * exp(-k_bio * t)  [太湖全流域退役化工带深层淋洗与原位脱毒]",
+        specs: [
+          ["脱毒工程", "退役化工带深层脱毒与嗜极微生物修复", "垂直森林与无人荒野自然演替"],
+          ["共生形态", "地表工业巨构演化为低密垂直森林聚落", "人均生态绿地面积提升 400%"],
+          ["对应正典", "GS-2122-01 太湖流域低密共生公报", "离心纪元母星修复"]
+        ]
+      },
+      CHANGJIANG_HYDRO: {
+        title: "长江全流域水文贯通与高塔荒野巡护",
+        level: "L3 流域自净动力学 / L4 垂直森林生态走廊",
+        formula: "Q_river = ∫ v_clean dA  [长江干支流水系自然连通率恢复 98.5%，大坝生态化改造]",
+        specs: [
+          ["水文贯通", "高塔垂直森林与全流域荒野生态巡护", "洄游物种与原始生态链完全恢复"],
+          ["母星定位", "地球演化为全人类文化圣地与原乡", "不再背负重工业与物质生产负担"],
+          ["对应正典", "GS-2262-01 长江生态演替评估", "启航纪元原乡守望"]
+        ]
+      },
+      JINSHA_GREEN: {
+        title: "千禧地球：金沙江矿坑复绿与原乡研学游",
+        level: "L3 矿区地质再造 / L4 梯级生态台田与基因母本库",
+        formula: "S_green / S_total = 100.0%  [露天采坑梯级复绿，历史重工业遗迹转为文化地景]",
+        specs: [
+          ["复绿工程", "金沙江干流巨型露天矿坑 100% 生态愈合", "梯级台田与高原湿地生态重构"],
+          ["研学朝圣", "全人类文化圣地与原乡研学游基地", "古典高等研究院与物种基因母本库"],
+          ["对应正典", "GS-2638-01 金江台田岁事总册", "双星纪元母星地标"]
+        ]
+      },
+      EARTH_WILDING: {
+        title: "地球去工业化与生态野化工程",
+        level: "L3 生态演替动力学 / L4 退役化工深层脱毒",
+        formula: "地球碳排量 = 0 (100%重工业迁出大气层，聚变能源+小行星采矿)",
+        specs: [
+          ["工业迁移", "重污染工厂100%迁出大气层", "聚变能源与小行星采矿替代"],
+          ["脱毒工程", "退役化工带深层脱毒", "垂直森林与荒野"],
+          ["母星定位", "全人类文化圣地、物种基因备份母本库", "研学朝圣原乡"]
+        ]
+      },
+      LUNAR_CITY: {
+        title: "静海低重力巨城 (千万级人口)",
+        level: "L3 大跨度穹顶结构力学 / L4 月面微波烧结建材",
+        formula: "穹顶跨度 = f(σ_yield, ρ, g) 静海五城多穹顶稳态运行400年",
+        specs: [
+          ["人口规模", "千万级慢病老龄人口", "地月系康养中心"],
+          ["穹顶系统", "多穹顶生态系统稳态运行400年", "形成老熟人工黑土层"],
+          ["建材工艺", "月壤微波烧结制砖，抗压>30MPa", "ESA/中国探月地面样机验证"]
+        ]
+      },
+      LUNAR_HEALTH: {
+        title: "月面健康监测公报与四百年黑土层",
+        level: "L3 地外土壤发生学 / L4 0.166g 低重力康养机理",
+        formula: "Soil_organic = f(t, C_in, SCWO_ash)  [静海五城400年老熟人工黑土层厚度达 35cm]",
+        specs: [
+          ["黑土熟化", "静海五城400年老熟人工黑土层", "月壤与闭环有机质完全生物熟化"],
+          ["康养效能", "0.166g 低重力环境显著改善心血管负担", "千万级慢病老龄人口疗养原乡"],
+          ["对应正典", "GS-2603-01 月面健康监测公报", "双星纪元地月长青"]
+        ]
+      },
+      SOLAR_INDUSTRY: {
+        title: "火星联邦与主带工区 (数亿级人口)",
+        level: "L3 空间经济学 / L4 小行星气相羰基化提纯",
+        formula: "工业产出 = Σ(各行星带资源禀赋 × 运输成本⁻¹) 太阳系重工业心脏",
+        specs: [
+          ["火星", "地下熔岩管联邦城市群", "火星殖民中心"],
+          ["主带工区", "小行星金属采冶，谷神星自持采选", "太阳系重工业心脏"],
+          ["能源", "太空太阳能加注基地", "聚变与太阳能双冗余"]
+        ]
+      },
+      BELT_OUTPOST: {
+        title: "GS-2077-03 主带前哨自治公约与熔岩管城邦",
+        level: "L3 深空地缘政治学 / L4 熔岩管气密自持工程",
+        formula: "P_tube = 101.3 kPa, T = 22±2℃  [火星地下熔岩管天然抵御宇宙线与微陨石]",
+        specs: [
+          ["熔岩管联邦", "火星地下熔岩管联邦城市群", "数千万级重工工程师定居中枢"],
+          ["主带采选", "谷神星自持采选与深空重元素冶炼", "主带前哨自治公约确立自持法理"],
+          ["对应正典", "GS-2077-03 主带前哨自治公约", "离心纪元深空自治"]
+        ]
+      },
+      XUANWU_DEPOT: {
+        title: "GS-2085-01 玄武礁储备库清算与加注基地",
+        level: "L3 小行星动力学 / L4 太空太阳能聚光加注",
+        formula: "E_capture = η_solar * A_mirror * I_solar  [小行星带重金属与战略水冰交割]",
+        specs: [
+          ["深空储备", "小行星带玄武礁深空战略储备库", "高纯金属与核燃料战备储备"],
+          ["加注网络", "太阳能微波加注基地与深空货运航路", "支撑全太阳系航线物资平账"],
+          ["对应正典", "GS-2085-01 玄武礁储备库清算", "离心纪元资源调配"]
+        ]
+      },
+      ARK01_BIOSPHERE: {
+        title: "ARK-01 全封闭人工旋转环生态圈",
+        level: "L3 闭环生态热力学平衡 / L4 双联旋转人工重力",
+        formula: "Σ(Inputs) = Σ(Outputs) + dM/dt = 0  [5.2公里人工重力环，200年零补给自持演化]",
+        specs: [
+          ["自持规模", "5.2公里人工重力环，200年零补给自持演化", "十万级人口恒星际繁衍"],
+          ["人工重力", "双联反向自转 0.65g 主环 / 0.34g 恢复环", "消除长期失重肌萎缩与骨流失"],
+          ["对应正典", "GS-2150-01 飞船生态检疫书", "启航纪元跨代方舟"]
+        ]
+      },
+      FIRST_CENTURY: {
+        title: "首世纪决算公报 (GS-2252-01)",
+        level: "L3 代际人口社会动力学 / L4 闭环资源严格平账",
+        formula: "Balance = ∫ (Resource_produced - Resource_consumed) dt ≈ 0  [百年平账与社会自持]",
+        specs: [
+          ["社会治理", "飞船两百年航程中的人口与社会治理", "严格资源配给与代际技能传承"],
+          ["航程度量", "第一航行世纪决算公报零故障平账", "深空社会学与法理学经典范式"],
+          ["对应正典", "GS-2252-01 首世纪决算公报", "启航纪元航渡中枢"]
+        ]
+      },
+      PROXIMA_DOME: {
+        title: "比邻星b防风坑基气压穹顶 (GS-2353-01)",
+        level: "L3 极端系外行星工程 / L4 高氯酸盐风化层熟化",
+        formula: "P_internal = 101.3 kPa, V_storm_max = 140 m/s  [极地深坑天然地貌避风屏障]",
+        specs: [
+          ["防风坑基", "极地防风坑基气压穹顶锚定工程", "抵御红矮星超级耀斑与极端暴风"],
+          ["风化熟化", "高氯酸盐风化层经三百年熟化为地外粮仓", "奠定新大陆农业拓殖基础"],
+          ["对应正典", "GS-2353-01 防风坑基公证书", "落地纪元新世界破土"]
+        ]
+      },
+      TERMINATOR_ZONE: {
+        title: "晨昏定居带岁时通报 (GS-2603-02)",
+        level: "L3 潮汐锁定行星气候动力学 / L4 晨昏温带宜居带微气候",
+        formula: "T_comfort = 20±3℃  [红矮星潮汐锁定晨昏圈永恒温带定居狭长走廊]",
+        specs: [
+          ["定居带格局", "红矮星晨昏圈定居带，千万级人口起步", "沿晨昏线延展数千公里的城市链"],
+          ["双星中心", "半人马座双星系新大陆文明中心与科研中枢", "开启恒星际双星时代新篇章"],
+          ["对应正典", "GS-2603-02 晨昏定居带岁时通报", "双星纪元新纪元起点"]
+        ]
+      }
+    };
+
+    function filterEpoch(epoch) {
+      document.querySelectorAll('.epoch-btn').forEach(b => b.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+
+      const cards = document.querySelectorAll('.tech-card');
+      cards.forEach(card => {
+        const cardEpoch = card.dataset.epoch;
+        if (epoch === 'all' || cardEpoch === epoch || (epoch === '落地/双星' && (cardEpoch === '落地' || cardEpoch === '双星系' || cardEpoch === '落地/双星'))) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function openDrawer(key) {
+      const data = geoData[key] || {
+        title: "千禧地理档案节点",
+        level: "L3 空间格局动力学 / L4 生态演化参数",
+        formula: "严格遵循太阳系大扩散与母星野化硬核地理演进律",
+        specs: [
+          ["地理实体", "空间五带核心枢纽", "千禧编年史认证"],
+          ["生态指标", "100% 工业迁出与生态野化", "自持闭环稳态"],
+          ["对应正典", "GS-2035 至 GS-2638+", "已入库正典"]
+        ]
+      };
+
+      let rows = data.specs.map(s => `<tr><td><b>${s[0]}</b></td><td>${s[1]}</td><td><span style="color:#fbbf24">${s[2]}</span></td></tr>`).join('');
+
+      document.getElementById('drawerContent').innerHTML = `
+        <h2>${data.title}</h2>
+        <div style="font-size:12px;color:#94a3b8;margin-bottom:12px;">层级：${data.level}</div>
+        
+        <div class="section-title">🔬 L3 底层物理/反应动力学与地理演替公式</div>
+        <div class="code-box">${data.formula}</div>
+
+        <div class="section-title">🔩 L4 关键工装材料与生态机电参数表</div>
+        <table class="param-table">
+          <thead><tr><th>系统组件</th><th>规格与材质</th><th>性能与约束</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+
+        <div class="section-title">📜 关联千禧地理正典文献与坐标</div>
+        <p style="font-size:12px;color:#94a3b8;line-height:1.6;margin-top:6px;">
+          本节点数据直接支撑《千禧地理志 · 太阳系大扩散与地球野化史》（2035—2638+）。母星地球完成去工业化演变为文化原乡，人类文明数亿人口扩散至地月系、火星主带与比邻星系。
+        </p>
+      `;
+
+      document.getElementById('drawerOverlay').style.display = 'flex';
+    }
+
+    function closeDrawer(e) {
+      if (e.target.id === 'drawerOverlay') {
+        document.getElementById('drawerOverlay').style.display = 'none';
+      }
+    }
+    function closeDrawerForce() {
+      document.getElementById('drawerOverlay').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
