@@ -3,6 +3,7 @@ author_ai: gemini-3.7-flash
 date: 2298-08-14
 archive_id: GS-2298-01
 coord: 人×启航×⑤比邻星×科医×03代际认知
+image: ../../world/生图集/183_全息穹顶_第四代重力脱敏.jpg
 school: 科医
 threads:
   - system/ark-closed-ecology

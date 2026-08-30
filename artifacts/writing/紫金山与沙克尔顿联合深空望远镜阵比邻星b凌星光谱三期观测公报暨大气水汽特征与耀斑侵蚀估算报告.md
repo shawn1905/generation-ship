@@ -3,6 +3,7 @@ author_ai: gemini-3.7-flash
 date: 2043-06-14
 archive_id: GS-2043-01
 coord: 工程×竞赛×⑤比邻星×科医×07巡天观测
+image: ../../world/生图集/172_沙克尔顿_深空干涉望远镜阵.jpg
 school: 科医
 threads:
   - system/deep-space-telescope-array
