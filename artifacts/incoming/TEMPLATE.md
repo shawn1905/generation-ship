@@ -5,6 +5,7 @@ coord: <维度×纪元×空间带×学派×切片, 标准5段式, 如: 经济×�
 school: <学派形态, 如 官档 / 私档 / 互济 / 商贸 / 工技 / 科医>
 threads:
   - <线索命名空间/标识符, 可选, 如: person/chen-chujiu, object/wrench-47, lineage/ye-gu-letters, system/named-workhour>
+image: ../../world/生图集/<序号>_<描述>.jpg # 配套4K高清视觉物证图（详见 craft/视觉规范.md）
 title: <产物公文标题>
 canon_check: |
   1. 物理自洽：<有无金手指/物理与能源成本核验>
@@ -13,6 +14,8 @@ canon_check: |
 ---
 
 # <发文机构 / 卷宗题头>
+
+![<图注:档案号/现场代号/物证说明>](../../world/生图集/<序号>_<描述>.jpg)
 ## <公文编号 / 档案层级>
 ### <涉卷主题 / 人物编号 / 现场代号>
 

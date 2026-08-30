@@ -17,7 +17,10 @@
   - 宏观星区勘探度从 153/245 提升至 **166/245 格**（空白收窄至 79 格）；
   - 分形微观网格勘探度达到 **173/10,290 格**；
   - 自动穿线拓扑谱（`craft/千禧线索拓扑谱.md`）已识别并织入 17 条跨时空线索（全面激活 `person/chen-chujiu`、`object/wrench-47`、`object/lead-boots`、`lineage/ye-gu-letters`、`lineage/martian-slang`、`system/low-gravity-labor-act`、`system/named-workhour` 等核心生命线）；
-  - 台账 `artifacts/档案登记簿.md` 与热力图数据 `scripts/heatmap_data.json` 同步回填完成。
+- **🎨 生图正式确立为常规创作必修闭环（图文合璧）**：
+  - **宪法与规范对齐**：`AGENTS.md`（核心原则第8条 & §3.1）与 `craft/编写规范.md`（§1 创作六步法 & §9 图文配套规范）正式确立「每一篇正典文书必须配备一张 4K 高清物证图（存放于 `world/生图集/`）」；
+  - **模板与工具链固化**：`artifacts/incoming/TEMPLATE.md` 标配 `image:` 字段与文首图注占位符；统一调用 `smart-image-gen` 驱动工业级写实生图；
+  - **存量 100% 配图**：本次 20 篇新增正典已全量生成并嵌合图号 `170~189` 视觉物证。
 
 ## 上一会话状态（2026-08-24 · 7 条主线科技树全景控制台 + 交互资产入库）
 
