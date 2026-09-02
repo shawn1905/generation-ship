@@ -25,27 +25,26 @@
 
 ## 硬件规格与渲染基准 (Benchmark)
 
-| 指标 | 记录参数 |
-|---|---|
-| **CPU** | 11th Gen Intel(R) Core(TM) i7-1160G7 @ 1.20GHz (8 vCPUs) |
-| **GPU / 核显** | Intel Corporation Tiger Lake-UP4 GT2 [Iris Xe Graphics] (rev 01) |
-| **操作系统** | Linux 7.1.9-arch1-2 (x86_64) |
-| **Blender 版本** | Blender 5.2.0 LTS (build 2026-08-08) |
-| **渲染引擎** | Cycles Engine (CPU + GPU compute fallback) |
-| **分辨率** | 1920 × 1080 (100% Scale) |
-| **采样率** | 100 Samples per scene |
-| **实测耗时** | **2 分 32 秒 11** (包含 Compositor 后期保存) |
-| **产物文件** | `render_0001.png` (约 6.0 MB) |
+| 环境 / 芯片 | 渲染设备 | 分辨率 / 采样 | 实测 / 预估耗时 | 状态 |
+|---|---|---|---|---|
+| **Linux (Intel i7-1160G7)** | CPU (Cycles) | 1920×1080 @ 100 spp | **2 分 32 秒 (152.1s)** | ✅ 已测基准 |
+| **MacBook (Apple M2)** | **Metal GPU (10核)** | 1920×1080 @ 100 spp | **预计 ~25~35 秒** | 待 Mac 实测更新 |
+| **MacBook Pro (M2 Pro)** | **Metal GPU (19核)** | 1920×1080 @ 100 spp | **预计 ~12~18 秒** | 待 Mac 实测更新 |
 
 ---
 
-## 本地复现命令
+## 🚀 渲染执行指南
 
-在装有 Blender 的终端执行：
-
+### 1. Mac 端推荐执行（开启 Metal 加速）
+使用项目自带的一键加速脚本：
 ```bash
-# 后台无头渲染（Cycles 引擎，渲染第 1 帧）
+# 进入世代飞船项目根目录
+./world/3d/render_mac.sh world/3d/gargantua/Gargantua.blend 100 100
+```
+
+### 2. Linux / 通用 CLI 执行
+```bash
 blender -b Gargantua.blend -E CYCLES -o //render_ -f 1
 ```
 
-输出图片将保存在当前工程同级目录下 `render_0001.png`。
+输出产物将保存在当前目录下：`render_0001.png`（或 Mac 下生成的 `render_mac_0001.png`）。
