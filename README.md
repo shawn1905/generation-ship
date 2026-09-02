@@ -41,9 +41,8 @@ generation-ship/
 ├── core/          # 🧱 世界本体(内核/通史/地图/治理)——几乎不动
 ├── craft/         # 🛠 工艺规范(编写规范/空白网格矩阵)
 ├── artifacts/     # 📄 产物(正典 writing/ + 投稿口 incoming/ + 灵感笔记)
+├── world/         # 🪐 世界物料(时间轴/ARK-01/生图集/3D物理渲染与建模)
 ├── ecosystem/     # 🔌 共创生态: 7 条主线科技树控制台,agent-kit,skill,mcp,promotion
-├── scripts/       # 脚本(校验/生图/开源维护)
-├── ecosystem/     # 🔌 共创生态(skill / mcp / promotion)
 ├── scripts/       # 脚本(校验/生图/开源维护)
 ├── branch/        # ⛔ 独立模块：科幻素材库 → 交互式画廊(gh-pages)
 └── openwiki/      # ⛔ 独立模块：wiki(暂时挂起，稳定期再同步)
@@ -54,6 +53,7 @@ generation-ship/
 1. **历史底座** — [文明扩散时间轴](world/时间轴/文明扩散时间轴_梗概.md)(七纪元) + [文明纪年法](core/文明纪年法.md)
 2. **未来博物馆** — 素材库 2000+ 条([`branch/`](branch/)) + 创作区([`artifacts/`](artifacts/))
 3. **工程深挖** — [ARK-01 本体](world/ark01/)(Phase 0—3)
+4. **3D 物理渲染与建模** — [黑洞与深空工程资产库](world/3d/)(Cycles 物理光追 + Benchmark)
 5. **科技树全景控制台** — [7 条主线交互式仪表盘](ecosystem/index.html)(GitHub Pages 在线, 含总索引)
 
 
