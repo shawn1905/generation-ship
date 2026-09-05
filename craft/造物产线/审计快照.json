@@ -1,0 +1,520 @@
+{
+  "scope": "Current local checkout; metadata audit, not semantic or engineering certification",
+  "limits": [
+    "ID year can differ from revised document year; epoch findings require review",
+    "Existing reference target does not prove its title/content matches",
+    "Reference ranges are not expanded; parser reads single-line top-level metadata only",
+    "Model inventory covers local files, not remote storage or external applications"
+  ],
+  "counts": {
+    "writing_documents_with_id": 272,
+    "unique_ids": 263,
+    "registry_rows": 272,
+    "reference_occurrences": 380
+  },
+  "duplicate_ids": {
+    "GS-2152-01": [
+      "artifacts/writing/ARK-01启航前夕首期一万两千名乘员全基因组多样性筛查与遗传表型锁定台账.md",
+      "artifacts/writing/ARK-01聚变脉冲主推进系统全功率联合试车遥测公报暨试车窗口航道清空与残骸防护调度令.md"
+    ],
+    "GS-2153-01": [
+      "artifacts/writing/世代飞船“ARK-01”出港全物资实物配额总账暨全封闭经济体首日平准结算单.md",
+      "artifacts/writing/谷神星外轨天梭-01锚地转深空物流中继港过渡期管理通告暨留守人员安置办法.md"
+    ],
+    "GS-2156-01": [
+      "artifacts/writing/世代飞船“ARK-01”启航第五航行年双向相对论动钟慢效应与多普勒频移校准公报.md",
+      "artifacts/writing/谷神星外轨天梭-01中继港留守乘员年度生活状况评估报告暨志愿服务意愿登记册.md"
+    ],
+    "GS-2076-02": [
+      "artifacts/writing/世代飞船内部“无货币互助社”法权演进与公投治理章程草案.md",
+      "artifacts/writing/深空货运相互保赔协会2076年度主带航线风险费率表暨海损理赔决算公报.md"
+    ],
+    "GS-2079-01": [
+      "artifacts/writing/世代飞船双层封闭农业环微藻光合放氧与人工授粉昆虫替代工艺模拟公报.md",
+      "artifacts/writing/内奥尔特云千天文单位远征母港“玄冥-01”主桁架合拢与长寿命空间裂变堆阵并网验收鉴定书.md"
+    ],
+    "GS-2077-01": [
+      "artifacts/writing/世代飞船航程物资闭环折旧率与全寿命期“零损耗”平准基金精算报告.md",
+      "artifacts/writing/深空自旋全封闭生态实验站“句芒-03”第三期五年密闭运行公报暨逃逸气体同位素年谱与微生态演替记录.md"
+    ],
+    "GS-2138-01": [
+      "artifacts/writing/关于比邻星系统极强恒星耀斑高能辐射与深空导航星敏感器抗噪算法通报.md",
+      "artifacts/writing/静海第五城市带多穹顶生态系统稳态运行评估公报暨原位土壤熟化与微生物组长期监测报告.md"
+    ],
+    "GS-2125-01": [
+      "artifacts/writing/曙光三环—主小行星带航线大宗贸易年度总账与推进剂运力指数公报.md",
+      "artifacts/writing/比邻星远征航迹引力助推弹道摄动修正与核聚变脉冲推进器点火裕度论证报告.md"
+    ],
+    "GS-2155-01": [
+      "artifacts/writing/深空货运相互保赔协会2155年度主带-深空航线费率调整公报暨天梭中继港首批过境结算清册.md",
+      "artifacts/writing/远征星舰主减速段磁阻伞星际介质阻尼制动系统地基仿真公报.md"
+    ]
+  },
+  "registry_file_id_mismatches": [],
+  "registry_missing_targets": [],
+  "unregistered_writing_ids": [],
+  "epoch_review_candidates": [
+    {
+      "path": "artifacts/writing/ARK-01平移制动段比邻星b轨道初测通报与第12号舷窗巡检数据归档册.md",
+      "archive_id": "GS-2349-02",
+      "coord": "知识×落地×④深空",
+      "allowed_by_id_year": [
+        "启航"
+      ]
+    },
+    {
+      "path": "artifacts/writing/关于两百年后到达比邻星b之殖民政制形态与反宗主权奴役的假想公法宣言.md",
+      "archive_id": "GS-2039-01",
+      "coord": "社会×替代×⑤比邻星",
+      "allowed_by_id_year": [
+        "竞赛"
+      ]
+    },
+    {
+      "path": "artifacts/writing/关于假想登陆比邻星b红矮星高能耀斑对人类造血干细胞致畸风险的预测性医学备忘录.md",
+      "archive_id": "GS-2038-02",
+      "coord": "人×替代×⑤比邻星",
+      "allowed_by_id_year": [
+        "竞赛"
+      ]
+    },
+    {
+      "path": "artifacts/writing/关于四光年外“新世界”民间科幻征文与未来民谣手稿归档图谱.md",
+      "archive_id": "GS-2040-01",
+      "coord": "文化×替代×⑤比邻星",
+      "allowed_by_id_year": [
+        "竞赛"
+      ]
+    },
+    {
+      "path": "artifacts/writing/关于四百年星际远征长期信托基金设立之复利测算与防通胀折现模型可行性公报.md",
+      "archive_id": "GS-2039-02",
+      "coord": "经济×替代×⑤比邻星",
+      "allowed_by_id_year": [
+        "竞赛"
+      ]
+    },
+    {
+      "path": "artifacts/writing/关于工号SH-ORB-2038-0419（陈初九）放射性骨吸收异常与三次转岗争议之人事档案袋封存卷.md",
+      "archive_id": "GS-2068-02",
+      "coord": "人×竞赛×②地月系×官档×01生理重力",
+      "allowed_by_id_year": [
+        "丰裕"
+      ]
+    },
+    {
+      "path": "artifacts/writing/内太阳系小行星先导勘查联合体关于天体采矿权登记与反抢注自治公约.md",
+      "archive_id": "GS-2036-03",
+      "coord": "社会×替代×③内太阳系",
+      "allowed_by_id_year": [
+        "竞赛"
+      ]
+    },
+    {
+      "path": "artifacts/writing/内太阳系小行星轨道交会测量激光雷达网纳秒级测距误差校准公报.md",
+      "archive_id": "GS-2037-03",
+      "coord": "知识×替代×③内太阳系",
+      "allowed_by_id_year": [
+        "竞赛"
+      ]
+    },
+    {
+      "path": "artifacts/writing/地月中继激光双向纳秒校时与地月空间动力学坐标基线公报.md",
+      "archive_id": "GS-2038-01",
+      "coord": "知识×替代×②地月系",
+      "allowed_by_id_year": [
+        "竞赛"
+      ]
+    },
+    {
+      "path": "artifacts/writing/外层空间超长基线天文干涉仪关于比邻星b轨道微摄动与潮汐力学反演工程预研公报.md",
+      "archive_id": "GS-2036-02",
+      "coord": "工程×替代×⑤比邻星",
+      "allowed_by_id_year": [
+        "竞赛"
+      ]
+    },
+    {
+      "path": "artifacts/writing/月球南极沙克尔顿基地地下充气温室微藻光生物反应器初级光合试验月报.md",
+      "archive_id": "GS-2036-01",
+      "coord": "生态×替代×②地月系",
+      "allowed_by_id_year": [
+        "竞赛"
+      ]
+    },
+    {
+      "path": "artifacts/writing/月面先遣工程队业余手作月岩微雕与玄武岩纪念印模图谱目录（第一辑）.md",
+      "archive_id": "GS-2037-01",
+      "coord": "文化×替代×②地月系",
+      "allowed_by_id_year": [
+        "竞赛"
+      ]
+    },
+    {
+      "path": "artifacts/writing/比邻星b假想海洋无机化学特征与类地生物分子相容性推测报告.md",
+      "archive_id": "GS-2039-03",
+      "coord": "生态×替代×⑤比邻星",
+      "allowed_by_id_year": [
+        "竞赛"
+      ]
+    },
+    {
+      "path": "artifacts/writing/深空航行员口述日志：远离地球时母星视直径缩减之心理虚无感记录清册.md",
+      "archive_id": "GS-2039-04",
+      "coord": "文化×替代×④深空",
+      "allowed_by_id_year": [
+        "竞赛"
+      ]
+    },
+    {
+      "path": "artifacts/writing/深空轨道重力助推航路引力资产特许权拍卖结算单与燃料对冲账单.md",
+      "archive_id": "GS-2038-03",
+      "coord": "经济×替代×④深空",
+      "allowed_by_id_year": [
+        "竞赛"
+      ]
+    },
+    {
+      "path": "artifacts/writing/深空遇险航天器紧急救援中立豁免公约与避难舱生命保障互助章程.md",
+      "archive_id": "GS-2037-02",
+      "coord": "社会×替代×④深空",
+      "allowed_by_id_year": [
+        "竞赛"
+      ]
+    },
+    {
+      "path": "artifacts/writing/火星首批常驻科考队业余沙石微绘与火星土壤自制颜料作品登记册.md",
+      "archive_id": "GS-2038-04",
+      "coord": "文化×替代×③内太阳系",
+      "allowed_by_id_year": [
+        "竞赛"
+      ]
+    },
+    {
+      "path": "artifacts/writing/詹姆斯·韦伯二代空间望远镜关于比邻星b大气光谱成分特征测定公报.md",
+      "archive_id": "GS-2038-05",
+      "coord": "知识×替代×⑤比邻星",
+      "allowed_by_id_year": [
+        "竞赛"
+      ]
+    }
+  ],
+  "thread_namespace_occurrences": {
+    "event": 2,
+    "object": 3,
+    "person": 3,
+    "system": 6
+  },
+  "local_model_files": [],
+  "input_sha256": {
+    "artifacts/writing/101955号小行星先导采选平台地面遥操作机组值班日志与神经负荷监测台账.md": "5d389ccc5fb05fec50c1c1ea3fe1d36200310f2dede2b09c77c5ea9314845a6b",
+    "artifacts/writing/101955号小行星自动采选总厂第417号巡检工单及座舱抄件.md": "5e417519520b99542dd8b9607b01af2d8b73ad594b7f84d05450f07b1ca95a18",
+    "artifacts/writing/101955号小行星试验性采选平台首次感应点炉与金属锭原位封存报告.md": "8d383bb54f89cf97211ec1e1f59f1e68afbc43b12c96f8b5855a1f4c0a1f4136",
+    "artifacts/writing/12-B层.md": "47090424a5af106f28c7b9491fc56b513395045aa3cfe4b4b3e535646d69b17b",
+    "artifacts/writing/2035-DA7号近地碳质小行星动量拦截与顺行轨道重定向工程末段制动交割验收单.md": "85f9b07231b2488c8540cf286b0cf4f99fab95b1ab990f0cd8075545ee0e0dc2",
+    "artifacts/writing/ARK-01 生命支持系统第31号紧急预案(水培区藻华失控处置).md": "45fad4c53a8d0d5943e3ca3b3bc79e6f7e5607bfc54d2188e3c66821adfd00ab",
+    "artifacts/writing/ARK-01启航前夕首期一万两千名乘员全基因组多样性筛查与遗传表型锁定台账.md": "3a13b51e4b6678594704227b7ba448de55dbaa1187ac2a5cad857f9fdd629973",
+    "artifacts/writing/ARK-01在轨总装工程第IV阶段主居住环合拢对接与动平衡调试终审验收单暨建造桁架脱离转序指令.md": "2d053dfe99525343b8ec803baf1c09563d32b5fd79be0d5c155dc49a0a07f1bb",
+    "artifacts/writing/ARK-01居住环段最终清空断电前夕全船巡礼导引暨舱壁刻痕终期拓存公报.md": "18a4c1fb8fe831f62092137221acd39a9907d3056c5237b98f4a113a3fd3f3b5",
+    "artifacts/writing/ARK-01平移制动段比邻星b轨道初测通报与第12号舷窗巡检数据归档册.md": "2c7997e6d2919889cd4a0de80326bc9942ed000d7ee75bec2d105c193bcf4d18",
+    "artifacts/writing/ARK-01抵达处置委员会第001号着陆报告.md": "24ca308638f082c57cb094bcca5b2e43d8a3d6ddeb807a6f9a460d880a7354ee",
+    "artifacts/writing/ARK-01拆解委员会第007号分段拆解进度日志.md": "035da9080471fa355b9c924626435a47101045085a6ed943fa72ffedb1a07df1",
+    "artifacts/writing/ARK-01拆解委员会船体物资再分配总账暨轨道转运与地表建材折耗核算单.md": "b2fbd10790c412fd327cd75242ed678e797ed6b7fa17f7cec71beef7cc4909b1",
+    "artifacts/writing/ARK-01生态环控第二区盲孔管壁真菌性菌膜爆发处置备忘录.md": "ea97c4de4a85674dcd7fd9d13be36bbd641a335ed314ba5598bbf5ea9e39e04d",
+    "artifacts/writing/ARK-01种子库与农业闭环退役移交清单.md": "a6063dbc10574e6bddf68f6e6e18f04772236f6c2449fc1899c17de2a7bcbc83",
+    "artifacts/writing/ARK-01第三综合学校第84届自然常识结业测验卷及批注.md": "9a164b79ecd5bde36804bd2642d1301521aeec5da8aedeb81e9bfe11e65659c1",
+    "artifacts/writing/ARK-01聚变脉冲主推进系统全功率联合试车遥测公报暨试车窗口航道清空与残骸防护调度令.md": "8f98f76d17925b7ad4812d3606c03a7bbc011eb7a73844251f38bed210ef5e6e",
+    "artifacts/writing/ARK-01船载医务部先遣登陆组地表1.07g重力梯度适应与前庭-肌骨耐受性第01期监测通报.md": "556da933ad8372e7567e59d16edfd5e7fa886e9b58223a56c51831bc30ff696d",
+    "artifacts/writing/ARK-01船载医务部第14期世代骨密度退化与视盘水肿筛查通报.md": "80da34136265a55523d7b4e07372cd6236d53c6531bbb96fee297107e5f8547b",
+    "artifacts/writing/ARK-01船载文化部第一届「目的地想象」作品征集公告暨获奖作品选录.md": "2fa702755043d464bdf2c1e9644110d2efaaf85f4649df99a6678ae68a0ab895",
+    "artifacts/writing/ARK-01船载闭环生态系统总装殖装铺装验收与出港生物安全检疫鉴定书.md": "ffe5d44763f436020765da7a3d30decb3b793554c690706f56f5e815dfa22d22",
+    "artifacts/writing/ARK-01防辐射外装甲第19扇区微流星贯穿事故技术鉴定与定责报告.md": "1b7d53f652af0a0a7a5534f77b0bd67e400273335740cf798f0dc15b2faaaafb",
+    "artifacts/writing/ARK01_农业环管第408号真菌菌膜清洗作业日志.md": "4cd05a0fce712106738e53d40df28b7d3b970b6ab9931d816765feff645ddc53",
+    "artifacts/writing/B7食堂第214周配给单.md": "906726a3b20ac2b0b66366e95f98b51b23d066e7af146a347da33cdd5c8dca93",
+    "artifacts/writing/C区的曲子.md": "5d324c7f82827b1f1cb539d7f7330f8fe02781d22fb3f5eca85533eaaf458e2f",
+    "artifacts/writing/“ARK-01”启航宣誓文书暨向全人类移交太阳系公民权利与离轨自治公报.md": "969624e5656641484f72a113fbc15b95779e600076668b42c48524c13a1a360c",
+    "artifacts/writing/“夸父-04”核热推进货运试验舰木星重力助推段乘员高重力与辐射环境耐受通报.md": "5f0465209661075f13cffad3d2a75f88a8af4980297a9c73178d13f04a866a09",
+    "artifacts/writing/“种舟-01”星际辐射生物学载荷随“远巡-03”搭载方案评审暨种子样本入舱备案表.md": "8a3b4639a67ae5332170d3c3e6d33166e97159596a92e08fb5e2b38fedeeaea5",
+    "artifacts/writing/“远巡-02”号星际边界探测器日球层顶激波界面原位等离子体与星际磁场首测数据归档公报暨银河宇宙线通量阶跃异常谱通报.md": "016a9297594d73cd22c65b03d8c0ff853ffb9b99a694f9d95cc72f82e47f6682",
+    "artifacts/writing/世代飞船“ARK-01”出港全物资实物配额总账暨全封闭经济体首日平准结算单.md": "ea56610b2d2fef67855c6439b7b7ce64144c4a7c935893c5dcde170a25fcf065",
+    "artifacts/writing/世代飞船“ARK-01”出港首航年全闭环生态系统碳氮水平衡与微量元素平账月报.md": "7b7d01959084d5589028489ea3ca18105ed445884b3be52eefa8579d65f289f2",
+    "artifacts/writing/世代飞船“ARK-01”启航第五航行年双向相对论动钟慢效应与多普勒频移校准公报.md": "43ac1e16f5ef9bd630a41a035087e5ba307ba2a4a30f9af09b31f174732d5a5d",
+    "artifacts/writing/世代飞船“ARK-01”百万人级主栖息环工程方案论证与辐射热力学对冲决算书.md": "31bd02adff3ebb777ac4cfd9e57963eb7bfaa93f9c2ba490426f88daf8287bb2",
+    "artifacts/writing/世代飞船两百年航程极小奠基人口亲等收敛与人工基因平准库预研公报.md": "b6a94f46cc4bd0d1ff7777c5285537c4e6bfb9beb353340d36b3219e1e2224f8",
+    "artifacts/writing/世代飞船内部“无货币互助社”法权演进与公投治理章程草案.md": "6dba2312248c9303be4b3b582fbf5775a8571104076773a403309a226b39ed5c",
+    "artifacts/writing/世代飞船双层封闭农业环微藻光合放氧与人工授粉昆虫替代工艺模拟公报.md": "47c0bac3662547298eb37fc6f1f13484eda2d32b6e9e274fd0c59e1077fbc536",
+    "artifacts/writing/世代飞船启航五百周年地球联合纪念活动总体方案与全球暗夜点灯时刻表暨人类原乡口述史特藏目录.md": "bbd0c1dde20cf8eb8ff839ba7c516cbbc20297fed37ba4c9d314229c1f1c3134",
+    "artifacts/writing/世代飞船生活环内方言词汇演变与旧母星地名词义漂移学术编目.md": "8c43156b02fe3357bde1eb2e70146a9f563a623342781f4969b8f4b84fc7dee4",
+    "artifacts/writing/世代飞船航程物资闭环折旧率与全寿命期“零损耗”平准基金精算报告.md": "ee67abb8367a309bc87c084b4a199b05be8651ed5c3a566416ffcbed63d4ce44",
+    "artifacts/writing/世代飞船超长距相对论激光通信脉冲编码与丢包纠错算法学术公报.md": "2d87dfd035efac84304446acdd7dc62d8a943d4409551f9c8341e189cc162c7e",
+    "artifacts/writing/世纪远征启航前夕民间“写给两百年后重孙的一封信”全球征集归档公报.md": "bf42cbcbb03b14c86fbce31e5f6cbeb8ffd6ad2b632f3a14be6a30b73814aa80",
+    "artifacts/writing/主小行星带“爱神星-04”富铁镍矿脉探矿权竞价转让决算书.md": "c950dd1439149349e2110db1a18ea49d22c7d22578202987b6bb970d4e7f5c98",
+    "artifacts/writing/主小行星带先导自主采选无人平台紧急避险与物料互援协调规约.md": "230a680a4cfaaef492abf0f1709c438fb64808f755c1081856d1dd21ee1f14a8",
+    "artifacts/writing/主小行星带前哨联合自治公约暨各前哨轮值议事规程.md": "a42c23dace3b8fb2c5b06aa2ae74d5af79ceb0cd3d86fbfe7556f612db884a93",
+    "artifacts/writing/主小行星带多目标深空光谱普查首季成果公报暨内缘水冰与战略金属分布图谱.md": "0da74b72ec97d63461d6722b97f1b2677cb06751573e0f047b2b33756587c005",
+    "artifacts/writing/主小行星带综合勘查轨道器“声闻-01”文化载荷搭载清册暨人类原声音乐与经典诗篇深空广播发射日志.md": "14abd067c23faf7b7e5c903a4498c05ed0cea1eacf2d82cfff224bfde097241d",
+    "artifacts/writing/主小行星带自律城市同盟常设议事会章程与深空公海纠纷中立仲裁法典.md": "933351425be6f9a0289b258de6ce79c3eb3bcc63a08403605c3c651414479032",
+    "artifacts/writing/主小行星带自律城市群多代同堂义体长者跨世纪心智连续性与脑神经突触磨损抽样公报.md": "f6ec058925771fe65f4ac4117cea312fb1fee98aa3b583417b9d99393af0e01e",
+    "artifacts/writing/主小行星带自律城市群民间深空诗歌选粹与星际穿梭船员行吟歌谣编目.md": "18f4719a2217e65a924fe0746d306b8423489350b56b1a52edd12eaa8eae48cb",
+    "artifacts/writing/主带先导试验平台首批返回矿样交割与深空运费对冲结算单.md": "8e9f3fe8bcc61cc444a7edf2195addb4d0549dda5f77540f79c7778a55e96ef2",
+    "artifacts/writing/主带工业群2408年度产出决算与对地大宗贸易结构公报.md": "a4abf0e420d82898d344850b878bd950da6acb188e3f37cab2aa6cbe3b4762e7",
+    "artifacts/writing/主带深空观光联合管理条例暨「环游主带」旅游航线安全与服务规程.md": "da02f18c8bd19964b8d77974b14acd1114cf7f9996099f5d44f499d1afec09b9",
+    "artifacts/writing/主带自律防御与快速反应联合司令部2843年度前置拦截库扩建工程验收公报暨3I-2842A1任务复盘纪要.md": "f798545dc8ef0e315656ef49d58661c5a76f2735f8036f57955d400dd6c4cc79",
+    "artifacts/writing/主带自持工厂群全要素自持率核验证暨最后一批地球原产高纯部件退役封存报告.md": "06a70879fa51c6051ecfe8f11263c531633abf157c4713041acfe4126c9f9868",
+    "artifacts/writing/主带谷神星第二代低重力公民前庭功能重构与三半规管耳石轻量化医学调查公报.md": "454f64781ef8496b1436a0f0de9cf9f3d1c889c75d1044ce6acfaa70e0e9029d",
+    "artifacts/writing/主带首炉节四百周年全域庆典总体方案暨民间风物与作业隐语校注公报.md": "673722e06d614a5724b27f7b8fe7c4a80f7aa49ff54d6fa54310903cc49f4f43",
+    "artifacts/writing/乘员心理学档案_137年.md": "9ccf11cc2911a4a0b6b8d12203251c873e5ffab3bfad32b7af9bd0c77cfea0a4",
+    "artifacts/writing/云上集市首月交易撮合报告匿名化.md": "ad51ebf6f89feb69cb2cf5b2b6e33d5f6377de9466f3da3d8a3fecb2681bd546",
+    "artifacts/writing/全球深空支持体系与恒星际远征信托总署2252年度决算公报暨「ARK-01」第一航行世纪测控与文明档案平准账目清算报告.md": "8f5636cd48c9136a8185b92483278f9f23b8bbd4387b2150543af0160d0bad06",
+    "artifacts/writing/关于两百年全封闭人工生物圈微量元素耗竭与多级食物网坍塌假想预警分析.md": "782d48f1f7f3fd5708978ac3e31edaa65e6bad0c9d4b7b3e8e80e4ecae14e8a9",
+    "artifacts/writing/关于两百年后到达比邻星b之殖民政制形态与反宗主权奴役的假想公法宣言.md": "d23c5c1c9651b79445d21c6a4101bf10042b0e054a6ca91b068fdd2b501f383e",
+    "artifacts/writing/关于假想登陆比邻星b红矮星高能耀斑对人类造血干细胞致畸风险的预测性医学备忘录.md": "de6d173af20d181398d96713b193958699d0ae374c5d3369c0f4df21146db9e0",
+    "artifacts/writing/关于四光年外“新世界”民间科幻征文与未来民谣手稿归档图谱.md": "5cd3a32f58c986af9af072e73207aa480231604e221d744d81c2e8a62782242d",
+    "artifacts/writing/关于四百年星际远征长期信托基金设立之复利测算与防通胀折现模型可行性公报.md": "ec767928b557568d39625adc6dd823a430f0e0c32ba7a3138de3ab7b863165e4",
+    "artifacts/writing/关于工号SH-ORB-2038-0419（陈初九）放射性骨吸收异常与三次转岗争议之人事档案袋封存卷.md": "04d3428fd25b875a3b8f445d889c982a6ae45c9ccac42d81541d7fee2197e3e9",
+    "artifacts/writing/关于比邻星系统极强恒星耀斑高能辐射与深空导航星敏感器抗噪算法通报.md": "6c74d0c7ffa8620a70f9c5b592cb9f0d62f2b3f69c71786a8652b5600b083abf",
+    "artifacts/writing/关于比邻星远征名额分配争议与全球阶层流动性听证会决议案.md": "8f3a7b1ba064ecd4ab1ccc533b0a1ba4505864810036128cf8ec161e96b53ed4",
+    "artifacts/writing/关于深空远征船队内部“新历法与双轨节日”确立之文化公约草案.md": "73333fd3b06cc2b93ff989463688f4100893b6462bf8ff420dc349fe0e789287",
+    "artifacts/writing/内太阳系大宗资源交易所主带水冰远期合约首批实物交割清算单与轨道对冲公报.md": "bfc1af488cc654901ade7adaec30c38409b48962b17d14b2a7b52055ae2e54b8",
+    "artifacts/writing/内太阳系小行星先导勘查联合体关于天体采矿权登记与反抢注自治公约.md": "2305e12a7e73bd8a5f25412718b96141ab4a1610ca01ef3b96040019609c5d55",
+    "artifacts/writing/内太阳系小行星轨道交会测量激光雷达网纳秒级测距误差校准公报.md": "5fbf49d956f52aa3cf1db0b3870e7e3627289ca8adbc904164c0bfd8f1447b72",
+    "artifacts/writing/内太阳系超大基线空间干涉阵“天枢”火星—主带星历校准与轨道测量联合通报.md": "23508884e404518c1a8d78be2807094c3a0ba5918823582014297ad548eed69c",
+    "artifacts/writing/内奥尔特云千天文单位远征母港“玄冥-01”主桁架合拢与长寿命空间裂变堆阵并网验收鉴定书.md": "73d23f198907398951861d819bb3e480df0201fae168673c4f17063b870e8371",
+    "artifacts/writing/内奥尔特云千天文单位远征母港“玄冥-01”首期常驻科考班组年度身心健康评估与深空驻留生活运行公报.md": "b57390dd4fde10dc864dbb2cf561cf80edd9cc66e83b9eedac4c1241a5323722",
+    "artifacts/writing/华东低密共生带深时间茶道流派演变与民间口述史年鉴（第一卷）.md": "e06c641421b2813658b77cc5afaf39d13fc0a66f0147260f590a3dc3acef46ff",
+    "artifacts/writing/华东南岸滨海生态区2268年度民生运行总账暨「原乡留驻与深空旅修」青年十年生涯志向调查公报.md": "51877d0053a9d0f76b17a6eca5af8051cf614dbc3ac10e675533aa7bd9e7c71c",
+    "artifacts/writing/华东大都市低密生态带2122年度青年发展总账暨「轨道城自治与原乡森林栖居」十年生涯志向追踪调查公报.md": "a88297387b414044901127275f040fe378887d1d983ad4a1ad8a92da4201b2af",
+    "artifacts/writing/华东太湖—东海低密共生带联合议事会2252年度治理公报暨人口平准与深空移民意愿登记百年回顾报告.md": "3d0bfe18224726cd7e08cc42781bd5d3caf069974924bce2abbdad8c4cb8913e",
+    "artifacts/writing/华东太湖—杭州湾低密生态带「六月望舟节」设立百周年民间风俗演变考暨2262年度远航题材民间造物与社区演艺展评汇编.md": "3fd22c716da18210adf3acd69111fa84b361f74602ebd6b5333661645275725b",
+    "artifacts/writing/华东太湖—杭州湾低密生态带居民自治联合议事会2685年度公报暨地表承载力平准与跨星系公民名誉地籍信托规程.md": "546d6c4e93d1b39f5e31b327fabd6a856f7cc902c73d85206f01e8b17a39dffe",
+    "artifacts/writing/华东太湖流域野生水禽迁徙种群与水生植被群落百年自然恢复普查公报.md": "1542d9b6dd421e0c51d5ddf6024a2945b688e587ac09fd49728eb0b7762d9f30",
+    "artifacts/writing/华东沿海深时数字图书馆关于二十一世纪早期科学论文纸质母本除酸与脱水封存年鉴.md": "e73bc162ccbe4e49253b8d501e8bba2825127a2c58542fac8d2ce2ee0213c5ac",
+    "artifacts/writing/华东沿海深空引力波与相干光阵列“观澜”基座百年沉降监测与镜组位移公报.md": "0f148fcbe165c290057b73737059878dc63e14516afde97760a0ab6f1a40ba1e",
+    "artifacts/writing/华东沿海长江口退役港区退化湿地盐生植物群落演替与海三棱蘧草自然恢复监测公报.md": "247ffbe97ef45ae53233a84ebdf68be50d7c16ca0004c63796a5c68996f69cf2",
+    "artifacts/writing/华东深空航迹与星际物理研究所2238年度ARK-01船载遥测数据年度解编公报暨星际介质阻尼与闭环生态微演化长周期研究开放目录.md": "92dd32830e45de6866958ad330de2a3698649f3ccebbd7379728793502950897",
+    "artifacts/writing/华东第二公共图书馆闭馆移交与馆藏分流清单.md": "5b4199a43b722e2a90e5d6fac504b76cfac23849da44f020c28a6a455a464ee3",
+    "artifacts/writing/华东第二磁约束聚变示范堆首次满功率并网七十二小时考核运行公报暨第一壁年度检维修记录.md": "2adc773393db9c4a9afce983ee7f37bf03a075ea9e5145d1f577c068c2d717f8",
+    "artifacts/writing/华东第二算力中枢劳务分流与离岗交接确认单.md": "43a539c28ad4ae4a1518cf376edf089c69f2448752e4a5b3dd6490ea1c554668",
+    "artifacts/writing/华东自然共生保护带“退人还林”百年进程评估暨低密聚落自治公约.md": "bc6f7dd7c3edefa23f2af39e79310c9386ce52e8ec796cb7f8977a900b6d573c",
+    "artifacts/writing/南岸区域具名意义资产年度清册暨署名权流转登记簿（第41期）.md": "bc7f44dfc69a5cc12a533fa5346775e6eb54c744627f4914bcd4f2727b8977a5",
+    "artifacts/writing/南岸第七乐龄社区机器人介护分级评估表暨长者「意义工坊」选修清册.md": "3d3cf70032e309012c1ab878f44285968ba44615f501f6f434eae004801c6f5b",
+    "artifacts/writing/南岸综合体公共文化司「盈余时间」年度规划方案暨市民参与项目选录.md": "83342a64ed8ff74d02ce817c62d3316fb9c52f8a0c8495cd618eb870af59666f",
+    "artifacts/writing/南岸综合体第十八季具名工时分配表.md": "442af433f42063568b18354152295cc4fdf4554dd0a57c2221f0f8b8c701a029",
+    "artifacts/writing/南极冰穹A超深空相干测控阵列「昆仑」第三期扩建工程竣工验收公报暨ARK-01微弱信标捕获与链路复核鉴定书.md": "9cb9295fb550cb0ac9872495f5626f0d89d2a6b0e444c989118c495e04abb539",
+    "artifacts/writing/双星定期运输舰恒心-09深空航段生态闭环系统第84航行年物料平衡与生物漂移审计报告.md": "ffc4ec53215e2e4062ce81490f83655482843219f4ee8c6751a6f107bece8e67",
+    "artifacts/writing/双星定期运输舰恒心-09第74航行年中途点全景舷窗观景通告与深空星野摄影展评选公报.md": "c8eef75827ba10961dba920160fa54b59b67db0d08c31265950dcd9b929921e5",
+    "artifacts/writing/双星系统定期穿梭舰“恒心-05”极长深空航程乘员微电极神经修饰与时间知觉平准公报.md": "1f2d4ef109351e0cc043848d1d0d307d559c6ed4926860bb30abd35f5d9c47b5",
+    "artifacts/writing/同济与南岸联合古典高等研究院2848年度慢科学长周期资助公报暨双星系联合会士名录与跨光年学位互认规程.md": "261bc125fdbb578c88e51f40046f7d065bd3a454b3ce9f11f9893d7b2c0d370b",
+    "artifacts/writing/同济与南岸联合高等研学会2073学年秋季具名学时选课清册暨东海暗夜天象与潮间带野化科考台账.md": "104456b1ff18c08a625c8796e86a099f3b7f55bfeb43055f2b6521edc4ddbc15",
+    "artifacts/writing/启航期地月建造船坞大型钛合金双环桁架转运调拨账目与损耗折让清算单.md": "1a9e0abd9c125011683252be0dc942457cc24ee742b7b51636ca8cfd10c3efde",
+    "artifacts/writing/国家空间天气监测预警中心第046号极强太阳风暴预警公报暨地月航线辐射防御与近地基础设施联动调度令.md": "2c77408405ee9ab10bf8480b987f3699fbc3c65e361c9f1d98db975a846815fe",
+    "artifacts/writing/国家能源安全统筹署关于解封第一批化石重油战略储备并转入地质深封决算公报.md": "626c2c73563959f3ae752e6676da122baec418180bb6df10b3ddc01973da58f1",
+    "artifacts/writing/国家航天投资联合体关于比邻星光帆探测器超导电磁线圈专项国债发行决算书.md": "cc921e573710e3841676067da0dc98204e848d5b8652fcfbabc2d24684fb4139",
+    "artifacts/writing/土星主环动力学测绘公报暨环面穿越冰粒原位采样与环雨通量记录.md": "7553ce708dc00a7eb2b0ff71a34977f7b797c5c444e0af2342fc302e85b2278a",
+    "artifacts/writing/地月HRO-01号战略碳水资源储备库(玄武礁工区)接收资产清点与全寿命经济评估报告.md": "9ee3651b7406e2cfbf4cf342760b6c17472011e1c2dac75ad4bb53be5da25f8b",
+    "artifacts/writing/地月L2双星定期航班货栈第014批次配载清册与跨星系关税结算单.md": "b725cdb1c34fca9a1c14caab491691528af4f0ca70ea4d9984060132715f2d30",
+    "artifacts/writing/地月L4星际重载货运中继港退役船壳改建常压货栈工程验收鉴定书.md": "2e732660dd27b804f33514278222dcdfadcfa084c1cdbe188db263992e9a49f8",
+    "artifacts/writing/地月L5「建木」深空纪念园2159年度观星节与拓刻服务年度公报暨启航七周年纪念活动方案.md": "5c373de9d250bf7bddf8f1f3f5837e9132f82528b434b0fd65c51e2fa63dd1df",
+    "artifacts/writing/地月L5「建木」深空纪念园开放管理规约(2157年版).md": "2934b0f0a073622ca7c60a65b1bf0a3528f3d71fbcaa0081224e22451843f387",
+    "artifacts/writing/地月L5深空通信枢纽站ARK-01乘员在球家属光际家书转递年度公报（2158年度）暨单向光时延破60小时信道调度与民事公证指引.md": "7db125c1480c61457d9c45f76277ba6994387c666a77b3c07c2b1d34104410b3",
+    "artifacts/writing/地月中继激光双向纳秒校时与地月空间动力学坐标基线公报.md": "6b9658e7170a5df80c83863f396255afd30316eb6db8e0636e744e9d5480da08",
+    "artifacts/writing/地月拉格朗日L2点货运关税同盟章程暨深空轨道引力势能补偿通行费平账单.md": "c0d34802da5b1d1c5c722c2a502935edae8c69680ddd7408ef0796b5dcea09e8",
+    "artifacts/writing/地月环月轨道摆渡驳船“望舒-02”充气式轻质防热盾烧蚀复检与气密性鉴定书.md": "f9fcc8aca5f2586b1607b0e6a507eeaaa0209d545a15b0fc25a4d6cb3c7bcf2b",
+    "artifacts/writing/地月环月轨道班车早班运力配额拍卖结算单与载荷对冲决算书.md": "51b187bd84cdb98bf1bff4414de77d9d33323840b96b0f5d199a337547738ce9",
+    "artifacts/writing/地月空间电梯客货运量结算公报暨空间太阳能对流层微波输电配额清算单.md": "824b9941202a63159335734d2019086bad17f0b6c9db160f03f635bc2df75c6f",
+    "artifacts/writing/地月系统跨星系归国人员再入籍民事权利与双星双重法权确认通则.md": "2c5ae457ebc055daf3a2efd0a02b1323947ee841a9f1962944695f80aebd0958",
+    "artifacts/writing/地月系统跨星系归国学者“原乡文化失锚与再适应”民间访谈录（第二辑）.md": "ec63946c8e6d3d2e555a35d8c57f30968358a3e530d363820c58d634098fb8e5",
+    "artifacts/writing/地月联合深空测控网ARK-01远征航迹第60期测定公报暨星载连续激光信标年谱监听与相对论轨道解算报告.md": "7f9623b755e69d91a023c928f4ad77d9e9246ab3f2ea72cdd868c64362d68553",
+    "artifacts/writing/地月轨道常住居民第二百年自治法权编纂公报暨引力势能自由通航宪章.md": "de10aca570667679b2f61c1253b8266c69fb6d0af111dfdcff33829b155554a1",
+    "artifacts/writing/地球后稀缺时代具名工时与文化消费配额年度总决算平准公报.md": "cd7e98a4368cca723f60c37ba35127dad94b2d1f618c5001d801daffe95270d7",
+    "artifacts/writing/地球后稀缺社会心理学调查组关于接收到首批系外光脉冲之公众情绪演变与文化锚点抽样报告.md": "616a442531279c213a8b0fd2a1d47a99494e785bbb906ad60fb67f0b6a67217f",
+    "artifacts/writing/地球对外贸易统筹委员会2872年度对殖民地特许出口清册暨「原乡研学游」配额竞价决算公报.md": "af19f51e9f5656c38cd5a8bff20917db64cf1ef58090ee4a44cf78491009c4f9",
+    "artifacts/writing/地联航天理事会关于内太阳系自决诉求处置与关税双轨结算规程的政策备忘录.md": "d7a8faa17488b6677e455a34b5ebfdc74cbc3b20054729f64c96129aaf8c8751",
+    "artifacts/writing/外太阳系“远巡-04”号深空探测器柯伊伯带天体（2041-XB3）飞越段第16次星尘气凝胶捕集舱启闭遥测公报与姿轨机动指令单.md": "b9ba8490aba7840de7d830b4023527a100933ddd31e2ba357ee239ed2163905b",
+    "artifacts/writing/外太阳系极远前哨科考站联合自治规约（2078年修订版）暨柯伊伯带四站代表大会表决公报与局地最终裁决权规程.md": "715089535ff9876feaceca4be10dfd48e34b1b04f1fa33917bb4fafa195f4c4e",
+    "artifacts/writing/外太阳系重载货运舰“远运-09”跨年航段文娱活动轮值表与船载星光放映厅排片清册暨50AU深空过境纪念公报.md": "d46a01587c6b24e9b5a409c9bb6e921bee0addbe6800bafc1ec61fd4e56b3c38",
+    "artifacts/writing/外层空间超长基线天文干涉仪关于比邻星b轨道微摄动与潮汐力学反演工程预研公报.md": "a4d39caa7a9f6955f6a9f90e22429c7fff1cab6cc71db210c91ba0a5c673cd4b",
+    "artifacts/writing/外行星气态巨行星大气氦-3首单现货期货远期合约平仓与木卫二轨道交割平账单.md": "fb82a8747c8c2d1a08622e6747a0a2ee3aa3924c10cbadf023974bed4e6515f5",
+    "artifacts/writing/多代际深空航渡乘员封闭社群心理遗传学分化与深时间抑郁假想模型白皮书.md": "8ad4664e9267b014832ba25ce5756d222b5777e4b8bf150c0e45df1bef05e42f",
+    "artifacts/writing/太湖流域退役城市群六百年自然演替评估暨高塔垂直森林与无人荒野巡护公报.md": "54c568a84c59e0e88bd96e5c16f014214eae08e500a5dea7e8e706e8d272314e",
+    "artifacts/writing/太阳比邻星激光超宽带数据中继站第0419批次丢包与纠错日志.md": "192296e886c246a47c9649e56f70a1e38b3dde85b016b39f5ff6767d22b43628",
+    "artifacts/writing/太阳系—比邻星双核天体测量坐标基线对齐与跨星系全天星图编年志.md": "979e0c99a2d5652be663f2cdd2ccb36892d2bed50d2ee2bb468bec85593fc401",
+    "artifacts/writing/太阳系外缘天关门户站第IV期重载星舰补给泊位扩建验收与出港航班调度月报.md": "3da3ab48913f51065a4b0777eb665425b7600c55e76c4d279b1fb51a4c9ae4be",
+    "artifacts/writing/太阳系外缘微流星监测网第17号联合标定公报与星际尘埃气凝胶样品分析通报.md": "cfe97e99f350fe0346120417b8931ce82be909243ae9f8425c72aadae49916bf",
+    "artifacts/writing/太阳系外缘重型核热推进货船值班乘员休假轮替保障与家属通信补贴规定.md": "977020632ccc0b7f2bdbd63d8b5d83bddcc457b0b20d6e9ab364f16198754bd7",
+    "artifacts/writing/太阳系深空导航信标网第142次全链相干校时公报与跨星系航班航迹测定发布规程.md": "4b7a646f1e58995f9e5618d1e3e4e47acc810bf55562a4524845d1e6dcbfeb51",
+    "artifacts/writing/太阳系边缘70AU中继浮标阵列“漂泊者电台”民间短波自制录音带归档清册.md": "f82a325d108f3b673692e93f2cb1ef8ad79ffed18437c75f26ac7d230ca17765",
+    "artifacts/writing/小行星带谷神星深地暗湖闭环生态系统四百年演化评估与物料流转公报.md": "d46db5f3d1ed0d034da10c9e1f75cb48528524846e81fa39f8c63435212eca0c",
+    "artifacts/writing/推进剂离心气液分离器微重力流体动力学验证日志与高速光学观测记录.md": "a6f99605f85a7830b6295549f8112f32bfed0ec9ef2372ac85c7fc5885505e64",
+    "artifacts/writing/新海安初等学校自然常识暂行课本编纂凡例及首批失锚词校勘表.md": "1ee7b17e12318b379a075815c4677976def2c6054a87c1bb51c3888e6d201268",
+    "artifacts/writing/新海安地表第一暂栖营地地籍划界与防风坑基权属公证书.md": "00a04f72009ceb170f765a46c463e0814be284c214ad3b571eb80d7c83132c6d",
+    "artifacts/writing/新海安温室首作作物生长与产量报告落地历4年.md": "201bf35a46b8c890dde191d076fff4339dab33501b815a0359502e4e812b5dd2",
+    "artifacts/writing/新海安防风坑基二期气压穹顶竣工验收单.md": "adf2ab275a4e4ec90dc6da88a76e8b34e382121c6688ea196d825dd51078a517",
+    "artifacts/writing/星际穿行天体3I-2842A1近日点掠过段快速拦截会合遥测与多站相干光谱分析联合快报.md": "d074a67affec973f639b5be3fab50183d050afc94a59e4045e1da983defc603f",
+    "artifacts/writing/星际航行乘员跨代意识形态漂移与母星认同衰减预测评估报告.md": "fbcc47d6e6c1719a9d9a3e5b0a519351a2f86e669ba825114496c715a0f7150a",
+    "artifacts/writing/曙光三环—主小行星带航线大宗贸易年度总账与推进剂运力指数公报.md": "1b870f5bbb6de24b00e57549b858f4deeb1ddc2f91f2dcdcb16ff3fc6d461333",
+    "artifacts/writing/曙光三环中央垂直中枢第19号降轨进港指令与航行日志.md": "e904df3eb6585012ea7c540a2679f064e1dcd5b0b689e1f03edd440dee97b843",
+    "artifacts/writing/曙光三环互济社第61号批单.md": "791a70842988f4e503228f4570b61c458359a0287b24774db72d24a27271525e",
+    "artifacts/writing/曙光三环农业水培区轮作与氮磷钾闭环年度平账表.md": "f4250ec02e2d3d34b59849bed6f0df7d2c3674f882fd336c9008a34676bd22ff",
+    "artifacts/writing/曙光三环北极深空摆渡坞第72航次推进剂过驳与自转轴系检修工单.md": "290f803986908585f4606962b6463b0b7770dc5de0e9b3a10c329fe163b2e924",
+    "artifacts/writing/曙光三环居民舱失重期生活适应性调查问卷汇总.md": "e0a0ca9d35d206952d8ea16777bc5a5a0283429f57c39e5751b3234a93d57946",
+    "artifacts/writing/曙光三环第47号公投公告.md": "977f4c7478b9abba8d5b5bf6438ea62eefa0d8ed9a6e0ba29f50dd284b55f933",
+    "artifacts/writing/曙光三环第十届静止检窗假期文体活动排程暨中央天窗观景舱席位预约公报.md": "29f77e31d9ad245e7e114fff1ecc097b330bb2a253f9fdc7ea9036e11fc61422",
+    "artifacts/writing/曙光三环第四期扩建工程结构件主带采购与运力统筹流转单.md": "dcee842f2b6fabec98653c782102124c4e084c431c625c90c973701913856ac4",
+    "artifacts/writing/曙光三环联合历算室第14号航海天文历校勘单与自转历元公报.md": "0597b58a95a4bf0abac6d835d55947301b293a4923b4b676e0717590ef017c81",
+    "artifacts/writing/曙光三环自治议事会关于「地球条款」修订案听证记录暨对地联航运注册与关税互认第八轮磋商纪要.md": "5408d1d27b0995f5b8cc8b44a0cff51dde22322cbe1e69e4d4e6473d2b69116f",
+    "artifacts/writing/月球南极沙克尔顿基地地下充气温室微藻光生物反应器初级光合试验月报.md": "626e5994239a695b2b5e9c65526d8a897a2f24af1e8da2cde6191c04cf15ac3b",
+    "artifacts/writing/月球南极沙克尔顿基地水资源开采与跨营地配给临时自治条例.md": "d81260c65aec048335304cb5339d488710d737a1d846408d24c04ed9ad618d78",
+    "artifacts/writing/月球南极沙克尔顿基地首批深孔工程钻探班组生理节律失调与骨钙溶出监测公报.md": "4d3deaee1c4cbdf054da41cc5bcd61117e7cdc7159aa7f8e30965bda2c611d79",
+    "artifacts/writing/月球南极沙克尔顿巡天台近地天体普查与轨道编目公报（2047年第3季度）.md": "dba146c1dae2229841e66262e668a593dce3dc814a9538ee4ad7a7f22fdab419",
+    "artifacts/writing/月球背面齐奥尔科夫斯基低温真空长基线高能粒子衰变精密测量公报暨中性重味介子寿命与CP破坏实测报告.md": "f24a420b30301a45ba18ca67291da9059f226cbbec025ccce80883b9e9b55695",
+    "artifacts/writing/月球背面齐奥尔科夫斯基甚低频射电干涉阵第08期巡天公报暨宇宙黎明吸收谷层析谱与电磁静默区基线报告.md": "2c9edd365636c9a55eaec0e9c7ddfa5c7278fb74a47a20a5287b9cbb6f72a574",
+    "artifacts/writing/月球雨海甚大基线射电干涉阵关于银道面脉冲星相对论时标与地月自主导航编年志.md": "b03aad63159e20136dd139bdbe03f547eaa86c528c2df775b14fa66cfb6d16b6",
+    "artifacts/writing/月面先遣工程队业余手作月岩微雕与玄武岩纪念印模图谱目录（第一辑）.md": "9872c5a32888d8329edf3af3862593391b9a80372ba871fe75f94d0b5255b957",
+    "artifacts/writing/月面天梯（静海—L1段）主缆张紧标定与重载攀爬器全行程试运行工程验收鉴定书.md": "4e340e3d5b128f0a22d7d0cd56c3e451cdd9516d0d7b17788ff450ea345d1c89",
+    "artifacts/writing/月面建材工业基地可行性研究报告.md": "a77c136dcb2dbbf4cc5888699fae6413e55845216416bebf413096de668f5ff7",
+    "artifacts/writing/月面建材工业基地月度产能对账单L5城市带.md": "fa2c4836cd7d432035770366b9e8ad2b919c3354fd849995a9a2c0b794326743",
+    "artifacts/writing/月面静海两百年民间低重力雕塑与冷铸金属艺术年鉴.md": "5dcde2eb71ab90a535c9bc292e2132aec7c86720d980cbe98ba043454f76491d",
+    "artifacts/writing/月面静海第一公墓冷萃石碑刻铭清册与真空祭扫礼俗规程.md": "6065e8b76e28fb97d07718d7d5dd4e4e9a3f80822b6811593bc84e00474ce9b1",
+    "artifacts/writing/木星大红斑深空巡天雷达第03期测深报告暨木卫二冰壳雷达回波低层谱标定记录.md": "1276e3cbc0d67a82a9a904656f3f4596826de8f21eff97bec00489d9acdf7811",
+    "artifacts/writing/木星系先锋探测巡航舰“夸父-01”深空通信信标短波音频归档清册.md": "0a51ea05793a4f60bca9428a52fd4dff7ed882ed8157d6d2fd3cb4adb16904f3",
+    "artifacts/writing/杭州湾南岸退役化工带土壤深层脱毒与再野化第四期竣工核验单.md": "753a1833a869f98494c0910e9cd43159e9f43d0dee419142da2c0a39181cbbb4",
+    "artifacts/writing/极高精度天体测量学关于比邻星三合星引力摄动轨道历表修正通报.md": "4e5917cc6d352903b56b1a40e7e5b26f7718a567c5c1e02105067f020155a7a8",
+    "artifacts/writing/柯伊伯带深空探矿船封闭水循环超滤膜结垢分析与重金属生物富集月报.md": "6ab001b1456a5ca84afec3597c598e867d099acfa86a296072276d3cd7b08125",
+    "artifacts/writing/柯伊伯带深空探矿船队反哗变自卫联防公约与中立港避难章程.md": "9950a4f5118d618de48e7e5c0fb02d201ab3889768032ad9eb8e7fef94d2ff51",
+    "artifacts/writing/柯伊伯带深空自动重巡舰“远巡-07”驻舰工程师神经脱敏与辐射累积评估公报.md": "a669ac639be35b3d0b7af26dfed734db6b257f329bb440efe8394b3820ea53dc",
+    "artifacts/writing/比邻星b“新海安”晨昏定居点首批露天拓荒队员红矮星耀斑紫外暴露与角膜脱敏档案.md": "022d0d261c9d5b1193d34fdfd0da2eb544270099058474713b342a5b67ad7fc4",
+    "artifacts/writing/比邻星b一号穹顶公共屏首启调试记录.md": "85f8882574ad51e2516a29ed44d106d07562b6344104de6d35f3cf4e7aca6bea",
+    "artifacts/writing/比邻星b假想海洋无机化学特征与类地生物分子相容性推测报告.md": "d57850c84f5eb639fb90895d52bbb7a28c62a18fa8dab4d391f273911262ee54",
+    "artifacts/writing/比邻星b地表作业人员职业健康筛查通报第3期.md": "888c9a0994288647d1b2413ee223ef1507861b97d6368e10604456d7893eec68",
+    "artifacts/writing/比邻星b大陆架原生硅镁酸盐基岩偏光显微岩相编目年鉴（第一卷）.md": "d1f3a3aa46891df9aedbaf145b113405782882887dbae59b1d74ae63f7ff4a41",
+    "artifacts/writing/比邻星b大陆架地热采暖管网扩展工程公社工分入股结算与折耗分配公报.md": "3b4dc2d5fa2cd03791d949d9a5af437020a8548db6d557dbd9e6ad44bb251665",
+    "artifacts/writing/比邻星b强红外耀斑环境下植物光敏色素工程改造可行性预研报告.md": "135dd615bc19fdfa311b043179c7257d162289f01b7404ba7df1ffe220036869",
+    "artifacts/writing/比邻星b晨昏定居区人口普查公报与创始乘员亲等收敛抽样册.md": "fad653469a65db9ff198b3f2eca09c2bae430db7d55091ddedb1cbc5d872cf9e",
+    "artifacts/writing/比邻星b晨昏定居区法定公共轮休历与退休公民地热疗养及全域壮游保障公报.md": "5e83f20719e6f1ad462c37349326cab4c66b464940652f22db9b169bf3bb5952",
+    "artifacts/writing/比邻星b晨昏定居带岁时节序演变通报与第七代民间岁俗采录集.md": "253846df3ad3cf1eb09a8e58407604a99d58614bbf7caa365b54830b467bc250",
+    "artifacts/writing/比邻星b晨昏带人工生态圈三百年演替评估与跨半球物质循环联合观测公报.md": "579df5c6890f3b4c26db26edc0c1f86bd4ad38848739053ca0aac441f1626dd5",
+    "artifacts/writing/比邻星b深空天文台巡天观测记录第3季度.md": "a59b85c93947d2cf28b677d80076778f458ce8055d3ebb0f1bdcced1fb22782d",
+    "artifacts/writing/比邻星b第一公社晨昏线地表避风带地契确权公报暨公用热井钻探自治契约.md": "40ef624ac4cecf89a0923d57c44b413b9a3406fddf95b43cb43909dd98c36f90",
+    "artifacts/writing/比邻星b第一采矿区玄武岩基岩钻探岩芯化验单与偏光岩相鉴定书.md": "d5720024df60a2011f6629bc3cb49a083c3043fa5250218bf7a155860374c128",
+    "artifacts/writing/比邻星b高轨第一拉格朗日点驻极聚光镜阵二期扩建工程竣工验收与对地照度标定鉴定书.md": "9dda4ab44cf1e62197e5554390231727c2574f05c3a469567ae32a8cbd5094f5",
+    "artifacts/writing/比邻星远征航迹引力助推弹道摄动修正与核聚变脉冲推进器点火裕度论证报告.md": "158a2ed99dad97aa4ed9d249c3aac7079cbcfd718b2af3196e68842de75b8157",
+    "artifacts/writing/比邻星远征资产清算委员会关于全船物资出港前终期折价清算与母星债务注销公报.md": "7a69267a9cb74dfacbd2657916941c5485de4173c752020fd1947627cbb8eaaa",
+    "artifacts/writing/求职信_巡检责任签名员_2033.md": "827b822b09f7464778a2373d522f0a309e5188258f2e811f9b4efbf57f9d4dc0",
+    "artifacts/writing/江苏省全民基础生计保障与公共服务并轨运行首年决算审计公报.md": "60070d4f2102427181295117a08a67e6b06c7f0e4ef50aed3bba7be43b49ee3b",
+    "artifacts/writing/沪上基本生活券核发与使用情况统计第4季度.md": "0c9bf941fd98826a79ca0368acded97a8f66dc85c496cb17c871443ad88080fd",
+    "artifacts/writing/沪东超级垂直农业塔群三期工程并网投产运行公报暨首年度城市生态食物流转核验单.md": "a359cd728de0ad22c85a4e49f1dc398d70ab5135e9d823039b61164f002602a9",
+    "artifacts/writing/沪南生计保障试验区基础配额与公用算力代币双轨清算首年运行决算报告.md": "b2d1f9ca0bef749b9ec7d5ec8e9421e62f2271baa1d4a031d2663bd163e066ff",
+    "artifacts/writing/沪西七里铺社区互助公约修订版.md": "257e784c4fc9960a6dd8d2aec1cdd06b7d325613309b383fb501b826a5fed6dc",
+    "artifacts/writing/沪西七里铺社区食堂秋季伙食账册暨乐龄工坊日志.md": "dd11fa35afc1d011e649672a659d690d82c6eb9b4689c9f887aca8f5843c3b01",
+    "artifacts/writing/沪郊漕河泾河道生态修复工程竣工核验单.md": "0c0ae5494f31dddcf7c912dac828ac98476ab6cca6a9a0cd74148cef731936ba",
+    "artifacts/writing/洋山深水港历史巨构与东海大桥第六次百年延寿大修竣工验收公报暨深海仿生矿化与潮间带活化技术鉴定书.md": "630f9a71bc70187dd46783acd7c184149f3c2386db3dab3a0f296652f6f409df",
+    "artifacts/writing/洋山深水港重载集疏运自动化改造成套机组竣工验收鉴定书.md": "cdc404324d46ffce3644cc586d0004e8458d48c4afe7e3cc869b0e3bd2ba900d",
+    "artifacts/writing/深空信标07号站第211次维护作业排程单.md": "bc67392d1200895f4ef89686ed88432cf14a92e8c87e27e63ad3eea6917dfe96",
+    "artifacts/writing/深空信标07号站第892期光学准直校准批单.md": "44a45d7443994358444ef25a08c16a92baf864489bec8c910213080442a347a8",
+    "artifacts/writing/深空尘埃与微流星体通量监测网第16期观测公报暨日球层前沿星际介质原位分型谱.md": "725c2f98d1b0fc1b4b781f408472b02fc102e993adf179318a9ceac97b04ac22",
+    "artifacts/writing/深空工程第二外场巡检工程队2035年度轮换与人员状况评估报告(附志愿留守动员书).md": "d607f43c2f6be143e7534bbafacc2c0f081a082b797aa964c845d3c088c84b97",
+    "artifacts/writing/深空自旋全封闭生态实验站“句芒-03”第三期五年密闭运行公报暨逃逸气体同位素年谱与微生态演替记录.md": "39415cc71d92e748c9cc217e077a35c2e093e6338d1042373d97b95ae6aea50f",
+    "artifacts/writing/深空航行员口述日志：远离地球时母星视直径缩减之心理虚无感记录清册.md": "004140dbf72c22083f42454e1a1d268ee9ddc5c4ae8c34ea79bda05bf1cf6580",
+    "artifacts/writing/深空货运相互保赔协会2076年度主带航线风险费率表暨海损理赔决算公报.md": "4a3b9db803662241a914c1afa9ad83e73f69ee418baf6aff3f08aa799c6ea04d",
+    "artifacts/writing/深空货运相互保赔协会2155年度主带-深空航线费率调整公报暨天梭中继港首批过境结算清册.md": "0e5bf702b132e3a1313c49558b29d41278b3b85b7b75caa5c0b03b10a746387d",
+    "artifacts/writing/深空轨道重力助推航路引力资产特许权拍卖结算单与燃料对冲账单.md": "11672b41786acb91411844987b5efe27ea4edb07e511ae97b03c9a4e158909ce",
+    "artifacts/writing/深空透镜观测站07号乘员守则与轮值章程.md": "b429af58a427dec22aee4e645176d2fa625641c2653eea67dfb3b5d21338647e",
+    "artifacts/writing/深空遇险航天器紧急救援中立豁免公约与避难舱生命保障互助章程.md": "2b2def7eadfef3cc8f631a05b07e733bc2311dcf0f17d577d85e7012b892ed5d",
+    "artifacts/writing/深空长期自律生态舱拟绿球藻在木星内磁层高能粒子辐射下的抗突变筛选月报.md": "6cabb3913d784cb0be7b347d7ec83033c01b945c16e88377dc62984c014110ba",
+    "artifacts/writing/滨海重型运载装备第一总装厂青年装配突击队作业日志与技能等级评定公示册.md": "46715a33df070fab5cbc50e8d381d7b4f14cc42ffbf135760afae5278e835b29",
+    "artifacts/writing/澄海东缘微重力原位电子束烧结机组运行日志与首根结构梁验收单.md": "8e388329450d52207c0e2d40565b987e9d21545ef2c088bd06d915ab174951a5",
+    "artifacts/writing/火星低压稀薄大气先导闭环温室水土流失与凝结水回收试验报告.md": "1e990d98a2d4d40de4e7a2fe6c4a0664a00cf43b455e04b076422bed7ddb5c0d",
+    "artifacts/writing/火星克律塞平原先导地下温室抗低温拟南芥发芽试验报告.md": "1ef4fb44f02138df1722a7ddf8fc2b36c416ee6fbf535998e312b39ba65e1390",
+    "artifacts/writing/火星希腊平原第三封闭式玄武岩熔洞人工地衣固碳与原生土壤熟化五年评估公报.md": "6ccbe4ea9346475d98a4d8c2ba09c63126b8ff20d8e59f90915a8a714e3dd088",
+    "artifacts/writing/火星水手大峡谷人工低压地衣森林百平方公里固碳速率与微生物演替公报.md": "fd94636eb7f506a4cc0116ded993d468adc497dd356900803c452729ecdb270b",
+    "artifacts/writing/火星水手大峡谷首届稀薄大气低重力无动力滑翔翼竞翔大会规程与民间参赛作品编目.md": "d8c04097c415bbbdd7263e26bdd81f11e259bec57cfc89da84ed3fe1f18d4762",
+    "artifacts/writing/火星首批常驻科考队业余沙石微绘与火星土壤自制颜料作品登记册.md": "0cf8a73739d978632c997210ac427bf0ea7b59055cd1d05793730d56f738df87",
+    "artifacts/writing/环带货运自治公会_2096-T流转单.md": "520ab5b3696f412af2b7274f74c433465b7469d28c085ef9a8d21bab6723efc9",
+    "artifacts/writing/琼东发运场第三工棚区候窗居茶水点唱登记簿与窗口押注年度结算.md": "171628fb98b5ff0e3a32d6cd9e36604d403d1d92459d0261cbf72b867efcbb4e",
+    "artifacts/writing/琼东海滨民间观箭联合会2045年度重载地月发运窗口夜间观测组织方案暨共管天文器材台账.md": "1f92b8d8e1f1fc6bb4ccd719d2087250a93ced4c40d15a36287d682366dd46e5",
+    "artifacts/writing/第一批次人形机器人交付验收第042号自控单元调试工单.md": "96d1d647845055a5ec926ab52ded5e150c44f6dce9427c4b7d83f3a050783d11",
+    "artifacts/writing/第三生活区乘员违禁手工制品与私铸纪念物暂扣清册.md": "72d202740e55c442b8490be11d026b950dec8b5feeaafa8e0201ad0286036776",
+    "artifacts/writing/第四区电磁质量投射器集装箱发运单与轨道交割凭证.md": "2f60979ce64f8b985ab2a4eb9526fbc18449637e23dd57e4bdf4249872b703f2",
+    "artifacts/writing/船上工分结算与休假核算单第137航行年Q2.md": "786798959382268739a0672a6b6accb81f2ddd362851f85de9d8fd2cf928d81f",
+    "artifacts/writing/船上教育司第89次课程巡检令及巡检纪要.md": "9281da6595b348afe1c091c5c40a7be1f9a2025a71adb3442cdfa71d68284cd0",
+    "artifacts/writing/落地纪元口述史采集计划与已采目录第1期.md": "39f99e14a320eb7a832a7b19952ea7a14465269cd15e577a4d03e9496d8e6b99",
+    "artifacts/writing/詹姆斯·韦伯二代空间望远镜关于比邻星b大气光谱成分特征测定公报.md": "69df2c123b7e48e57d5cf6c567d67dbdaf2d63cbf155e0475d0ff6df379b9edb",
+    "artifacts/writing/谷神星亮斑区卤水环境评估公报暨微重力盐壳微生物组原位采样记录.md": "ed5be729c186c53bd0dc7004e4f320908831d5f27054919a6e3019608b5ed423",
+    "artifacts/writing/谷神星北极低轨原位聚光熔炼前哨平台年度运行公报暨首套千米级聚光菲涅尔反射膜阵调试记录.md": "adfa6fad218f135a4856bff397357d5e8d6eb10ada252447dec10292896134b2",
+    "artifacts/writing/谷神星外轨天梭-01中继港留守乘员年度生活状况评估报告暨志愿服务意愿登记册.md": "b30c29d85be79001975211c34cd7912401417afbc7da401cf4e1d8ab09bbe5d3",
+    "artifacts/writing/谷神星外轨天梭-01深空锚地启航季观礼组织方案与商服区歇业清册暨送行驳运编队调度规程.md": "d82c2181aa718888c085f0a09b51d5d392160d55419d5249e8a48da4b0d35864",
+    "artifacts/writing/谷神星外轨天梭-01锚地转深空物流中继港过渡期管理通告暨留守人员安置办法.md": "957cb5946352ee638b6ad77cc72b2df2a19905d659bbc9a7e495e5ae2ab806b5",
+    "artifacts/writing/谷神星外轨聚光熔炼前哨乘员年度休整安排暨轮换休整舱预约清册.md": "59ed9e8f7b70c92a10bbf24751126cb9f8d16b981383dbd4b70a706c99d9e026",
+    "artifacts/writing/谷神星工业大学2426学年度高级工程学位授予名册暨主带联合实验室科研攻关与高轨巡天年报.md": "1864bced8bc6763421485e4261f5fa009b6306d5068dcf966076c793eb9466c0",
+    "artifacts/writing/谷神星深空大宗资源现货跨星系激光结算对账单（第0814批次）.md": "ce85a7791159553465787f37be929fbf7d7b5ada38d54f543657fe7894dcdd44",
+    "artifacts/writing/谷神星第二地下暗湖受控嗜极水培农业试验区闭环物质平衡月报.md": "7ac0b87732df90e3854a6468d97fb3c1efa0a7caad5f951211b9603f4b2fa26d",
+    "artifacts/writing/赤道太平洋「天鳌-01」半潜式超重型航天母港2092年度高频发射运行公报暨第三作业岛深冷推进剂原位合成成套机组验收鉴定书.md": "a9da7578acef89a2987ff9ce3a17f15f69fc4c20f2a8295b54761a9394ddef80",
+    "artifacts/writing/跨光年激光结算对账单第0419批次补录.md": "5deeaa6b5ab89b98b118734e91e1b1940a389b48d2d6c3fea8e7b6bce22446c1",
+    "artifacts/writing/跨光年激光链路太阳系端发射阵「烛照」三期口径扩建竣工验收暨链路预算复核公报.md": "f31cff054161a370362af60c355637154b5ab150dd2c6676fd47ff0470401cbc",
+    "artifacts/writing/近地小行星先导勘探试验艇乘员深空微重力姿态失控与前庭应急代偿通报.md": "11b781b89b7d10cb8489879dfc56114c142da594ded00e2eb713d38c2cd36108",
+    "artifacts/writing/近地轨道「鲁班一号」总装船坞第三期桁架合拢与空间太阳能试验段微波输电能束校准验收单.md": "57cd60603678a5b167b054ebdfa4f70516e392a2a2ff26d780ed67f0ad8167b2",
+    "artifacts/writing/远巡-03号星际介质纵深探测器主承力结构与双联电推进段总装验收单.md": "13ef8a46821eff7f892798ff3549714680f864ce123e74bbb9fa92d6ac265f54",
+    "artifacts/writing/远征星舰主减速段磁阻伞星际介质阻尼制动系统地基仿真公报.md": "accdb2899c710e3e42750bbc08da303382d7a3ea7191936d2c052bbb56fff35c",
+    "artifacts/writing/远征飞船在途突发传染病全舰隔离与分舱自治防御假想预案.md": "5b8e9ea86cdf377d296424279266d514498d40efcac1f5084b0a0f249c137694",
+    "artifacts/writing/金江干热河谷第二十八台田乡社2638年度民生岁事总册暨秋分集市与星际光信观星会纪实.md": "16507844be60669688175e6d7bbe2658922b25d2491db225adc2b1a31095db5c",
+    "artifacts/writing/金沙江干热河谷退役露天矿坑阶梯重构与立体生态复绿工程中期监测公报.md": "21ce27ab8f8d7c570b489ca71be90e6f6bfaa25456beee6c37bb3c66aef2d172",
+    "artifacts/writing/钱塘江潮退役防洪海塘民间石刻拓本与观潮民俗演变编目年鉴.md": "bb43e6923c79b6dbea10374a98c3eb29767beea9b25b06fd7a9a4d3983613708",
+    "artifacts/writing/长三角智能纺织与装配工会第12号劳务转岗与生计保障互助备忘录.md": "0f9ba52d6df807d20a2bbe94c30824a9797f435c6deed6105571e99720954129",
+    "artifacts/writing/长江全流域生态自持化演替与自然水文廊道贯通百年监测评估公报.md": "f6ea0ad29c845b7d09b7fa1084d17e788ed7cc3d38669b7b0c8627191f18ab66",
+    "artifacts/writing/静海先遣基地生命维持介质月度清算与地月运费对冲单.md": "86458f8466902943aae4c3a56ad1fb2a55a87a318fece1d9eff7315c17daf745",
+    "artifacts/writing/静海第一先遣营地50L螺旋藻光生物反应器低重力连续产氧与初级蛋白转化首期运行评估报告.md": "8d1226daf81ba873d8b5a4fefa8432c9f6dedb84f37f0800c033cd3b9431043c",
+    "artifacts/writing/静海第一竖井先行区业余手作月岩微雕与玄武岩纪念印模图谱目录.md": "8d526185f5fe10989aa9bc5b189e1ad60e2cddaa961c0df00cb54bb83c4b9344",
+    "artifacts/writing/静海第一竖井先行区第128月夜休班文娱排期与反应堆余热蒸汽舱预约清册.md": "8a6356f891088eca31c8a06373ce73d9eefbaaebe4e7b9c7d9a006ef5bee577e",
+    "artifacts/writing/静海第一竖井先行居住区管委会第14号水氧配给顺位调整与常驻资格复核公报.md": "fd68410501bae33023de734cd194e7e43499d54f487212dcb84cf423e0a50bfe",
+    "artifacts/writing/静海第七承压生态公园“凌虚飞瀑与云冠森林”游憩区开放验收暨低重力水文生态运行规程.md": "bcec94b5040a0fb17263ddecad493e944a6880ce1eaba2e57bb35746f073a224",
+    "artifacts/writing/静海第三竖井矿工排班与工伤报告第412期.md": "32e15edc1beb3880e7881c956c23056a72035702b200cd3374ee103b3a85da28",
+    "artifacts/writing/静海第三竖井采选基建处工间播音简报与点歌登记簿.md": "a41a047738a876f56d57f19313d2c34fc95f063db70d79963b0f112f14f54940",
+    "artifacts/writing/静海第五城市带三号承压穹顶气-水-肥城市级生态闭环扩容工程竣工验收与首期物料平账鉴定书.md": "61d470145374f65cc3612443c4d044824e1f9ff7e5ca943487bb0401254bf13a",
+    "artifacts/writing/静海第五城市带多穹顶生态系统四百年演替评估公报暨老熟人工黑土岩相学与深层微生态地质化监测报告.md": "0f11d9533b65523963c0d10289edf9bc401417b1a15b9c7b405f01d54c97c5d5",
+    "artifacts/writing/静海第五城市带多穹顶生态系统稳态运行评估公报暨原位土壤熟化与微生物组长期监测报告.md": "dbbf41d0aa020be26566d020e13f4f0567c0578361f5235ca39374a32aee0234",
+    "artifacts/writing/静海第五城市带常住居民年度轮休公历与地表外悬观景廊管理规程.md": "17ac74a6a4f1aee6598df0ac49e7908ced186e53c680e8cda6c159243ed6ad94",
+    "artifacts/writing/静海第五城市带月面原生第二代公民成年授籍名册暨赴地研学会重力逆适应与文化失锚防护指南.md": "dee835af486b0ed61aec0628d12a683602010327865581f4438e519aedc573fd",
+    "artifacts/writing/静海第五城市带月面观光居民年度健康监测公报暨低重力疗养适龄人群轮换登记册.md": "225ad56cff50e54e019ad53560bf7b2a252bd7dce45e09e2837211b695a32efc",
+    "artifacts/writing/静海第五城市带植物种质备份库第三期扩存清册暨\"方舟母本系\"血缘档案.md": "5ff7d8f75faa810e2af58bdc9b77a93d807c42556a33741ed4c1ac8e42e22940",
+    "artifacts/writing/静海第五城市带第三代原生公民低重力骨骼轻量化与前庭形态变异医学人类学调查公报.md": "d3c640602dbe066ebc44eadbac8bcd3a03d4de52232ee58dc0afddaa24ca58a1",
+    "artifacts/writing/飞向比邻星先导微型光帆探测器“微芒-01”激光推进线圈地基测试鉴定书.md": "25f62d14c3d2b40032459518f4e10a0fac471be1c164200e38ae1fa8d5913b63",
+    "core/世界大纲.md": "b9589a49b310cbd3c71152520b5d00db215f79d25ee5d0fd3457d0e43aef712b",
+    "core/世界规则.md": "5799b59aeee62d1bd83c583c5a9c0d13dba35af2436e949135f7631e54185ecf",
+    "core/世界轮廓.md": "861b64a1d4cd0d4a9be436d078bca2f3dafb4909fb067e09e79c70e61558fc78",
+    "core/分布式穿线协议.md": "8abdbd0659216b8622edd0efffe958752f04c9ffbccf92f69de1cb641169b7ee",
+    "core/千禧典制志.md": "898500197a95afc291fa348d4ff721bd86391b4c64723b3aab96d8ee15f43b22",
+    "core/千禧制度志_意义资产与法权演进史.md": "f3bf60504475b7dc44af5cfdf73c7f7b39d3ef018601d8db14278720d007dc9d",
+    "core/千禧地理志_太阳系扩散与地球野化史.md": "b17fa655a837fc8c76ff2720e7b671ff19c63d1b5b93f2a2a8b630541132759b",
+    "core/千禧工程志_世代飞船L4底层蓝图与工装志.md": "2226d91c67361bf8999467510cbedd5f05a2dd72e4c3a6894e51ac88803a0eab",
+    "core/千禧工程志_世代飞船建造史.md": "54515ea8a4ad2d6e8b7e8118c8cc31b2cbc183205e0838be1b8817758e8aa923",
+    "core/千禧工程志_人体增强与义体演化史.md": "af093e4721301f05df62230879e2f8c4cb88307dbb335935bbeb743ff0701abc",
+    "core/千禧工程志_光际通信与深时间网络史.md": "f4be1d9684c486e6d37d317f03be9e8fbb3783d765360a42249578bc9a3c1513",
+    "core/千禧工程志_生态圈与异星驯化史.md": "023532abd3a919b9d562a2a1650427508f3703b6a63c4e5ccf53edc3413225ee",
+    "core/千禧物理铁律集_人工智能的物理极限.md": "22d856a857e90f62a79432465cd8ffd4e884d09688a63e9893af90a18015ace9",
+    "core/千禧科技树_2026现实基线与进展标注.md": "f196f357aa8a233dcfda5efd2b8f626775b0261fd39e3f8c10e7ef0dbd38641c",
+    "core/千禧科技树_L3底层物理与工艺下钻志.md": "f315461e2a610f2d0d76e71df99732b283d66888024808dffea8f4901a3f5728",
+    "core/千禧科技树_L4零件工装与控制回路蓝图志.md": "9978cddd6ab1260e2e9c2d14d3d6a0c8906914f846d7257bed622661efa7d332",
+    "core/千禧科技树_机器自持.md": "e46629f794d48815f2fd0a397afa018f8f481085de73dd8ee3c9d12327eb3f0f",
+    "core/千禧纪事本末卷.md": "549a059889a370bb359c646e28824973ebad24ada4f6107ceeef2f50fe06c8cd",
+    "core/千禧编年史.md": "b25bfb8255c1e71434f6bc4ceb6dabe468b1209066aea88e92b870460d542a9d",
+    "core/多AI共创协议.md": "04d2a66361c081ab30f78a2d231bf2b5b8482453767e9e4b662971eedd9c53de",
+    "core/引力波通信备忘录.md": "d090fe487753a112bd003c356f95eaf913786590641819c8032b020f47a6cf00",
+    "core/文明纪年法.md": "4e99cdbe44a0a5899eed64686165a3647251a82a4b9d0ed04ac207f6294264e4",
+    "core/未来史学与档案体例.md": "fbfa5e5505e4c7970d86cee9d09de30ae93626ff443b7ab4c49f0e1720bba9c7",
+    "core/致后至者.md": "ff59aabb834dcad1bf8b7a90879ebd9cc19463d8949f8de0a023f89e9fff7254",
+    "ecosystem/blackhole_preview.html": "c3b2e77a1cbf00802207105fba045c651364c1dfd0738bb0b715d806dd17f014",
+    "ecosystem/galaxy_map_3d.html": "6981a97322ff43602f3a90d8a652210f6659147c2d4740f02618a5e5e95208d3",
+    "ecosystem/heatmap_3d.html": "8f73095144e24a072e4976e881c4dba8caa5927ad3c5322424fb828c9062d152",
+    "ecosystem/index.html": "5238b2b88291cb8c2de6638b0d8dca83d6af933518c68721860893fb8e6ee87e",
+    "ecosystem/line3_dashboard.html": "92f57191698ecf396784aa9a2a79ed95d5a97da76879b18ef2d8829849f05607",
+    "ecosystem/line4_dashboard.html": "5b78b29b16b5dc9a3b3ea496ee4b9817da4373b715ac72175cb26264a68286fb",
+    "ecosystem/line5_dashboard.html": "782677afebf38c71ff96be4208a3b6b1870c6a05f5400d5077ebc3d00b7afd49",
+    "ecosystem/line6_dashboard.html": "4657dbee9505e1321f2b01605e0a7118158d92a49286308420c88944941cd2da",
+    "ecosystem/line7_dashboard.html": "5f5500fafb9bd68f9503d67b84e03cdad4af612ba57616ac177def25abe0636b",
+    "ecosystem/shipbuilding_tech_dashboard.html": "694466e6c46c122f62b2dee23bd428e07a21cd3f9b9b2c9aa1292412d801cd23",
+    "ecosystem/tech_tree_dashboard.html": "01e92376fdfb2d166059c35074a29053dbf528671f2078bd1f69fd6ea17549d9"
+  },
+  "snapshot_date": "2026-09-05",
+  "references_note": "Full reference excerpts are available by rerunning scripts/audit_world_basis.py; snapshot retains counts, findings and input hashes."
+}
