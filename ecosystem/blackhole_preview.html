@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>世代飞船 · 特效预览 — 黑洞 v3</title>
+<style>
+  html,body{margin:0;height:100%;background:#000;overflow:hidden;font-family:-apple-system,"PingFang SC",sans-serif}
+  canvas{display:block;width:100vw;height:100vh}
+  #hud{position:fixed;left:16px;bottom:14px;color:#9fb4d8;font-size:12px;opacity:.7;
+       text-shadow:0 0 6px #000;user-select:none;line-height:1.7}
+  #hud b{color:#e8f0ff}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="hud"><b>SGR A*-CLASS SINGULARITY · v3</b> 测地线弯曲 + 体积吸积盘<br>拖动旋转 · 滚轮缩放 · 静止自动环绕</div>
+<script>
+const vs = `attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}`;
+
+const fs = `precision highp float;
+uniform vec2 R; uniform float T; uniform vec3 CAM;
+#define PI 3.14159265
+float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
+  return mix(mix(hash(i),hash(i+vec2(1,0)),f.x),mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),f.x),f.y);}
+float fbm(vec2 p){return noise(p)*.55+noise(p*2.13)*.28+noise(p*4.7)*.17;}
+
+vec3 sky(vec3 d){
+  vec2 uv = vec2(atan(d.z,d.x)/PI, asin(clamp(d.y,-1.,1.))/(PI*.5));
+  vec3 col = vec3(0);
+  for(float i=0.;i<3.;i++){
+    vec2 g = uv*(60.+i*70.) + i*17.31;
+    vec2 id = floor(g); vec2 fr = fract(g)-.5;
+    float h = hash(id);
+    if(h > .962 - i*.005){
+      float b = pow((h-.955)*22., 2.);
+      float d = length(fr - (vec2(hash(id+1.7),hash(id+3.1))-.5)*.8);
+      float tw = .75+.25*sin(T*(1.+h*3.)+h*40.);
+      vec3 sc = mix(vec3(.7,.8,1.), vec3(1.,.85,.6), hash(id+5.));
+      col += sc * b * exp(-d*d*90.) * tw;
+    }
+  }
+  float bd = abs(d.y*.86 + d.x*.28 + d.z*.42);
+  col += exp(-bd*5.5)*vec3(.05,.07,.14) + exp(-bd*16.)*vec3(.10,.06,.03)*fbm(uv*8.+T*.002);
+  return col;
+}
+
+void main(){
+  vec2 uv = (gl_FragCoord.xy - .5*R)/R.y;
+  vec3 ro = CAM;
+  vec3 f = normalize(-ro);
+  vec3 rt = normalize(cross(f, vec3(0,1,0)));
+  vec3 up = cross(rt, f);
+  vec3 rd = normalize(f*1.5 + rt*uv.x + up*uv.y);
+
+  float jit = hash(gl_FragCoord.xy + fract(T)*61.7);
+  vec3 p = ro + rd*jit*0.15;
+  vec3 v = rd;
+  vec3 col = vec3(0);
+  bool cap = false;
+
+  for(int i=0;i<180;i++){
+    float r = length(p);
+    if(r < 1.0){ cap = true; break; }
+    if(r > 90. && dot(p,v) > 0.) break;
+    float dt = clamp(r*0.07, 0.025, 0.30);
+    vec3 a = -1.5 * p / (r*r*r);
+    // 光子球辉光
+    col += vec3(1.,.62,.30) * exp(-abs(r-1.5)*6.) * .004;
+
+    // ---- 体积吸积盘：在盘厚内连续发光累积 ----
+    float hr = length(p.xz);
+    if(hr > 2.4 && hr < 13.5){
+      float thick = 0.22 + 0.07*hr;             // 外厚内薄
+      float vert = exp(-p.y*p.y/(thick*thick)*2.);
+      if(vert > .02){
+        float ang = atan(p.z, p.x);
+        float w = T * (2.6/pow(hr*0.35,1.5));
+        float den = fbm(vec2(ang*3. + w, log(hr)*5.5 - T*.12));
+        den = pow(den, 1.35)
+            * smoothstep(2.4, 3.1, hr) * smoothstep(13.5, 9.5, hr)
+            * (.55+.45*sin(ang*2.+w*.6)) * vert;
+        // 多普勒束流 + 引力红移（一侧显著增亮偏白）
+        vec3 vel = normalize(vec3(-p.z,0,p.x));
+        float dop = clamp(pow(.55+.45*dot(vel,rd), 3.)/sqrt(max(hr-1.,.5))*1.5, .08, 2.8);
+        // 黑体渐变：内白热外橙红
+        float temp = smoothstep(13.5,2.4,hr);
+        vec3 dc = mix(vec3(.95,.28,.05), vec3(1.,.85,.55), pow(temp,1.7));
+        dc = mix(dc, vec3(1.,.98,.92), pow(temp,6.));
+        col += dc * den * dop * dt * 3.2;
+      }
+    }
+
+    p += v*dt;
+    v = normalize(v + a*dt*2.0);
+  }
+
+  if(cap) col *= 0.;
+  else    col += sky(normalize(v));
+
+  // 泛光 + filmic + gamma
+  col += vec3(1.,.55,.25) * pow(min(length(col)*.42,1.), 2.0) * 1.15;
+  col = 1. - exp(-col*2.1);
+  col = pow(col, vec3(.4545));
+  gl_FragColor = vec4(col, 1.);
+}`;
+
+const cv=document.getElementById('c');
+const gl=cv.getContext('webgl');
+function sh(t,s){const o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);
+  if(!gl.getShaderParameter(o,gl.COMPILE_STATUS))console.error(gl.getShaderInfoLog(o));return o;}
+const pr=gl.createProgram();
+gl.attachShader(pr,sh(gl.VERTEX_SHADER,vs));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,fs));
+gl.linkProgram(pr);gl.useProgram(pr);
+if(!gl.getProgramParameter(pr,gl.LINK_STATUS))console.error(gl.getProgramInfoLog(pr));
+const buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);
+gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+const loc=gl.getAttribLocation(pr,'p');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+const uR=gl.getUniformLocation(pr,'R'),uT=gl.getUniformLocation(pr,'T'),uC=gl.getUniformLocation(pr,'CAM');
+
+let yaw=.4,pitch=.16,dist=26,drag=null,lastInput=0;
+cv.onpointerdown=e=>{drag=[e.clientX,e.clientY];lastInput=performance.now();cv.setPointerCapture(e.pointerId)};
+cv.onpointermove=e=>{if(!drag)return;yaw+=(e.clientX-drag[0])*.005;pitch=Math.min(1.25,Math.max(-1.25,pitch+(e.clientY-drag[1])*.004));drag=[e.clientX,e.clientY];lastInput=performance.now()};
+cv.onwheel=e=>{dist=Math.min(70,Math.max(8,dist*Math.exp(e.deltaY*.001)));lastInput=performance.now()};
+
+function resize(){cv.width=innerWidth*devicePixelRatio;cv.height=innerHeight*devicePixelRatio;gl.viewport(0,0,cv.width,cv.height)}
+addEventListener('resize',resize);resize();
+
+function frame(t){
+  if(performance.now()-lastInput>3000)yaw+=0.0012;
+  const cp=Math.cos(pitch),sp=Math.sin(pitch);
+  gl.uniform2f(uR,cv.width,cv.height);
+  gl.uniform1f(uT,t*.001);
+  gl.uniform3f(uC,dist*cp*Math.sin(yaw),dist*sp,dist*cp*Math.cos(yaw));
+  gl.drawArrays(gl.TRIANGLES,0,3);
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>
