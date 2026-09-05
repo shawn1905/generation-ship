@@ -1,0 +1,15 @@
+{
+  "schema_version": "0.1",
+  "assets": [
+    {
+      "asset_id": "EXP-LUN-CARGO-001",
+      "family_id": "lunar-cargo",
+      "model_id": "L060/L080",
+      "revision": "r1",
+      "status": "experimental_geometry",
+      "validation_level": "V1",
+      "manifest": "EXP-LUN-CARGO-001/asset.json",
+      "last_verified": "2026-09-05"
+    }
+  ]
+}

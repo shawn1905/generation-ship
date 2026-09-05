@@ -1,0 +1,11 @@
+{
+  "asset_id": "EXP-LUN-CARGO-001",
+  "units": "m",
+  "coordinate_system": {"up": "Z", "origin": "cargo_body_center"},
+  "interfaces": [
+    {"id": "dock_-1_-1", "type": "mechanical_docking", "position_m": [-0.276, -0.176, 0.055], "insert_axis": [0,0,-1], "release_axis": [-1,0,0], "clearance_m": 0.0015, "status": "conceptual"},
+    {"id": "dock_-1_1", "type": "mechanical_docking", "position_m": [-0.276, 0.176, 0.055], "insert_axis": [0,0,-1], "release_axis": [-1,0,0], "clearance_m": 0.0015, "status": "conceptual"},
+    {"id": "dock_1_-1", "type": "mechanical_docking", "position_m": [0.276, -0.176, 0.055], "insert_axis": [0,0,-1], "release_axis": [1,0,0], "clearance_m": 0.0015, "status": "conceptual"},
+    {"id": "dock_1_1", "type": "mechanical_docking", "position_m": [0.276, 0.176, 0.055], "insert_axis": [0,0,-1], "release_axis": [1,0,0], "clearance_m": 0.0015, "status": "conceptual"}
+  ]
+}

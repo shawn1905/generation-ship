@@ -10,6 +10,7 @@
 - Blender 5.2.1 LTS 后台脚本启动已通过，GLB 操作存在；Unity 6000.3.23f1 已安装但尚未跑通导入。尚无本轮 3D 模型或 Unity 场景。当前本地常见实体模型扩展名搜索无结果，不代表外部存储没有模型。
 - 后续：先完成规格卡的参数化灰模、接口及改尺寸重建验证；按资产依赖逐项解决矛盾。完整现实 TRL 审计、全库语义复核和统一参数数据源仍未完成。
 - 首件试制已完成：桌面 `/Users/dahongge/Desktop/世代飞船_造物试制/r1/` 含 L060/L080 两个参数版本；Blender 输出 72 组件、GLB 往返尺寸哈希验证 PASS；Unity 6000.3.23f1 项目 `UnityCargo` 批处理导入与型号/展开逻辑 PASS。详情见 `craft/造物产线/首件验证报告.md`。二进制只保留桌面，不入 Git。
+- 用户要求省 token 并允许其他 agent 执行窄任务；已建立 `craft/造物产线/省Token多Agent协作方案.md`、`工单模板.md`、`事实状态枚举.md`，以及 `world/造物/_registry.json` 和首件的 asset/interfaces/validation manifest。主 agent 只做架构、冲突裁决和最终门禁。
 - 阅读边界：本库规则、技术主干、七线路节点、治理/穿线/视觉及相关样例已读；总仓库 README 在线读取失败，待补核。记录及快照见工作台。
 
 

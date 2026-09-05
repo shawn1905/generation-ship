@@ -1,0 +1,16 @@
+{
+  "asset_id": "EXP-LUN-CARGO-001",
+  "family_id": "lunar-cargo",
+  "model_id": ["L060", "L080"],
+  "instance_id": null,
+  "revision": "r1",
+  "status": "experimental_geometry",
+  "validity": {"year": 2035, "location": "Earth-Moon logistics", "scope": "non-pressurised internal transfer"},
+  "facts": ["FACT-LOGISTICS-001"],
+  "assumptions": ["ASSUMP-DIM-001", "ASSUMP-WALL-001", "ASSUMP-LOAD-001"],
+  "open_questions": ["Q-LOAD-001", "Q-DUST-001"],
+  "generator": {"script": "scripts/build_cargo_asset.py", "revision": "r1"},
+  "interfaces": "interfaces.json",
+  "validation": "validation.json",
+  "source": "artifacts/writing/地月环月轨道班车早班运力配额拍卖结算单与载荷对冲决算书.md"
+}
