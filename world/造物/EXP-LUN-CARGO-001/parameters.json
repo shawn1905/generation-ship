@@ -1,0 +1,14 @@
+{
+  "asset_id": "EXP-LUN-CARGO-001",
+  "revision": "r1",
+  "status": "experimental_geometry_not_canon",
+  "length_m": 0.6,
+  "width_m": 0.4,
+  "height_m": 0.32,
+  "wall_m": 0.003,
+  "payload_target_kg": 20,
+  "shell_density_assumption_kg_m3": 2700,
+  "lid_clearance_m": 0.0015,
+  "source_path": "artifacts/writing/地月环月轨道班车早班运力配额拍卖结算单与载荷对冲决算书.md",
+  "source_scope": "spare-parts transport purpose only; dimensions, materials and interfaces are experimental assumptions"
+}

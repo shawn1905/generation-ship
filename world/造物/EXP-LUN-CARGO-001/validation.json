@@ -1,0 +1,13 @@
+{
+  "asset_id": "EXP-LUN-CARGO-001",
+  "level": "V1",
+  "checks": [
+    {"name": "component_count", "expected": 72, "status": "pass"},
+    {"name": "parameter_variants", "expected": [0.6, 0.8], "status": "pass"},
+    {"name": "source_glb_roundtrip", "status": "pass", "report": "Desktop L060/roundtrip.json"},
+    {"name": "lid_aabb_samples", "samples_m": [0.012,0.025,0.05,0.1,0.18], "status": "pass", "qualification": "coarse_screen_only"},
+    {"name": "unity_import", "status": "pass", "qualification": "batch_script_only"}
+  ],
+  "not_proven": ["continuous_collision", "load_rating", "leak", "thermal", "vibration", "lunar_dust_wear"],
+  "generator": "scripts/build_cargo_asset.py"
+}
