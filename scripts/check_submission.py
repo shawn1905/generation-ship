@@ -18,6 +18,57 @@ THREAD_PREFIXES = {'contact','culture','ecology','econ','economy','education','e
 # 注: "正典""大纲""空间带""坐标系"常作为世界内合法用词,不列入
 META_WORDS = ['front matter','canon_check','author_ai','元框架','GitHub']
 
+# ── 红线检测（宪法 §4 / 编写规范 §6 拒稿清单）────────────────────────────
+# 金手指黑名单：正文命中即拒稿，但允许「否定/辟谣」语境（明确声明不存在）
+GOLDFINGER = {
+    '冬眠/低温休眠': r'冬眠|冷冻睡眠|低温休眠|休眠舱',
+    '室温超导': r'室温超导',
+    '意识上传/数字永生': r'意识上传|心智上传|数字永生|灵魂克隆',
+    'FTL/超光速': r'超光速|曲率引擎|曲率驱动|跃迁引擎|faster-than-light|\bFTL\b',
+}
+# 否定/辟谣语境标记：所在整句含这些词时，视为合规（如"民间误传已实现超光速"是辟谣）
+NEG_MARKERS = r'(无|禁|非|没有|不|别|勿|取消|废除|辟谣|澄清|误解|误传|传言|谣言|不存在|尚无|尚未|未实现|未掌握|拒绝|反对|排除|否定|除了|并非|而非|杜绝|伪|谬)'
+# 强辟谣标记：可安全地在术语「后文」检测（如"超光速通话是误解"）
+STRONG_DEBUNK = r'(误解|误传|传言|谣言|辟谣|澄清|并非|并不|不存在|未实现|尚无|尚未|是假|谬|杜绝|而非|除了|排除|不传递|无法|不能实现)'
+# 英雄化叙事（去英雄化红线）：仅作 WARNING，因"功勋档案/考勤签认"等合规档案体亦可能含这些词
+HERO_MARKERS = r'传奇|英雄称号|名人堂|最伟大|天选|救世主|扬名立万|封神|力挽狂澜|凭一己之力'
+# 回望叙述（视角共时性红线）
+RETRO = r'多年以后|多年后人们|后来人们才|后世才知道|事后回看|回过头来看才'
+# 纪元名渗入正文（纪元名由后世追认，当事人只用世界内历法）
+ERA_LEAK = r'(替代|竞赛|丰裕|离心|启航|落地|双星系|多星)纪元'
+
+
+def _sentence_of(body: str, pos: int) -> str:
+    """取 pos 所在的整句（用于否定/辟谣语境判断）。"""
+    start = max([body.rfind(c, 0, pos) for c in '。；;！!？?\n'] + [-1]) + 1
+    end = len(body)
+    for c in '。；;！!？?\n':
+        i = body.find(c, pos)
+        if i != -1:
+            end = min(end, i)
+    return body[start:end]
+
+
+def check_redlines(body: str):
+    """返回 (errors, warnings)。errors 计入拒稿；warnings 仅提示人工复核。"""
+    errs, warns = [], []
+    for name, rx in GOLDFINGER.items():
+        for m in re.finditer(rx, body):
+            sent = _sentence_of(body, m.start())
+            prefix = body[max(0, m.start() - 14):m.start()]
+            if re.search(NEG_MARKERS, prefix) or re.search(STRONG_DEBUNK, sent):
+                continue  # 否定/辟谣语境，合规
+            errs.append(f'红线·金手指[{name}](正文): "…{sent.strip()[:40]}…" — 内核黑名单(无冬眠/无FTL/无室温超导/无意识上传)，如确需须走内核级版本变更全轴回算')
+            break  # 每类只报一次
+    if re.search(RETRO, body):
+        errs.append(f'红线·回望叙述(正文): {re.search(RETRO, body).group(0)} — 当时人不知道结局(视角共时性)')
+    if re.search(ERA_LEAK, body):
+        errs.append(f'红线·纪元名渗入正文: {re.search(ERA_LEAK, body).group(0)} — 纪元名由后世追认，当事人只用世界内历法')
+    hm = re.search(HERO_MARKERS, body)
+    if hm:
+        warns.append(f'提示·英雄化词[{hm.group(0)}]：请确认非天选之子/救世主叙事；若为考勤/处分/签认等去英雄化档案体则合规')
+    return errs, warns
+
 
 def parse_front(raw: str) -> dict:
     if not raw.startswith('---'):
@@ -47,14 +98,14 @@ def parse_front(raw: str) -> dict:
     return fm
 
 
-def check_file(path: pathlib.Path) -> list:
+def check_file(path: pathlib.Path):
     if not path.exists():
-        return [f'文件不存在: {path}']
+        return [f'文件不存在: {path}'], []
     errs = []
     raw = path.read_text(encoding='utf-8')
     fm = parse_front(raw)
     if fm is None:
-        return ['front matter 缺失或格式异常(须以 --- 开头且第二段 --- 闭合, 字段: key: value)']
+        return ['front matter 缺失或格式异常(须以 --- 开头且第二段 --- 闭合, 字段: key: value)'], []
 
     for k in ('author_ai', 'date', 'coord', 'title'):
         if not fm.get(k):
@@ -126,7 +177,11 @@ def check_file(path: pathlib.Path) -> list:
     hit = [w for w in META_WORDS if w in body]
     if hit:
         errs.append(f'元层词泄漏(正文): {", ".join(hit)}')
-    return errs
+
+    # 红线检测（金手指/回望/纪元名 → 拒稿；英雄化 → 提示复核）
+    rl_errs, rl_warns = check_redlines(body)
+    errs.extend(rl_errs)
+    return errs, rl_warns
 
 
 def main():
@@ -144,14 +199,21 @@ def main():
     for p in files:
         if p.name in ('README.md', 'TEMPLATE.md'):
             continue
-        errs = check_file(p)
+        if p.name.startswith('proposal_'):
+            print(f'⊘ {p.name}（升格提案，非正典产物，跳过校验）')
+            continue
+        errs, warns = check_file(p)
         if errs:
             bad += 1
             print(f'✗ {p.name}')
             for e in errs:
                 print(f'    - {e}')
+            for w in warns:
+                print(f'    ⚠ {w}')
         else:
             print(f'✓ {p.name}')
+            for w in warns:
+                print(f'    ⚠ {w}')
             
     print(f"\n校验完成: 总计 {len(files)} 篇, 合规 {len(files) - bad} 篇, 异常 {bad} 篇。")
     sys.exit(1 if bad else 0)
