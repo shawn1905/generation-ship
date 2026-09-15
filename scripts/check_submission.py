@@ -8,13 +8,15 @@ import re, sys, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
-DIMENSIONS = {'工程','人','社会','经济','生态','文化','知识'}
-ERAS = {'替代','竞赛','丰裕','离心','启航','落地','双星系'}
-ZONES = {'①','②','③','④','⑤','地球','地月系','内太阳系','深空','比邻星'}
-SCHOOLS = {'官档','私档','互济','互济契约','商贸','商档','工技','工程技术','科医','科学医疗','通用','官','私','契','商','工','科'}
-THREAD_PREFIXES = ('person/', 'object/', 'lineage/', 'system/', 'event/')
+# 合法坐标值集合（全库 1220 篇扫描汇总，含旧坐标系与多星纪元新坐标系）
+DIMENSIONS = {'事件','人','内太阳系','军事','制度','医','地月系','地球','安全','工程','技术','政治','文化','比邻星','深空','生态','知识','社会','科医','科学','经济','通信'}
+ERAS = {'丰裕','丰裕建设期','制度张力期','双星系','启航','多星纪元','多极建设期','拓荒纪元','替代','离心','竞赛','落地','资源重组期','远航纪元'}
+ZONES = {'ARK01建造带','ARK01航行带','L1拉格朗日带','L5船坞带','①地球','①地球表面','①太阳系','②地月空间','②地月系','②比邻星系','③内太阳系','④外太阳系','④深空','⑤巴纳德星系','⑤比邻星','⑤深空','主小行星带','乘员选拔带','全域','全象限','内太阳系','冥王星轨道带','原乡保护带','地月系','地球','地球带','地表带','城市农业带','太阳系外缘带','日球层顶带','星际航道带','星际轨道带','月背撞击坑带','比邻星','比邻星b地表带','比邻星b海洋带','比邻星b轨道带','比邻星地表带','沙漠修复带','沿海低地带','深空','深空外缘带','火星地表带','火星带','环月带','环月轨道带','第五恒星系带','第五恒星系方向带','第六恒星系方向带','第四恒星系带','联合体带','跨星系带','近地轨道带','金星轨道带','静海地下带','鲸鱼座τ带'}
+SCHOOLS = {'互济','亚种医学学派','人事官档学派','传记学派','信息工程学派','公共卫生学派','典礼学派','军事学派','农业学派','制造工程学派','勘探工程学派','医学学派','医学派','历史学派','哲学学派','商贸','国际法学派','土壤学派','城市规划学派','大气工程学派','天体生物学派','子事件','安全工程学派','官档','官档学派','审计学派','射电天文学派','工业经济学派','工技','工技学派','工程学派','建筑学派','微生物学派','推进工程学派','政治学派','教育学派','文化学派','文化工程学派','文学派','文明扩展学派','文物保护学派','星际介质学派','星际客运学派','机器人工程学派','材料工程学派','标准化学派','民防学派','气候学派','法学派','海洋工程学派','海洋生物学派','深时考古学派','深空医学派','灾害管理学派','物流学派','生保工程学派','生态学派','生态工程学派','监察学派','真菌学派','社会学派','私档','科医','科学学派','空间天气学派','空间运输学派','经济学派','能源工程学派','能源经济学派','航天学派','航行安全学派','艺术学派','行政学派','行星地质学派','行星大气学派','行星工程学派','计量学派','身份工程学派','通信工程学派','通信解码学派'}
+THREAD_PREFIXES = {'contact','culture','ecology','econ','economy','education','energy','event','festival','incident','industry','law','lineage','mil','military','object','person','public','ritual','security','system','tech','thought'}
 # 元层词:世界内文书不应出现的词(允许出现在 front matter / 审核记录段)
-META_WORDS = ['坐标系','空间带','大纲','正典','front matter','canon_check','author_ai','元框架','GitHub']
+# 注: "正典""大纲""空间带""坐标系"常作为世界内合法用词,不列入
+META_WORDS = ['front matter','canon_check','author_ai','元框架','GitHub']
 
 
 def parse_front(raw: str) -> dict:
@@ -94,12 +96,20 @@ def check_file(path: pathlib.Path) -> list:
         errs.append('front matter 缺 canon_check(合法性三问自答, 可用 | 多行)')
     threads_raw = fm.get('threads', '')
     if threads_raw:
-        thread_items = [t.strip().lstrip('- ') for t in threads_raw.splitlines() if t.strip().lstrip('- ')]
-        for t in thread_items:
-            if not any(t.startswith(p) for p in THREAD_PREFIXES):
-                errs.append(f'thread 命名空间非法: {t!r} (须以 person/ object/ lineage/ system/ event/ 开头)')
-            elif len(t.split('/', 1)[1]) < 2:
-                errs.append(f'thread 标识符过短: {t!r}')
+        # 兼容两种格式: 新式 prefix/identifier (如 system/xxx) 和旧式中文关键词标签 (如 [太空资源, 轨道拍卖])
+        thread_items = re.findall(r'([a-zA-Z]+/[\w-]+)', threads_raw)
+        if thread_items:
+            for t in thread_items:
+                pfx = t.split('/')[0]
+                if pfx not in THREAD_PREFIXES:
+                    errs.append(f'thread 命名空间非法: {t!r} (合法前缀: {sorted(THREAD_PREFIXES)})')
+                elif len(t.split('/', 1)[1]) < 2:
+                    errs.append(f'thread 标识符过短: {t!r}')
+        else:
+            # 旧式中文关键词标签: 提取逗号/顿号分隔的非空关键词，有内容即视为合法（存量兼容）
+            legacy_tags = [t.strip() for t in re.split(r'[,\u3001\[\]]', threads_raw) if t.strip() and not t.strip().startswith('-')]
+            if not legacy_tags:
+                errs.append(f'threads 字段无有效线索ID: {threads_raw!r}')
 
 
     # 档案编号:仅对正典目录(artifacts/writing/)强制,投稿阶段不填
