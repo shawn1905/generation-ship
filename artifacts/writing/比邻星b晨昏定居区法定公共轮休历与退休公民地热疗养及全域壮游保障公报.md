@@ -223,21 +223,3 @@ canon_check:
 **存放物理位置：** 新海安中央档案馆地下三层 A-02-048 号玄武岩防潮柜（微缩光盘与纯钛激光蚀刻双联存卷）
 
 ---
-
-## 图片提示词
-
-晨昏线边缘140米高的玄武岩防风大坝顶端，一列充满厚重工业质感的全景双层观光列车平稳停驻，暖黄色的车窗内透出惬意的人影；背景中暗红色的巨大红矮星半沉在辽阔地平线上，投射出温暖低角度的夕阳硬光；远处数十公里半透明气压温室穹顶群在深红暮色中泛着淡紫光雾，大坝观景露台上几位穿着工装常服的退休老人捧着热气腾腾的茶杯凭栏远眺，极目处是冷洋前缘翻涌的白色地热蒸汽与天际绚丽的极光，构图宏大壮阔，人物微小而氛围极其安详美好。
-
-Cinematic wide-angle documentary photograph on exoplanet Proxima Centauri b. A massive 140-meter-high dark basalt breakwater dam stretches across the frame, overlooking a vast twilight plain. On top of the dam's heavy railway track, a rugged double-decker observation train with large panoramic windows glows with warm interior yellow light. In the background, a colossal deep-red dwarf star sits low on the alien horizon, casting long, directional bronze and deep-crimson rays across the jagged landscape. Far below on the leeward side, an expansive network of translucent agricultural domes glows with gentle violet bioluminescence. On a wide steel observation balcony beside the train, a few elderly retired workers in comfortable utilitarian jumpsuits hold steaming ceramic cups, leaning against the industrial railings to gaze at distant white geothermal steam plumes rising from the cold ocean edge and shimmering emerald auroras in the dark upper sky. Miniature human scale against colossal engineering, tangible physical textures of cold metal, warm glass, weathered stone, and soft steam; shot on Hasselblad H6D-100c, 50mm lens, natural cinematic lighting, highly detailed, realistic sci-fi optimism, zero fantasy glow.
-
----
-
-## 修订记录（元层，非世界内容）
-
-- 2026-08-18：主编辑审校完成，小修（🔧）入库备选：
-  1. **历法与人口数据严密闭环**：落地历278年（旧公历2628年）全域常住人口 438,200人及在册在岗劳动力 28.6万人，与人口普查公报（GS-2614-01，落历264年414,280人）、三百年生态演替公报（GS-2650-01，落历300年468,500人）形成单调平滑递增的稳态人口轨迹（年均复合增长率约 0.40%），劳动力占比（65.3%）与代际更替完全自洽；
-  2. **正典名物与节令高度互锁**：四大在地节令（关管节/大红风节/客光节/站绿日）及关联名物（38潮汐周磁暴周期、50m/s对流红风暴、绿柄扳手祈福、同光婚约、抗逆紫麦水培声景）与岁时节序演变通报（GS-2598-01）全要素咬合；
-  3. **巨构工程与疗养体系参数一致**：冷洋前缘 420公里破冰地热矿泉疗养带（24座 4,800m 深井超临界 CO₂ 换热/315K~318K温泉）、1,840公里玄武岩防风大坝及 840吨「撼风者-IV」全景双层观光车与生态演替公报（GS-2650-01）完全一致；
-  4. **医疗背景与谱系个案严密承接**：1.07g地表重力所致之 L4-L5/L5-S1 腰椎退行性纤维环钙化及红外晶状体劳损病理背景承接 GS-2614-01 §3.2 与职业健康筛查通报；B-144家族方建安（L-G4代，落历168年生/现年110岁/原玄武岩拉丝高级技师）、方承石（L-G6代，落历248年生/现年30岁/学徒工）、主治医师顾维康（始祖顾延川后裔）与 GS-2614-01 谱系切片完全一致；
-  5. **消除正文纪元名词面联想**：高轨 PMA-03 观景体验词目微调为「肉眼凝视南门二双星与深空星海」，杜绝元层词汇，天象表述更严谨；
-  6. **制度边界与好日子基调契合**：建立在工时门槛（40,000/32,000具名工时）、防风维护义务（潮汐日11胶条与地锚维保）与能耗指标测算配额硬约束之上，符合“无冲突史诗”档案馆美学。

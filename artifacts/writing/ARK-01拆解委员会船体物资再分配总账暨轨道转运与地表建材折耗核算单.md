@@ -160,14 +160,3 @@ ARK-01 飞船在二百载航程中是庇护全员的移动堡垒，在扎根地�
 **主送：** 比邻星拓荒协调署主席团、新港接收站管理处、新海安地籍档案馆、船载深空档案馆分库  
 
 ---
-
-## 图片提示词
-
-**中文：**
-超大广角极度冷峻的在轨拆解与物资转运全景档案镜头。前景为高椭圆轨道上悬浮的一组生锈带有灼烧痕迹的ARK-01飞船钛合金推进段残骸，巨大的冷剪导轨切开管束与辐射装甲，露出一层层金属接缝与防热涂层，几根粗大的系留缆索延伸至暗处；中景是一艘无涂装、表面布满烧蚀黑斑的重型下降器货舱门大开，正在吞吐装满编号钢印的合金锭与波纹蒙皮板；远景为比邻星b暗红色的巨大晨昏地表弧线，红矮星单一低角度硬光源拉出极长而锋利的金属高光与深黑阴影，空间漂浮着微细金属碎屑。无任何文字、无国旗标识，真实工业材质，哈苏中画幅65mm胶片质感，绝对的物理沉重感与冷酷记账美学。
-
-**English:**
-Ultra-wide establishing shot of cold orbital industrial dismantling and cargo redistribution. In the lower foreground, a massive severed section of ARK-01 starship propulsion truss and titanium radiator panels floats in high elliptical orbit, revealing layered cold-cut seams, exposed conduits, and charred ablative shielding, secured by heavy braided steel tethers extending beyond the frame edges. In the midground, a battered, unpainted heavy planetary lander with charred heatshield tiles docks beside a floating cargo trellis, receiving numbered alloy ingots and corrugated hull sheets into its open belly. In the background, the vast, dim crimson horizon of Proxima b curves beneath, illuminated by a harsh, single-point low-angle red dwarf sun that casts razor-sharp highlights and pitch-black shadows across weathered aerospace metals. No readable text, no national flags, physical mass and authentic industrial textures, Hasselblad H6D medium format aesthetic, IMAX 65mm cinematography, muted steel-gray and rust-amber palette, archival documentary austerity.
-
-## 修订记录（元层，非世界内容）
-- 2026-08-18：主编辑审校完成，小修入库。① 修正表 3.2 类别 F 反应堆防辐射铅钨成材数据为 399.94 t（成材率 60.14%，残渣 85.18 t），使得品类成品求和（3,843.23 t）、边角料求和（1,180.03 t）及残渣求和（389.74 t）完全与总计栏轧平，综合成材率精确收敛至 71.00%；同步在 4.1 节地下安全库调拨明细中微调铅板为 70.78 t 并补齐弱电传感总线 0.60 t（该行总重 420.38 t 保持不变），实现六大改制建材大类在 3.2 表与 4.1 拨付表全口径 0 误差双向闭环。② 正文第 6 节元层纪元词汇「在落地纪元」修订为世界内口吻「在扎根地表的新岁月里」，符合编写规范视角共时性要求。③ 全文与既有正典 GS-2362-01《第007号分段拆解进度日志》、GS-2354-01《新海安地籍公证书》（B-144 坑基 564.59 kg/282.30 工分）及 GS-2393-01《二期气压穹顶验收单》完成全要素互锁校验。

@@ -151,16 +151,3 @@ canon_check: |
 - 航行抄件：已固化至飞船中央光学晶体存储阵列（哈希校验码：`SHA256:4b91e7a02c89f182e0947cd9812401f82b79a83d71e625d99b1c70e341258ef1`）。
 
 ---
-
-## 图片提示词
-
-中文：谷神星外轨巨型总装深坞内，一艘直径五公里的环形世代飞船被脚手架与加注桁架环绕，一艘四米长黄色检疫驳艇贴着装甲外壁巡检，刺目的单向太阳硬光切出深邃阴影，钛合金与深冷管道泛着工业冷光。
-
-英文：Ultra-wide colossal industrial establishing shot, the gargantuan cylindrical and ring-shaped generation starship ARK-01 docked inside the Ceres outer-orbit orbital shipyard scaffold, towering modular titanium bulkheads extending far beyond the upper frame edges, an array of massive cryogenic fueling conduits and umbilical trusses connected to the hull, a tiny 4-meter yellow-striped inspection craft hovering in the lower foreground for extreme scale contrast, harsh directional direct sunlight creating sharp pitch-black shadows against brushed metal plates and radiator panels, subtle micro-ice dust venting from relief valves, photorealistic mechanical textures, 70mm anamorphic sci-fi documentary style, cinematic desaturated palette, monumental stillness.
-
-## 修订记录（元层，非世界内容）
-- 2026-08-18 审校小修（R15生物圈舗装）：
-  1. 物理复算：主居住环 R2,500m / 0.65g 离心加速度对应转速 1.52 rpm 纠正为 0.482 rpm（$a=\omega^2 R=6.37\,\mathrm{m/s^2}$），次级恢复环半径与向心加速度微调为 R1,310m / 0.34g（$3.34\,\mathrm{m/s^2}$），与 W14 在轨总装转序指令严密咬合；
-  2. 空间与时间互锁：出发港（谷神星外轨深空总装加注锚地）文书纪年自 2150 年 3 月顺延至 2150 年 9 月 18 日，闭环测试期调至 8-9 月，注液截止调至 8 月 10 日，解决此前早于 W14（2150年4月28日地月L5主结构合拢脱离转序）的时序冲突，理顺「L5船坞主结构建造→小行星带水冰工质加注与全闭环试车→最终出港检疫启航」空间流转链条；
-  3. 平账与指标自洽：微藻代谢分担率标注基准产氧 272 kg/日（占 1800 人基础定员日耗氧 18.0%）与峰值应急产氧上限（2,860 kg/日），与第 5.1 节 720 小时物料平账表严密吻合；
-  4. 物种与设施连续性核验确认：种质库明细（主粮1,847/豆科油料923/蔬菜药用3,208/原生种5,412/微生物214株系）与 GS-2353-01 移交清单完全吻合；47舱微藻反应器、12号物资库噬藻菌备件与 GS-2192-01 藻华预案完全吻合；DN400水培主管路、B-07至B-12盲管段、B-09/C4死水拐角及白地霉祖先株与 GS-2211-01、GS-2212-01 完全吻合；飞行昆虫剔除与静电毛刷授粉与 GS-2233-01 完全吻合。

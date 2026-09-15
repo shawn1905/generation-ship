@@ -202,11 +202,3 @@ canon_check: |
 **公元 2262 年 10 月 28 日**
 
 ---
-
-## 图片提示词
-
-### 中文提示词
-极地深空测控巨构工业档案摄影：南极内陆冰穹A一望无际的极寒白色雪原上，上百座16米口径的银灰色高精密蜂窝状抛物面天线呈几何同心环阵列整齐铺展，所有天线以60度左右的高仰角整齐划一地指向漆黑清澈的天顶深空。极昼低角度太阳在冰雪地平线上投下刺眼而狭长的硬光与刀锋般清晰的蓝色阴影。近景处一座天线基座旁，一辆红色的履带式全封闭极地工程作业车与两名身着重型抗严寒外骨骼作业服的巡检工程师正在检查冰面上的液压调平钢桩，作业服头盔面罩反射着冰原雪光与金属桁架。画面展现出极其严酷冷峻的自然环境与人类庞大精密工业基础设施之间的剧烈尺度反差，硬光源，胶片颗粒质感，画面无任何可读文字，无国旗。
-
-### 英文提示词
-Archival industrial photograph of a deep-space tracking mega-array on the Antarctic ice sheet: across the boundless, frozen white expanse of Dome A, over a hundred 16-meter silver-gray hexagonal-segmented parabolic antenna dishes are arranged in concentric geometric rings, all pointing synchronously at a high 60-degree elevation angle toward the crystal-clear, deep-blue polar sky. A low-angle polar sun near the stark horizon casts blinding harsh white light and razor-sharp, elongated blue shadows across the hard-packed sastrugi snow. In the foreground beside an antenna base, a red enclosed tracked polar utility rover and two maintenance engineers in heavy-duty cold-weather exoskeleton EVA suits inspect the hydraulic leveling steel pilings on the ice, their helmet visors glinting with reflections of the white icefield and metallic trusswork. Immense sense of scale, brutal polar climate juxtaposed with ultra-precise engineering, hard directional lighting, authentic 35mm film grain, no readable text, no signage, no national flags.

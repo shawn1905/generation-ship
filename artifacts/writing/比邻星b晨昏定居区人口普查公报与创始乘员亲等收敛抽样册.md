@@ -204,16 +204,3 @@ canon_check:
 新海安中央地籍与人口档案库钢印（压印）  
 
 ---
-
-## 图片提示词
-
-红矮星低照下，两名年轻人口普查员在粗粝玄武岩穹顶深层档案室内比对泛黄纸质系谱与荧光手持终端，背景是层叠延伸至阴影中的金属档案抽屉与巨大承重环梁，工业冷峻，微小人物与巨构对比。
-
-Ultra-wide establishing shot, two young census clerks in worn dust-resistant utilitarian jumpsuits stand inside a cavernous subterranean basalt archive chamber beneath a massive pressure dome, comparing a physical yellowed lineage ledger with a glowing ruggedized handheld data terminal; background filled with endless rows of oxidized titanium file drawers and colossal curved cast-basalt load-bearing ring beams receding into deep shadows; single low-angle deep-red light from an exterior ambient light shaft cast by Proxima Centauri creates dramatic crimson highlights and long heavy shadows; tangible textures of brushed alloy, coarse rock dust, weathered paper, and matte polymer; Hasselblad H6D-100c medium format, IMAX 65mm anamorphic cinema lens, photorealistic archival realism, extreme scale contrast between fragile humans and monolithic subterranean architecture.
-
-## 修订记录（元层，非世界内容）
-
-- 2026-08-18：主编辑审校小修（🔧）：
-  1. 修复第一节世代历史出生区间与落历264年普查现龄算术错位（人类正常生理寿命约束：落历0-155年出生之L-G1至L-G3已全部自然终老，落历264年在世414,280人精准归位至L-G4至L-G7代际年龄段，总数与分段对账严密复算）；
-  2. 修复L-G7代际名称泄漏元层纪元名问题（「双星系新生代」改为世界内合法名称「定居新生代」）；
-  3. 与正典《新海安地籍公证书》（XHA-LAND-2354-0014）、《二期气压穹顶竣工验收单》（新海安营建验字〔落43〕117号）、《骨密度筛查通报第14期》（MED-ARK01-2261-CY14）及incoming《比邻星b职业健康筛查通报第3期》（卫勤字〔落41〕第118号）、《新海安温室报告》（海垦字〔落地4〕第017号）、《岁俗采录集》（岁事〔落历248〕第091号）完成全要素数字与引名互锁复核。

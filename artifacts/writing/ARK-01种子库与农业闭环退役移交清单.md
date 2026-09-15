@@ -96,13 +96,3 @@ canon_check:
 **档案接收:** 档案总署深空分库 第七保管组(骑缝章)
 
 ---
-
-## 图片提示词
-
-中文:退役水培舱内,一名工程师手提封条箱立于前景,巨型环形栽培架超出画缘延伸至黑暗,单盏检修灯投下冷光,金属与干涸管路的哑光质感,大画幅电影镜头。
-
-英文:Ultra-wide establishing shot, a lone engineer in worn coveralls holding a small sealing crate in the lower foreground, dwarfed by a colossal ring-shaped hydroponic rack that extends beyond all frame edges into darkness, camera at floor level tilted slightly upward, a single cold maintenance lamp as the only light source casting long hard shadows, matte titanium alloy surfaces, dried nutrient residue on steel pipes, riveted bulkheads with condensation scars, Hasselblad H6D medium format aesthetic, IMAX 65mm cinematography, muted desaturated palette, immense physical weight and stillness.
-
-## 修订记录（元层，非世界内容）
-
-- 2026-08-17：改轴——事件自落地历31年(2389)提前至落地历3年(2353)先期移交,与正典030拆解口径及035温室首作互锁;「自启航纪元0年投入运行历时239船年」改「自公元2150年启航,历时200船年,着陆后转入封存」;「旋转栽培舱段停机刹车」改「随拆解计划封存转运」;删除「拉格朗日L1阴影锚点」,补高椭圆停泊轨道(近心点18,300 km)与030一致;伪引《菌膜清洗日志·水培七区》(船历221年)改引正典028《农业环管第408号真菌菌膜清洗作业日志》(航渡62年);正文纪元名统一为落地历/公元;新增种子库移交明细表(细类合计与类别库存咬合)与移交链签收记录(船方档案馆→下降器→地表接收);canon_check 重写。

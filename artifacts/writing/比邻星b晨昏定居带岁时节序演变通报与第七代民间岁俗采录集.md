@@ -169,14 +169,3 @@ canon_check:
 **存卷：民文司·落历248·民俗普查专卷（附录原始音频固态匣共三盒，存入中央地下恒温金库）。**
 
 ---
-
-## 图片提示词
-
-玄武岩防风坑基内部，暗红色的比邻星光线透过厚重气压穹顶斜照在粗糙钛铝门框上，两名第七代工人正用扭力扳手将刻有名字的金属固土螺栓旋入岩壁护盾，墙上挂着手写铝箔挂历与深空飞船拆解蒙皮，微尘在硬质红色侧光中沉降，具有重工业档案质感。  
-Cinematic archival photograph, eye-level documentary medium shot inside a basalt windbreak bunker on Proxima Centauri b. Deep amber and dark-red directional light casts through heavy pressurized dome glass, illuminating rough titanium-aluminum hull plates bolted to dark rock walls. Two young colony workers in worn industrial suits use a manual torque wrench to tighten a steel bolt etched with serial numbers into the structural shield anchor. Hand-annotated foil calendars and vintage green-handled wrenches hang nearby. Heavy physical textures, cold metal, dark basalt, ultra-sharp focus on bolt threads, dust motes in hard red rim-light, shot on Hasselblad H6D-100c, 80mm lens, restrained color grading, gritty sci-fi realism, zero fantasy glow.
-
----
-
-## 修订记录（元层，非世界内容）
-
-- 2026-08-18：主编辑审校完成，小修入库。① 修正生理重力表述（「0.06g」修订为「地表 1.07g 重力适应环境」，与全库正典《第14期骨密度筛查通报》《比邻星b地表作业人员职业健康筛查通报第3期》1.07g 基准一致）；② 深空中继浮标编号微调为「深空信标07号站/高轨轨道镜」，与正典 029/037/038 篇目名物互锁；③ B-144 挂历中方明德称谓由「太爷爷」修订为「老祖宗方明德」（跨 248 年/相隔 6 代，与同批《人口普查公报》B-144 始祖谱系完全吻合）；④ 校验口述史农艺员证词（“绿学会了站稳，人倒还在学”）、一号穹顶公共屏首启留言（“风是红的。管子没问题。”/绿柄扳手/“大家都好”）、地籍防风公约（地锚与迎风维护工时）及潮汐日 11.186 日周期，全要素咬合，通过 check_submission.py 校验。

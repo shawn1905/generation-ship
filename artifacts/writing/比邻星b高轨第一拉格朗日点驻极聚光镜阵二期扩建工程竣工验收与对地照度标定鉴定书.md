@@ -204,17 +204,3 @@ canon_check: |
 本鉴定书全本及在轨三维点云遥测母卷已存入新海安中央档案馆高轨工程专架（卷号：`ARC-ORB-318-KF02`），遥测数据包哈希值：`SHA256:8e3d49bc21a97f014e7732a6bc8910d5f309a4188b2c174f8819a5c0e12d6a78`。
 
 ---
-
-## 图片提示词
-
-**中文：** 在比邻星暗红色的低沉恒星光晕下，一座直径超过四公里的巨型环状轨道反射镜阵超出画框向深空延伸，极薄的金属化干涉膜在受光面泛着冷冽青蓝微光；一艘四米长黄色双人检修驳艇紧贴着粗粝的玄武岩复合桁架缓缓滑行，单一强硬的主恒星侧光投射出极长的硬质阴影，显现出极端的宏微尺度对比，大画幅工业胶片质感。
-
-**English:** Ultra-wide establishing exterior shot in deep space orbit around Proxima Centauri b, a colossal 4.2-kilometer-wide circular orbital concentrating mirror array extending far beyond the frame edges, its ultra-thin dielectric-coated membrane shimmering with cold cyan-blue interference highlights under the dim crimson glow of the red dwarf star; a tiny 4-meter utilitarian yellow two-person maintenance tug slowly creeping along the massive dark cast-basalt composite outer ring truss, showcasing extreme architectural scale contrast; single harsh, directional raking hard light from Proxima Centauri casting long sharp shadows across brushed titanium fittings, frosted carbon-nanotube tension cables, and wrinkled multi-layer thermal insulation; Hasselblad H6D-100c medium format look, IMAX 65mm cinematic lens, photorealistic industrial greebles, deep cold vacuum realism, no atmospheric haze.
-
----
-
-## 修订记录（元层，非世界内容）
-- 2026-08-18（主编辑审校）：🔧 小修自洽化与互锁强化——
-  1. 轨道力学参数校准：依据比邻星（$0.122 M_\odot$）与比邻星b（$1.07 M_\oplus$、$a=0.0485\text{ AU}$）系统精确动力学，将亚 $L_1$ 驻极平衡点距行星标称距离校准为 $148,600\,\mathrm{km}$，消除原 $128,400\,\mathrm{km}$ 之算术偏差；
-  2. 聚光几何尺度与能量守恒校准：全阵有效反射面积 $12.80\,\mathrm{km}^2$（反射 PAR 功率 $\approx 1.72\,\mathrm{GW}$），晨昏谷地堑核心农业走廊主焦斑截面标尺校准为 $\pm 6.0\,\mathrm{km}$（核心温室区 $\pm 3.5\,\mathrm{km}$，面积 $\approx 30\sim 40\,\mathrm{km}^2$），使 $58,400\,\mathrm{Lux}$ 与 $1,180\,\mu\mathrm{mol/(m^2\cdot s)}$ 之高强度补光在几何汇聚比与辐射能量上严格守恒自洽；
-  3. 正典名物互锁强化：在中枢载荷及接驳港功能中明确增补跨星系激光超宽带数据链（S-P Link）中继与地表下行分发功能，与正典 GS-2598-01「客光节/轨道镜下行」及 GS-2610-01「比邻星b新海安高轨轨道镜中继阵列」无缝咬合；front matter 补充互锁注记。

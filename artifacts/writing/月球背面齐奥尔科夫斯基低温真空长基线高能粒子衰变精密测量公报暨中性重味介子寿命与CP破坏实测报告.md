@@ -123,11 +123,3 @@ $$	ext{工时总核算} = 3,320 + 4,080 + 4,120 = \mathbf{11,520.00	ext{ 人·�
 **存档卷宗：** 激光刻蚀微晶玻璃介质，存齐奥尔科夫斯基地下 65 米特藏库（卷号：TOP-HEP-2076-RUN04-B09）
 
 ---
-
-## 图片提示词
-
-### 中文提示词
-月球背面高能物理大科学工程工业档案摄影：在齐奥尔科夫斯基坑底黑色玄武岩荒原上，数十座纤细的4.2米高开放式超导四极磁透镜支架沿笔直走廊延伸向地平线；极远处中央峰阴影山体在冷彻星光下若隐若现；近景处，装配着低压琥珀色探照灯的六轮月面重型工程车停在001号磁架旁，两名身着重装作业服的工程师正手持激光对中仪调试磁极靴，月尘在靴底微扬；天空纯黑无地照、无地球，银河冷彻璀璨；35mm纪实胶片质感，真实颗粒感，冷峻硬阴影，无文字标牌，无国旗。
-
-### English Prompt
-Archival engineering documentary photograph on lunar farside: across flat black basalt plains of Tsiolkovsky crater, dozens of slender 4.2-meter open-frame superconducting quadrupole magnetic lens gantries stretch in a straight corridor toward distant horizon; in far background, massive central peak rises in stark shadow under cold starlight; in foreground, a six-wheeled heavy rover with amber searchlights is parked beside gantry #001, where two suited EVA physicists adjust a magnetic pole shoe with a laser alignment tool, faint dust disturbed at boots; completely airless black sky with no Earth and no earthlight, brilliant cold Milky Way overhead; shot on 35mm documentary film stock, authentic fine grain, hard shadows, no readable signage, no flags.

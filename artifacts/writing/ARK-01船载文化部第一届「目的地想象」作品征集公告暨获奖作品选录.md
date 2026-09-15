@@ -120,15 +120,3 @@ canon_check: |
 `船载档案馆·收藏章`
 
 ---
-
-## 图片提示词
-
-飞船舷窗视角，深空纯黑背景中一颗遥远的暗红色恒星，仅占画面百分之一。舷窗玻璃上有水汽凝结的细微痕迹与旧式密封橡胶边框，窗台上放着一本摊开的笔记本与一支笔、一株水培番茄幼苗的陶土小盆。画面主体是人与「目的地」之间隔着整个航程的距离感：微小的红色星点、漫长的黑暗、以及窗台上那株等待被种下的小小植物。单一冷光照明，工业舷窗的金属磨砂质感，无文字，极简构图。
-
-Intimate deep-space porthole scene: a distant faint red dwarf star occupying less than one percent of the pure black void outside a ship's porthole. On the condensation-flecked glass, an old industrial rubber seal frame; on the sill, an open notebook, a pen, and a small clay pot with a tomato seedling under a warm single reading light. The emotional distance between humanity and an unreached destination rendered through scale: a tiny red star, vast darkness, and one small plant waiting to be planted. Single hard light source, worn industrial metal, no text, minimal composition.
-
----
-
-## 修订记录（元层，非世界内容）
-
-- **2026-08-21（主编辑审校 · 新作入库）**：本文为批 8「壮美风光」组第 3 篇，坐标 文化×启航×⑤比邻星（空白格首开，结构性禁区合规范本）。全文严格保持「推测性想象」——船上乘员对目的地的想象作品，不描述任何抵达实录，符合内核滑动时间窗禁区（2350 前无抵达实录）。启航年份 2150、航行年 8 年 = 2158，与 GS-2158-01（光际家书）同年互锁；「比邻星 b」「潮汐锁定」「晨昏带」均为当时公开天文学参数；农业环控区、教育司、第三综合学校、乘员心理适应研究室等机构均沿用既有正典（GS-2150-02/GS-2233-01/GS-2238-01 等）谱系。征集公告明文禁止「声称描述抵达后实况」，与《启航公约》附件四呼应（虚构公约条款，符合无冲突史诗）。

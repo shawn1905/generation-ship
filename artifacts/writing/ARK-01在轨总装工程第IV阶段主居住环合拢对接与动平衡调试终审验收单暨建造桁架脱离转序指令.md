@@ -160,18 +160,3 @@ $$\omega = \sqrt{\frac{a}{R}} = \sqrt{\frac{0.650 \times 9.80665}{2500}} \approx
 - 物理介质备份：微缩激光蚀刻于同批次烧结高钛玄武岩标准测试试片（编号：TEST-SLAB-2150-042），永久固定于 A-Ring 第 1 弧段（Sec-01）中央大厅 01 号承重立柱基座铜牌背面。
 
 ---
-
-## 图片提示词
-
-中文：漆黑深空与刺眼太阳硬光下，五公里直径的巨型居住环超出画面边缘，数艘微小的五米级检修飞艇喷射着冷气悬停在巨大的金属焊缝旁，外围巨大的建造桁架正缓慢向后退移，金属表面呈现哑光玄武岩与钛合金的冷峻反光，大画幅工业档案摄影质感。
-
-英文：Ultra-wide establishing cinematic shot from an external construction vantage point, the colossal five-kilometer-diameter habitat ring of ARK-01 curving massively beyond all frame boundaries into the infinite black void; dwarfed in the foreground, several tiny 5-meter EVA inspection pods with cold-gas thruster plumes maneuver near a gigantic riveted hull seam; in the background, the immense latticework of the disengaging shipyard scaffolding slowly drifts away; illuminated solely by a single harsh, unfiltered white sun from the upper left, casting knife-sharp high-contrast shadows across matte sintered basalt composite plating and brushed titanium-aluminum bulkheads; Hasselblad H6D medium format aesthetic, IMAX 65mm sci-fi documentary stillness, monumental scale, gritty industrial realism.
-
----
-
-## 修订记录（元层，非世界内容）
-
-- 2026-08-18（主编辑审校·R14船台总装）：
-  1. 勘误：修复第 1 节 Sec-12 合拢接口描述中的重复字笔误（“冷冷锁死”更正为“刚性冷锁死”）；
-  2. 物理量纲校准：修复第 5 节分离规程中退行速度与加速度量纲描述（“0.08 m/s 的恒定微加速度”更正为“0.08 m/s 的恒定微速度”），与 4.5 小时操作时序严格咬合；
-  3. 互锁与复算全量核验：主居住环 R2.5km / 0.65g / 0.482 rpm、次级恢复环 R1.31km / 0.34g、额定 10,214 乘员（人均 67.006 m²）、150kt 级结构壳体质量、1.2万立方米中央回流水库配重调平衡、12.4 GeV 主动磁屏蔽截止能量（0.38 rem/yr）等各项关键工程与物理参数均复算无误，与既有正典及 Phase 0 任务文件严格自洽。

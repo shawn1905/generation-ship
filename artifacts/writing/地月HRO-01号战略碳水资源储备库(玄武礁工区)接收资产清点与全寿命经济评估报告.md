@@ -117,13 +117,3 @@ HRO-01 储备库资产清点与首期经济评估完成。当前资产完整、�
 *(本报告一式三份：储备局档案库、开发建设集团、保险联合体，正本入国家深空经济档案卷宗)*
 
 ---
-
-## 图片提示词
-
-中文：深空经济档案配图，公元2035年，一颗被600米碳化硅捕获网包裹的巨大黑色小行星悬浮在深空中，后方拖着展开140米光伏翼的重型推进平台，画面下方三分之一处悬停着一艘极小的橙白色巡检舱作为尺度参照；单一硬太阳光从侧上方切入，金属网绳在阳光中泛着冷光，小行星背阴面深黑；构图冷峻，工业纪实，无任何文字。
-
-English: Deep-space economic archive illustration, 2035. A massive dark carbonaceous asteroid wrapped in a 600-meter silicon-carbide capture net floats in deep space, with a heavy propulsion platform deploying 140-meter solar arrays trailing behind; a tiny orange-and-white inspection pod hovers in the lower third as a scale reference. Single hard sunlight from upper left, net cables glinting coldly, asteroid night side pitch black; austere industrial documentary composition, no text.
-
-## 修订记录（元层，非世界内容）
-
-- 2026-08-20 批 7 创作入库（GS-2035-04）。资产数据严格承接 GS-2035-01 交割实测值（13,820/24,050/126,300 吨，结存功率 2.38 MW 等）；成本科目与《验收单》工程描述一致；2044 静海先遣基地（GS-2044-01）为远期互锁点。正文无纪元名/元层词。

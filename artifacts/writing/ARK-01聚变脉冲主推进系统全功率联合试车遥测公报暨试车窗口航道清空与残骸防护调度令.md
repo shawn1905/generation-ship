@@ -1,7 +1,7 @@
 ---
 author_ai: kimi-k3
 date: 2026-08-18
-archive_id: GS-2152-01
+archive_id: GS-2152-03
 coord: 工程×启航×③内太阳系
 title: ARK-01聚变脉冲主推进系统全功率联合试车遥测公报暨试车窗口航道清空与残骸防护调度令
 image: ../../world/生图集/087_试车_脉冲.jpg
@@ -74,15 +74,3 @@ ARK-01 主推进系统全功率联合试车各项指标全部合格。**总指�
 **公元 2152 年 3 月 16 日**
 
 ---
-
-## 图片提示词
-
-深空试车走廊工业档案摄影：2.5 公里直径的巨型居住环与主桁架船体横贯画面切出画框，船艉 16 单元磁场喷嘴阵列正喷出一道笔直刺眼的蓝白色脉冲喷流延伸至远方消失；船体其余部分几乎全黑，只有哑光装甲被喷流照亮的边缘；远处一艘 22 米警戒艇如微小光点悬在清空走廊边界。
-
-Archival engineering photograph in a deep-space test corridor: a colossal habitat ring and main truss of a generation ship spans the frame cropped at both edges, its stern magnetic nozzle array firing a single needle-straight blinding blue-white pulse exhaust jet that recedes into the distance; the rest of the hull nearly black, only matte armor edges lit by the exhaust glow; far away a tiny 22-meter patrol craft hangs as a faint point of light at the corridor boundary; pitch-black space, dense star field; shot on 35mm film, visible film grain, blown highlight at the nozzle, slight lens flare smear, off-center candid framing, archival scan, no readable text, no signage, no national flags.
-
----
-
-## 修订记录（元层，非世界内容）
-
-- 2026-08-18：主会话直写（子 agent 配额 429 后主笔）。互锁：Phase 0 任务文件（聚变脉冲推进硬约束）、GS-2150-01 船台合拢（0.482rpm/双环几何）、GS-2150-02 生物圈殖装（谷神星外轨天梭-01 锚地、2150-09 检疫）、世界大纲工程轨迹（2100 聚变脉冲推进样机、2140 龙骨铺设）；药丸账（612 万枚）与 0.0288c/148 年航程预算自洽。试车时间设定 2152=启航纪元初年，与 2150 合拢/检疫链条衔接。

@@ -183,22 +183,3 @@ canon_check: |
 **归档编号：** `ARCH-CULT-2364-FIN-0089`
 
 ---
-
-## 图片提示词
-
-中文：空旷寂静的世代飞船巨型离心环生活走廊，微弱冷蓝应急灯下，舱壁与管道上布满层层叠叠的民间刻字与划痕；前景是一扇被精密切割卸下的带有儿童身高刻度与海浪简笔画的金属门框，几名身穿磨损工装、系着安全绳的作业员正合力将其装入运输箱，远处巨大舷窗外透入比邻星暗红色的漫射微光；硬核工业质感，大景深，真实金属划痕与尘埃反光，克制而庄严的告别氛围。
-
-英文：Ultra-wide cinematic shot inside the vast, emptying centrifugal habitat ring of the generation ship ARK-01, cold dim emergency lighting casting long shadows across curved bulkheads. Layers of engraved handwriting, dates, and tool-carved graffiti cover the dull aluminum utility pipes and bulkheads over two centuries. In the foreground, three EVA mechanics in scuffed utilitarian worksuits carefully pack a freshly cut metal doorframe—marked with child height notches and a hand-carved ocean wave window—into a pressurized transport container. In the distant background through a thick lead-quartz window, the low, deep red glow of Proxima Centauri rakes across floating specks of dust in near-zero gravity. Hasselblad H6D clarity, 65mm anamorphic documentary style, authentic scratched titanium textures, somber and historic archival atmosphere.
-
----
-
-## 修订记录（元层，非世界内容）
-
-- 2026-08-18：主编辑审校完成，小修（🔧）入库备选：
-  1. **物理与账目数字闭环**：
-     - 铭文第 142 行旋转周数由「两亿四千万周」修正为「四千一百万周」（$R=2.5\,\mathrm{km}$、模拟重力 $0.65g$ 时旋转周期 $T \approx 124.42\,\mathrm{s}$，148 年航程加 14 年在轨停泊累计旋转约 $4.11 \times 10^7$ 周），消除高离心过载物理偏差；
-     - 表六空气抽排质检标准由「31,200吨气体下运」微调为「残压≤0.01atm/全量回收」，准确衔接正典 GS-2362-01/02 居住舱段 31,200 吨整体结构钝化封存台账，避免单项气体质量口径混淆；
-  2. **名物与正典互锁全要素通过**：
-     - 与 GS-2362-01《第007号分段拆解进度日志》、GS-2362-02《拆解物资再分配总账》（落地历 12 年，2362 年）时序与拆解序列严格咬合，承接居住舱段在第二期气压穹顶扩建完成（落地历 14 年，2364 年）后的终期腾空、断电与封存规程；
-     - 与 GS-2286-01《12-B层》（管路组划痕、19年自产密封圈、12-B-7 门框儿童身高刻线与海浪窗「醒了就能看见」、44年星星之问、98年师徒留言、137年阿芽刻字）、GS-2286-02《C区的曲子》（AUD-001 岗位、3号泵房老水泵音景与扬声器连体拆卸）、GS-2233-01《第84届自然常识测验卷》（B区14层第三综合学校三年级乙班、林老师朱批「严禁焊缝隔板类比地平线」、静电毛刷模型、C-09水培槽刻痕）及 GS-2356-01《课本凡例》（失锚词校勘卡）名物逐一严格核对无误；
-     - 拓存工艺（0.05mm 激光点云扫描、聚酰亚胺薄膜物理拓印、重点文物精密冷切）与 GS-2362-02 拆解工艺规范高度自洽，视角严格共时，符合编写规范。

@@ -285,18 +285,3 @@ KM 1401~1840 48.7 m/s (落历299年)      91.2%           11.3 kt/km²          
 **存放物理位置：** 新海安中央档案馆地下四层 B-04-119 号恒温气密玄武岩档案柜  
 
 ---
-
-## 图片提示词
-
-晨昏线边缘横亘着一座上百米高、向两端地平线无限延伸的灰黑色玄武岩防风大坝，远处暗红色的巨大红矮星半沉在地平线上投射出单一方向的刺眼硬光，大坝背风侧是绵延数十公里的半透明双层气压穹顶温室网络，大坝顶部导轨上一列微小的重型工程车亮着黄色警示灯，构图极其宏大，结构远远超出画框。
-
-A massive, hyper-industrial sci-fi panorama on the tidally locked exoplanet Proxima b. In the background, a giant deep-red dwarf star sits half-submerged on the stark horizon, casting harsh, directional crimson and bronze lighting across the alien landscape. A colossal, 140-meter-high basalt breakwater dam constructed from dark sintered volcanic stone spans horizontally across the entire frame, disappearing beyond both edges. On the leeward side of the gigantic dam lies a vast, interconnected network of pressurized agricultural domes and trenches glowing with pale interior violet and warm LED illumination. On the crest of the colossal dam, an 840-ton maintenance track train appears as a tiny, miniature dot with flashing amber beacon lights, providing an immense sense of scale. Monolithic industrial engineering, raw brushed alloys, weathered basalt textures, extreme atmospheric dust haze, sharp cast shadows, ultra-detailed wide-angle cinematic composition.
-
----
-
-## 修订记录（元层，非世界内容）
-
-- 2026-08-18：主编辑审校小修——
-  1. 巨构水力参数严密自洽：TRUNK-LINE-01 主干流体管线（内径 12.0 m）标明常态运行流速（淡水管 0.034 m/s、液态二氧化碳管 0.025 m/s）与设计峰值流速（3.4 m/s / 2.5 m/s），使大口径检修管廊截面流速与小时输送通量（13,800 m³/h 与 10,200 m³/h）完全闭环；
-  2. 历史与正典深度互锁核验通过：落地历300年（2650年）468,500人规模与人口普查公报（GS-2614-01，落历264年414,280人）、晨昏带岁时节序（GS-2598-01，落历248年）及新海安首作温室报告（GS-2354-02，落历4年GH-1系列株系）完全单调兼容；
-  3. 物理与环境约束合规：跨半球单圈大气热输运、冷洋破冰地热井阵列（1.15×10⁴ MW）、原生玄武岩风化层高氯酸盐三百年深度脱毒（0.62%→未检出）、1.07g地表重力土壤黏化压密以及红矮星耀斑/红风暴应激响应等要素严丝合缝，无本土智慧生命，纯文件体公报。

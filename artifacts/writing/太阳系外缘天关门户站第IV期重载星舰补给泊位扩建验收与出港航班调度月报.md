@@ -179,23 +179,3 @@ canon_check: |
 双星航行协调院驻站适航监督官：*沈安平*（监察代码：`INSP-BX-505-12`）  
 
 ---
-
-## 图片提示词
-
-### 中文提示词
-远镜头巨构工程全景，IMAX 70mm 电影宽画幅摄影风格，霍伊特·范·霍特玛（Hoyte van Hoytema）摄影风格。画面主体为位于太阳系外缘 720 AU 处深空的“天关-01”星际航道门户总站，全长 24.8 公里的碳化硅与钛铝合金模块化中空双联主桁架轴横贯画面并切出画幅边缘。一条长达 3,600 米的重型超导磁吸附泊位悬臂桁架自中枢垂直伸出，紧紧锁定着一艘长 1,800 米的“恒心级”重型星际运输舰；运输舰巨大的四联装磁约束聚变发动机喷口与前部暗色碳化硅防冲蚀盾局部切出画面边缘。强烈微小尺度对比：一艘长 4.2 米的双人高真空机动检修飞艇仅如一颗悬浮的微小冷光焊点贴着 60 米厚的暗色烧结装甲缓慢爬行；悬臂高压深冷加注管道上可见 4 名身着铅钽复合防辐射外骨骼的作业人员，微小如尘埃。单一硬质主光源：日心距 720 AU 处极度冷冽耀眼的针尖状太阳直射在金属桁架与装甲外壳上，光照面呈现锋利冰冷的银白色，背光面则是纯粹深邃的沥青黑阴影，毫无大气漫反射。材质细节逼真：外壳覆盖标准化六边形玄武岩陶瓷抗辐射装甲板、带有真空退火彩虹色回火条纹的超导散热肋片、外露的钛合金三角支撑结构梁、凝结着白色低温固态氢霜的深冷输送绝热管线、以及带有微流星撞击轻微划痕的哑光防护涂层。构图宏大压迫，写实工业机械质感，杜绝虚假塑料光泽与彩色赛博朋克霓虹光。
-
-### 英文提示词
-IMAX 70mm cinematography by Hoyte van Hoytema, extreme wide-angle long shot, Christopher Nolan space epic aesthetic. A colossal 24.8-kilometer modular deep space infrastructure, Gateway Tianguan-01, stationed at 720 AU outer solar system, with its massive carbon-silicon and titanium-aluminum dual-box truss axis cutting out of the frame edge against pitch-black deep space. A 3,600-meter heavy-duty superconducting magnetic docking cantilever arm extends rigidly from the central spine, firmly securing a 1,800-meter-long Hengxin-class heavy interstellar transport vessel; the starship's quadruple fusion engine nozzles and dark ceramic nose shield cut out of the framing. Extreme scale contrast: a tiny 4.2-meter two-person inspection maintenance drone crawls along the 60-meter-thick sintered basalt radiation armor like a microscopic pinpoint of cold weld spark; four human maintenance workers in lead-tantalum anti-radiation exoskeletons work on high-pressure cryogenic piping, appearing as tiny specks of dust. Single harsh direct blinding point-source starlight from the distant Sun at 720 AU casting sharp, pure pitch-black shadows with absolute zero atmospheric diffusion. Hyper-detailed realistic industrial textures: standardized hexagonal ceramic armor tiles, heat radiator cooling fins with subtle rainbow vacuum-annealing temper colors, exposed titanium structural trusses, frosted cryogenic propellant pipelines with solid hydrogen ice crystals, and weathered matte shielding with micrometeorite impact abrasions. Grand brutalist industrial maximalism, crisp focus, zero cyberpunk neon glow, zero plastic gloss, zero CGI low-poly surfaces.
-Negative prompt: cyberpunk neon glow, glowing outlines, purple on dark neon, smooth plastic hull, toy spaceship, flat lighting, empty low-poly surface, lens flare spam, oversaturated magical nebula, cartoon anime style, blurry, overexposed, messy clutter.
-
----
-
-## 修订记录（元层，非世界内容）
-
-- **2026-08-18（主编辑 ER05门户站审校）**：小修通过。
-  1. **空间坐标带归属修正**：front matter `coord` 由 `工程×双星系×③内太阳系` 修正为 `工程×双星系×④深空`（日心距 720.00 AU 地处终止激波区与星际介质过渡区，按世界大纲空间带标准归入④深空，与正典 GS-2610-01 信标07、GS-2618-01 透镜站07 及同批玄冥-01 保持统一口径）；
-  2. **离心自转环重力参数物理复算修正**：单环外径 1,600 米（半径 $R = 800\text{ m}$）维持 $0.58g$ 等效重力（$a = 5.688\text{ m/s}^2$）对应的角速度为 $\omega = 0.0843\text{ rad/s}$，额定转速由原 $1.86\text{ rpm}$（对应 $3.10g$ 超标）修正为 $0.805\text{ rpm}$，外缘线速度 $67.5\text{ m/s}$；
-  3. **微天体原位工质储罐与储备量级自洽化**：将掏空微天体深冷罐群容积标注为 2,400 万 $\text{m}^3$ 与 2,800 万 $\text{m}^3$ 水冰洞库，常备液氢修正为 142.0 万吨（超深冷容积 2,000 万 $\text{m}^3$，可供 17 艘次恒心级全额补给），与流体密度（液氢 $\sim 0.071\text{ t/m}^3$）及星港战略储备量纲严密闭环；
-  4. **出港综述框质量平衡对账闭环**：离泊满载总质量由原 $1,962,300.0\text{ t}$ 修正为 $1,952,376.05\text{ t}$，补给净增修正为 $109,876.05\text{ t}$，与表 2.1 实测工质加注量（$104,999.05\text{ t}$）加表 2.2 装甲与保税物资过驳量（$4,877.00\text{ t}$）之和完全一致，实现四则严密平账；
-  5. **全链名物与正典互锁复核**：核验“天关-01”无重名冲突；与 GS-2820-01 导航网、GS-2846-01 恒心-09 生态审计、GS-2892-01 L2 货栈配载、GS-2871-01 跨光年结算、GS-2618-01 透镜站07、GS-2610-01 信标07 及仲裁常量（0.0288c/148年、落地历505年=2855年、单向光行时99.81h）严格咬合。
