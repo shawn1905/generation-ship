@@ -44,20 +44,29 @@ def fm_get(fm, key):
     return m.group(1).strip() if m else None
 
 
+NEG_PRE = r'(无|禁|非|没有|不|别|勿|取消|废除|排除|否定|除了|并非|而非|杜绝|摒弃|放弃|抵制)'
+STRONG_DEBUNK = r'(误解|误传|传言|谣言|辟谣|澄清|并非|并不|不存在|未实现|尚无|尚未|是假|谬|杜绝|而非|除了|排除|摒弃|摒除|放弃|抛弃|抵制|不可行|行不通|不传递|无法|不能实现)'
+
+
+def _sentence(body, pos):
+    start = max([body.rfind(c, 0, pos) for c in '。；;！!？?\n'] + [-1]) + 1
+    end = len(body)
+    for c in '。；;！!？?\n':
+        i = body.find(c, pos)
+        if i != -1:
+            end = min(end, i)
+    return body[start:end]
+
+
 def goldfinger_hits(body):
     out = []
     for name, rx in GOLDFINGER.items():
         for m in re.finditer(rx, body):
-            s = max(0, m.start() - 12)
-            ctx = body[s:m.end() + 8]
-            # 否定语境过滤
-            pre = body[max(0, m.start() - 6):m.start()]
-            if re.search(NEG_CTX, pre) or re.search(NEG_CTX + r'[^。；\n]{0,4}$', ctx[:len(ctx)]):
-                continue
-            # 明确辟谣句过滤
-            if re.search(NEG_CTX, ctx):
-                continue
-            out.append((name, ctx.replace('\n', ' ')))
+            prefix = body[max(0, m.start() - 6):m.start()]
+            sent = _sentence(body, m.start())
+            if re.search(NEG_PRE, prefix) or re.search(STRONG_DEBUNK, sent):
+                continue  # 否定/辟谣/摒弃语境，合规
+            out.append((name, sent.strip().replace('\n', ' ')[:44]))
     return out
 
 
@@ -89,18 +98,19 @@ def main():
         fm, body = parse(raw)
         base = p.name
 
-        # --- 红线 ---
-        gf = goldfinger_hits(body)
+        # --- 红线 ---（撤稿留号 tombstone 合法引用被撤概念，跳过）
+        tomb = '撤稿' in (fm_get(fm, 'status') or '') or '撤销' in (fm_get(fm, 'status') or '')
+        gf = [] if tomb else goldfinger_hits(body)
         if gf:
             report['红线·金手指'].append((base, gf[:3]))
             stats['红线·金手指'] += 1
-        if re.search(HERO, body) or re.search(HERO, base):
+        if not tomb and (re.search(HERO, body) or re.search(HERO, base)):
             report['红线·英雄化(需复核)'].append((base, re.findall(HERO, body + base)[:4]))
             stats['红线·英雄化(需复核)'] += 1
-        if re.search(RETRO, body):
+        if not tomb and re.search(RETRO, body):
             report['红线·回望叙述'].append((base, re.findall(RETRO, body)[:2]))
             stats['红线·回望叙述'] += 1
-        if re.search(ERA_LEAK, body):
+        if not tomb and re.search(ERA_LEAK, body):
             report['红线·纪元名渗入正文'].append((base, re.findall(ERA_LEAK, body)[:2]))
             stats['红线·纪元名渗入正文'] += 1
 

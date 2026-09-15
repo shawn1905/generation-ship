@@ -29,7 +29,7 @@ GOLDFINGER = {
 # 否定/辟谣语境标记：所在整句含这些词时，视为合规（如"民间误传已实现超光速"是辟谣）
 NEG_MARKERS = r'(无|禁|非|没有|不|别|勿|取消|废除|辟谣|澄清|误解|误传|传言|谣言|不存在|尚无|尚未|未实现|未掌握|拒绝|反对|排除|否定|除了|并非|而非|杜绝|伪|谬)'
 # 强辟谣标记：可安全地在术语「后文」检测（如"超光速通话是误解"）
-STRONG_DEBUNK = r'(误解|误传|传言|谣言|辟谣|澄清|并非|并不|不存在|未实现|尚无|尚未|是假|谬|杜绝|而非|除了|排除|不传递|无法|不能实现)'
+STRONG_DEBUNK = r'(误解|误传|传言|谣言|辟谣|澄清|并非|并不|不存在|未实现|尚无|尚未|是假|谬|杜绝|而非|除了|排除|摒弃|摒除|放弃|抛弃|抵制|不可行|行不通|不传递|无法|不能实现)'
 # 英雄化叙事（去英雄化红线）：仅作 WARNING，因"功勋档案/考勤签认"等合规档案体亦可能含这些词
 HERO_MARKERS = r'传奇|英雄称号|名人堂|最伟大|天选|救世主|扬名立万|封神|力挽狂澜|凭一己之力'
 # 回望叙述（视角共时性红线）
@@ -55,7 +55,7 @@ def check_redlines(body: str):
     for name, rx in GOLDFINGER.items():
         for m in re.finditer(rx, body):
             sent = _sentence_of(body, m.start())
-            prefix = body[max(0, m.start() - 14):m.start()]
+            prefix = body[max(0, m.start() - 6):m.start()]
             if re.search(NEG_MARKERS, prefix) or re.search(STRONG_DEBUNK, sent):
                 continue  # 否定/辟谣语境，合规
             errs.append(f'红线·金手指[{name}](正文): "…{sent.strip()[:40]}…" — 内核黑名单(无冬眠/无FTL/无室温超导/无意识上传)，如确需须走内核级版本变更全轴回算')
@@ -179,7 +179,11 @@ def check_file(path: pathlib.Path):
         errs.append(f'元层词泄漏(正文): {", ".join(hit)}')
 
     # 红线检测（金手指/回望/纪元名 → 拒稿；英雄化 → 提示复核）
-    rl_errs, rl_warns = check_redlines(body)
+    # 撤稿留号 tombstone 合法引用被撤概念以说明事由，跳过红线检测
+    if '撤稿' in str(fm.get('status', '')) or '撤销' in str(fm.get('status', '')):
+        rl_errs, rl_warns = [], []
+    else:
+        rl_errs, rl_warns = check_redlines(body)
     errs.extend(rl_errs)
     return errs, rl_warns
 
