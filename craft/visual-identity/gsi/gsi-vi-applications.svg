@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1190" viewBox="0 0 1800 1190">
+ <rect width="1800" height="1190" fill="#E6E3DA"/>
+ <rect width="1800" height="150" fill="#18262C"/>
+ <text x="58" y="68" fill="#E6E3DA" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="49" font-weight="800">GSI / BRAND IN USE</text>
+ <text x="60" y="114" fill="#AAB6B6" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="21">同一套识别系统跨越厂房、物流、人员与文书；以下编号均为版式示例</text>
+ <path d="M0 147H1800" stroke="#BD573B" stroke-width="6"/>
+
+ <!-- factory -->
+ <rect x="50" y="185" width="830" height="430" fill="#22333A"/>
+ <text x="78" y="230" fill="#B8C2C2" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="22">01 / LUNAR FABRICATION YARD</text>
+ <rect x="99" y="285" width="714" height="220" fill="#18262C" stroke="#71838A" stroke-width="8"/>
+ <rect x="129" y="313" width="145" height="165" fill="#253B43"/>
+ <rect x="282" y="313" width="145" height="165" fill="#253B43"/>
+ <rect x="435" y="313" width="145" height="165" fill="#253B43"/>
+ <rect x="588" y="313" width="194" height="165" fill="#253B43"/>
+ <path d="M99 288H813" stroke="#BD573B" stroke-width="12"/>
+ <text x="128" y="395" fill="#E6E3DA" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="75" font-weight="800">GSI</text>
+ <text x="598" y="368" fill="#E6E3DA" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="20">SURFACE / 01</text>
+ <text x="598" y="398" fill="#AAB6B6" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="18">FABRICATION BAY</text>
+ <path d="M74 522H856" stroke="#71838A" stroke-width="3"/>
+ <g fill="#F1B94E"><rect x="158" y="511" width="12" height="20"/><rect x="191" y="511" width="12" height="20"/><rect x="730" y="511" width="12" height="20"/></g>
+ <g fill="#B8B4AA"><circle cx="655" cy="502" r="6"/><rect x="650" y="509" width="10" height="19"/></g>
+ <text x="78" y="581" fill="#D6DDDA" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="20">厂房门楣 / 远处先读到集团，再读工区与入口</text>
+
+ <!-- container -->
+ <rect x="920" y="185" width="830" height="430" fill="#D2D3CB"/>
+ <text x="948" y="230" fill="#53666B" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="22">02 / MODULAR LOGISTICS</text>
+ <rect x="977" y="294" width="718" height="220" rx="7" fill="#DAD9D0" stroke="#71838A" stroke-width="8"/>
+ <g stroke="#A6AAA4" stroke-width="5"><path d="M1040 301V507 M1104 301V507 M1168 301V507 M1232 301V507 M1296 301V507 M1360 301V507 M1424 301V507 M1488 301V507 M1552 301V507 M1616 301V507"/></g>
+ <path d="M979 478H1693" stroke="#BD573B" stroke-width="13"/>
+ <rect x="1011" y="330" width="276" height="117" fill="#E6E3DA" opacity=".94"/>
+ <text x="1030" y="414" fill="#18262C" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="84" font-weight="800">GSI</text>
+ <rect x="1508" y="333" width="150" height="103" fill="#18262C"/>
+ <text x="1522" y="365" fill="#E6E3DA" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="21">ORB / 042</text>
+ <text x="1522" y="392" fill="#B8C4C2" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="17">REV-C</text>
+ <text x="1522" y="418" fill="#B8C4C2" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="17">MASS / —</text>
+ <text x="948" y="581" fill="#53666B" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="20">集装箱 / 橙线只做识别，实物危险标记另行布置</text>
+
+ <!-- workwear -->
+ <rect x="50" y="653" width="830" height="465" fill="#E0DFD7"/>
+ <text x="78" y="699" fill="#53666B" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="22">03 / WORKFORCE SYSTEM</text>
+ <path d="M369 792 L331 834 L263 857 L283 1034 H585 L605 857 L537 834 L499 792 Z" fill="#27363C" stroke="#71838A" stroke-width="5"/>
+ <path d="M390 794 L418 835 H450 L478 794" fill="none" stroke="#71838A" stroke-width="11"/>
+ <path d="M263 861 L330 847 M605 861 L538 847" stroke="#BD573B" stroke-width="9"/>
+ <rect x="367" y="868" width="133" height="81" fill="#18262C" stroke="#8FA0A2" stroke-width="2"/>
+ <text x="382" y="923" fill="#E6E3DA" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="49" font-weight="800">GSI</text>
+ <text x="386" y="976" fill="#C5D0CF" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="20">BAY-04 / QA</text>
+ <rect x="510" y="872" width="54" height="79" fill="#E6E3DA"/>
+ <text x="521" y="907" fill="#18262C" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="23" font-weight="700">04</text>
+ <text x="522" y="931" fill="#71838A" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="13">QA</text>
+ <text x="78" y="1081" fill="#53666B" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="20">工服 / 主标恒定，岗位与责任码可更换</text>
+
+ <!-- documentation -->
+ <rect x="920" y="653" width="830" height="465" fill="#CED2CE"/>
+ <text x="948" y="699" fill="#53666B" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="22">04 / PROCUREMENT &amp; TRACEABILITY</text>
+ <rect x="1040" y="732" width="574" height="351" fill="#F2F0EA" stroke="#A8B0AD" stroke-width="3"/>
+ <path d="M1040 732H1614" stroke="#BD573B" stroke-width="10"/>
+ <text x="1070" y="806" fill="#18262C" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="58" font-weight="800">GSI</text>
+ <text x="1443" y="779" fill="#18262C" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="15">REV-C  /  07</text>
+ <text x="1443" y="806" fill="#71838A" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="15">DOC-C / 042</text>
+ <path d="M1070 824H1582" stroke="#18262C" stroke-width="3"/>
+ <text x="1070" y="865" fill="#18262C" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="25" font-weight="700">结构件交割与检验记录</text>
+ <text x="1070" y="901" fill="#71838A" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="17">ASSET / ________   BATCH / ________   RESPONSIBLE / ________</text>
+ <path d="M1070 918H1582 M1070 956H1582 M1070 994H1582 M1070 1032H1582" stroke="#AAB4B3" stroke-width="2"/>
+ <path d="M1234 918V1032 M1433 918V1032" stroke="#AAB4B3" stroke-width="2"/>
+ <text x="1079" y="946" fill="#53666B" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="15">来源</text>
+ <text x="1242" y="946" fill="#53666B" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="15">检测</text>
+ <text x="1440" y="946" fill="#53666B" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="15">签收</text>
+ <text x="948" y="1081" fill="#53666B" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="20">文件 / 标志负责识别，资产号与责任链负责可信</text>
+ <text x="57" y="1162" fill="#7C8989" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="16">PROJECT VI STANDARD / IN-WORLD LEGAL IDENTITY UNSET · No real engineering certification or registered asset numbers are implied.</text>
+</svg>

@@ -1,0 +1,11 @@
+# Every formal GSI standard asset must be registered here in both repositories.
+GSI-corporate-VI-v1.md
+GSI-SYNC.md
+gsi-vi-v1.json
+gsi-mark.svg
+gsi-lockup.svg
+gsi-vi-master-board.svg
+gsi-vi-applications.svg
+gsi-campus-reference.webp
+gsi-orbital-yard-reference.webp
+gsi-atmosphere-board.webp

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="260" viewBox="0 0 1300 260" role="img" aria-label="GSI 世代工业系统项目标准横向字标">
+ <path fill="#18262C" fill-rule="evenodd" d="M20 20 H236 V236 H20 Z M78 78 H179 V178 H78 Z M179 78 H239 V124 H179 Z"/>
+ <path fill="#18262C" d="M135 130 H236 V164 H135 Z"/>
+ <rect x="196" y="196" width="40" height="40" fill="#BD573B"/>
+ <text x="276" y="154" fill="#18262C" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="143" font-weight="800" letter-spacing="-3">GSI</text>
+ <path d="M627 55 V190" stroke="#BD573B" stroke-width="7"/>
+ <text x="657" y="111" fill="#18262C" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="38" font-weight="700">世代工业系统</text>
+ <text x="659" y="157" fill="#71838A" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="21" letter-spacing="2">GENERATION SYSTEMS INDUSTRIES</text>
+</svg>

@@ -1,0 +1,108 @@
+{
+  "schema": "generation-ship.corporate-vi.v1",
+  "status": "non_canon_brand_proposal",
+  "working_name": {
+    "short": "GSI",
+    "zh": "世代工业系统",
+    "en": "Generation Systems Industries",
+    "replaceable": true
+  },
+  "positioning": "A multi-century industrial megacorporation identity spanning lunar mining, standardized components, orbital shipyards, habitat manufacture and maintenance.",
+  "identity_is_not": [
+    "an ARK-01 mission patch",
+    "the legal mark of any established in-world institution",
+    "a new canon company or historical event",
+    "an engineering material or safety certification"
+  ],
+  "source_lock": "generation-ship@147a63f0931b2c121e373d89992512a1d14ea7d1",
+  "assets": {
+    "mark_svg": "gsi-mark.svg",
+    "lockup_svg": "gsi-lockup.svg",
+    "master_board_svg": "gsi-vi-master-board.svg",
+    "applications_svg": "gsi-vi-applications.svg",
+    "industrial_campus_reference_webp": "gsi-campus-reference.webp",
+    "industrial_campus_reference_provenance": "Generated with built-in ImageGen from an original GSI campus prompt on 2026-09-27; exact GSI mark composited locally; visual concept, not documentary evidence.",
+    "orbital_yard_reference_webp": "gsi-orbital-yard-reference.webp",
+    "atmosphere_board_webp": "gsi-atmosphere-board.webp",
+    "orbital_yard_provenance": "Generated with built-in ImageGen from an original GSI orbital shipyard prompt on 2026-09-27; visual concept, not documentary evidence."
+  },
+  "logo": {
+    "construction": "open square structural frame, internal load-bearing bar, one calibration square",
+    "minimum_px": 24,
+    "clear_space": "at least one main stroke width on all sides",
+    "small_size": "use mark or GSI only; omit the long name",
+    "application": "place on real surfaces, preferably vector postproduction; preserve position of opening and calibration square",
+    "forbidden": [
+      "glow",
+      "shield or mission-patch transformation",
+      "covering safety labels or legal ship ID",
+      "per-division logo redrawing"
+    ]
+  },
+  "colors": {
+    "foundry_graphite": {
+      "hex": "#18262C",
+      "role": "primary dark, typography, large equipment surfaces"
+    },
+    "ceramic_offwhite": {
+      "hex": "#E6E3DA",
+      "role": "primary light, panels and document ground"
+    },
+    "oxide_vermilion": {
+      "hex": "#BD573B",
+      "role": "brand recognition line and calibration square",
+      "image_share_percent_range": [
+        3,
+        8
+      ]
+    },
+    "machine_titanium": {
+      "hex": "#71838A",
+      "role": "structure and secondary information"
+    },
+    "archive_gray": {
+      "hex": "#B8B4AA",
+      "role": "archival surfaces and low-priority ground"
+    },
+    "safety_yellow": {
+      "hex": "#F1B94E",
+      "role": "hazard and safety only, not brand ornament"
+    },
+    "system_green": {
+      "hex": "#59A58C",
+      "role": "operational state only, not brand ornament"
+    }
+  },
+  "layout": {
+    "grid_unit": 8,
+    "information_order": [
+      "corporate ID",
+      "asset number",
+      "responsible unit",
+      "revision and date",
+      "safety information"
+    ],
+    "typography": "Preferred Sarasa Gothic SC: 700/800 for company name and H1, 400 for body; fallback Noto Sans CJK SC then system sans. Current SVG text is editable preview; outline and lock the final wordmark before production because font fallback changes widths.",
+    "contrast": "graphite plus off-white normally occupy at least 75 percent of a corporate-facing composition",
+    "demo_serial": "GSI / ORB / MOD-042 / REV-C",
+    "demo_serial_is_not_registered": true
+  },
+  "applications": [
+    "lunar fabrication hall and mining plant",
+    "standardized cargo module and shipyard gantry",
+    "habitat and ship manufacturing plate",
+    "industrial uniform and workstation ID",
+    "procurement, inspection and handover documents"
+  ],
+  "ai_workflow": [
+    "pick an industrial subject before picking a spaceship",
+    "use the master palette and logo placement on real surfaces",
+    "leave clean spaces for exact vector logo and typography in postproduction",
+    "keep true engineering labels and safety markings separate from brand decoration",
+    "add age-specific maintenance wear without redesigning the corporate identity"
+  ],
+  "prompt": "Original industrial megacorporation visual identity for a multi-century Solar System infrastructure network. One consistent GSI masterbrand spanning lunar mining, orbital shipyards, modular habitats and deep-space maintenance. Bold square open-frame emblem placed on real fabricated surfaces, graphite and ceramic-white dominant palette, restrained oxidized vermilion identification stripe, disciplined 8-unit layout grid, large legible asset serial zones and revision blocks, heavy modular machinery, traceable manufacturing details, tiny workers or service vehicles for scale, one hard physically sourced light, documentary industrial realism. Leave exact logo and text as clean spaces for vector postproduction.",
+  "negative_prompt": "mission patch, spaceship-only brand, luxury concept yacht, superhero tech company, franchise corporate logo, winged W emblem, glowing hologram, cyberpunk neon, unreadable pseudo-text, random hazard stripes, orange covering safety labels, seamless toy plastic, unsupported shell, false engineering certification",
+  "campus_reference_prompt": "A colossal modular lunar fabrication hall and gantry complex extending beyond the frame, standardized cargo modules, tiny workers and inspection rover for scale, graphite and matte ceramic gray-white dominant, restrained oxidized vermilion stripes, real load paths and maintenance scuffs, hard solar light, black space, documentary industrial realism, no text or franchise logo; leave rectangular sign areas blank for GSI vector postproduction.",
+  "orbital_yard_reference_prompt": "Immense modular orbital assembly yard at Earth-Moon L5, overhead gantries, standardized truss bays, an uncompleted habitat module and cargo modules on rail cradles, tiny suited inspectors, graphite and ceramic off-white dominant, restrained oxidized vermilion identification stripes, one hard sunlight source and practical lights, documentary industrial realism; leave sign plates blank for vector postproduction, no franchise logos or pseudo-text."
+}

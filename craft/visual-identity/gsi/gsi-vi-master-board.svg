@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1120" viewBox="0 0 1800 1120">
+ <rect width="1800" height="1120" fill="#E6E3DA"/>
+ <rect width="1800" height="164" fill="#18262C"/>
+ <path d="M0 158H1800" stroke="#BD573B" stroke-width="6"/>
+ <text x="62" y="76" fill="#E6E3DA" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="56" font-weight="800">GSI</text>
+ <text x="220" y="74" fill="#E6E3DA" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="41" font-weight="700">世代工业系统</text>
+ <text x="64" y="124" fill="#AAB6B6" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="21" letter-spacing="3">GENERATION SYSTEMS INDUSTRIES  /  MASTER VISUAL IDENTITY</text>
+ <text x="1428" y="91" fill="#BD573B" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="27" font-weight="700">VI CONCEPT 01</text>
+
+ <!-- Masterbrand hero panel -->
+ <rect x="54" y="208" width="1010" height="577" fill="#F2F0EA" stroke="#B8B4AA" stroke-width="2"/>
+ <path d="M54 208H1064" stroke="#BD573B" stroke-width="10"/>
+ <text x="89" y="260" fill="#71838A" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="22" letter-spacing="3">01 / MASTER MARK</text>
+ <g transform="translate(149 323) scale(1.65)">
+  <path fill="#18262C" fill-rule="evenodd" d="M20 20 H236 V236 H20 Z M78 78 H179 V178 H78 Z M179 78 H239 V124 H179 Z"/>
+  <path fill="#18262C" d="M135 130 H236 V164 H135 Z"/>
+  <rect x="196" y="196" width="40" height="40" fill="#BD573B"/>
+ </g>
+ <text x="610" y="526" fill="#18262C" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="132" font-weight="800" letter-spacing="-7">GSI</text>
+ <text x="615" y="582" fill="#18262C" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="38" font-weight="700">世代工业系统</text>
+ <text x="615" y="625" fill="#71838A" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="20" letter-spacing="2">GENERATION SYSTEMS INDUSTRIES</text>
+ <path d="M88 714H1028" stroke="#B8B4AA" stroke-width="2"/>
+ <text x="90" y="750" fill="#18262C" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="23">开口结构方框   /   内部承载梁   /   一枚校准点</text>
+
+ <!-- Narrative and system -->
+ <text x="1116" y="254" fill="#18262C" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="34" font-weight="700">一家能持续交割的工业巨企</text>
+ <text x="1118" y="309" fill="#4F6368" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="22">从月面矿到轨道船厂，从标准件到舱段维护。</text>
+ <text x="1118" y="344" fill="#4F6368" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="22">品牌属于整个制造网络，不属于一艘船。</text>
+ <path d="M1118 385H1747" stroke="#71838A" stroke-width="2"/>
+ <text x="1118" y="435" fill="#18262C" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="24" font-weight="700">制造 / 维护 / 交割</text>
+ <text x="1118" y="474" fill="#4F6368" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="20">结构化字标 · 大号资产号 · 可追溯的版次</text>
+ <text x="1118" y="527" fill="#18262C" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="24" font-weight="700">TONE OF VOICE</text>
+ <text x="1118" y="563" fill="#4F6368" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="20">确定、克制、负责；不写冒险口号。</text>
+ <rect x="1118" y="616" width="629" height="169" fill="#18262C"/>
+ <path d="M1146 640V758 M1146 640H1219" stroke="#BD573B" stroke-width="9"/>
+ <text x="1245" y="678" fill="#E6E3DA" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="28" font-weight="700">GSI / ORB / MOD-042</text>
+ <text x="1245" y="719" fill="#AAB6B6" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="21">REV-C  ·  INSPECTED  ·  2140/07</text>
+ <text x="1245" y="753" fill="#8D9EA2" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="16">版式样例，不是已注册物料号</text>
+
+ <!-- Palette and deployment grammar -->
+ <text x="58" y="853" fill="#18262C" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="28" font-weight="700">COLOR SYSTEM</text>
+ <g font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="20" font-weight="700">
+  <rect x="58" y="877" width="268" height="104" fill="#18262C"/><text x="72" y="941" fill="#E6E3DA">炉心石墨  #18262C</text>
+  <rect x="326" y="877" width="268" height="104" fill="#E6E3DA" stroke="#B8B4AA"/><text x="340" y="941" fill="#18262C">陶瓷灰白  #E6E3DA</text>
+  <rect x="594" y="877" width="268" height="104" fill="#BD573B"/><text x="608" y="941" fill="#FFFFFF">氧化朱  #BD573B</text>
+  <rect x="862" y="877" width="268" height="104" fill="#71838A"/><text x="876" y="941" fill="#FFFFFF">机械钛  #71838A</text>
+  <rect x="1130" y="877" width="268" height="104" fill="#B8B4AA"/><text x="1144" y="941" fill="#18262C">旧纸灰  #B8B4AA</text>
+  <rect x="1398" y="877" width="170" height="104" fill="#F1B94E"/><text x="1412" y="941" fill="#18262C">警示专用</text>
+  <rect x="1568" y="877" width="174" height="104" fill="#59A58C"/><text x="1582" y="941" fill="#18262C">状态专用</text>
+ </g>
+ <text x="59" y="1043" fill="#4F6368" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="20">集团身份：一枚标志、一套网格、一组编号层级；可覆盖矿场、船厂、舱段、工服与文件。</text>
+ <text x="59" y="1080" fill="#7B898B" font-family="Sarasa Gothic SC, Noto Sans CJK SC, Arial, sans-serif" font-size="16">PROJECT VI STANDARD / 世界内企业身份待定，不替代世界内既有机构标识与工程安全色</text>
+</svg>
