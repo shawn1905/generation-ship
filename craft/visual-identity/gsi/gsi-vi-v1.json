@@ -104,5 +104,15 @@
   "prompt": "Original industrial megacorporation visual identity for a multi-century Solar System infrastructure network. One consistent GSI masterbrand spanning lunar mining, orbital shipyards, modular habitats and deep-space maintenance. Bold square open-frame emblem placed on real fabricated surfaces, graphite and ceramic-white dominant palette, restrained oxidized vermilion identification stripe, disciplined 8-unit layout grid, large legible asset serial zones and revision blocks, heavy modular machinery, traceable manufacturing details, tiny workers or service vehicles for scale, one hard physically sourced light, documentary industrial realism. Leave exact logo and text as clean spaces for vector postproduction.",
   "negative_prompt": "mission patch, spaceship-only brand, luxury concept yacht, superhero tech company, franchise corporate logo, winged W emblem, glowing hologram, cyberpunk neon, unreadable pseudo-text, random hazard stripes, orange covering safety labels, seamless toy plastic, unsupported shell, false engineering certification",
   "campus_reference_prompt": "A colossal modular lunar fabrication hall and gantry complex extending beyond the frame, standardized cargo modules, tiny workers and inspection rover for scale, graphite and matte ceramic gray-white dominant, restrained oxidized vermilion stripes, real load paths and maintenance scuffs, hard solar light, black space, documentary industrial realism, no text or franchise logo; leave rectangular sign areas blank for GSI vector postproduction.",
-  "orbital_yard_reference_prompt": "Immense modular orbital assembly yard at Earth-Moon L5, overhead gantries, standardized truss bays, an uncompleted habitat module and cargo modules on rail cradles, tiny suited inspectors, graphite and ceramic off-white dominant, restrained oxidized vermilion identification stripes, one hard sunlight source and practical lights, documentary industrial realism; leave sign plates blank for vector postproduction, no franchise logos or pseudo-text."
+  "orbital_yard_reference_prompt": "Immense open zero-gravity orbital assembly cradle with skeletal trusses, discontinuous maintenance platforms, multidirectional manipulators and positively captured modules. Tiny tethered suited inspectors and free-flying service drones establish scale. Graphite and ceramic off-white, restrained vermilion identification markings. One physically sourced dominant key light, sparse purposeful inspection lights and localized process-appropriate welding flashes. Thin transient particulate or vapor wisps expand and disperse near active work only. Quiet near-black space, sparse stars, no ground roads, no bright galaxy, no global fog. Preserve canon-defined geometry; leave sign plates blank for vector postproduction. See ORBITAL-YARD-IMAGE-GUIDE-2026-10.md.",
+  "scene_guidance": {
+    "orbital_yard": "ORBITAL-YARD-IMAGE-GUIDE-2026-10.md",
+    "revision_date": "2026-10-18",
+    "dominant_key_with_local_process_lights": true,
+    "zero_gravity_assembly_required": true,
+    "vacuum_plumes": "localized transient expanding vapor or particles only; no buoyant smoke or global fog",
+    "background": "near-black sparse stars unless the scene requires an astronomical object",
+    "preserve_canon_geometry": true,
+    "general_image_production": "GENERATION-SHIP-IMAGE-PRODUCTION-2026-10.md"
+  }
 }

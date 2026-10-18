@@ -9,3 +9,5 @@ gsi-vi-applications.svg
 gsi-campus-reference.webp
 gsi-orbital-yard-reference.webp
 gsi-atmosphere-board.webp
+ORBITAL-YARD-IMAGE-GUIDE-2026-10.md
+GENERATION-SHIP-IMAGE-PRODUCTION-2026-10.md
