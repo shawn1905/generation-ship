@@ -19,7 +19,7 @@
 
 - [全时空档案](archive_all.html) — 按原始纪元、空间和关键词检索全部正典文书；运行 `python3 scripts/rebuild_archive_all.py` 更新数据，使用 `--head` 可只导出已提交的文书。
 
-- [热力档案舱](heatmap_3d.html) — 正典文书 3D 热力图（245 格 × 7 纪元 × 5 空间带 × 7 维度）
+- [热力档案舱](heatmap_3d.html) — 七纪元正典文书 3D 热力图（245 格 = 7 纪元 × 5 空间带 × 7 维度；当前匹配 499 篇）
 - [星图航迹](galaxy_map_3d.html) — 星系三维视角
 - [黑洞预览](blackhole_preview.html) — 概念展示
 

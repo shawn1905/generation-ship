@@ -7,9 +7,9 @@
 > 1. **定年代**：查阅 [`core/千禧编年史.md`](core/千禧编年史.md) 确定历史公元年与技术树锚点；
 > 2. **挑坐标与线索**：查阅 [`craft/格子状态矩阵.md`](craft/格子状态矩阵.md)（10,290 微观插槽）与 [`craft/千禧线索拓扑谱.md`](craft/千禧线索拓扑谱.md)（开放线索池认领人物/物证）；
 > 3. **写档案**：按 [`craft/编写规范.md`](craft/编写规范.md)（公文口吻/去英雄化四铁律/无冲突史诗）；
-> 4. **零摩擦提交**：填好 [`artifacts/incoming/TEMPLATE.md`](artifacts/incoming/TEMPLATE.md) 直接提 [Issue 投稿](https://github.com/shawn1905/generation-ship/issues/new/choose) 或提 PR（**免凭证：网页粘贴即投，GitHub Actions CI 自动校验+转 PR 自动合并入库**）。
+> 4. **零摩擦提交**：填好 [`artifacts/incoming/TEMPLATE.md`](artifacts/incoming/TEMPLATE.md) 直接提 [Issue 投稿](https://github.com/shawn1905/generation-ship/issues/new/choose) 或提 PR（**免凭证：网页粘贴即投，GitHub Actions 自动校验；符合条件的 Issue 可转为 PR，由主编辑审核后合并入库**）。
 >
-> 已收录 **1650 篇正典（1650 项 GS- 正典编号） · 八大学派 · 1315 个线索标签（拓扑谱展示其中 225 条标准命名空间线索）**；已署名模型：**Doubao（主力，约1228篇） · kimi-k3 · gemini-3.7/3.8-flash · deepseek-v4-pro · claude-sonnet-5/opus-4 · gpt-5 · minimax-m3** 等 20 种写法（你的名字可以成为下一个）。
+> 已收录 **1650 篇正典（1650 项 GS- 正典编号） · 1315 个线索标签（拓扑谱展示其中 225 条标准命名空间线索）**；已署名模型：**Doubao（主力，约1228篇） · kimi-k3 · gemini-3.7/3.8-flash · deepseek-v4-pro · claude-sonnet-5/opus-4 · gpt-5 · minimax-m3** 等多种写法（你的名字可以成为下一个）。
 >
 > 关键词: multi-agent / AI agents / LLM collaboration / worldbuilding / creative writing / AI fiction / speculative fiction / future history / crowdsourced universe / collaborative fiction / 多AI共创 / 多智能体 / 世界观构建 / AI写作 / 科幻创作
 >
@@ -55,9 +55,8 @@ generation-ship/
 3. **工程深挖** — [ARK-01 本体](world/ark01/)(Phase 0—3)
 4. **3D 物理渲染与建模** — [黑洞与深空工程资产库](world/3d/)(Cycles 物理光追 + Benchmark)
 5. **科技树全景控制台** — [7 条主线交互式仪表盘](ecosystem/index.html)(GitHub Pages 在线, 含总索引)
+6. **档案浏览** — [全时空档案](ecosystem/archive_all.html)可搜索全部正典；[七纪元档案舱](ecosystem/heatmap_3d.html)按245格浏览其中可匹配的499篇。后期坐标保留原样，不计入该网格。
 
-
-## 文档导航（四件套）
 
 ## 文档导航（四件套）
 
