@@ -1,0 +1,1614 @@
+{
+  "GS-3811-01": {
+    "coord": "制度×多星纪元×跨星系带×制度学派×居住舱分配修订",
+    "threads": [
+      "system/mid-refit"
+    ]
+  },
+  "GS-3934-01": {
+    "coord": "仪式×文化融合期×跨星系走廊×媒体学派×跨星系媒体日",
+    "threads": [
+      "system/media-day"
+    ]
+  },
+  "GS-3814-01": {
+    "coord": "制度×多星纪元×跨星系带×制度学派×大修临时安置",
+    "threads": [
+      "system/mid-refit"
+    ]
+  },
+  "GS-3739-01": {
+    "coord": "经济×多星纪元×第六恒星系带×商贸学派×物资补给贸易决算",
+    "threads": [
+      "system/supply-trade"
+    ]
+  },
+  "GS-3858-01": {
+    "coord": "人物×跨星系治理期×中央星区×官档学派×审计总长",
+    "threads": [
+      "person/cha-wang",
+      "system/4th-leadership"
+    ]
+  },
+  "GS-3903-01": {
+    "coord": "人物×文化融合期×内太阳系带×教育学派×退休鉴定",
+    "threads": [
+      "person/lin-dainian"
+    ]
+  },
+  "GS-3969-01": {
+    "coord": "技术×长期居住期×比邻星定居带×医派×长期居住医学诊疗系统",
+    "threads": [
+      "object/habitation-medical-system"
+    ]
+  },
+  "GS-3778-01": {
+    "coord": "子事件×多星纪元×跨星系带×事件学派×通信协议不兼容",
+    "threads": [
+      "system/comm-incompatibility",
+      "system/network"
+    ]
+  },
+  "GS-3961-01": {
+    "coord": "制度×长期居住期×比邻星定居带×统计学派×人口结构调节政策",
+    "threads": [
+      "system/population-adjustment-policy"
+    ]
+  },
+  "GS-3929-01": {
+    "coord": "事件×文化融合期×三号环带×产业学派×版权纠纷仲裁",
+    "threads": [
+      "system/copyright-dispute-3899"
+    ]
+  },
+  "GS-3937-01": {
+    "coord": "产业×文化融合期×三号环带×艺术学派×融合艺术产业决算",
+    "threads": [
+      "industry/fusion-art"
+    ]
+  },
+  "GS-3977-01": {
+    "coord": "子事件×长期居住期×跨星系走廊×生态学派×二号环带生态入侵事件",
+    "threads": [
+      "event/cross-star-ecology-invasion"
+    ]
+  },
+  "GS-3953-01": {
+    "coord": "人物×长期居住期×比邻星定居带×统计学派×首席统计官任职档案",
+    "threads": [
+      "person/qi-heng"
+    ]
+  },
+  "GS-3875-01": {
+    "coord": "事件×跨星系治理期×中央星区×官档学派×司法判决执行争议事件",
+    "threads": [
+      "event/judgment-enforcement",
+      "system/4th-leadership"
+    ]
+  },
+  "GS-3714-01": {
+    "coord": "制度×多星纪元×第六恒星系带×官档学派×移民准入制度",
+    "threads": [
+      "system/immigration-six"
+    ]
+  },
+  "GS-3804-01": {
+    "coord": "人×多星纪元×跨星系带×史志学派×居住舱扩容总指挥",
+    "threads": [
+      "system/mid-refit"
+    ]
+  },
+  "GS-3807-01": {
+    "coord": "人×多星纪元×跨星系带×史志学派×废物循环负责人",
+    "threads": [
+      "system/mid-refit"
+    ]
+  },
+  "GS-3720-01": {
+    "coord": "技术×多星纪元×第六恒星系带×科医学派×土壤改良",
+    "threads": [
+      "object/soil-amend-six"
+    ]
+  },
+  "GS-3829-01": {
+    "coord": "事件×多星纪元×跨星系带×事故调查学派×结构裂纹发现",
+    "threads": [
+      "system/mid-refit"
+    ]
+  },
+  "GS-3862-01": {
+    "coord": "制度×跨星系治理期×三恒星系跨星区×官档学派×公民权利扩展法",
+    "threads": [
+      "system/4th-leadership",
+      "system/civil-rights"
+    ]
+  },
+  "GS-3727-01": {
+    "coord": "事件×多星纪元×第六恒星系带×官档学派×移民船延误",
+    "threads": [
+      "system/convoy-delay"
+    ]
+  },
+  "GS-3805-01": {
+    "coord": "人×多星纪元×跨星系带×史志学派×结构延寿首席专家",
+    "threads": [
+      "system/mid-refit"
+    ]
+  },
+  "GS-3879-01": {
+    "coord": "事件×跨星系治理期×三恒星系跨星区×官档学派×审计发现重大违规事件",
+    "threads": [
+      "event/audit-violation",
+      "system/4th-leadership"
+    ]
+  },
+  "GS-3859-01": {
+    "coord": "制度×跨星系治理期×中央星区×官档学派×领导层换届法",
+    "threads": [
+      "system/4th-leadership",
+      "system/electoral-law"
+    ]
+  },
+  "GS-3810-01": {
+    "coord": "制度×多星纪元×跨星系带×制度学派×推进系统升级审批",
+    "threads": [
+      "system/mid-refit"
+    ]
+  },
+  "GS-3956-01": {
+    "coord": "人物×长期居住期×比邻星定居带×心理学派×世代心理学创始人学术档案",
+    "threads": [
+      "person/tong-chuan"
+    ]
+  },
+  "GS-3884-01": {
+    "coord": "文化×跨星系治理期×中央星区×典礼学派×司法独立纪念日",
+    "threads": [
+      "holiday/judicial-independence",
+      "system/4th-leadership"
+    ]
+  },
+  "GS-3809-01": {
+    "coord": "制度×多星纪元×跨星系带×制度学派×中期改造法",
+    "threads": [
+      "system/mid-refit"
+    ]
+  },
+  "GS-3962-01": {
+    "coord": "制度×长期居住期×比邻星定居带×医派×长期居住医疗保险法",
+    "threads": [
+      "space/medical-insurance-act"
+    ]
+  },
+  "GS-3971-01": {
+    "coord": "技术×长期居住期×比邻星定居带×心理学派×世代心理干预技术",
+    "threads": [
+      "object/generational-intervention-protocol"
+    ]
+  },
+  "GS-3745-01": {
+    "coord": "生态×多星纪元×第六恒星系带×科医学派×伴生昆虫群落",
+    "threads": [
+      "system/companion-insects"
+    ]
+  },
+  "GS-3881-01": {
+    "coord": "文化×跨星系治理期×三恒星系跨星区×典礼学派×宪政修订公投日",
+    "threads": [
+      "event/referendum-day",
+      "system/4th-leadership"
+    ]
+  },
+  "GS-3760-01": {
+    "coord": "制度×多星纪元×跨星系带×制度学派×外交使团豁免权法",
+    "threads": [
+      "system/diplomatic-immunity",
+      "system/embassy-establishment"
+    ]
+  },
+  "GS-3735-01": {
+    "coord": "文化×多星纪元×第六恒星系带×互济学派×丰收节",
+    "threads": [
+      "system/harvest-festival"
+    ]
+  },
+  "GS-3723-01": {
+    "coord": "事件×多星纪元×第六恒星系带×官档学派×沙暴掩埋事件",
+    "threads": [
+      "object/atmo-processor-six",
+      "system/sandstorm-burial"
+    ]
+  },
+  "GS-3731-01": {
+    "coord": "文化×多星纪元×第六恒星系带×互济学派×异星日出观测",
+    "threads": [
+      "system/first-sunrise"
+    ]
+  },
+  "GS-3958-01": {
+    "coord": "人物×长期居住期×比邻星定居带×社会学派×长期居住社会学首席学者研究档案",
+    "threads": [
+      "person/meng-qiao"
+    ]
+  },
+  "GS-3970-01": {
+    "coord": "技术×长期居住期×跨星系走廊×生态学派×跨星系生态监测卫星网",
+    "threads": [
+      "object/interstellar-ecology-satellite-network"
+    ]
+  },
+  "GS-3748-01": {
+    "coord": "军事×多星纪元×第六恒星系带×军事学派×航道巡逻",
+    "threads": [
+      "system/patrol-six"
+    ]
+  },
+  "GS-3718-01": {
+    "coord": "技术×多星纪元×第六恒星系带×工技学派×激光通信中继",
+    "threads": [
+      "object/laser-relay-6",
+      "system/comm-backbone"
+    ]
+  },
+  "GS-3750-01": {
+    "coord": "军事×多星纪元×第六恒星系带×军事学派×未知信号监测",
+    "threads": [
+      "system/unknown-signal"
+    ]
+  },
+  "GS-3802-01": {
+    "coord": "人×多星纪元×跨星系带×史志学派×主推进总设计师",
+    "threads": [
+      "system/mid-refit"
+    ]
+  },
+  "GS-3922-01": {
+    "coord": "技术×文化融合期×跨星系走廊×产业学派×区块链确权",
+    "threads": [
+      "system/asset-blockchain"
+    ]
+  },
+  "GS-3972-01": {
+    "coord": "技术×长期居住期×比邻星定居带×工学派×居住环境智能调节系统",
+    "threads": [
+      "object/habitat-smart-control-system"
+    ]
+  },
+  "GS-3729-01": {
+    "coord": "事件×多星纪元×第六恒星系带×工技学派×资源开采事故",
+    "threads": [
+      "person/sha-baichuan",
+      "system/mining-accident"
+    ]
+  },
+  "GS-3925-01": {
+    "coord": "事件×文化融合期×内太阳系带×教育学派×系统大面积故障",
+    "threads": [
+      "system/hologram-outage-3897"
+    ]
+  },
+  "GS-3716-01": {
+    "coord": "技术×多星纪元×第六恒星系带×工技学派×聚变动力模块",
+    "threads": [
+      "object/fusion-module-six"
+    ]
+  },
+  "GS-3773-01": {
+    "coord": "子事件×多星纪元×跨星系带×事件学派×翻译系统误译致外交危机",
+    "threads": [
+      "system/diplomatic-crisis",
+      "system/translation-incident"
+    ]
+  },
+  "GS-3976-01": {
+    "coord": "子事件×长期居住期×比邻星定居带×医派×长期居住罕见病爆发事件",
+    "threads": [
+      "event/rare-disease-outbreak"
+    ]
+  },
+  "GS-3989-01": {
+    "coord": "经济×长期居住期×比邻星定居带×医派×长期居住医疗产业决算",
+    "threads": [
+      "economy/habitation-medical-industry"
+    ]
+  },
+  "GS-3896-01": {
+    "coord": "生态×跨星系治理期×三恒星系跨星区×生态观测学派×公共建筑伴生植物",
+    "threads": [
+      "ecology/4th-leadership",
+      "flora/public-buildings"
+    ]
+  },
+  "GS-3869-01": {
+    "coord": "技术×跨星系治理期×三恒星系跨星区×工技学派×跨星区通信会议系统",
+    "threads": [
+      "system/4th-leadership",
+      "system/interstellar-conf"
+    ]
+  },
+  "GS-3848-01": {
+    "coord": "军事×多星纪元×跨星系带×安全学派×推进试验安全评估",
+    "threads": [
+      "system/mid-refit"
+    ]
+  },
+  "GS-3993-01": {
+    "coord": "生态×长期居住期×跨星系走廊×生态学派×跨星区生态多样性普查",
+    "threads": [
+      "report/interstellar-biodiversity-survey"
+    ]
+  },
+  "GS-3737-01": {
+    "coord": "经济×多星纪元×第六恒星系带×商贸学派×资源开发决算",
+    "threads": [
+      "object/smelter-6",
+      "system/mining-econ"
+    ]
+  },
+  "GS-3954-01": {
+    "coord": "人物×长期居住期×比邻星定居带×医派×长期居住医学奠基人临床档案",
+    "threads": [
+      "person/zhu-shen"
+    ]
+  },
+  "GS-3978-01": {
+    "coord": "子事件×长期居住期×比邻星定居带×社会学派×五号环带世代交替冲突事件",
+    "threads": [
+      "event/generation-conflict"
+    ]
+  },
+  "GS-3851-01": {
+    "coord": "人物×跨星系治理期×三恒星系跨星区×官档学派×第四代最高领导人",
+    "threads": [
+      "person/wen-bingjun",
+      "system/4th-leadership"
+    ]
+  },
+  "GS-3897-01": {
+    "coord": "军事安全×跨星系治理期×三恒星系跨星区×安保体系学派×选举安全保障体系",
+    "threads": [
+      "security/4th-leadership",
+      "security/system"
+    ]
+  },
+  "GS-3717-01": {
+    "coord": "技术×多星纪元×第六恒星系带×工技学派×大气处理系统",
+    "threads": [
+      "object/atmo-processor-six"
+    ]
+  },
+  "GS-3747-01": {
+    "coord": "军事×多星纪元×第六恒星系带×军事学派×防御体系评估",
+    "threads": [
+      "system/defense-six"
+    ]
+  },
+  "GS-3926-01": {
+    "coord": "事件×文化融合期×比邻星定居带×技术学派×数据损坏事件",
+    "threads": [
+      "system/heritage-data-corruption"
+    ]
+  },
+  "GS-3709-01": {
+    "coord": "制度×多星纪元×第六恒星系带×官档学派×前哨自治章程",
+    "threads": [
+      "system/outpost-charter"
+    ]
+  },
+  "GS-3706-01": {
+    "coord": "人物×多星纪元×第六恒星系带×官档学派×救援队长",
+    "threads": [
+      "person/yuchi-hai",
+      "system/outpost-rescue"
+    ]
+  },
+  "GS-3861-01": {
+    "coord": "制度×跨星系治理期×三恒星系跨星区×官档学派×跨星系治理宪章",
+    "threads": [
+      "system/4th-leadership",
+      "system/interstellar-governance"
+    ]
+  },
+  "GS-3982-01": {
+    "coord": "仪式×长期居住期×比邻星定居带×统计学派×人口里程碑纪念",
+    "threads": [
+      "ritual/population-milestone"
+    ]
+  },
+  "GS-3728-01": {
+    "coord": "事件×多星纪元×第六恒星系带×科医学派×医疗紧急",
+    "threads": [
+      "person/cen-weiming",
+      "system/medical-emergency"
+    ]
+  },
+  "GS-3877-01": {
+    "coord": "事件×跨星系治理期×中央星区×官档学派×议会辩论僵局事件",
+    "threads": [
+      "event/parliament-deadlock",
+      "system/4th-leadership"
+    ]
+  },
+  "GS-3719-01": {
+    "coord": "技术×多星纪元×第六恒星系带×科医学派×生命支持闭环",
+    "threads": [
+      "object/clls-six"
+    ]
+  },
+  "GS-3849-01": {
+    "coord": "军事×多星纪元×跨星系带×安全学派×大修应急疏散",
+    "threads": [
+      "system/mid-refit"
+    ]
+  },
+  "GS-3730-01": {
+    "coord": "文化×多星纪元×第六恒星系带×互济学派×奠基纪念日",
+    "threads": [
+      "system/foundation-day"
+    ]
+  },
+  "GS-3992-01": {
+    "coord": "生态×长期居住期×比邻星定居带×生态学派×人工生物圈百年演化评估",
+    "threads": [
+      "report/biosphere-century-evolution"
+    ]
+  },
+  "GS-3932-01": {
+    "coord": "仪式×文化融合期×内太阳系带×教育学派×教育改革纪念日",
+    "threads": [
+      "system/education-reform-memorial"
+    ]
+  },
+  "GS-3741-01": {
+    "coord": "经济×多星纪元×第六恒星系带×商贸学派×深空救援决算",
+    "threads": [
+      "system/rescue-econ"
+    ]
+  },
+  "GS-3975-01": {
+    "coord": "子事件×长期居住期×比邻星定居带×统计学派×人口结构失衡预警事件",
+    "threads": [
+      "event/population-imbalance-warning"
+    ]
+  },
+  "GS-3909-01": {
+    "coord": "制度×文化融合期×跨星系走廊×立法学派×跨星系语言保护法",
+    "threads": [
+      "system/language-protection-act"
+    ]
+  },
+  "GS-3813-01": {
+    "coord": "制度×多星纪元×跨星系带×制度学派×能源配额管理",
+    "threads": [
+      "system/mid-refit"
+    ]
+  },
+  "GS-3775-01": {
+    "coord": "子事件×多星纪元×跨星系带×事件学派×贸易协定谈判破裂",
+    "threads": [
+      "system/negotiation",
+      "system/trade-collapse"
+    ]
+  },
+  "GS-3738-01": {
+    "coord": "经济×多星纪元×第六恒星系带×商贸学派×通信服务决算",
+    "threads": [
+      "object/laser-relay-6",
+      "system/comm-econ"
+    ]
+  },
+  "GS-3918-01": {
+    "coord": "技术×文化融合期×内太阳系带×教育学派×全息课堂系统",
+    "threads": [
+      "object/hologram-classroom-v3"
+    ]
+  },
+  "GS-3742-01": {
+    "coord": "生态×多星纪元×第六恒星系带×科医学派×本土微生物普查",
+    "threads": [
+      "system/microbe-survey"
+    ]
+  },
+  "GS-3933-01": {
+    "coord": "仪式×文化融合期×比邻星定居带×技术学派×数字化完成庆典",
+    "threads": [
+      "system/digital-heritage-completion"
+    ]
+  },
+  "GS-3827-01": {
+    "coord": "事件×多星纪元×跨星系带×事故调查学派×大修舱段泄漏",
+    "threads": [
+      "system/mid-refit"
+    ]
+  },
+  "GS-3785-01": {
+    "coord": "文化×多星纪元×跨星系带×仪式学派×和平条约签署",
+    "threads": [
+      "system/peace-treaty",
+      "system/treaty"
+    ]
+  },
+  "GS-3734-01": {
+    "coord": "文化×多星纪元×第六恒星系带×互济学派×深空通信日",
+    "threads": [
+      "system/comm-day"
+    ]
+  },
+  "GS-3990-01": {
+    "coord": "经济×长期居住期×跨星系走廊×生态学派×生态监测产业决算",
+    "threads": [
+      "economy/ecology-monitoring-industry"
+    ]
+  },
+  "GS-3887-01": {
+    "coord": "经济×跨星系治理期×三恒星系跨星区×决算学派×选举服务产业决算",
+    "threads": [
+      "economy/4th-leadership",
+      "industry/election-services"
+    ]
+  },
+  "GS-3870-01": {
+    "coord": "技术×跨星系治理期×中央星区×工技学派×选举安全加密技术",
+    "threads": [
+      "system/4th-leadership",
+      "system/election-crypto"
+    ]
+  },
+  "GS-3907-01": {
+    "coord": "人物×文化融合期×三号环带×产业学派×领军人物台账",
+    "threads": [
+      "person/gu-changchuan"
+    ]
+  },
+  "GS-3987-01": {
+    "coord": "经济×长期居住期×比邻星定居带×医派×心理健康服务产业决算",
+    "threads": [
+      "economy/mental-health-service-industry"
+    ]
+  },
+  "GS-3965-01": {
+    "coord": "制度×长期居住期×比邻星定居带×工学派×居住环境标准法",
+    "threads": [
+      "system/habitat-standard-act"
+    ]
+  },
+  "GS-3749-01": {
+    "coord": "军事×多星纪元×第六恒星系带×军事学派×应急疏散预案",
+    "threads": [
+      "system/evacuation-plan"
+    ]
+  },
+  "GS-3746-01": {
+    "coord": "生态×多星纪元×第六恒星系带×科医学派×异星大气生态影响",
+    "threads": [
+      "system/exo-atmo-effect"
+    ]
+  },
+  "GS-3766-01": {
+    "coord": "技术×多星纪元×跨星系带×技术学派×跨文明实时翻译系统",
+    "threads": [
+      "system/comm",
+      "system/translation-system"
+    ]
+  },
+  "GS-3894-01": {
+    "coord": "生态×跨星系治理期×三恒星系跨星区×生态监测学派×司法中心空气品质监测",
+    "threads": [
+      "ecology/4th-leadership",
+      "monitoring/judicial-center-air"
+    ]
+  },
+  "GS-3886-01": {
+    "coord": "经济×跨星系治理期×三恒星系跨星区×决算学派×政务服务产业决算",
+    "threads": [
+      "economy/4th-leadership",
+      "industry/gov-services"
+    ]
+  },
+  "GS-3904-01": {
+    "coord": "人物×文化融合期×比邻星定居带×技术学派×首席专家考绩",
+    "threads": [
+      "person/li-zhao"
+    ]
+  },
+  "GS-3865-01": {
+    "coord": "制度×跨星系治理期×三恒星系跨星区×官档学派×跨星区协调法",
+    "threads": [
+      "system/4th-leadership",
+      "system/interstellar-coordination"
+    ]
+  },
+  "GS-3910-01": {
+    "coord": "制度×文化融合期×三号环带×艺术学派×融合艺术评审标准",
+    "threads": [
+      "system/art-review-standard"
+    ]
+  },
+  "GS-3733-01": {
+    "coord": "文化×多星纪元×第六恒星系带×互济学派×与母星同步庆典",
+    "threads": [
+      "system/sync-ceremony"
+    ]
+  },
+  "GS-3770-01": {
+    "coord": "技术×多星纪元×跨星系带×技术学派×联合科考设备互操作",
+    "threads": [
+      "system/equipment",
+      "system/joint-expedition"
+    ]
+  },
+  "GS-3783-01": {
+    "coord": "文化×多星纪元×跨星系带×仪式学派×递交国书仪式",
+    "threads": [
+      "system/credentials",
+      "system/embassy"
+    ]
+  },
+  "GS-3765-01": {
+    "coord": "制度×多星纪元×跨星系带×制度学派×外交礼仪规范",
+    "threads": [
+      "system/embassy-establishment",
+      "system/protocol"
+    ]
+  },
+  "GS-3715-01": {
+    "coord": "制度×多星纪元×第六恒星系带×官档学派×前哨紧急状态法",
+    "threads": [
+      "system/emergency-law-six"
+    ]
+  },
+  "GS-3945-01": {
+    "coord": "生态×文化融合期×跨星系走廊×媒体学派×媒体中心空气品质",
+    "threads": [
+      "eco/air-quality"
+    ]
+  },
+  "GS-3935-01": {
+    "coord": "仪式×文化融合期×内太阳系带×传承学派×代际传承仪式",
+    "threads": [
+      "system/handover-ritual"
+    ]
+  },
+  "GS-3986-01": {
+    "coord": "经济×长期居住期×比邻星定居带×生态学派×人工生物圈运维产业决算",
+    "threads": [
+      "economy/biosphere-maintenance-industry"
+    ]
+  },
+  "GS-3703-01": {
+    "coord": "人物×多星纪元×第六恒星系带×工技学派×通信总工程师",
+    "threads": [
+      "object/laser-relay-6",
+      "person/pei-yanqiu"
+    ]
+  },
+  "GS-3782-01": {
+    "coord": "文化×多星纪元×跨星系带×仪式学派×联合天文观测共祭",
+    "threads": [
+      "system/astronomy-ritual",
+      "system/exchange"
+    ]
+  },
+  "GS-3966-01": {
+    "coord": "技术×长期居住期×比邻星定居带×工学派×人工生物圈稳态调控系统",
+    "threads": [
+      "object/biosphere-stability-control-system"
+    ]
+  },
+  "GS-3866-01": {
+    "coord": "技术×跨星系治理期×三恒星系跨星区×工技学派×跨星系电子投票系统",
+    "threads": [
+      "system/4th-leadership",
+      "system/e-voting"
+    ]
+  },
+  "GS-3880-01": {
+    "coord": "文化×跨星系治理期×中央星区×典礼学派×第四代领导人就职典礼",
+    "threads": [
+      "event/inauguration",
+      "system/4th-leadership"
+    ]
+  },
+  "GS-3981-01": {
+    "coord": "仪式×长期居住期×比邻星定居带×医派×世代心理健康日",
+    "threads": [
+      "ritual/mental-health-day"
+    ]
+  },
+  "GS-3826-01": {
+    "coord": "事件×多星纪元×跨星系带×事故调查学派×能源过载停电",
+    "threads": [
+      "system/mid-refit"
+    ]
+  },
+  "GS-3901-01": {
+    "coord": "人物×文化融合期×跨星系走廊×语言学派×首任院长离任",
+    "threads": [
+      "person/zhou-mu"
+    ]
+  },
+  "GS-3801-01": {
+    "coord": "人×多星纪元×跨星系带×史志学派×中期改造总工程师",
+    "threads": [
+      "system/mid-refit"
+    ]
+  },
+  "GS-3854-01": {
+    "coord": "人物×跨星系治理期×中央星区×官档学派×行政总长",
+    "threads": [
+      "person/zhang-wushi",
+      "system/4th-leadership"
+    ]
+  },
+  "GS-3996-01": {
+    "coord": "生态×长期居住期×比邻星定居带×生态学派×封闭生态系统碳氧循环评估",
+    "threads": [
+      "report/carbon-oxygen-cycle-assessment"
+    ]
+  },
+  "GS-3882-01": {
+    "coord": "文化×跨星系治理期×三恒星系跨星区×典礼学派×跨星系治理纪念日",
+    "threads": [
+      "holiday/galactic-governance",
+      "system/4th-leadership"
+    ]
+  },
+  "GS-3964-01": {
+    "coord": "制度×长期居住期×比邻星定居带×社会学派×世代交替社会支持法",
+    "threads": [
+      "system/generation-transition-act"
+    ]
+  },
+  "GS-3864-01": {
+    "coord": "制度×跨星系治理期×中央星区×官档学派×行政程序法",
+    "threads": [
+      "system/4th-leadership",
+      "system/admin-procedure"
+    ]
+  },
+  "GS-3722-01": {
+    "coord": "技术×多星纪元×第六恒星系带×工技学派×3D打印建造",
+    "threads": [
+      "object/print-builder-six"
+    ]
+  },
+  "GS-3891-01": {
+    "coord": "经济×跨星系治理期×三恒星系跨星区×决算学派×公共咨询产业决算",
+    "threads": [
+      "economy/4th-leadership",
+      "industry/public-consulting"
+    ]
+  },
+  "GS-3985-01": {
+    "coord": "仪式×长期居住期×比邻星定居带×社会学派×世代交替仪式",
+    "threads": [
+      "ritual/generation-transition-ceremony"
+    ]
+  },
+  "GS-3899-01": {
+    "coord": "军事安全×跨星系治理期×三恒星系跨星区×危机响应学派×跨星区危机响应机制",
+    "threads": [
+      "response/interstellar",
+      "security/4th-leadership"
+    ]
+  },
+  "GS-3732-01": {
+    "coord": "文化×多星纪元×第六恒星系带×互济学派×第一代儿童纪念",
+    "threads": [
+      "system/first-generation-birth"
+    ]
+  },
+  "GS-3857-01": {
+    "coord": "人物×跨星系治理期×三恒星系跨星区×官档学派×人权专员",
+    "threads": [
+      "person/ren-chizheng",
+      "system/4th-leadership"
+    ]
+  },
+  "GS-3915-01": {
+    "coord": "制度×文化融合期×三号环带×产业学派×文化产业促进法",
+    "threads": [
+      "system/culture-industry-act"
+    ]
+  },
+  "GS-3973-01": {
+    "coord": "子事件×长期居住期×比邻星定居带×生态学派×三号环带菌群崩溃事件",
+    "threads": [
+      "event/biosphere-microbe-collapse"
+    ]
+  },
+  "GS-3930-01": {
+    "coord": "仪式×文化融合期×跨星系走廊×语言学派×跨星系语言日",
+    "threads": [
+      "system/language-day"
+    ]
+  },
+  "GS-3740-01": {
+    "coord": "经济×多星纪元×第六恒星系带×科医学派×生态农业决算",
+    "threads": [
+      "system/agri-econ"
+    ]
+  },
+  "GS-3874-01": {
+    "coord": "事件×跨星系治理期×三恒星系跨星区×官档学派×跨星区政策协调失败事件",
+    "threads": [
+      "event/coord-failure",
+      "system/4th-leadership"
+    ]
+  },
+  "GS-3878-01": {
+    "coord": "事件×跨星系治理期×三恒星系跨星区×官档学派×公民请愿大规模事件",
+    "threads": [
+      "event/petition",
+      "system/4th-leadership"
+    ]
+  },
+  "GS-3974-01": {
+    "coord": "子事件×长期居住期×比邻星定居带×医派×三号环带心理健康群体性事件",
+    "threads": [
+      "event/mental-health-collective"
+    ]
+  },
+  "GS-3968-01": {
+    "coord": "技术×长期居住期×比邻星定居带×统计学派×人口结构预测模型",
+    "threads": [
+      "object/population-projection-model"
+    ]
+  },
+  "GS-3883-01": {
+    "coord": "文化×跨星系治理期×三恒星系跨星区×典礼学派×公民权利日",
+    "threads": [
+      "holiday/citizen-rights",
+      "system/4th-leadership"
+    ]
+  },
+  "GS-3892-01": {
+    "coord": "生态×跨星系治理期×三恒星系跨星区×生态改造学派×政务建筑生态改造",
+    "threads": [
+      "ecology/4th-leadership",
+      "green/public-buildings"
+    ]
+  },
+  "GS-3762-01": {
+    "coord": "制度×多星纪元×跨星系带×制度学派×异星文物进出口管制",
+    "threads": [
+      "system/cultural-heritage",
+      "system/trade-agreement"
+    ]
+  },
+  "GS-3823-01": {
+    "coord": "事件×多星纪元×跨星系带×事故调查学派×推进试车异常",
+    "threads": [
+      "system/mid-refit"
+    ]
+  },
+  "GS-3997-01": {
+    "coord": "安全×长期居住期×比邻星定居带×生态学派×人工生物圈安全防护",
+    "threads": [
+      "security/biosphere-protection-protocol"
+    ]
+  },
+  "GS-3708-01": {
+    "coord": "人物×多星纪元×第六恒星系带×工技学派×通信译算员",
+    "threads": [
+      "object/cipher-desk-6",
+      "person/wenren-you"
+    ]
+  },
+  "GS-3888-01": {
+    "coord": "经济×跨星系治理期×三恒星系跨星区×决算学派×司法服务产业决算",
+    "threads": [
+      "economy/4th-leadership",
+      "industry/judicial-services"
+    ]
+  },
+  "GS-3912-01": {
+    "coord": "制度×文化融合期×比邻星定居带×技术学派×文化遗产数字化条例",
+    "threads": [
+      "system/digital-heritage-regulation"
+    ]
+  },
+  "GS-3828-01": {
+    "coord": "事件×多星纪元×跨星系带×事故调查学派×废物循环堵塞",
+    "threads": [
+      "system/mid-refit"
+    ]
+  },
+  "GS-3867-01": {
+    "coord": "技术×跨星系治理期×中央星区×工技学派×政务数据共享平台",
+    "threads": [
+      "system/4th-leadership",
+      "system/data-sharing"
+    ]
+  },
+  "GS-3761-01": {
+    "coord": "制度×多星纪元×跨星系带×制度学派×跨文明贸易协定",
+    "threads": [
+      "system/economy",
+      "system/trade-agreement"
+    ]
+  },
+  "GS-3769-01": {
+    "coord": "技术×多星纪元×跨星系带×技术学派×跨文明数据交换标准",
+    "threads": [
+      "system/comm-protocol",
+      "system/data-standard"
+    ]
+  },
+  "GS-3855-01": {
+    "coord": "人物×跨星系治理期×三恒星系跨星区×官档学派×跨星区协调专员",
+    "threads": [
+      "person/cheng-lianheng",
+      "system/4th-leadership"
+    ]
+  },
+  "GS-3863-01": {
+    "coord": "制度×跨星系治理期×中央星区×官档学派×司法体系改革法",
+    "threads": [
+      "system/4th-leadership",
+      "system/judicial-reform"
+    ]
+  },
+  "GS-3916-01": {
+    "coord": "技术×文化融合期×跨星系走廊×工程学派×实时翻译引擎",
+    "threads": [
+      "object/translate-engine-v3"
+    ]
+  },
+  "GS-3949-01": {
+    "coord": "安全×文化融合期×内太阳系带×教育学派×教育系统应急响应",
+    "threads": [
+      "security/education"
+    ]
+  },
+  "GS-3779-01": {
+    "coord": "子事件×多星纪元×跨星系带×事件学派×文化误解致外交摩擦",
+    "threads": [
+      "system/cultural-friction",
+      "system/diplomacy"
+    ]
+  },
+  "GS-3979-01": {
+    "coord": "子事件×长期居住期×比邻星定居带×工学派×五号环带居住环境系统性故障事件",
+    "threads": [
+      "event/habitat-system-failure"
+    ]
+  },
+  "GS-3914-01": {
+    "coord": "制度×文化融合期×主带星区×社会学派×身份认同多元包容法",
+    "threads": [
+      "system/identity-inclusion-act"
+    ]
+  },
+  "GS-3710-01": {
+    "coord": "制度×多星纪元×第六恒星系带×商贸学派×资源开采权分配",
+    "threads": [
+      "system/mining-rights-six"
+    ]
+  },
+  "GS-3784-01": {
+    "coord": "文化×多星纪元×跨星系带×仪式学派×跨文明艺术展",
+    "threads": [
+      "system/art-exhibition",
+      "system/exchange"
+    ]
+  },
+  "GS-3871-01": {
+    "coord": "技术×跨星系治理期×三恒星系跨星区×工技学派×政务区块链存证",
+    "threads": [
+      "system/4th-leadership",
+      "system/blockchain"
+    ]
+  },
+  "GS-3928-01": {
+    "coord": "事件×文化融合期×主带星区×社会学派×调查争议事件",
+    "threads": [
+      "system/identity-survey-dispute"
+    ]
+  },
+  "GS-3768-01": {
+    "coord": "技术×多星纪元×跨星系带×技术学派×外交加密通信协议",
+    "threads": [
+      "system/comm-protocol",
+      "system/security"
+    ]
+  },
+  "GS-3959-01": {
+    "coord": "制度×长期居住期×比邻星定居带×生态学派×人工生物圈管理法",
+    "threads": [
+      "system/biosphere-management-act"
+    ]
+  },
+  "GS-3872-01": {
+    "coord": "技术×跨星系治理期×三恒星系跨星区×工技学派×公民身份数字认证",
+    "threads": [
+      "system/4th-leadership",
+      "system/digital-id"
+    ]
+  },
+  "GS-3781-01": {
+    "coord": "文化×多星纪元×跨星系带×仪式学派×跨文明文化节",
+    "threads": [
+      "system/cultural-festival",
+      "system/exchange"
+    ]
+  },
+  "GS-3900-01": {
+    "coord": "军事安全×跨星系治理期×三恒星系跨星区×安全监测学派×政治极端主义监测",
+    "threads": [
+      "monitoring/system",
+      "security/4th-leadership"
+    ]
+  },
+  "GS-3701-01": {
+    "coord": "人物×多星纪元×第六恒星系带×官档学派×首任站长",
+    "threads": [
+      "person/tao-yanzhou",
+      "system/outpost-six-founding"
+    ]
+  },
+  "GS-3721-01": {
+    "coord": "技术×多星纪元×第六恒星系带×科医学派×辐射防护",
+    "threads": [
+      "system/radiation-shield-six"
+    ]
+  },
+  "GS-3876-01": {
+    "coord": "事件×跨星系治理期×中央星区×官档学派×政务数据泄露事件",
+    "threads": [
+      "event/data-leak",
+      "system/4th-leadership"
+    ]
+  },
+  "GS-3955-01": {
+    "coord": "人物×长期居住期×跨星系走廊×生态学派×生态平衡专员巡区档案",
+    "threads": [
+      "person/he-chuan"
+    ]
+  },
+  "GS-3847-01": {
+    "coord": "军事×多星纪元×跨星系带×安全学派×改造期安全警戒",
+    "threads": [
+      "system/mid-refit"
+    ]
+  },
+  "GS-3994-01": {
+    "coord": "生态×长期居住期×比邻星定居带×生态学派×长期居住伴生微生物研究",
+    "threads": [
+      "research/habitation-commensal-microbe"
+    ]
+  },
+  "GS-3890-01": {
+    "coord": "经济×跨星系治理期×三恒星系跨星区×决算学派×数字政务设备产业决算",
+    "threads": [
+      "economy/4th-leadership",
+      "industry/digital-governance-equipment"
+    ]
+  },
+  "GS-3704-01": {
+    "coord": "人物×多星纪元×第六恒星系带×科医学派×前哨医疗官",
+    "threads": [
+      "person/cen-weiming",
+      "system/outpost-medical"
+    ]
+  },
+  "GS-4000-01": {
+    "coord": "安全×长期居住期×比邻星定居带×生态学派×生态灾难应急预案",
+    "threads": [
+      "security/ecology-disaster-emergency-plan"
+    ]
+  },
+  "GS-3806-01": {
+    "coord": "人×多星纪元×跨星系带×史志学派×能源总工艺师",
+    "threads": [
+      "system/mid-refit"
+    ]
+  },
+  "GS-3868-01": {
+    "coord": "技术×跨星系治理期×中央星区×工技学派×司法数字化系统",
+    "threads": [
+      "system/4th-leadership",
+      "system/judicial-digital"
+    ]
+  },
+  "GS-3724-01": {
+    "coord": "事件×多星纪元×第六恒星系带×工技学派×通信中断事件",
+    "threads": [
+      "person/wenren-you",
+      "system/comm-outage"
+    ]
+  },
+  "GS-3852-01": {
+    "coord": "人物×跨星系治理期×中央星区×官档学派×公民大会议长",
+    "threads": [
+      "person/zheng-weigang",
+      "system/4th-leadership"
+    ]
+  },
+  "GS-3950-01": {
+    "coord": "安全×文化融合期×比邻星定居带×安全学派×文化遗产保护安全",
+    "threads": [
+      "security/heritage"
+    ]
+  },
+  "GS-3919-01": {
+    "coord": "技术×文化融合期×比邻星定居带×技术学派×三维扫描规程",
+    "threads": [
+      "object/3d-scanner-spec"
+    ]
+  },
+  "GS-3702-01": {
+    "coord": "人物×多星纪元×第六恒星系带×科医学派×首席生态学家",
+    "threads": [
+      "person/mu-yunji",
+      "system/outpost-ecosphere"
+    ]
+  },
+  "GS-3921-01": {
+    "coord": "技术×文化融合期×主带星区×社会学派×身份认同分析",
+    "threads": [
+      "system/identity-data-analytics"
+    ]
+  },
+  "GS-3777-01": {
+    "coord": "子事件×多星纪元×跨星系带×事件学派×外交使团健康紧急",
+    "threads": [
+      "system/embassy",
+      "system/health-emergency"
+    ]
+  },
+  "GS-3960-01": {
+    "coord": "制度×长期居住期×比邻星定居带×医派×世代心理健康保障法",
+    "threads": [
+      "system/mental-health-act"
+    ]
+  },
+  "GS-3943-01": {
+    "coord": "生态×文化融合期×三号环带×建筑学派×艺术园区绿化",
+    "threads": [
+      "eco/greening"
+    ]
+  },
+  "GS-3957-01": {
+    "coord": "人物×长期居住期×比邻星定居带×工学派×居住环境总设计师设计档案",
+    "threads": [
+      "person/lu-chi"
+    ]
+  },
+  "GS-3988-01": {
+    "coord": "经济×长期居住期×比邻星定居带×统计学派×人口服务产业决算",
+    "threads": [
+      "economy/population-service-industry"
+    ]
+  },
+  "GS-3995-01": {
+    "coord": "生态×长期居住期×比邻星定居带×生态学派×世代居住植物驯化",
+    "threads": [
+      "research/generational-plant-domestication"
+    ]
+  },
+  "GS-3853-01": {
+    "coord": "人物×跨星系治理期×中央星区×官档学派×首席大法官",
+    "threads": [
+      "person/su-mingshen",
+      "system/4th-leadership"
+    ]
+  },
+  "GS-3815-01": {
+    "coord": "制度×多星纪元×跨星系带×制度学派×改造质量监督",
+    "threads": [
+      "system/mid-refit"
+    ]
+  },
+  "GS-3936-01": {
+    "coord": "产业×文化融合期×跨星系走廊×语言学派×语言服务产业决算",
+    "threads": [
+      "industry/language-services"
+    ]
+  },
+  "GS-3743-01": {
+    "coord": "生态×多星纪元×第六恒星系带×科医学派×人工生物圈稳态",
+    "threads": [
+      "system/artificial-biosphere"
+    ]
+  },
+  "GS-3850-01": {
+    "coord": "军事×多星纪元×跨星系带×安全学派×结构安全监测",
+    "threads": [
+      "system/mid-refit"
+    ]
+  },
+  "GS-3940-01": {
+    "coord": "产业×文化融合期×跨星系走廊×媒体学派×跨星系媒体产业决算",
+    "threads": [
+      "industry/medias"
+    ]
+  },
+  "GS-3895-01": {
+    "coord": "生态×跨星系治理期×三恒星系跨星区×生态监测学派×跨星区会议生态足迹",
+    "threads": [
+      "ecology/4th-leadership",
+      "footprint/interstellar-meetings"
+    ]
+  },
+  "GS-3999-01": {
+    "coord": "安全×长期居住期×比邻星定居带×统计学派×人口安全监测",
+    "threads": [
+      "security/population-safety-monitoring"
+    ]
+  },
+  "GS-3924-01": {
+    "coord": "事件×文化融合期×三号环带×艺术学派×作品争议事件",
+    "threads": [
+      "system/artwork-controversy-3899"
+    ]
+  },
+  "GS-3951-01": {
+    "coord": "人物×长期居住期×比邻星定居带×生态学派×首席生态学家考勤档案",
+    "threads": [
+      "person/wen-yu"
+    ]
+  },
+  "GS-3705-01": {
+    "coord": "人物×多星纪元×第六恒星系带×工技学派×资源开发总工艺师",
+    "threads": [
+      "object/smelter-6",
+      "person/sha-baichuan"
+    ]
+  },
+  "GS-3983-01": {
+    "coord": "仪式×长期居住期×比邻星定居带×医派×长期居住医学突破纪念",
+    "threads": [
+      "ritual/habitation-medicine-breakthrough"
+    ]
+  },
+  "GS-3812-01": {
+    "coord": "制度×多星纪元×跨星系带×制度学派×结构延寿标准",
+    "threads": [
+      "system/mid-refit"
+    ]
+  },
+  "GS-3860-01": {
+    "coord": "制度×跨星系治理期×中央星区×官档学派×宪政修订案",
+    "threads": [
+      "system/4th-leadership",
+      "system/constitution"
+    ]
+  },
+  "GS-3938-01": {
+    "coord": "产业×文化融合期×内太阳系带×技术学派×教育科技产业决算",
+    "threads": [
+      "industry/edtech"
+    ]
+  },
+  "GS-3873-01": {
+    "coord": "事件×跨星系治理期×第一星区×官档学派×选举系统故障延迟事件",
+    "threads": [
+      "event/election-glitch",
+      "system/4th-leadership"
+    ]
+  },
+  "GS-3856-01": {
+    "coord": "人物×跨星系治理期×中央星区×官档学派×选举委员会主席",
+    "threads": [
+      "person/wei-gongyun",
+      "system/4th-leadership"
+    ]
+  },
+  "GS-3980-01": {
+    "coord": "仪式×长期居住期×比邻星定居带×生态学派×人工生物圈稳定纪念日",
+    "threads": [
+      "ritual/biosphere-stability-day"
+    ]
+  },
+  "GS-3725-01": {
+    "coord": "事件×多星纪元×第六恒星系带×科医学派×菌群失衡事件",
+    "threads": [
+      "person/mu-yunji",
+      "system/microbiome-crash"
+    ]
+  },
+  "GS-3780-01": {
+    "coord": "文化×多星纪元×跨星系带×仪式学派×建交一周年纪念",
+    "threads": [
+      "system/anniversary",
+      "system/embassy"
+    ]
+  },
+  "GS-3917-01": {
+    "coord": "技术×文化融合期×三号环带×艺术学派×数字创作平台",
+    "threads": [
+      "object/art-platform-v2"
+    ]
+  },
+  "GS-3913-01": {
+    "coord": "制度×文化融合期×跨星系走廊×媒体学派×跨星系媒体管理法",
+    "threads": [
+      "system/media-regulation-act"
+    ]
+  },
+  "GS-3767-01": {
+    "coord": "技术×多星纪元×跨星系带×技术学派×异星文字解码技术",
+    "threads": [
+      "system/linguistics",
+      "system/translation-system"
+    ]
+  },
+  "GS-3736-01": {
+    "coord": "经济×多星纪元×第六恒星系带×商贸学派×建设产业链决算",
+    "threads": [
+      "system/construction-econ"
+    ]
+  },
+  "GS-3944-01": {
+    "coord": "生态×文化融合期×内太阳系带×教育学派×教育中心室内生态",
+    "threads": [
+      "eco/indoor"
+    ]
+  },
+  "GS-3998-01": {
+    "coord": "安全×长期居住期×比邻星定居带×医派×心理健康危机响应",
+    "threads": [
+      "security/mental-health-crisis-protocol"
+    ]
+  },
+  "GS-3908-01": {
+    "coord": "人物×文化融合期×内太阳系带×传承学派×项目验收",
+    "threads": [
+      "person/ye-heng"
+    ]
+  },
+  "GS-3803-01": {
+    "coord": "人×多星纪元×跨星系带×史志学派×生命支持首席工程师",
+    "threads": [
+      "system/mid-refit"
+    ]
+  },
+  "GS-3948-01": {
+    "coord": "安全×文化融合期×跨星系走廊×媒体学派×跨星系媒体安全",
+    "threads": [
+      "security/media"
+    ]
+  },
+  "GS-3946-01": {
+    "coord": "生态×文化融合期×比邻星定居带×植物学派×文化场馆伴生植物",
+    "threads": [
+      "eco/plants"
+    ]
+  },
+  "GS-3889-01": {
+    "coord": "经济×跨星系治理期×三恒星系跨星区×决算学派×跨星区协调服务产业决算",
+    "threads": [
+      "economy/4th-leadership",
+      "industry/interstellar-coordination-services"
+    ]
+  },
+  "GS-3707-01": {
+    "coord": "人物×多星纪元×第六恒星系带×工技学派×建设总指挥",
+    "threads": [
+      "person/lou-zhenhai",
+      "system/outpost-construction"
+    ]
+  },
+  "GS-3941-01": {
+    "coord": "产业×文化融合期×三号环带×艺术学派×文化创意产业决算",
+    "threads": [
+      "industry/creative"
+    ]
+  },
+  "GS-3942-01": {
+    "coord": "生态×文化融合期×内太阳系带×建筑学派×文化建筑生态改造",
+    "threads": [
+      "eco/architecture"
+    ]
+  },
+  "GS-3920-01": {
+    "coord": "技术×文化融合期×跨星系走廊×工程学派×流媒体协议",
+    "threads": [
+      "system/streaming-protocol-v4"
+    ]
+  },
+  "GS-3744-01": {
+    "coord": "生态×多星纪元×第六恒星系带×科医学派×异星植物驯化",
+    "threads": [
+      "system/exo-plant-domestication"
+    ]
+  },
+  "GS-3991-01": {
+    "coord": "经济×长期居住期×比邻星定居带×工学派×居住环境优化产业决算",
+    "threads": [
+      "economy/habitat-optimization-industry"
+    ]
+  },
+  "GS-3712-01": {
+    "coord": "制度×多星纪元×第六恒星系带×科医学派×异星生态保护法",
+    "threads": [
+      "system/exo-ecology-law"
+    ]
+  },
+  "GS-3963-01": {
+    "coord": "制度×长期居住期×跨星系走廊×生态学派×跨星系生态保护法",
+    "threads": [
+      "system/interstellar-ecology-act"
+    ]
+  },
+  "GS-3952-01": {
+    "coord": "人物×长期居住期×比邻星定居带×医派×首席心理健康医师考勤档案",
+    "threads": [
+      "person/xi-zhao"
+    ]
+  },
+  "GS-3927-01": {
+    "coord": "事件×文化融合期×跨星系走廊×媒体学派×报道失实事件",
+    "threads": [
+      "system/media-false-report-3896"
+    ]
+  },
+  "GS-3923-01": {
+    "coord": "事件×文化融合期×跨星系走廊×工程学派×群体性误译事件",
+    "threads": [
+      "system/translation-glitch-3898"
+    ]
+  },
+  "GS-3764-01": {
+    "coord": "制度×多星纪元×跨星系带×制度学派×联合科考资源共享协议",
+    "threads": [
+      "system/joint-expedition",
+      "system/research"
+    ]
+  },
+  "GS-3808-01": {
+    "coord": "人×多星纪元×跨星系带×史志学派×大修工程总监",
+    "threads": [
+      "system/mid-refit"
+    ]
+  },
+  "GS-3759-01": {
+    "coord": "制度×多星纪元×跨星系带×制度学派×跨文明建交公报",
+    "threads": [
+      "system/embassy-establishment",
+      "system/treaty"
+    ]
+  },
+  "GS-3763-01": {
+    "coord": "制度×多星纪元×跨星系带×制度学派×跨文明争端仲裁庭章程",
+    "threads": [
+      "system/arbitration-tribunal",
+      "system/trade-agreement"
+    ]
+  },
+  "GS-3885-01": {
+    "coord": "文化×跨星系治理期×中央星区×典礼学派×公共服务表彰仪式",
+    "threads": [
+      "event/service-recognition",
+      "system/4th-leadership"
+    ]
+  },
+  "GS-3911-01": {
+    "coord": "制度×文化融合期×内太阳系带×教育学派×教育体系改革法",
+    "threads": [
+      "system/education-reform-act"
+    ]
+  },
+  "GS-3726-01": {
+    "coord": "事件×多星纪元×第六恒星系带×工技学派×聚变功率骤降",
+    "threads": [
+      "object/fusion-module-six",
+      "system/fusion-dip"
+    ]
+  },
+  "GS-3825-01": {
+    "coord": "事件×多星纪元×跨星系带×事故调查学派×居住舱坍塌险情",
+    "threads": [
+      "system/mid-refit"
+    ]
+  },
+  "GS-3711-01": {
+    "coord": "制度×多星纪元×第六恒星系带×官档学派×前哨与母星关系法",
+    "threads": [
+      "system/outpost-mother-relations"
+    ]
+  },
+  "GS-3898-01": {
+    "coord": "军事安全×跨星系治理期×三恒星系跨星区×安保体系学派×政务设施安保",
+    "threads": [
+      "security/4th-leadership",
+      "security/system"
+    ]
+  },
+  "GS-3939-01": {
+    "coord": "产业×文化融合期×比邻星定居带×技术学派×数字化产业决算",
+    "threads": [
+      "industry/heritage-digital"
+    ]
+  },
+  "GS-3893-01": {
+    "coord": "生态×跨星系治理期×三恒星系跨星区×生态改造学派×议会大楼绿化系统",
+    "threads": [
+      "ecology/4th-leadership",
+      "green/parliament-building"
+    ]
+  },
+  "GS-3905-01": {
+    "coord": "人物×文化融合期×跨星系走廊×媒体学派×总编任职记录",
+    "threads": [
+      "person/wen-xi"
+    ]
+  },
+  "GS-3771-01": {
+    "coord": "技术×多星纪元×跨星系带×技术学派×异星环境适配舱",
+    "threads": [
+      "system/expedition",
+      "system/habitat"
+    ]
+  },
+  "GS-3772-01": {
+    "coord": "技术×多星纪元×跨星系带×技术学派×外交舱生命支持",
+    "threads": [
+      "system/embassy",
+      "system/life-support"
+    ]
+  },
+  "GS-3902-01": {
+    "coord": "人物×文化融合期×三号环带×艺术学派×流派创始人考勤",
+    "threads": [
+      "person/qian-xuzhi"
+    ]
+  },
+  "GS-3713-01": {
+    "coord": "制度×多星纪元×第六恒星系带×工技学派×通信频谱管理",
+    "threads": [
+      "system/spectrum-six"
+    ]
+  },
+  "GS-3967-01": {
+    "coord": "技术×长期居住期×比邻星定居带×医派×心理健康远程监测设备",
+    "threads": [
+      "object/mental-health-remote-monitor"
+    ]
+  },
+  "GS-3931-01": {
+    "coord": "仪式×文化融合期×三号环带×艺术学派×融合艺术节",
+    "threads": [
+      "system/fusion-art-festival"
+    ]
+  },
+  "GS-3947-01": {
+    "coord": "安全×文化融合期×内太阳系带×安全学派×文化设施安保",
+    "threads": [
+      "security/facility"
+    ]
+  },
+  "GS-3774-01": {
+    "coord": "子事件×多星纪元×跨星系带×事件学派×异星文物检疫争议",
+    "threads": [
+      "system/cultural-heritage",
+      "system/quarantine-incident"
+    ]
+  },
+  "GS-3824-01": {
+    "coord": "事件×多星纪元×跨星系带×事故调查学派×生命支持切换故障",
+    "threads": [
+      "system/mid-refit"
+    ]
+  },
+  "GS-3984-01": {
+    "coord": "仪式×长期居住期×跨星系走廊×生态学派×跨星系生态平衡日",
+    "threads": [
+      "ritual/interstellar-ecology-day"
+    ]
+  },
+  "GS-3776-01": {
+    "coord": "子事件×多星纪元×跨星系带×事件学派×联合科考设备故障",
+    "threads": [
+      "system/equipment-failure",
+      "system/expedition"
+    ]
+  },
+  "GS-3906-01": {
+    "coord": "人物×文化融合期×主带星区×社会学派×首席学者档案",
+    "threads": [
+      "person/shen-du"
+    ]
+  }
+}

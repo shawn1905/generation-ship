@@ -4,9 +4,10 @@
 校验: front matter 完整性 / 坐标合法性(对照世界大纲坐标系) / 元层词泄漏
 退出码: 0=全过, 1=有不合规
 """
-import re, sys, pathlib
+import re, sys, pathlib, json
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
+HISTORICAL_METADATA = json.loads((ROOT / 'scripts/historical_metadata_exceptions.json').read_text(encoding='utf-8'))
 
 # 合法坐标值集合（全库 1220 篇扫描汇总，含旧坐标系与多星纪元新坐标系）
 DIMENSIONS = {'事件','人','内太阳系','军事','制度','医','地月系','地球','安全','工程','技术','政治','文化','比邻星','深空','生态','知识','社会','科医','科学','经济','通信'}
@@ -162,6 +163,17 @@ def check_file(path: pathlib.Path):
             if not legacy_tags:
                 errs.append(f'threads 字段无有效线索ID: {threads_raw!r}')
 
+
+    # 已入库的历史坐标不扩充新投稿白名单；编号和完整坐标须与冻结快照一致。
+    # 线索例外要求完整集合一致，防止借旧编号引入未经核对的新前缀。
+    historical = HISTORICAL_METADATA.get(str(fm.get('archive_id', ''))) if path.parent.name == 'writing' else None
+    if historical:
+        if coord == historical['coord']:
+            prefixes = ('维度非法:', '纪元非法:', '空间带非法:', '微观学派非法:')
+            errs = [e for e in errs if not e.startswith(prefixes)]
+        current_threads = sorted(re.findall(r'([a-zA-Z]+/[\w-]+)', threads_raw))
+        if current_threads == historical['threads']:
+            errs = [e for e in errs if not e.startswith('thread 命名空间非法:')]
 
     # 档案编号:仅对正典目录(artifacts/writing/)强制,投稿阶段不填
     if path.parent.name == 'writing':
